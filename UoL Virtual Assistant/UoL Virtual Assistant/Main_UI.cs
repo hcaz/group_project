@@ -13,10 +13,10 @@ namespace UoL_Virtual_Assistant
     public partial class Main_UI : Form
     {
         //globally accessed values should go below this
-        string Student_ID = "12454434"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
-        string Student_First_Name = "Jack"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
-        string Student_Last_Name = "Duffy"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
-        string Student_Course = "Computer Science"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
+        string Student_ID = "11356582"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
+        string Student_First_Name = "Joseph"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
+        string Student_Last_Name = "Potter"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
+        string Student_Course = "Games Computing"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
 
         int Universal_Theme_Value = 12; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (white)
         int R = 0;
