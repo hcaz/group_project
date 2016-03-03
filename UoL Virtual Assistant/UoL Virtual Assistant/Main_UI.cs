@@ -14,9 +14,9 @@ namespace UoL_Virtual_Assistant
     {
         //globally accessed values should go below this
         string Student_ID = "12454434"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
-        string Student_First_Name = "Jack"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
-        string Student_Last_Name = "Duffy"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
-        string Student_Course = "Computer Science"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
+        string Student_First_Name = "Joseph"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
+        string Student_Last_Name = "Potter"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
+        string Student_Course = "Games Computing"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
 
         int Universal_Theme_Value = 12; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (white)
         int R = 0;
@@ -43,6 +43,15 @@ namespace UoL_Virtual_Assistant
             InitializeComponent(); //initialize the component
             this.Width = 350; this.Height = 500; //resizes the UI to be it's default starting value
             UI_Theming(); //apply the theme to the UI
+
+
+            //StreamReader objstream = new StreamReader(@"tasks\task1.txt"); //locates task1 file
+            //task1datePreview.Text = objstream.ReadLine(); //writes the creation date to the main screen
+            //task1preview.Text = "1. " + objstream.ReadLine(); //writes a preview of the task title to the main screen
+            //objstream.Close(); //closes the file, allows it to be used later
+
+
+
             Hide_Items(); //make sure certain items are hidden when the UI loads
             Tooltips_Generation(); //**THIS SHOULD BE ONE OF THE LAST THINGS TO RUN**
         }
@@ -129,6 +138,7 @@ namespace UoL_Virtual_Assistant
             if (Universal_Theme_Value == 6)
             {
                 this.BackgroundImage = Properties.Resources.JB;
+                MessageBox.Show("Ayyyy");
                 R = 255; G = 255; B = 255;
             }
 
@@ -218,18 +228,17 @@ namespace UoL_Virtual_Assistant
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
             {
                 Conversation_Window.Visible = true; //make the window visible
-
+                Open_Conversation_Window = 1; //set the window status as open
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
                 {
                     await Task.Delay(1); //delay for 1/100 of a second
                     Conversation_Window.Location = new Point(Conversation_Window.Location.X, Conversation_Window.Location.Y - 10); //move the window so that it is on screen
                 }
-
-                Open_Conversation_Window = 1; //set the window status as open
             }
 
             else
             {
+                Open_Conversation_Window = 0; //set the window status as closed
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
                 {
                     await Task.Delay(1); //delay for 1/100 of a second
@@ -237,7 +246,7 @@ namespace UoL_Virtual_Assistant
                 }
 
                 Conversation_Window.Visible = false; //make the window invisible
-                Open_Conversation_Window = 0; //set the window status as closed
+                
             }
         }
 
