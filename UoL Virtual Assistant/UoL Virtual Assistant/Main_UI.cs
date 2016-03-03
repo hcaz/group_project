@@ -129,6 +129,7 @@ namespace UoL_Virtual_Assistant
             if (Universal_Theme_Value == 6)
             {
                 this.BackgroundImage = Properties.Resources.JB;
+                MessageBox.Show("Ayyyy");
                 R = 255; G = 255; B = 255;
             }
 
@@ -218,18 +219,17 @@ namespace UoL_Virtual_Assistant
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
             {
                 Conversation_Window.Visible = true; //make the window visible
-
+                Open_Conversation_Window = 1; //set the window status as open
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
                 {
                     await Task.Delay(1); //delay for 1/100 of a second
                     Conversation_Window.Location = new Point(Conversation_Window.Location.X, Conversation_Window.Location.Y - 10); //move the window so that it is on screen
                 }
-
-                Open_Conversation_Window = 1; //set the window status as open
             }
 
             else
             {
+                Open_Conversation_Window = 0; //set the window status as closed
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
                 {
                     await Task.Delay(1); //delay for 1/100 of a second
@@ -237,7 +237,7 @@ namespace UoL_Virtual_Assistant
                 }
 
                 Conversation_Window.Visible = false; //make the window invisible
-                Open_Conversation_Window = 0; //set the window status as closed
+                
             }
         }
 
