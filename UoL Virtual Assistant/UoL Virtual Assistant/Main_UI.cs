@@ -7,24 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace UoL_Virtual_Assistant
 {
     public partial class Main_UI : Form
     {
         //globally accessed values should go below this
-        string Student_ID = "12454434"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
-        string Student_First_Name = "Joseph"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
-        string Student_Last_Name = "Potter"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
-        string Student_Course = "Games Computing"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
+        string Student_ID; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
+        string Student_First_Name; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
+        string Student_Last_Name; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
+        string Student_Course; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
+        string Universal_Theme_Value; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (white)
+        int R; int G; int B;
 
-        int Universal_Theme_Value = 12; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (white)
-        int R = 0;
-        int G = 0;
-        int B = 0;
-
-        int Preferred_Agent = 0; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no agent preference)
-        int UoL_Logo_Link = 0; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (UoL Homepage)
+        string Preferred_Agent; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no agent preference)
+        string UoL_Logo_Link; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (UoL Homepage)
 
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
@@ -34,7 +32,8 @@ namespace UoL_Virtual_Assistant
         //automated processes
         public Main_UI()
         {
-            if (Student_ID == "0")
+            Read_User_Data();
+            if (Student_ID == null)
             {
                 First_Run_UI FirstRun = new First_Run_UI(); //create a new instance of the First_Run_UI
                 FirstRun.ShowDialog(); //show the new window
@@ -42,16 +41,8 @@ namespace UoL_Virtual_Assistant
 
             InitializeComponent(); //initialize the component
             this.Width = 350; this.Height = 500; //resizes the UI to be it's default starting value
+
             UI_Theming(); //apply the theme to the UI
-
-
-            //StreamReader objstream = new StreamReader(@"tasks\task1.txt"); //locates task1 file
-            //task1datePreview.Text = objstream.ReadLine(); //writes the creation date to the main screen
-            //task1preview.Text = "1. " + objstream.ReadLine(); //writes a preview of the task title to the main screen
-            //objstream.Close(); //closes the file, allows it to be used later
-
-
-
             Hide_Items(); //make sure certain items are hidden when the UI loads
             Tooltips_Generation(); //**THIS SHOULD BE ONE OF THE LAST THINGS TO RUN**
         }
@@ -101,78 +92,74 @@ namespace UoL_Virtual_Assistant
             Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln website."); //assigns a tooltip description
         }
 
+        public void Read_User_Data()
+        {
+            string Local_Name = Environment.UserName; //retrieves the PC's name and saves it to a string
+            string Settings_Path = (@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt"); //creates a string for the settings path
+
+            StreamReader ObjectStream = new StreamReader(Settings_Path); //accesses the file via the streamReader
+            Student_ID = ObjectStream.ReadLine(); //reads the student ID and saves it to a string
+            Student_Course = ObjectStream.ReadLine(); //reads the students course and saves it to a string
+            Universal_Theme_Value = ObjectStream.ReadLine(); //reads the theme value and saves it to a string
+            Preferred_Agent = ObjectStream.ReadLine(); //reads the preferred agent and saves it to a string
+            UoL_Logo_Link = ObjectStream.ReadLine(); //reads the preferred type of link to be directed from the UoL branding and saves it to a string
+            ObjectStream.Close(); //closes the streamReader
+        }
+
 
         public void UI_Theming()
         {
 
-            if (Universal_Theme_Value == 0)
+            switch (Universal_Theme_Value)
             {
-                R = 33; G = 150; B = 243;
+                case "0":
+                    R = 33; G = 150; B = 243;
+                    break;
+                case "1":
+                    R = 121; G = 85; B = 72;
+                    break;
+                case "2":
+                    R = 0; G = 188; B = 212;
+                    break;
+                case "3":
+                    R = 139; G = 195; B = 74;
+                    break;
+                case "4":
+                    R = 96; G = 125; B = 139;
+                    break;
+                case "5":
+                    R = 63; G = 81; B = 181;
+                    break;
+                case "6":
+                    this.BackgroundImage = Properties.Resources.JB;
+                    R = 255; G = 255; B = 255;
+                    break;
+                case "7":
+                    R = 255; G = 87; B = 34;
+                    break;
+                case "8":
+                    R = 233; G = 30; B = 99;
+                    break;
+                case "9":
+                    R = 103; G = 58; B = 183;
+                    break;
+                case "10":
+                    R = 244; G = 67; B = 54;
+                    break;
+                case "11":
+                    R = 0; G = 150; B = 136;
+                    break;
+                case "12":
+                    R = 255; G = 255; B = 255;
+                    break;
             }
 
-            if (Universal_Theme_Value == 1)
+            if (Universal_Theme_Value != "6") //if the theme value is not set to JB
             {
-                R = 121; G = 85; B = 72;
+                this.BackgroundImage = null; //remove the background image
             }
 
-            if (Universal_Theme_Value == 2)
-            {
-                R = 0; G = 188; B = 212;
-            }
-
-            if (Universal_Theme_Value == 3)
-            {
-                R = 139; G = 195; B = 74;
-            }
-
-            if (Universal_Theme_Value == 4)
-            {
-                R = 96; G = 125; B = 139;
-            }
-
-            if (Universal_Theme_Value == 5)
-            {
-                R = 63; G = 81; B = 181;
-            }
-
-            if (Universal_Theme_Value == 6)
-            {
-                this.BackgroundImage = Properties.Resources.JB;
-                MessageBox.Show("Ayyyy");
-                R = 255; G = 255; B = 255;
-            }
-
-            if (Universal_Theme_Value == 7)
-            {
-                R = 255; G = 87; B = 34;
-            }
-
-            if (Universal_Theme_Value == 8)
-            {
-                R = 233; G = 30; B = 99;
-            }
-
-            if (Universal_Theme_Value == 9)
-            {
-                R = 103; G = 58; B = 183;
-            }
-
-            if (Universal_Theme_Value == 10)
-            {
-                R = 244; G = 67; B = 54;
-            }
-
-            if (Universal_Theme_Value == 11)
-            {
-                R = 0; G = 150; B = 136;
-            }
-
-            if (Universal_Theme_Value == 12)
-            {
-                R = 255; G = 255; B = 255;
-            }
-
-            this.BackColor = Color.FromArgb(R, G, B);
+                this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background
         }
 
         private void Message_Input_TextChanged(object sender, EventArgs e)
@@ -192,22 +179,22 @@ namespace UoL_Virtual_Assistant
         //user initiated events
         private void UoL_Branding_Click(object sender, EventArgs e) //when the UoL branding is clicked on...
         {
-            if (UoL_Logo_Link == 0)
+            if (UoL_Logo_Link == "0")
             {
                 System.Diagnostics.Process.Start("http://blackboard.lincoln.ac.uk"); //opens the users default browser and displays the page
             }
 
-            if (UoL_Logo_Link == 1)
+            if (UoL_Logo_Link == "1")
             {
                 System.Diagnostics.Process.Start("http://www.lincoln.ac.uk/home/"); //opens the users default browser and displays the page
             }
 
-            if (UoL_Logo_Link == 2)
+            if (UoL_Logo_Link == "2")
             {
                 System.Diagnostics.Process.Start("http://library.lincoln.ac.uk/"); //opens the users default browser and displays the page
             }
 
-            if (UoL_Logo_Link == 3)
+            if (UoL_Logo_Link == "3")
             {
                 string Timetable_URL = ("http://timetables.lincoln.ac.uk/mytimetable/" + Student_ID + ".htm");
                 System.Diagnostics.Process.Start(Timetable_URL); //opens the users default browser and displays the page
@@ -324,94 +311,117 @@ namespace UoL_Virtual_Assistant
         {
             if (Theme_Selection.SelectedItem.ToString().Equals("Blue"))
             {
-                Universal_Theme_Value = 0;
+                Universal_Theme_Value = "0";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Brown"))
             {
-                Universal_Theme_Value = 1;
+                Universal_Theme_Value = "1";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Cyan"))
             {
-                Universal_Theme_Value = 2;
+                Universal_Theme_Value = "2";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Green"))
             {
-                Universal_Theme_Value = 3;
+                Universal_Theme_Value = "3";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Grey"))
             {
-                Universal_Theme_Value = 4;
+                Universal_Theme_Value = "4";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Indigo"))
             {
-                Universal_Theme_Value = 5;
+                Universal_Theme_Value = "5";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Jbm8"))
             {
                 //something special
-                Universal_Theme_Value = 6;
+                Universal_Theme_Value = "6";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Orange"))
             {
-                Universal_Theme_Value = 7;
+                Universal_Theme_Value = "7";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Pink"))
             {
-                Universal_Theme_Value = 8;
+                Universal_Theme_Value = "8";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Purple"))
             {
-                Universal_Theme_Value = 9;
+                Universal_Theme_Value = "9";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Red"))
             {
-                Universal_Theme_Value = 10;
+                Universal_Theme_Value = "10";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("Teal"))
             {
-                Universal_Theme_Value = 11;
+                Universal_Theme_Value = "11";
             }
 
             if (Theme_Selection.SelectedItem.ToString().Equals("White"))
             {
-                Universal_Theme_Value = 12;
+                Universal_Theme_Value = "12";
             }
 
-            //should save the theme selection to a file
+            Save_Changes();
             UI_Theming(); //rethemes the UI
+
+            
         }
 
         private void UoL_Logo_Link_Selection_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Blackboard"))
             {
-                UoL_Logo_Link = 0;
+                UoL_Logo_Link = "0";
             }
 
             if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Homepage"))
             {
-                UoL_Logo_Link = 1;
+                UoL_Logo_Link = "1";
             }
 
             if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Library"))
             {
-                UoL_Logo_Link = 2;
+                UoL_Logo_Link = "2";
             }
 
             if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Timetable"))
             {
-                UoL_Logo_Link = 3;
+                UoL_Logo_Link = "3";
+            }
+        }
+
+        private void Save_Changes()
+        {
+            string Local_Name = Environment.UserName; //retrieves the PC's name and saves it to a string
+            System.IO.Directory.CreateDirectory(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\"); //create the new directory
+            File.Create(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt").Close(); //creates the local data file
+
+            using (FileStream FileStream = new FileStream(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt", FileMode.Open)) //uses the fileStream to open the settings file
+            {
+                using (TextWriter TextWriter = new StreamWriter(FileStream)) //uses the textWriter to save the content from the first run screen to the settings file
+                {
+                    TextWriter.WriteLine(Student_ID); //saves the users ID as the first line
+                    TextWriter.WriteLine(Student_Course); //saves the users course as the second line
+                    TextWriter.WriteLine(Universal_Theme_Value); //writes the current theme to the file
+                    TextWriter.WriteLine(Preferred_Agent); //writes a 0 to the next line, this will represent the users preferred contact agent, 0 is default and there is no preferred agent
+                    TextWriter.WriteLine(UoL_Logo_Link); //writes a 0 to the next line, this will represent the users choice of website for the UoL logo, 0 is default and represents Blackboard
+                    TextWriter.Close(); //close the textWriter
+                    FileStream.Close(); //close the fileStream
+                }
             }
         }
     }

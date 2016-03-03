@@ -98,29 +98,25 @@ namespace UoL_Virtual_Assistant
 
         private void Continue_Button_Click(object sender, EventArgs e)
         {
-            string Local_Name = Environment.UserName;
-            MessageBox.Show(Local_Name);
-
+            string Local_Name = Environment.UserName; //retrieves the PC's name and saves it to a string
             System.IO.Directory.CreateDirectory(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\"); //create the new directory
             File.Create(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt").Close(); //creates the local data file
 
-            using (FileStream fs = new FileStream(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt", FileMode.Open)) //uses the fileStream to open the file via the path string
+            using (FileStream FileStream = new FileStream(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt", FileMode.Open)) //uses the fileStream to open the settings file
             {
-                using (TextWriter tw = new StreamWriter(fs)) //uses the textWriter to add "0" to the newly created theme file, indicating default green theme.
+                using (TextWriter TextWriter = new StreamWriter(FileStream)) //uses the textWriter to save the content from the first run screen to the settings file
                 {
-                    tw.WriteLine(ID_Input.Text);
-                    tw.WriteLine(Course_Selection.SelectedItem.ToString());
-                    tw.Close(); //close the textWriter
-                    fs.Close(); //close the fileStream
+                    TextWriter.WriteLine(ID_Input.Text); //saves the users ID as the first line
+                    TextWriter.WriteLine(Course_Selection.SelectedItem.ToString()); //saves the users course as the second line
+                    TextWriter.WriteLine("12"); //writes a 12 to the next line, this will represent the users chosen theme, default is 12 (White)
+                    TextWriter.WriteLine("0"); //writes a 0 to the next line, this will represent the users preferred contact agent, 0 is default and there is no preferred agent
+                    TextWriter.WriteLine("0"); //writes a 0 to the next line, this will represent the users choice of website for the UoL logo, 0 is default and represents Blackboard
+                    TextWriter.Close(); //close the textWriter
+                    FileStream.Close(); //close the fileStream
                 }
             }
 
-
-
-
-
-            //do some saving of the information provided
-            this.Close();
+            this.Close(); //close the first run window
         }
     }
 }
