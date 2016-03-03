@@ -13,7 +13,7 @@ namespace UoL_Virtual_Assistant
     public partial class Main_UI : Form
     {
         //globally accessed values should go below this
-        string Student_ID = "11356582"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
+        string Student_ID = "12454434"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
         string Student_First_Name = "Joseph"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
         string Student_Last_Name = "Potter"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
         string Student_Course = "Games Computing"; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
@@ -43,6 +43,15 @@ namespace UoL_Virtual_Assistant
             InitializeComponent(); //initialize the component
             this.Width = 350; this.Height = 500; //resizes the UI to be it's default starting value
             UI_Theming(); //apply the theme to the UI
+
+
+            //StreamReader objstream = new StreamReader(@"tasks\task1.txt"); //locates task1 file
+            //task1datePreview.Text = objstream.ReadLine(); //writes the creation date to the main screen
+            //task1preview.Text = "1. " + objstream.ReadLine(); //writes a preview of the task title to the main screen
+            //objstream.Close(); //closes the file, allows it to be used later
+
+
+
             Hide_Items(); //make sure certain items are hidden when the UI loads
             Tooltips_Generation(); //**THIS SHOULD BE ONE OF THE LAST THINGS TO RUN**
         }

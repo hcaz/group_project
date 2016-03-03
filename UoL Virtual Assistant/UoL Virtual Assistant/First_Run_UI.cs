@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace UoL_Virtual_Assistant
 {
@@ -97,6 +98,27 @@ namespace UoL_Virtual_Assistant
 
         private void Continue_Button_Click(object sender, EventArgs e)
         {
+            string Local_Name = Environment.UserName;
+            MessageBox.Show(Local_Name);
+
+            System.IO.Directory.CreateDirectory(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\"); //create the new directory
+            File.Create(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt").Close(); //creates the local data file
+
+            using (FileStream fs = new FileStream(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt", FileMode.Open)) //uses the fileStream to open the file via the path string
+            {
+                using (TextWriter tw = new StreamWriter(fs)) //uses the textWriter to add "0" to the newly created theme file, indicating default green theme.
+                {
+                    tw.WriteLine(ID_Input.Text);
+                    tw.WriteLine(Course_Selection.SelectedItem.ToString());
+                    tw.Close(); //close the textWriter
+                    fs.Close(); //close the fileStream
+                }
+            }
+
+
+
+
+
             //do some saving of the information provided
             this.Close();
         }
