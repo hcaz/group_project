@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main_UI));
             this.Message_Input = new System.Windows.Forms.TextBox();
             this.Settings_Title = new System.Windows.Forms.Label();
             this.Theme_Title = new System.Windows.Forms.Label();
@@ -186,6 +187,7 @@
             this.Preferred_Agent_Selection.ForeColor = System.Drawing.SystemColors.Control;
             this.Preferred_Agent_Selection.FormattingEnabled = true;
             this.Preferred_Agent_Selection.Items.AddRange(new object[] {
+            "*None*",
             "Bruce",
             "Hal",
             "Jason",
@@ -193,8 +195,8 @@
             this.Preferred_Agent_Selection.Location = new System.Drawing.Point(264, 205);
             this.Preferred_Agent_Selection.Name = "Preferred_Agent_Selection";
             this.Preferred_Agent_Selection.Size = new System.Drawing.Size(58, 21);
-            this.Preferred_Agent_Selection.Sorted = true;
             this.Preferred_Agent_Selection.TabIndex = 17;
+            this.Preferred_Agent_Selection.SelectedIndexChanged += new System.EventHandler(this.Preferred_Agent_Selection_SelectedIndexChanged);
             // 
             // UoL_Logo_Link_Title
             // 
@@ -241,6 +243,7 @@
             this.Reset_Button.TabIndex = 20;
             this.Reset_Button.Text = "Reset";
             this.Reset_Button.UseVisualStyleBackColor = false;
+            this.Reset_Button.Click += new System.EventHandler(this.Reset_Button_Click);
             // 
             // Student_Name_Title
             // 
@@ -392,6 +395,7 @@
             this.Controls.Add(this.Message_Input_Area);
             this.Controls.Add(this.Conversation_Window);
             this.Controls.Add(this.UoL_Branding);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1000, 650);
             this.MinimumSize = new System.Drawing.Size(350, 500);

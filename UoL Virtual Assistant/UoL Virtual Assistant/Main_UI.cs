@@ -13,42 +13,43 @@ namespace UoL_Virtual_Assistant
 {
     public partial class Main_UI : Form
     {
-        //globally accessed values should go below this
-        string Student_ID; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no ID)
-        string Student_First_Name; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no first name)
-        string Student_Last_Name; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no last name)
-        string Student_Course; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of " " is default (no course)
-        string Universal_Theme_Value; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (white)
-        int R; int G; int B;
-
-        string Preferred_Agent; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (no agent preference)
-        string UoL_Logo_Link; //**THIS SHOULD BE CHANGED TO REFLECT THE LOCALLY STORED VALUE** a value of 0 is default (UoL Homepage)
-
+        //globally accessed values
+        string Student_ID; //creates a string that will store the Student ID
+        string Student_First_Name; //creates a string that will store the student first name
+        string Student_Last_Name; //creates a string that will store the student last name
+        string Student_Course; //creates a string that will store the course that the student is on
+        string Universal_Theme_Value; //creates a string that will store the current theme value
+        int R; int G; int B; //creates R,G,B values for themes
+        string Preferred_Agent; //creates a string that stores the users preferred agent
+        string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
 
-
-        //automated processes
         public Main_UI()
         {
-            Read_User_Data();
-            if (Student_ID == null)
+            Read_User_Data(); //read in the user data from the settings file
+            if (Student_ID == null) //if no student ID is found
             {
                 First_Run_UI FirstRun = new First_Run_UI(); //create a new instance of the First_Run_UI
-                FirstRun.ShowDialog(); //show the new window
+                FirstRun.ShowDialog(); //show the new window and halt Main_UI until it is closed
+                Read_User_Data(); //read in the user data from the settings file again (with new information this time)
             }
 
             InitializeComponent(); //initialize the component
             this.Width = 350; this.Height = 500; //resizes the UI to be it's default starting value
-
             UI_Theming(); //apply the theme to the UI
             Hide_Items(); //make sure certain items are hidden when the UI loads
-            Tooltips_Generation(); //**THIS SHOULD BE ONE OF THE LAST THINGS TO RUN**
+            Tooltips_Generation(); //generates tooltips for certain items in the UI
         }
 
         public void Hide_Items()
         {
+            Theme_Selection.SelectedIndex = Convert.ToInt32(Universal_Theme_Value); //applys the current selected theme to the combo box
+            Preferred_Agent_Selection.SelectedIndex = Convert.ToInt32(Preferred_Agent); //applys the current selected agent to the combo box
+            UoL_Logo_Link_Selection.SelectedIndex = Convert.ToInt32(UoL_Logo_Link); //applys the current selected link to the combo box
+
+
             //hide items related to the settings drawer
             Settings_Drawer.Location = new Point(320, 0); //move the drawer so that it is off screen
             Settings_Title.Location = new Point(360, 12); //move the settings title so that it is off screen
@@ -106,55 +107,54 @@ namespace UoL_Virtual_Assistant
             ObjectStream.Close(); //closes the streamReader
         }
 
-
         public void UI_Theming()
         {
 
-            switch (Universal_Theme_Value)
+            switch (Universal_Theme_Value) //retrieve the Universal Theme Value
             {
-                case "0":
-                    R = 33; G = 150; B = 243;
+                case "0": //if theme value is set to 0
+                    R = 33; G = 150; B = 243; //set the R,G,B values to these
                     break;
-                case "1":
-                    R = 121; G = 85; B = 72;
+                case "1": //if theme value is set to 1
+                    R = 121; G = 85; B = 72; //set the R,G,B values to these
                     break;
-                case "2":
-                    R = 0; G = 188; B = 212;
+                case "2": //if theme value is set to 2
+                    R = 0; G = 188; B = 212; //set the R,G,B values to these
                     break;
-                case "3":
-                    R = 139; G = 195; B = 74;
+                case "3": //if theme value is set to 3
+                    R = 139; G = 195; B = 74; //set the R,G,B values to these
                     break;
-                case "4":
-                    R = 96; G = 125; B = 139;
+                case "4": //if theme value is set to 4
+                    R = 96; G = 125; B = 139; //set the R,G,B values to these
                     break;
-                case "5":
-                    R = 63; G = 81; B = 181;
+                case "5": //if theme value is set to 5
+                    R = 63; G = 81; B = 181; //set the R,G,B values to these
                     break;
-                case "6":
-                    this.BackgroundImage = Properties.Resources.JB;
-                    R = 255; G = 255; B = 255;
+                case "6": //if theme value is set to 6
+                    this.BackgroundImage = Properties.Resources.JB; //set the background image to the following resource
+                    R = 255; G = 255; B = 255; //set the R,G,B values to these
                     break;
-                case "7":
-                    R = 255; G = 87; B = 34;
+                case "7": //if theme value is set to 7
+                    R = 255; G = 87; B = 34; //set the R,G,B values to these
                     break;
-                case "8":
-                    R = 233; G = 30; B = 99;
+                case "8": //if theme value is set to 8
+                    R = 233; G = 30; B = 99; //set the R,G,B values to these
                     break;
-                case "9":
-                    R = 103; G = 58; B = 183;
+                case "9": //if theme value is set to 9
+                    R = 103; G = 58; B = 183; //set the R,G,B values to these
                     break;
-                case "10":
-                    R = 244; G = 67; B = 54;
+                case "10": //if theme value is set to 10
+                    R = 244; G = 67; B = 54; //set the R,G,B values to these
                     break;
-                case "11":
-                    R = 0; G = 150; B = 136;
+                case "11": //if theme value is set to 11
+                    R = 0; G = 150; B = 136; //set the R,G,B values to these
                     break;
-                case "12":
-                    R = 255; G = 255; B = 255;
+                case "12": //if theme value is set to 12
+                    R = 255; G = 255; B = 255; //set the R,G,B values to these
                     break;
             }
 
-            if (Universal_Theme_Value != "6") //if the theme value is not set to JB
+            if (Universal_Theme_Value != "6") //if the theme value is not set to a theme with a dedicated background image
             {
                 this.BackgroundImage = null; //remove the background image
             }
@@ -164,44 +164,43 @@ namespace UoL_Virtual_Assistant
 
         private void Message_Input_TextChanged(object sender, EventArgs e)
         {
-            if (Message_Input.Text.Length > 28)
+            if (Message_Input.Text.Length > 28) //if the number of characters in the message input field exceeds 28
             {
-                Message_Input.ScrollBars = ScrollBars.Vertical;
+                Message_Input.ScrollBars = ScrollBars.Vertical; //make a vertical scroll bar visible
             }
 
-            else
+            else //otherwise
             {
-                Message_Input.ScrollBars = ScrollBars.None;
+                Message_Input.ScrollBars = ScrollBars.None; //hide the vertical scroll bar
             }
 
         }
 
-        //user initiated events
-        private void UoL_Branding_Click(object sender, EventArgs e) //when the UoL branding is clicked on...
+        private void UoL_Branding_Click(object sender, EventArgs e)
         {
-            if (UoL_Logo_Link == "0")
+            if (UoL_Logo_Link == "0") //if the logo link value is set to 0
             {
                 System.Diagnostics.Process.Start("http://blackboard.lincoln.ac.uk"); //opens the users default browser and displays the page
             }
 
-            if (UoL_Logo_Link == "1")
+            if (UoL_Logo_Link == "1") //if the logo link value is set to 1
             {
                 System.Diagnostics.Process.Start("http://www.lincoln.ac.uk/home/"); //opens the users default browser and displays the page
             }
 
-            if (UoL_Logo_Link == "2")
+            if (UoL_Logo_Link == "2") //if the logo link value is set to 2
             {
                 System.Diagnostics.Process.Start("http://library.lincoln.ac.uk/"); //opens the users default browser and displays the page
             }
 
-            if (UoL_Logo_Link == "3")
+            if (UoL_Logo_Link == "3") //if the logo link value is set to 3
             {
-                string Timetable_URL = ("http://timetables.lincoln.ac.uk/mytimetable/" + Student_ID + ".htm");
+                string Timetable_URL = ("http://timetables.lincoln.ac.uk/mytimetable/" + Student_ID + ".htm"); //create the URL for the users personal timetable
                 System.Diagnostics.Process.Start(Timetable_URL); //opens the users default browser and displays the page
             }
         }
 
-        private void Send_Message_Click(object sender, EventArgs e) //when the send message button is clicked on...
+        private void Send_Message_Click(object sender, EventArgs e)
         {
             string User_Message = (Message_Input.Text); //write the user message to a string
 
@@ -235,9 +234,9 @@ namespace UoL_Virtual_Assistant
                 Conversation_Window.Visible = false; //make the window invisible
                 
             }
-        }
+        } //THIS IS ONLY A PLACEHOLDER
 
-        private async void Hamburger_Menu_Click(object sender, EventArgs e) //when the hamburger menu is clicked...
+        private async void Hamburger_Menu_Click(object sender, EventArgs e)
         {
             if(Open_Settings_Drawer == 0) //if the drawer status is set to closed
             {
@@ -249,20 +248,20 @@ namespace UoL_Virtual_Assistant
                     Settings_Drawer.Location = new Point(Settings_Drawer.Location.X - 10, Settings_Drawer.Location.Y); //move the drawer so that it is on screen
                     Settings_Title.Location = new Point(Settings_Title.Location.X - 11, Settings_Title.Location.Y); //move the setting title so that it is on screen
                     Course_Building.Location = new Point(Course_Building.Location.X - 11, Course_Building.Location.Y); //move the course building image so that it is on screen
-                    Student_ID_Title.Location = new Point(Student_ID_Title.Location.X - 11, Student_ID_Title.Location.Y);
-                    Student_Name_Title.Location = new Point(Student_Name_Title.Location.X - 11, Student_Name_Title.Location.Y);
-                    Theme_Title.Location = new Point(Theme_Title.Location.X - 11, Theme_Title.Location.Y);
-                    Theme_Selection.Location = new Point(Theme_Selection.Location.X - 8, Theme_Selection.Location.Y);
-                    Preferred_Agent_Title.Location = new Point(Preferred_Agent_Title.Location.X - 11, Preferred_Agent_Title.Location.Y);
-                    Preferred_Agent_Selection.Location = new Point(Preferred_Agent_Selection.Location.X - 8, Preferred_Agent_Selection.Location.Y);
-                    UoL_Logo_Link_Title.Location = new Point(UoL_Logo_Link_Title.Location.X - 11, UoL_Logo_Link_Title.Location.Y);
-                    UoL_Logo_Link_Selection.Location = new Point(UoL_Logo_Link_Selection.Location.X - 8, UoL_Logo_Link_Selection.Location.Y);
-                    Reset_Title.Location = new Point(Reset_Title.Location.X - 11, Reset_Title.Location.Y);
-                    Reset_Button.Location = new Point(Reset_Button.Location.X - 8, Reset_Button.Location.Y);
-                    About_Title.Location = new Point(About_Title.Location.X - 11, About_Title.Location.Y);
-                    About_Content.Location = new Point(About_Content.Location.X - 11, About_Content.Location.Y);
+                    Student_ID_Title.Location = new Point(Student_ID_Title.Location.X - 11, Student_ID_Title.Location.Y); //move the student ID title so that it is on screen
+                    Student_Name_Title.Location = new Point(Student_Name_Title.Location.X - 11, Student_Name_Title.Location.Y); //move the student name title so that it is on screen
+                    Theme_Title.Location = new Point(Theme_Title.Location.X - 11, Theme_Title.Location.Y); //move the theme title so that it is on screen
+                    Theme_Selection.Location = new Point(Theme_Selection.Location.X - 8, Theme_Selection.Location.Y); //move the theme selection menu so that it is on screen
+                    Preferred_Agent_Title.Location = new Point(Preferred_Agent_Title.Location.X - 11, Preferred_Agent_Title.Location.Y); //move the preferred agent title so that it is on screen
+                    Preferred_Agent_Selection.Location = new Point(Preferred_Agent_Selection.Location.X - 8, Preferred_Agent_Selection.Location.Y); //move the preferred agent selection menu so that it is on screen
+                    UoL_Logo_Link_Title.Location = new Point(UoL_Logo_Link_Title.Location.X - 11, UoL_Logo_Link_Title.Location.Y); //move the logo link title so that it is on screen
+                    UoL_Logo_Link_Selection.Location = new Point(UoL_Logo_Link_Selection.Location.X - 8, UoL_Logo_Link_Selection.Location.Y); //move the logo link selection menu so that it is on screen
+                    Reset_Title.Location = new Point(Reset_Title.Location.X - 11, Reset_Title.Location.Y); //move the reset title so that it is on screen
+                    Reset_Button.Location = new Point(Reset_Button.Location.X - 8, Reset_Button.Location.Y); //move the reset button so that it is on screen
+                    About_Title.Location = new Point(About_Title.Location.X - 11, About_Title.Location.Y); //move the about title so that it is on screen
+                    About_Content.Location = new Point(About_Content.Location.X - 11, About_Content.Location.Y); //move the about content so that it is on screen
 
-                    if (Drawer_Steps == 3)
+                    if (Drawer_Steps == 3) //if the drawer steps are equal to 3
                     {
                         Hamburger_Menu.BackColor = Color.FromArgb(1, 38, 83); //change the background colour to blue
                     }
@@ -272,7 +271,7 @@ namespace UoL_Virtual_Assistant
                 Open_Settings_Drawer = 1; //set the drawer status as open
             }
 
-            else
+            else //otherwise
             {
                 Hamburger_Menu.Enabled = false; //disable the button so it can't be clicked
                 for (int Drawer_Steps = 0; Drawer_Steps <= 15; Drawer_Steps++) //establishes the number of individual steps the drawer needs to take
@@ -280,7 +279,7 @@ namespace UoL_Virtual_Assistant
                     await Task.Delay(5); //delay for 1/20 of a second
                     Settings_Drawer.Location = new Point(Settings_Drawer.Location.X + 10, Settings_Drawer.Location.Y); //move the drawer so that it is off screen
                     Settings_Title.Location = new Point(Settings_Title.Location.X + 11, Settings_Title.Location.Y); //move the settings title so that it is off screen
-                    Course_Building.Location = new Point(Course_Building.Location.X + 11, Course_Building.Location.Y); //move the course building image so that it is onff screen
+                    Course_Building.Location = new Point(Course_Building.Location.X + 11, Course_Building.Location.Y); //move the course building image so that it is off screen
                     Student_ID_Title.Location = new Point(Student_ID_Title.Location.X + 11, Student_ID_Title.Location.Y);
                     Student_Name_Title.Location = new Point(Student_Name_Title.Location.X + 11, Student_Name_Title.Location.Y);
                     Theme_Title.Location = new Point(Theme_Title.Location.X + 11, Theme_Title.Location.Y);
@@ -294,7 +293,7 @@ namespace UoL_Virtual_Assistant
                     About_Title.Location = new Point(About_Title.Location.X + 11, About_Title.Location.Y);
                     About_Content.Location = new Point(About_Content.Location.X + 11, About_Content.Location.Y);
 
-                    if (Drawer_Steps == 12)
+                    if (Drawer_Steps == 12) //if the drawer steps are equal to 12
                     {
                         Hamburger_Menu.BackColor = Color.Transparent; //change the background colour to transparent again
                     }
@@ -309,99 +308,96 @@ namespace UoL_Virtual_Assistant
 
         private void Theme_Selection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Theme_Selection.SelectedItem.ToString().Equals("Blue"))
+            switch (Theme_Selection.SelectedItem.ToString()) //retrieve the Universal Theme Value
             {
-                Universal_Theme_Value = "0";
+                case "Blue": //if theme value is set to blue
+                    Universal_Theme_Value = "0"; //set the universal theme value to this
+                    break;
+                case "Brown": //if theme value is set to brown
+                    Universal_Theme_Value = "1"; //set the universal theme value to this
+                    break;
+                case "Cyan": //if theme value is set to cyan
+                    Universal_Theme_Value = "2"; //set the universal theme value to this
+                    break;
+                case "Green": //if theme value is set to green
+                    Universal_Theme_Value = "3"; //set the universal theme value to this
+                    break;
+                case "Grey": //if theme value is set to grey
+                    Universal_Theme_Value = "4"; //set the universal theme value to this
+                    break;
+                case "Indigo": //if theme value is set to indigo
+                    Universal_Theme_Value = "5"; //set the universal theme value to this
+                    break;
+                case "Jbm8": //if theme value is set to jbm8
+                    Universal_Theme_Value = "6"; //set the universal theme value to this
+                    break;
+                case "Orange": //if theme value is set to orange
+                    Universal_Theme_Value = "7"; //set the universal theme value to this
+                    break;
+                case "Pink": //if theme value is set to pink
+                    Universal_Theme_Value = "8"; //set the universal theme value to this
+                    break;
+                case "Purple": //if theme value is set to purple
+                    Universal_Theme_Value = "9"; //set the universal theme value to this
+                    break;
+                case "Red": //if theme value is set to red
+                    Universal_Theme_Value = "10"; //set the universal theme value to this
+                    break;
+                case "Teal": //if theme value is set to teal
+                    Universal_Theme_Value = "11"; //set the universal theme value to this
+                    break;
+                case "White": //if theme value is set to white
+                    Universal_Theme_Value = "12"; //set the universal theme value to this
+                    break;
             }
 
-            if (Theme_Selection.SelectedItem.ToString().Equals("Brown"))
+            Save_Changes(); //save these changes to the settings file
+            UI_Theming(); //rethemes the UI          
+        }
+
+        private void Preferred_Agent_Selection_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (Preferred_Agent_Selection.SelectedItem.ToString()) //retrieve the preferred agent value
             {
-                Universal_Theme_Value = "1";
+                case "*None*": //if the preferred agent is set to none
+                    Preferred_Agent = "0"; //set the preferred agent to 0
+                    break;
+                case "Bruce": //if the preferred agent is set to bruce
+                    Preferred_Agent = "1";  //set the preferred agent to 1
+                    break;
+                case "Hal": //if the preferred agent is set to hal
+                    Preferred_Agent = "2";  //set the preferred agent to 2
+                    break;
+                case "Jason": //if the preferred agent is set to jason
+                    Preferred_Agent = "3";  //set the preferred agent to 3
+                    break;
+                case "Suzi": //if the preferred agent is set to suzie
+                    Preferred_Agent = "4";  //set the preferred agent to 4
+                    break;
             }
 
-            if (Theme_Selection.SelectedItem.ToString().Equals("Cyan"))
-            {
-                Universal_Theme_Value = "2";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Green"))
-            {
-                Universal_Theme_Value = "3";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Grey"))
-            {
-                Universal_Theme_Value = "4";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Indigo"))
-            {
-                Universal_Theme_Value = "5";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Jbm8"))
-            {
-                //something special
-                Universal_Theme_Value = "6";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Orange"))
-            {
-                Universal_Theme_Value = "7";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Pink"))
-            {
-                Universal_Theme_Value = "8";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Purple"))
-            {
-                Universal_Theme_Value = "9";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Red"))
-            {
-                Universal_Theme_Value = "10";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("Teal"))
-            {
-                Universal_Theme_Value = "11";
-            }
-
-            if (Theme_Selection.SelectedItem.ToString().Equals("White"))
-            {
-                Universal_Theme_Value = "12";
-            }
-
-            Save_Changes();
-            UI_Theming(); //rethemes the UI
-
-            
+            Save_Changes(); //save the changes
         }
 
         private void UoL_Logo_Link_Selection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Blackboard"))
+            switch (UoL_Logo_Link_Selection.SelectedItem.ToString()) //retrieve the UoL logo link value
             {
-                UoL_Logo_Link = "0";
+                case "Blackboard": //if logo link value selection is set to blackboard
+                    UoL_Logo_Link = "0"; //set the logo link value to this
+                    break;
+                case "Homepage": //if logo link value selection is set to homepage
+                    UoL_Logo_Link = "1"; //set the logo link value to this
+                    break;
+                case "Library": //if logo link value selection is set to library
+                    UoL_Logo_Link = "2"; //set the logo link value to this
+                    break;
+                case "Timetable": //if logo link value selection is set to timetable
+                    UoL_Logo_Link = "3"; //set the logo link value to this
+                    break;
             }
 
-            if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Homepage"))
-            {
-                UoL_Logo_Link = "1";
-            }
-
-            if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Library"))
-            {
-                UoL_Logo_Link = "2";
-            }
-
-            if (UoL_Logo_Link_Selection.SelectedItem.ToString().Equals("Timetable"))
-            {
-                UoL_Logo_Link = "3";
-            }
+            Save_Changes(); //save the changes
         }
 
         private void Save_Changes()
@@ -424,5 +420,19 @@ namespace UoL_Virtual_Assistant
                 }
             }
         }
+
+        private void Reset_Button_Click(object sender, EventArgs e)
+        {
+            DialogResult Reset_Confirmation = MessageBox.Show("If you choose to reset, all your personal settings will be lost and the application will restart. Are you sure you want to reset?", "", MessageBoxButtons.YesNo); //creates a new dialog box asking the user if they are sure they want to reset the application
+
+            if (Reset_Confirmation == DialogResult.Yes) //if the user confirms their reset
+            {
+                string Local_Name = Environment.UserName; //retrieves the PC's name and saves it to a string
+                File.Create(@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt").Close(); //creates the local data file again, overwriting what was there previously
+                Application.Restart(); //restart the application
+            }
+        }
+
+
     }
 }

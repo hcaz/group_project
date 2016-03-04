@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(First_Run_UI));
             this.Hi_Label = new System.Windows.Forms.Label();
             this.Instruction_Text = new System.Windows.Forms.Label();
             this.ID_Input_Area = new System.Windows.Forms.PictureBox();
@@ -282,6 +283,7 @@
             this.Controls.Add(this.Instruction_Text);
             this.Controls.Add(this.Hi_Label);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(285, 400);
             this.MinimizeBox = false;

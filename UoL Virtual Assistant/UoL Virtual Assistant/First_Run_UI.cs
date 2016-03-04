@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -13,7 +8,6 @@ namespace UoL_Virtual_Assistant
 {
     public partial class First_Run_UI : Form
     {
-
         int Window_Expansion_Status = 0; //this means the window is in its default size
 
         public First_Run_UI()
@@ -21,7 +15,6 @@ namespace UoL_Virtual_Assistant
             InitializeComponent(); //initializes
             this.Width = 275; this.Height = 155; //resizes the UI to be it's default starting value
             Reveal_Content(); //switches to the reveal content class
-
             ID_Input.KeyDown += new KeyEventHandler(ID_Input_KeyDown); //create a new event handler for ID submission
         }
 
@@ -30,64 +23,59 @@ namespace UoL_Virtual_Assistant
             Hi_Label.ForeColor = Color.FromArgb(255, 255, 255); //set the Hi_Label to white
             Instruction_Text.ForeColor = Color.FromArgb(255, 255, 255); //set the Instruction_Text to white
 
-            for (int Colour = 305; Colour >= 55; Colour--)
+            for (int Colour = 305; Colour >= 55; Colour--) //fades in the Hi label content
             {
                 await Task.Delay(1); //delay
                 Hi_Label.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
             }
 
-            for (int Colour = 305; Colour >= 55; Colour--)
+            for (int Colour = 305; Colour >= 55; Colour--) //fades in the instruction text content
             {
                 await Task.Delay(1); //delay
                 Instruction_Text.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the instructions by 50 on each loop
             }
 
-            for (int Height = 145; Height <= 230; Height++)
+            for (int Height = 145; Height <= 230; Height++) //expands the window to stage one
             {
-                this.Height = Height;
-                this.CenterToScreen();
+                this.Height = Height; //expand the height
+                this.CenterToScreen(); //center the form to the screen
                 await Task.Delay(1); //delay
             }
 
-            Window_Expansion_Status = 1; //window is in stage two one
+            Window_Expansion_Status = 1; //window is in stage one
         }
 
         private async void ID_Input_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter) //if the user presses enter while selecting the id input box
             {
-                if(Window_Expansion_Status == 1)
+                if(Window_Expansion_Status == 1) //if the current window stage is 1
                 {
-                    for (int Height = 230; Height <= 330; Height++)
+                    for (int Height = 230; Height <= 330; Height++) //expand the window to reveal the next input field
                     {
-                        this.Height = Height;
-                        this.CenterToScreen();
+                        this.Height = Height; //expand the height
+                        this.CenterToScreen(); //center the form to the screen
                         await Task.Delay(1); //delay
                     }
 
                     Window_Expansion_Status = 2; //window is now in stage two
-                }
-
-                else
-                {
-                    //do nothing
                 }
             }
         }
 
         private void Course_Selection_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Course_Selection_Resize();
+            Course_Selection_Resize(); //if a value is changed inside the course selection box, go to this async void
         }
 
         private async void Course_Selection_Resize()
         {
-            if(Window_Expansion_Status == 2)
+            if(Window_Expansion_Status == 2) //if window is currently in stage two
             {
-                for (int Height = 330; Height <= 400; Height++)
+                for (int Height = 330; Height <= 400; Height++) //expand to reveal the continue button
                 {
-                    this.Height = Height;
-                    this.CenterToScreen();
+                    this.Height = Height; //increase the height
+                    this.CenterToScreen(); //centre the form to the screen
                     await Task.Delay(1); //delay
                 }
 
