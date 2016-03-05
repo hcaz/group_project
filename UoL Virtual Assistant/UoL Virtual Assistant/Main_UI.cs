@@ -98,13 +98,23 @@ namespace UoL_Virtual_Assistant
             string Local_Name = Environment.UserName; //retrieves the PC's name and saves it to a string
             string Settings_Path = (@"C:\\Users\\" + Local_Name + "\\Documents\\UoL Assistant\\Settings.txt"); //creates a string for the settings path
 
-            StreamReader ObjectStream = new StreamReader(Settings_Path); //accesses the file via the streamReader
-            Student_ID = ObjectStream.ReadLine(); //reads the student ID and saves it to a string
-            Student_Course = ObjectStream.ReadLine(); //reads the students course and saves it to a string
-            Universal_Theme_Value = ObjectStream.ReadLine(); //reads the theme value and saves it to a string
-            Preferred_Agent = ObjectStream.ReadLine(); //reads the preferred agent and saves it to a string
-            UoL_Logo_Link = ObjectStream.ReadLine(); //reads the preferred type of link to be directed from the UoL branding and saves it to a string
-            ObjectStream.Close(); //closes the streamReader
+            if (File.Exists(Settings_Path))
+            {
+                StreamReader ObjectStream = new StreamReader(Settings_Path); //accesses the file via the streamReader
+                Student_ID = ObjectStream.ReadLine(); //reads the student ID and saves it to a string
+                Student_Course = ObjectStream.ReadLine(); //reads the students course and saves it to a string
+                Universal_Theme_Value = ObjectStream.ReadLine(); //reads the theme value and saves it to a string
+                Preferred_Agent = ObjectStream.ReadLine(); //reads the preferred agent and saves it to a string
+                UoL_Logo_Link = ObjectStream.ReadLine(); //reads the preferred type of link to be directed from the UoL branding and saves it to a string
+                ObjectStream.Close(); //closes the streamReader
+            }
+
+            else
+            {
+                //do nothing as it should loop back over and go back to the first run UI
+            }
+
+
         }
 
         public void UI_Theming()
