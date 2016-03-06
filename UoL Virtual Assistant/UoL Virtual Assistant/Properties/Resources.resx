@@ -121,31 +121,46 @@
   <data name="User Message (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\User Message (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="AI Message (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\AI Message (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="JasonProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\JasonProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Conversation Area (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Conversation Area (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Settings Drawer" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Settings Drawer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="AI Message (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\AI Message (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="UoL Branding (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\UoL Branding (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="SuziProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\SuziProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MHT Building (blurred)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\MHT Building (blurred).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Message Input Area (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Message Input Area (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Send Icon (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\Send Icon (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Settings Drawer" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Settings Drawer.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="MHT Building (blurred)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\MHT Building (blurred).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="BruceProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\BruceProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Hamburger (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\Hamburger (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="JB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\JB.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GenericProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\GenericProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Send Icon (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\Send Icon (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="UoL Branding (for light themes)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\UoL Branding (for light themes).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="HalProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\HalProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
