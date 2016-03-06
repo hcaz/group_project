@@ -18,8 +18,8 @@ namespace UoL_Virtual_Assistant
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main_UI());
 
-            ScrapeData data = new ScrapeData();
-            Console.WriteLine(data.freePCData());
+            //ScrapeData data = new ScrapeData();
+            //Console.WriteLine(data.freePCData());
         }
     }
 }

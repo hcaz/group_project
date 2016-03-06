@@ -43,16 +43,21 @@
             this.Reset_Button = new System.Windows.Forms.Button();
             this.Student_Name_Title = new System.Windows.Forms.Label();
             this.Student_ID_Title = new System.Windows.Forms.Label();
+            this.Connecting_Label = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.Agent_Name_Label = new System.Windows.Forms.Label();
             this.Hamburger_Menu = new System.Windows.Forms.Button();
             this.Course_Building = new System.Windows.Forms.PictureBox();
             this.Settings_Drawer = new System.Windows.Forms.PictureBox();
             this.Send_Message = new System.Windows.Forms.Button();
             this.Message_Input_Area = new System.Windows.Forms.PictureBox();
+            this.Agent_Profile_Image = new System.Windows.Forms.PictureBox();
             this.Conversation_Window = new System.Windows.Forms.PictureBox();
             this.UoL_Branding = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Course_Building)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_Drawer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Message_Input_Area)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Agent_Profile_Image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversation_Window)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UoL_Branding)).BeginInit();
             this.SuspendLayout();
@@ -271,6 +276,42 @@
             this.Student_ID_Title.TabIndex = 22;
             this.Student_ID_Title.Text = "12345678";
             // 
+            // Connecting_Label
+            // 
+            this.Connecting_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Connecting_Label.AutoSize = true;
+            this.Connecting_Label.BackColor = System.Drawing.Color.White;
+            this.Connecting_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.Connecting_Label.Location = new System.Drawing.Point(115, 229);
+            this.Connecting_Label.Name = "Connecting_Label";
+            this.Connecting_Label.Size = new System.Drawing.Size(107, 24);
+            this.Connecting_Label.TabIndex = 23;
+            this.Connecting_Label.Text = "Connecting";
+            this.Connecting_Label.Visible = false;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 14);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Force \"Connection\"";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // Agent_Name_Label
+            // 
+            this.Agent_Name_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Agent_Name_Label.BackColor = System.Drawing.Color.White;
+            this.Agent_Name_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
+            this.Agent_Name_Label.Location = new System.Drawing.Point(47, 275);
+            this.Agent_Name_Label.Name = "Agent_Name_Label";
+            this.Agent_Name_Label.Size = new System.Drawing.Size(244, 31);
+            this.Agent_Name_Label.TabIndex = 26;
+            this.Agent_Name_Label.Text = "Jason Bradbury";
+            this.Agent_Name_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Agent_Name_Label.Visible = false;
+            // 
             // Hamburger_Menu
             // 
             this.Hamburger_Menu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -340,13 +381,26 @@
             this.Message_Input_Area.TabIndex = 1;
             this.Message_Input_Area.TabStop = false;
             // 
+            // Agent_Profile_Image
+            // 
+            this.Agent_Profile_Image.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Agent_Profile_Image.BackColor = System.Drawing.Color.Transparent;
+            this.Agent_Profile_Image.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.GenericProfilePic;
+            this.Agent_Profile_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Agent_Profile_Image.Location = new System.Drawing.Point(49, 69);
+            this.Agent_Profile_Image.Name = "Agent_Profile_Image";
+            this.Agent_Profile_Image.Size = new System.Drawing.Size(40, 40);
+            this.Agent_Profile_Image.TabIndex = 25;
+            this.Agent_Profile_Image.TabStop = false;
+            this.Agent_Profile_Image.Visible = false;
+            // 
             // Conversation_Window
             // 
             this.Conversation_Window.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Conversation_Window.BackColor = System.Drawing.Color.Transparent;
             this.Conversation_Window.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Conversation_Area__for_light_themes_;
             this.Conversation_Window.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Conversation_Window.Location = new System.Drawing.Point(37, 410);
+            this.Conversation_Window.Location = new System.Drawing.Point(37, 60);
             this.Conversation_Window.Name = "Conversation_Window";
             this.Conversation_Window.Size = new System.Drawing.Size(263, 362);
             this.Conversation_Window.TabIndex = 8;
@@ -374,6 +428,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(334, 461);
+            this.Controls.Add(this.Agent_Profile_Image);
             this.Controls.Add(this.Student_ID_Title);
             this.Controls.Add(this.Student_Name_Title);
             this.Controls.Add(this.Reset_Button);
@@ -390,9 +445,12 @@
             this.Controls.Add(this.Theme_Title);
             this.Controls.Add(this.Course_Building);
             this.Controls.Add(this.Settings_Drawer);
+            this.Controls.Add(this.Agent_Name_Label);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.Message_Input);
             this.Controls.Add(this.Send_Message);
             this.Controls.Add(this.Message_Input_Area);
+            this.Controls.Add(this.Connecting_Label);
             this.Controls.Add(this.Conversation_Window);
             this.Controls.Add(this.UoL_Branding);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -405,6 +463,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Course_Building)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_Drawer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Message_Input_Area)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Agent_Profile_Image)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversation_Window)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UoL_Branding)).EndInit();
             this.ResumeLayout(false);
@@ -435,6 +494,10 @@
         private System.Windows.Forms.Button Reset_Button;
         private System.Windows.Forms.Label Student_Name_Title;
         private System.Windows.Forms.Label Student_ID_Title;
+        private System.Windows.Forms.Label Connecting_Label;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.PictureBox Agent_Profile_Image;
+        private System.Windows.Forms.Label Agent_Name_Label;
     }
 }
 
