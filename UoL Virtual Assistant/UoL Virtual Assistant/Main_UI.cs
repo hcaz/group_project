@@ -113,8 +113,6 @@ namespace UoL_Virtual_Assistant
             {
                 //do nothing as it should loop back over and go back to the first run UI
             }
-
-
         }
 
         public void UI_Theming()
@@ -442,7 +440,5 @@ namespace UoL_Virtual_Assistant
                 Application.Restart(); //restart the application
             }
         }
-
-
     }
 }
