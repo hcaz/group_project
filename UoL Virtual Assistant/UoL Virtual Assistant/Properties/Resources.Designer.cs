@@ -73,6 +73,16 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BruceProfilePic {
+            get {
+                object obj = ResourceManager.GetObject("BruceProfilePic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Conversation_Area__for_light_themes_ {
             get {
                 object obj = ResourceManager.GetObject("Conversation Area (for light themes)", resourceCulture);
@@ -83,9 +93,39 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GenericProfilePic {
+            get {
+                object obj = ResourceManager.GetObject("GenericProfilePic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap HalProfilePic {
+            get {
+                object obj = ResourceManager.GetObject("HalProfilePic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hamburger__for_light_themes_ {
             get {
                 object obj = ResourceManager.GetObject("Hamburger (for light themes)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap JasonProfilePic {
+            get {
+                object obj = ResourceManager.GetObject("JasonProfilePic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,6 +176,16 @@ namespace UoL_Virtual_Assistant.Properties {
         internal static System.Drawing.Bitmap Settings_Drawer {
             get {
                 object obj = ResourceManager.GetObject("Settings Drawer", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SuziProfilePic {
+            get {
+                object obj = ResourceManager.GetObject("SuziProfilePic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
