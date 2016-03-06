@@ -17,6 +17,9 @@ namespace UoL_Virtual_Assistant
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Main_UI());
+
+            ScrapeData data = new ScrapeData();
+            Console.WriteLine(data.freePCData());
         }
     }
 }
