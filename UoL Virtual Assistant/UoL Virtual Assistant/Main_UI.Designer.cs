@@ -46,18 +46,22 @@
             this.Connecting_Label = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.Agent_Name_Label = new System.Windows.Forms.Label();
+            this.Agent_Status_Indicator = new System.Windows.Forms.Label();
+            this.Conversation_Area_Header = new System.Windows.Forms.PictureBox();
+            this.Agent_Profile_Image = new System.Windows.Forms.PictureBox();
             this.Hamburger_Menu = new System.Windows.Forms.Button();
             this.Course_Building = new System.Windows.Forms.PictureBox();
             this.Settings_Drawer = new System.Windows.Forms.PictureBox();
             this.Send_Message = new System.Windows.Forms.Button();
             this.Message_Input_Area = new System.Windows.Forms.PictureBox();
-            this.Agent_Profile_Image = new System.Windows.Forms.PictureBox();
             this.Conversation_Window = new System.Windows.Forms.PictureBox();
             this.UoL_Branding = new System.Windows.Forms.PictureBox();
+            this.Conversation_Exit = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.Conversation_Area_Header)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Agent_Profile_Image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Course_Building)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_Drawer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Message_Input_Area)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Agent_Profile_Image)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversation_Window)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.UoL_Branding)).BeginInit();
             this.SuspendLayout();
@@ -67,7 +71,7 @@
             this.Message_Input.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Message_Input.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Message_Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Message_Input.Location = new System.Drawing.Point(37, 406);
+            this.Message_Input.Location = new System.Drawing.Point(271, 406);
             this.Message_Input.MaxLength = 500;
             this.Message_Input.Multiline = true;
             this.Message_Input.Name = "Message_Input";
@@ -82,7 +86,7 @@
             this.Settings_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.Settings_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Settings_Title.ForeColor = System.Drawing.SystemColors.Control;
-            this.Settings_Title.Location = new System.Drawing.Point(184, 12);
+            this.Settings_Title.Location = new System.Drawing.Point(653, 12);
             this.Settings_Title.Name = "Settings_Title";
             this.Settings_Title.Size = new System.Drawing.Size(90, 25);
             this.Settings_Title.TabIndex = 9;
@@ -95,7 +99,7 @@
             this.Theme_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.Theme_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Theme_Title.ForeColor = System.Drawing.SystemColors.Control;
-            this.Theme_Title.Location = new System.Drawing.Point(184, 157);
+            this.Theme_Title.Location = new System.Drawing.Point(653, 157);
             this.Theme_Title.Name = "Theme_Title";
             this.Theme_Title.Size = new System.Drawing.Size(62, 20);
             this.Theme_Title.TabIndex = 11;
@@ -123,7 +127,7 @@
             "Red",
             "Teal",
             "White"});
-            this.Theme_Selection.Location = new System.Drawing.Point(264, 157);
+            this.Theme_Selection.Location = new System.Drawing.Point(733, 157);
             this.Theme_Selection.Name = "Theme_Selection";
             this.Theme_Selection.Size = new System.Drawing.Size(58, 21);
             this.Theme_Selection.Sorted = true;
@@ -137,7 +141,7 @@
             this.Reset_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.Reset_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Reset_Title.ForeColor = System.Drawing.SystemColors.Control;
-            this.Reset_Title.Location = new System.Drawing.Point(184, 285);
+            this.Reset_Title.Location = new System.Drawing.Point(653, 285);
             this.Reset_Title.Name = "Reset_Title";
             this.Reset_Title.Size = new System.Drawing.Size(56, 20);
             this.Reset_Title.TabIndex = 13;
@@ -150,7 +154,7 @@
             this.About_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.About_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.About_Title.ForeColor = System.Drawing.SystemColors.Control;
-            this.About_Title.Location = new System.Drawing.Point(184, 314);
+            this.About_Title.Location = new System.Drawing.Point(653, 314);
             this.About_Title.Name = "About_Title";
             this.About_Title.Size = new System.Drawing.Size(68, 25);
             this.About_Title.TabIndex = 14;
@@ -162,7 +166,7 @@
             this.About_Content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.About_Content.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.About_Content.ForeColor = System.Drawing.SystemColors.Control;
-            this.About_Content.Location = new System.Drawing.Point(188, 342);
+            this.About_Content.Location = new System.Drawing.Point(657, 342);
             this.About_Content.Multiline = true;
             this.About_Content.Name = "About_Content";
             this.About_Content.Size = new System.Drawing.Size(134, 102);
@@ -177,7 +181,7 @@
             this.Preferred_Agent_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.Preferred_Agent_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Preferred_Agent_Title.ForeColor = System.Drawing.SystemColors.Control;
-            this.Preferred_Agent_Title.Location = new System.Drawing.Point(184, 186);
+            this.Preferred_Agent_Title.Location = new System.Drawing.Point(653, 186);
             this.Preferred_Agent_Title.Name = "Preferred_Agent_Title";
             this.Preferred_Agent_Title.Size = new System.Drawing.Size(75, 40);
             this.Preferred_Agent_Title.TabIndex = 16;
@@ -197,7 +201,7 @@
             "Hal",
             "Jason",
             "Suzi"});
-            this.Preferred_Agent_Selection.Location = new System.Drawing.Point(264, 205);
+            this.Preferred_Agent_Selection.Location = new System.Drawing.Point(733, 205);
             this.Preferred_Agent_Selection.Name = "Preferred_Agent_Selection";
             this.Preferred_Agent_Selection.Size = new System.Drawing.Size(58, 21);
             this.Preferred_Agent_Selection.TabIndex = 17;
@@ -210,7 +214,7 @@
             this.UoL_Logo_Link_Title.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.UoL_Logo_Link_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.UoL_Logo_Link_Title.ForeColor = System.Drawing.SystemColors.Control;
-            this.UoL_Logo_Link_Title.Location = new System.Drawing.Point(184, 237);
+            this.UoL_Logo_Link_Title.Location = new System.Drawing.Point(653, 237);
             this.UoL_Logo_Link_Title.Name = "UoL_Logo_Link_Title";
             this.UoL_Logo_Link_Title.Size = new System.Drawing.Size(79, 40);
             this.UoL_Logo_Link_Title.TabIndex = 18;
@@ -229,7 +233,7 @@
             "Homepage",
             "Library",
             "Timetable"});
-            this.UoL_Logo_Link_Selection.Location = new System.Drawing.Point(264, 256);
+            this.UoL_Logo_Link_Selection.Location = new System.Drawing.Point(733, 256);
             this.UoL_Logo_Link_Selection.Name = "UoL_Logo_Link_Selection";
             this.UoL_Logo_Link_Selection.Size = new System.Drawing.Size(58, 21);
             this.UoL_Logo_Link_Selection.Sorted = true;
@@ -242,7 +246,7 @@
             this.Reset_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(28)))), ((int)(((byte)(59)))));
             this.Reset_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Reset_Button.ForeColor = System.Drawing.SystemColors.Control;
-            this.Reset_Button.Location = new System.Drawing.Point(267, 283);
+            this.Reset_Button.Location = new System.Drawing.Point(736, 283);
             this.Reset_Button.Name = "Reset_Button";
             this.Reset_Button.Size = new System.Drawing.Size(58, 23);
             this.Reset_Button.TabIndex = 20;
@@ -257,7 +261,7 @@
             this.Student_Name_Title.BackColor = System.Drawing.Color.Black;
             this.Student_Name_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Student_Name_Title.ForeColor = System.Drawing.Color.White;
-            this.Student_Name_Title.Location = new System.Drawing.Point(185, 117);
+            this.Student_Name_Title.Location = new System.Drawing.Point(654, 117);
             this.Student_Name_Title.Name = "Student_Name_Title";
             this.Student_Name_Title.Size = new System.Drawing.Size(86, 20);
             this.Student_Name_Title.TabIndex = 21;
@@ -270,7 +274,7 @@
             this.Student_ID_Title.BackColor = System.Drawing.Color.Black;
             this.Student_ID_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Student_ID_Title.ForeColor = System.Drawing.Color.White;
-            this.Student_ID_Title.Location = new System.Drawing.Point(185, 101);
+            this.Student_ID_Title.Location = new System.Drawing.Point(654, 101);
             this.Student_ID_Title.Name = "Student_ID_Title";
             this.Student_ID_Title.Size = new System.Drawing.Size(72, 16);
             this.Student_ID_Title.TabIndex = 22;
@@ -282,7 +286,7 @@
             this.Connecting_Label.AutoSize = true;
             this.Connecting_Label.BackColor = System.Drawing.Color.White;
             this.Connecting_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.Connecting_Label.Location = new System.Drawing.Point(115, 229);
+            this.Connecting_Label.Location = new System.Drawing.Point(349, 229);
             this.Connecting_Label.Name = "Connecting_Label";
             this.Connecting_Label.Size = new System.Drawing.Size(107, 24);
             this.Connecting_Label.TabIndex = 23;
@@ -304,13 +308,51 @@
             this.Agent_Name_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Agent_Name_Label.BackColor = System.Drawing.Color.White;
             this.Agent_Name_Label.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
-            this.Agent_Name_Label.Location = new System.Drawing.Point(47, 275);
+            this.Agent_Name_Label.Location = new System.Drawing.Point(281, 275);
             this.Agent_Name_Label.Name = "Agent_Name_Label";
             this.Agent_Name_Label.Size = new System.Drawing.Size(244, 31);
             this.Agent_Name_Label.TabIndex = 26;
             this.Agent_Name_Label.Text = "Jason Bradbury";
             this.Agent_Name_Label.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.Agent_Name_Label.Visible = false;
+            // 
+            // Agent_Status_Indicator
+            // 
+            this.Agent_Status_Indicator.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Agent_Status_Indicator.AutoSize = true;
+            this.Agent_Status_Indicator.BackColor = System.Drawing.Color.White;
+            this.Agent_Status_Indicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Agent_Status_Indicator.Location = new System.Drawing.Point(327, 84);
+            this.Agent_Status_Indicator.Name = "Agent_Status_Indicator";
+            this.Agent_Status_Indicator.Size = new System.Drawing.Size(84, 16);
+            this.Agent_Status_Indicator.TabIndex = 27;
+            this.Agent_Status_Indicator.Text = "Connecting...";
+            this.Agent_Status_Indicator.Visible = false;
+            // 
+            // Conversation_Area_Header
+            // 
+            this.Conversation_Area_Header.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Conversation_Area_Header.BackColor = System.Drawing.Color.White;
+            this.Conversation_Area_Header.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Conversation_Area_Header__for_light_themes_;
+            this.Conversation_Area_Header.Location = new System.Drawing.Point(277, 76);
+            this.Conversation_Area_Header.Name = "Conversation_Area_Header";
+            this.Conversation_Area_Header.Size = new System.Drawing.Size(252, 50);
+            this.Conversation_Area_Header.TabIndex = 28;
+            this.Conversation_Area_Header.TabStop = false;
+            this.Conversation_Area_Header.Visible = false;
+            // 
+            // Agent_Profile_Image
+            // 
+            this.Agent_Profile_Image.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Agent_Profile_Image.BackColor = System.Drawing.Color.Transparent;
+            this.Agent_Profile_Image.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.GenericProfilePic;
+            this.Agent_Profile_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Agent_Profile_Image.Location = new System.Drawing.Point(283, 69);
+            this.Agent_Profile_Image.Name = "Agent_Profile_Image";
+            this.Agent_Profile_Image.Size = new System.Drawing.Size(40, 40);
+            this.Agent_Profile_Image.TabIndex = 25;
+            this.Agent_Profile_Image.TabStop = false;
+            this.Agent_Profile_Image.Visible = false;
             // 
             // Hamburger_Menu
             // 
@@ -321,7 +363,7 @@
             this.Hamburger_Menu.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Hamburger_Menu.FlatAppearance.BorderSize = 0;
             this.Hamburger_Menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Hamburger_Menu.Location = new System.Drawing.Point(296, 12);
+            this.Hamburger_Menu.Location = new System.Drawing.Point(765, 12);
             this.Hamburger_Menu.Name = "Hamburger_Menu";
             this.Hamburger_Menu.Size = new System.Drawing.Size(26, 26);
             this.Hamburger_Menu.TabIndex = 4;
@@ -332,7 +374,7 @@
             // 
             this.Course_Building.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Course_Building.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.MHT_Building__blurred_;
-            this.Course_Building.Location = new System.Drawing.Point(176, 50);
+            this.Course_Building.Location = new System.Drawing.Point(645, 50);
             this.Course_Building.Name = "Course_Building";
             this.Course_Building.Size = new System.Drawing.Size(160, 90);
             this.Course_Building.TabIndex = 10;
@@ -343,7 +385,7 @@
             this.Settings_Drawer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Settings_Drawer.BackColor = System.Drawing.Color.Transparent;
             this.Settings_Drawer.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Settings_Drawer;
-            this.Settings_Drawer.Location = new System.Drawing.Point(159, 0);
+            this.Settings_Drawer.Location = new System.Drawing.Point(628, 0);
             this.Settings_Drawer.MaximumSize = new System.Drawing.Size(200, 615);
             this.Settings_Drawer.MinimumSize = new System.Drawing.Size(185, 465);
             this.Settings_Drawer.Name = "Settings_Drawer";
@@ -361,7 +403,7 @@
             this.Send_Message.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.Send_Message.FlatAppearance.BorderSize = 0;
             this.Send_Message.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Send_Message.Location = new System.Drawing.Point(258, 406);
+            this.Send_Message.Location = new System.Drawing.Point(492, 406);
             this.Send_Message.Name = "Send_Message";
             this.Send_Message.Size = new System.Drawing.Size(42, 38);
             this.Send_Message.TabIndex = 2;
@@ -374,25 +416,12 @@
             this.Message_Input_Area.BackColor = System.Drawing.Color.Transparent;
             this.Message_Input_Area.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Message_Input_Area__for_light_themes_;
             this.Message_Input_Area.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.Message_Input_Area.Location = new System.Drawing.Point(19, 405);
+            this.Message_Input_Area.Location = new System.Drawing.Point(253, 405);
             this.Message_Input_Area.Name = "Message_Input_Area";
             this.Message_Input_Area.Size = new System.Drawing.Size(310, 63);
             this.Message_Input_Area.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.Message_Input_Area.TabIndex = 1;
             this.Message_Input_Area.TabStop = false;
-            // 
-            // Agent_Profile_Image
-            // 
-            this.Agent_Profile_Image.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Agent_Profile_Image.BackColor = System.Drawing.Color.Transparent;
-            this.Agent_Profile_Image.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.GenericProfilePic;
-            this.Agent_Profile_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Agent_Profile_Image.Location = new System.Drawing.Point(49, 69);
-            this.Agent_Profile_Image.Name = "Agent_Profile_Image";
-            this.Agent_Profile_Image.Size = new System.Drawing.Size(40, 40);
-            this.Agent_Profile_Image.TabIndex = 25;
-            this.Agent_Profile_Image.TabStop = false;
-            this.Agent_Profile_Image.Visible = false;
             // 
             // Conversation_Window
             // 
@@ -400,7 +429,7 @@
             this.Conversation_Window.BackColor = System.Drawing.Color.Transparent;
             this.Conversation_Window.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Conversation_Area__for_light_themes_;
             this.Conversation_Window.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Conversation_Window.Location = new System.Drawing.Point(37, 60);
+            this.Conversation_Window.Location = new System.Drawing.Point(271, 60);
             this.Conversation_Window.Name = "Conversation_Window";
             this.Conversation_Window.Size = new System.Drawing.Size(263, 362);
             this.Conversation_Window.TabIndex = 8;
@@ -413,7 +442,7 @@
             this.UoL_Branding.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.UoL_Branding__for_light_themes_;
             this.UoL_Branding.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.UoL_Branding.Cursor = System.Windows.Forms.Cursors.Default;
-            this.UoL_Branding.Location = new System.Drawing.Point(77, 80);
+            this.UoL_Branding.Location = new System.Drawing.Point(311, 80);
             this.UoL_Branding.Name = "UoL_Branding";
             this.UoL_Branding.Size = new System.Drawing.Size(180, 180);
             this.UoL_Branding.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -421,14 +450,28 @@
             this.UoL_Branding.TabStop = false;
             this.UoL_Branding.Click += new System.EventHandler(this.UoL_Branding_Click);
             // 
+            // Conversation_Exit
+            // 
+            this.Conversation_Exit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Conversation_Exit.BackColor = System.Drawing.Color.White;
+            this.Conversation_Exit.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.Conversation_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Conversation_Exit.Location = new System.Drawing.Point(503, 57);
+            this.Conversation_Exit.Name = "Conversation_Exit";
+            this.Conversation_Exit.Size = new System.Drawing.Size(23, 23);
+            this.Conversation_Exit.TabIndex = 29;
+            this.Conversation_Exit.Text = "X";
+            this.Conversation_Exit.UseVisualStyleBackColor = false;
+            this.Conversation_Exit.Visible = false;
+            // 
             // Main_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(334, 461);
-            this.Controls.Add(this.Agent_Profile_Image);
+            this.ClientSize = new System.Drawing.Size(803, 461);
+            this.Controls.Add(this.Agent_Status_Indicator);
             this.Controls.Add(this.Student_ID_Title);
             this.Controls.Add(this.Student_Name_Title);
             this.Controls.Add(this.Reset_Button);
@@ -445,12 +488,15 @@
             this.Controls.Add(this.Theme_Title);
             this.Controls.Add(this.Course_Building);
             this.Controls.Add(this.Settings_Drawer);
+            this.Controls.Add(this.Conversation_Exit);
             this.Controls.Add(this.Agent_Name_Label);
+            this.Controls.Add(this.Agent_Profile_Image);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Message_Input);
             this.Controls.Add(this.Send_Message);
             this.Controls.Add(this.Message_Input_Area);
             this.Controls.Add(this.Connecting_Label);
+            this.Controls.Add(this.Conversation_Area_Header);
             this.Controls.Add(this.Conversation_Window);
             this.Controls.Add(this.UoL_Branding);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -460,10 +506,11 @@
             this.Name = "Main_UI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UoL Assistant";
+            ((System.ComponentModel.ISupportInitialize)(this.Conversation_Area_Header)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Agent_Profile_Image)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Course_Building)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Settings_Drawer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Message_Input_Area)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Agent_Profile_Image)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversation_Window)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.UoL_Branding)).EndInit();
             this.ResumeLayout(false);
@@ -498,6 +545,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox Agent_Profile_Image;
         private System.Windows.Forms.Label Agent_Name_Label;
+        private System.Windows.Forms.Label Agent_Status_Indicator;
+        private System.Windows.Forms.PictureBox Conversation_Area_Header;
+        private System.Windows.Forms.Button Conversation_Exit;
     }
 }
 
