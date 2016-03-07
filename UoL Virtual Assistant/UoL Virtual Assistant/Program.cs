@@ -16,10 +16,17 @@ namespace UoL_Virtual_Assistant
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            //ParseInput testing, comment out when not testing
+            //ParseInput PI = new ParseInput();
+            //PI.SplitInput("hello! Do you know where I can find Amr? He's my bae. I like to shoot hoops with my bois!?!????.....??!?!?!?!?....!?!.?!?!?");
+
             Application.Run(new Main_UI());
 
             //ScrapeData data = new ScrapeData();
             //Console.WriteLine(data.freePCData());
+
+            
         }
     }
 }
