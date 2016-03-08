@@ -24,9 +24,13 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
+
+        int AI_Message_Counter = 0;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
         int Connected_Agent; //indicates the agent what will connect with the user
+
+        string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
 
         public Main_UI()
         {
@@ -218,15 +222,15 @@ namespace UoL_Virtual_Assistant
         {
             string User_Message = (Message_Input.Text); //write the user message to a string
 
-            if (Open_Conversation_Window == 0)
+            switch (Open_Conversation_Window)
             {
-                Initiate_Connection();
-            }
-
-            else if (Open_Conversation_Window == 1)
-            {    
-                User_Message_Counter++; //increase the user message counter by one
-                //bring up the conversation box with users submitted message
+                case 0:
+                    Initiate_Connection(); //initiate the connection, resize the window, pair with an agent etc.
+                    break;
+                case 1:
+                    Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
+                    User_Message_Counter++; //increase the user message counter by one
+                    break;
             }
         }
 
@@ -450,6 +454,28 @@ namespace UoL_Virtual_Assistant
                 }
 
                 Agent_Status_Indicator.Text = "Online";
+
+                Create_AI_Message();
+            }
+        }
+
+        private async void Create_AI_Message()
+        {
+            switch (AI_Message_Counter)
+            {
+                case 0:
+                    PictureBox New_Picture_Box = new PictureBox();
+                    New_Picture_Box.Size = new Size(150, 50);
+                    New_Picture_Box.Location = new Point(51, 342);
+                    //New_Picture_Box.AnchorStyles = Bottom;
+                    New_Picture_Box.BackgroundImage = Properties.Resources.AI_Message__for_light_themes_;
+                    New_Picture_Box.Visible = true;
+                    New_Picture_Box.BringToFront();
+                    this.Controls.Add(New_Picture_Box);
+                    New_Picture_Box.Show();
+                    break;
+                case 1:
+                    break;
             }
         }
 
