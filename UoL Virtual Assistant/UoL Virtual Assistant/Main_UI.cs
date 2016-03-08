@@ -476,11 +476,6 @@ namespace UoL_Virtual_Assistant
 
         private async void Create_Message(int AI_or_Human_Indicator)
         {
-            TextBox Original_AI_Message = new TextBox();
-            TextBox Original_AI_Message_Shell = new TextBox();
-            TextBox Original_User_Message = new TextBox();
-            TextBox Original_User_Message_Shell = new TextBox();
-
             if (AI_or_Human_Indicator == 0)
             {
                 if (AI_Message_Counter > 0)
@@ -492,6 +487,7 @@ namespace UoL_Virtual_Assistant
                 {
                     AI_Message_Counter++;
 
+                    TextBox Original_AI_Message = new TextBox();
                     Original_AI_Message.WordWrap = true;
                     Original_AI_Message.Multiline = true;
                     Original_AI_Message.BackColor = Color.FromArgb(1, 63, 139);
@@ -504,7 +500,7 @@ namespace UoL_Virtual_Assistant
                     Original_AI_Message.Size = new Size(140, Line_Counter);
                     this.Controls.Add(Original_AI_Message);
 
-                    
+                    TextBox Original_AI_Message_Shell = new TextBox();
                     Original_AI_Message_Shell.WordWrap = true;
                     Original_AI_Message_Shell.Multiline = true;
                     Original_AI_Message_Shell.BackColor = Color.FromArgb(1, 63, 139);
@@ -513,6 +509,8 @@ namespace UoL_Virtual_Assistant
                     Original_AI_Message_Shell.Size = new Size(150, (Line_Counter + 10));
                     this.Controls.Add(Original_AI_Message_Shell);
 
+                    Original_AI_Message.Show();
+                    Original_AI_Message_Shell.Show();
                     Original_AI_Message_Shell.BringToFront();
                     Original_AI_Message.BringToFront();
                     Reiterate_Layers();
@@ -538,7 +536,7 @@ namespace UoL_Virtual_Assistant
                 else //otherwise create the initial message
                 {
                     User_Message_Counter++;
-
+                    TextBox Original_User_Message = new TextBox();
                     Original_User_Message.WordWrap = true;
                     Original_User_Message.Multiline = true;
                     Original_User_Message.TextAlign = HorizontalAlignment.Right;
@@ -552,7 +550,7 @@ namespace UoL_Virtual_Assistant
                     Original_User_Message.Size = new Size(140, Line_Counter);
                     this.Controls.Add(Original_User_Message);
 
-                    
+                    TextBox Original_User_Message_Shell = new TextBox();
                     Original_User_Message_Shell.WordWrap = true;
                     Original_User_Message_Shell.Multiline = true;
                     Original_User_Message_Shell.BackColor = Color.FromArgb(244, 244, 244);
@@ -570,6 +568,12 @@ namespace UoL_Virtual_Assistant
                     {
                         Original_User_Message.Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
                         Original_User_Message_Shell.Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+
+                        Original_AI_Message.Visible = false;
+
+                        //Original_AI_Message.Location = new Point(Original_AI_Message.Location.X, Original_AI_Message.Location.Y - Message_Animation_Timer);
+                        //Original_AI_Message_Shell.Location = new Point(Original_AI_Message_Shell.Location.X, Original_AI_Message_Shell.Location.Y - Message_Animation_Timer);
+
                         await Task.Delay(1); //delay for 1/100 of a second
                     }
                 }
