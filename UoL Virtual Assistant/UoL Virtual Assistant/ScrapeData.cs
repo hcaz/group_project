@@ -11,8 +11,13 @@ namespace UoL_Virtual_Assistant
 {
     class ScrapeData
     {
+        public List<Computer> pcs = new List<Computer>();
+        public int totalPcs = 0;
+        public int freePcs = 0;
+        public int freePcsWin7 = 0;
+        public int freePcsThin = 0;
 
-        public string freePCData()
+        public bool freePCData()
         {
             string win7DataUrl = "http://hls.me/win7clients.php";
             string thinDataUrl = "http://hls.me/thinclients.php";
@@ -20,7 +25,7 @@ namespace UoL_Virtual_Assistant
             XmlDocument doc = new XmlDocument();
             doc.Load(win7DataUrl);
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/workstations/win7Clients/win7Client");
-            List<Computer> pcs = new List<Computer>();
+            
             foreach (XmlNode node in nodes)
             {
                 Computer pc = new Computer();
@@ -33,6 +38,11 @@ namespace UoL_Virtual_Assistant
                 pc.room = node.SelectSingleNode("location").SelectSingleNode("room").InnerText;
                 pc.block = node.SelectSingleNode("location").SelectSingleNode("block").InnerText;
                 pcs.Add(pc);
+                if (pc.status == "FREE" || pc.status == "OFF")
+                {
+                    this.freePcs++;
+                    this.freePcsWin7++;
+                }
             }
 
             XmlDocument doc2 = new XmlDocument();
@@ -50,9 +60,15 @@ namespace UoL_Virtual_Assistant
                 pc.room = node.SelectSingleNode("location").SelectSingleNode("room").InnerText;
                 pc.block = node.SelectSingleNode("location").SelectSingleNode("block").InnerText;
                 pcs.Add(pc);
+                if (pc.status == "FREE" || pc.status == "OFF")
+                {
+                    this.freePcs++;
+                    this.freePcsThin++;
+                }
             }
 
-            return "Total PC's: " + pcs.Count;
+            this.totalPcs = pcs.Count;
+            return true;
         }
 
     }
