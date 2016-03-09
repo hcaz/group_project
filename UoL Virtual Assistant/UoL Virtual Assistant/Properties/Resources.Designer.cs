@@ -93,6 +93,16 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Conversation_Area_Header__for_light_themes_ {
+            get {
+                object obj = ResourceManager.GetObject("Conversation Area Header (for light themes)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap GenericProfilePic {
             get {
                 object obj = ResourceManager.GetObject("GenericProfilePic", resourceCulture);
