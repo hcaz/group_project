@@ -126,6 +126,24 @@
   <ItemGroup>
     <None Include="resources\JB.PNG" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\BruceProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\GenericProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\JasonProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\SuziProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\HalProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\Conversation Area Header %28for light themes%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
