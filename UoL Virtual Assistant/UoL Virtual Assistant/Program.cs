@@ -21,12 +21,10 @@ namespace UoL_Virtual_Assistant
             //ParseInput PI = new ParseInput();
             //PI.SplitInput("hello! Do you know where I can find Amr? He's my bae. I like to shoot hoops with my bois!?!????.....??!?!?!?!?....!?!.?!?!?");
 
+            ScrapeData data = new ScrapeData();
+            MessageBox.Show(data.freePCData());
+
             Application.Run(new Main_UI());
-
-            //ScrapeData data = new ScrapeData();
-            //Console.WriteLine(data.freePCData());
-
-            
         }
     }
 }
