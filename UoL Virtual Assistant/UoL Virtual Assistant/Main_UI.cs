@@ -25,13 +25,23 @@ namespace UoL_Virtual_Assistant
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
 
-        int AI_Message_Counter = 0;
+        int AI_Message_Counter = 1;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
         int Connected_Agent; //indicates the agent what will connect with the user
 
         string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
         string Latest_AI_Message = "";
+
+        //creates all the message textboxes - this may go on for a while -_-
+        TextBox AI_Message_1 = new TextBox();
+        TextBox AI_Message_1_Shell = new TextBox();
+        TextBox AI_Message_2 = new TextBox();
+        TextBox AI_Message_2_Shell = new TextBox();
+
+
+        TextBox User_Message_1 = new TextBox();
+        TextBox User_Message_1_Shell = new TextBox();
 
         public Main_UI()
         {
@@ -92,7 +102,7 @@ namespace UoL_Virtual_Assistant
             Conversation_Window.Location = new Point(37, 410); //move the window so that it is off screen
             Agent_Profile_Image.Location = new Point(163, 236); //move the profile image to the proper location
             Agent_Profile_Image.Size = new Size(10, 10); //resize it
-            Conversation_Exit.ForeColor = Color.FromArgb(255,255,255); //set the exit button colour to white
+            Conversation_Exit.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
             Conversation_Exit.Visible = false; //make the exit button invisible
         }
 
@@ -177,7 +187,7 @@ namespace UoL_Virtual_Assistant
                 this.BackgroundImage = null; //remove the background image
             }
 
-                this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background
+            this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background
         }
 
         private void Message_Input_TextChanged(object sender, EventArgs e)
@@ -231,8 +241,7 @@ namespace UoL_Virtual_Assistant
                     Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
                     Message_Input.Text = ""; //clears the text field
 
-                    int AI_or_Human_Indicator = 1;
-                    Create_Message(AI_or_Human_Indicator);
+                    Create_User_Message();
                     break;
             }
         }
@@ -300,7 +309,7 @@ namespace UoL_Virtual_Assistant
                     case "0": //if the user does not have a preferred agent
                         break;
                     case "1": //if their preferred agent is Bruce
-                        if(Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
                         {
                             Connected_Agent = 0; //give them their preferred agent
                         }
@@ -435,7 +444,7 @@ namespace UoL_Virtual_Assistant
                 Random Randomise_Wait_Time = new Random(); //create a new randomiser
                 int Wait_Time = Randomise_Wait_Time.Next(0, 15); //selects a random number between 0 and 15 for the wait time
 
-                if(Connected_Agent == 4)
+                if (Connected_Agent == 4)
                 {
                     Wait_Time = Randomise_Wait_Time.Next(3, 5); //creates a new wait time between 3 and 5 since Agent 4 is automated
                 }
@@ -469,111 +478,142 @@ namespace UoL_Virtual_Assistant
                     Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available.";
                 }
 
-                int AI_or_Human_Indicator = 0;
-                Create_Message(AI_or_Human_Indicator);
+                Create_AI_Message();
             }
         }
 
-        private async void Create_Message(int AI_or_Human_Indicator)
+        private async void Create_AI_Message()
         {
-            TextBox Original_AI_Message = new TextBox();
-            TextBox Original_AI_Message_Shell = new TextBox();
-            TextBox Original_User_Message = new TextBox();
-            TextBox Original_User_Message_Shell = new TextBox();
-
-            if (AI_or_Human_Indicator == 0)
+            switch(AI_Message_Counter)
             {
-                if (AI_Message_Counter > 0)
-                {
-                    AI_Message_Counter++;
-                }
+                case 1:
+                    AI_Message_1.WordWrap = true;
+                    AI_Message_1.Multiline = true;
+                    AI_Message_1.BackColor = Color.FromArgb(1, 63, 139);
+                    AI_Message_1.ForeColor = Color.FromArgb(255, 255, 255);
+                    AI_Message_1.Font = new Font("Microsoft Sans Serif", 10);
+                    AI_Message_1.Anchor = (AnchorStyles.Bottom);
+                    AI_Message_1.BorderStyle = BorderStyle.None;
+                    AI_Message_1.Text = Latest_AI_Message;
+                    int Line_Counter_1 = ((AI_Message_1.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
+                    AI_Message_1.Size = new Size(140, Line_Counter_1);
+                    this.Controls.Add(AI_Message_1);
 
-                else //otherwise create the initial message
-                {
-                    AI_Message_Counter++;
 
-                    Original_AI_Message.WordWrap = true;
-                    Original_AI_Message.Multiline = true;
-                    Original_AI_Message.BackColor = Color.FromArgb(1, 63, 139);
-                    Original_AI_Message.ForeColor = Color.FromArgb(255, 255, 255);
-                    Original_AI_Message.Font = new Font("Microsoft Sans Serif", 10);
-                    Original_AI_Message.Anchor = (AnchorStyles.Bottom);
-                    Original_AI_Message.BorderStyle = BorderStyle.None;
-                    Original_AI_Message.Text = Latest_AI_Message;
-                    int Line_Counter = ((Original_AI_Message.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    Original_AI_Message.Size = new Size(140, Line_Counter);
-                    this.Controls.Add(Original_AI_Message);
+                    AI_Message_1_Shell.WordWrap = true;
+                    AI_Message_1_Shell.Multiline = true;
+                    AI_Message_1_Shell.BackColor = Color.FromArgb(1, 63, 139);
+                    AI_Message_1_Shell.Anchor = (AnchorStyles.Bottom);
+                    AI_Message_1_Shell.BorderStyle = BorderStyle.None;
+                    AI_Message_1_Shell.Size = new Size(150, (Line_Counter_1 + 10));
+                    this.Controls.Add(AI_Message_1_Shell);
 
-                    
-                    Original_AI_Message_Shell.WordWrap = true;
-                    Original_AI_Message_Shell.Multiline = true;
-                    Original_AI_Message_Shell.BackColor = Color.FromArgb(1, 63, 139);
-                    Original_AI_Message_Shell.Anchor = (AnchorStyles.Bottom);
-                    Original_AI_Message_Shell.BorderStyle = BorderStyle.None;
-                    Original_AI_Message_Shell.Size = new Size(150, (Line_Counter + 10));
-                    this.Controls.Add(Original_AI_Message_Shell);
-
-                    Original_AI_Message_Shell.BringToFront();
-                    Original_AI_Message.BringToFront();
+                    AI_Message_1_Shell.BringToFront();
+                    AI_Message_1.BringToFront();
                     Reiterate_Layers();
 
-                    //stuff needs to happen here to figure out how many values should be added on to the size to animate to fill the text supplied by the AI
-                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter + 20); Message_Animation_Timer++)
+                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter_1 + 20); Message_Animation_Timer++)
                     {
-                        //Original_AI_Message.Location = new Point(Message_Input.Location.X + 10, Message_Input.Location.Y - Message_Animation_Timer);
-                        Original_AI_Message.Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        Original_AI_Message_Shell.Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+                        AI_Message_1.Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                        AI_Message_1_Shell.Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
                         await Task.Delay(1); //delay for 1/100 of a second
                     }
-                }
+                    AI_Message_Counter++;
+                    break;
+                case 2:
+                    AI_Message_2.WordWrap = true;
+                    AI_Message_2.Multiline = true;
+                    AI_Message_2.BackColor = Color.FromArgb(1, 63, 139);
+                    AI_Message_2.ForeColor = Color.FromArgb(255, 255, 255);
+                    AI_Message_2.Font = new Font("Microsoft Sans Serif", 10);
+                    AI_Message_2.Anchor = (AnchorStyles.Bottom);
+                    AI_Message_2.BorderStyle = BorderStyle.None;
+                    AI_Message_2.Text = Latest_AI_Message;
+                    int Line_Counter_2 = ((AI_Message_1.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
+                    AI_Message_2.Size = new Size(140, Line_Counter_2);
+                    this.Controls.Add(AI_Message_1);
+
+
+                    AI_Message_2_Shell.WordWrap = true;
+                    AI_Message_2_Shell.Multiline = true;
+                    AI_Message_2_Shell.BackColor = Color.FromArgb(1, 63, 139);
+                    AI_Message_2_Shell.Anchor = (AnchorStyles.Bottom);
+                    AI_Message_2_Shell.BorderStyle = BorderStyle.None;
+                    AI_Message_2_Shell.Size = new Size(150, (Line_Counter_2 + 10));
+                    this.Controls.Add(AI_Message_1_Shell);
+
+                    AI_Message_2_Shell.BringToFront();
+                    AI_Message_2.BringToFront();
+                    Reiterate_Layers();
+
+                    int User_Message_1_Location = User_Message_1.Location.Y;
+                    int User_Message_1_Shell_Location = User_Message_1_Shell.Location.Y;
+                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter_2 + 20); Message_Animation_Timer++)
+                    {
+                        User_Message_1.Location = new Point(Message_Input.Location.X + 108, User_Message_1_Location - Message_Animation_Timer);
+                        User_Message_1_Shell.Location = new Point(Message_Input.Location.X + 103, User_Message_1_Shell_Location - Message_Animation_Timer);
+
+                        AI_Message_2.Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                        AI_Message_2_Shell.Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+                        await Task.Delay(1); //delay for 1/100 of a second
+                    }
+                    AI_Message_Counter++;
+                    break;
             }
 
-            else
+
+            
+        }
+
+        private async void Create_User_Message()
+        {
+            switch (User_Message_Counter)
             {
-                if (User_Message_Counter > 0)
-                {
-                    User_Message_Counter++;
-                }
+                case 0:
+                    User_Message_1.WordWrap = true;
+                    User_Message_1.Multiline = true;
+                    User_Message_1.TextAlign = HorizontalAlignment.Right;
+                    User_Message_1.BackColor = Color.FromArgb(244, 244, 244);
+                    User_Message_1.ForeColor = Color.FromArgb(0, 0, 0);
+                    User_Message_1.Font = new Font("Microsoft Sans Serif", 10);
+                    User_Message_1.Anchor = (AnchorStyles.Bottom);
+                    User_Message_1.BorderStyle = BorderStyle.None;
+                    User_Message_1.Text = Latest_User_Message;
+                    int Line_Counter = ((User_Message_1.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
+                    User_Message_1.Size = new Size(140, Line_Counter);
+                    this.Controls.Add(User_Message_1);
 
-                else //otherwise create the initial message
-                {
-                    User_Message_Counter++;
+                    User_Message_1_Shell.WordWrap = true;
+                    User_Message_1_Shell.Multiline = true;
+                    User_Message_1_Shell.BackColor = Color.FromArgb(244, 244, 244);
+                    User_Message_1_Shell.Anchor = (AnchorStyles.Bottom);
+                    User_Message_1_Shell.BorderStyle = BorderStyle.None;
+                    User_Message_1_Shell.Size = new Size(150, (Line_Counter + 10));
+                    this.Controls.Add(User_Message_1_Shell);
 
-                    Original_User_Message.WordWrap = true;
-                    Original_User_Message.Multiline = true;
-                    Original_User_Message.TextAlign = HorizontalAlignment.Right;
-                    Original_User_Message.BackColor = Color.FromArgb(244, 244, 244);
-                    Original_User_Message.ForeColor = Color.FromArgb(0, 0, 0);
-                    Original_User_Message.Font = new Font("Microsoft Sans Serif", 10);
-                    Original_User_Message.Anchor = (AnchorStyles.Bottom);
-                    Original_User_Message.BorderStyle = BorderStyle.None;
-                    Original_User_Message.Text = Latest_User_Message;
-                    int Line_Counter = ((Original_User_Message.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    Original_User_Message.Size = new Size(140, Line_Counter);
-                    this.Controls.Add(Original_User_Message);
-
-                    
-                    Original_User_Message_Shell.WordWrap = true;
-                    Original_User_Message_Shell.Multiline = true;
-                    Original_User_Message_Shell.BackColor = Color.FromArgb(244, 244, 244);
-                    Original_User_Message_Shell.Anchor = (AnchorStyles.Bottom);
-                    Original_User_Message_Shell.BorderStyle = BorderStyle.None;
-                    Original_User_Message_Shell.Size = new Size(150, (Line_Counter + 10));
-                    this.Controls.Add(Original_User_Message_Shell);
-
-                    Original_User_Message_Shell.BringToFront();
-                    Original_User_Message.BringToFront();
+                    User_Message_1_Shell.BringToFront();
+                    User_Message_1.BringToFront();
                     Reiterate_Layers();
 
-                    //stuff needs to happen here to figure out how many values should be added on to the size to animate to fill the text supplied by the AI
+                    int Old_AI_Message_Location = AI_Message_1.Location.Y;
+                    int Old_AI_Message_Shell_Location = AI_Message_1_Shell.Location.Y;
                     for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter + 20); Message_Animation_Timer++)
                     {
-                        Original_User_Message.Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        Original_User_Message_Shell.Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+                        AI_Message_1.Location = new Point(Message_Input.Location.X + 18, Old_AI_Message_Location - Message_Animation_Timer);
+                        AI_Message_1_Shell.Location = new Point(Message_Input.Location.X + 18, Old_AI_Message_Shell_Location - Message_Animation_Timer);
+
+                        User_Message_1.Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                        User_Message_1_Shell.Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
                         await Task.Delay(1); //delay for 1/100 of a second
                     }
-                }
-            }     
+
+                    User_Message_Counter++;
+                    Latest_AI_Message = "Lol M8";
+                    Create_AI_Message();
+                    break;
+                case 2:
+                    break;
+            }
         }
 
         private async void Hamburger_Menu_Click(object sender, EventArgs e)
@@ -651,6 +691,11 @@ namespace UoL_Virtual_Assistant
             Message_Input_Area.BringToFront();
             Message_Input.BringToFront();
             Send_Message.BringToFront();
+
+            Conversation_Area_Header.BringToFront();
+            Agent_Name_Label.BringToFront();
+            Agent_Status_Indicator.BringToFront();
+            Agent_Profile_Image.BringToFront();
 
             Settings_Drawer.BringToFront();
             Settings_Title.BringToFront();
@@ -804,7 +849,7 @@ namespace UoL_Virtual_Assistant
             TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
             DayOfWeek Current_Day = DateTime.Now.DayOfWeek; //finds the current day of the week
 
-            if ((Current_Day >= DayOfWeek.Monday) && (Current_Day <= DayOfWeek.Friday)) //if the current day is not a weekend
+            if ((Current_Day <= DayOfWeek.Monday) && (Current_Day >= DayOfWeek.Friday)) //if the current day is not a weekend
             {
                 if ((Current_Time >= Opening_Hours) && (Current_Time < Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
                 {

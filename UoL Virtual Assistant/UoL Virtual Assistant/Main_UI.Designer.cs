@@ -336,7 +336,7 @@
             this.Conversation_Area_Header.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Conversation_Area_Header__for_light_themes_;
             this.Conversation_Area_Header.Location = new System.Drawing.Point(273, 76);
             this.Conversation_Area_Header.Name = "Conversation_Area_Header";
-            this.Conversation_Area_Header.Size = new System.Drawing.Size(252, 50);
+            this.Conversation_Area_Header.Size = new System.Drawing.Size(252, 39);
             this.Conversation_Area_Header.TabIndex = 28;
             this.Conversation_Area_Header.TabStop = false;
             this.Conversation_Area_Header.Visible = false;
@@ -347,7 +347,7 @@
             this.Agent_Profile_Image.BackColor = System.Drawing.Color.Transparent;
             this.Agent_Profile_Image.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.GenericProfilePic;
             this.Agent_Profile_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Agent_Profile_Image.Location = new System.Drawing.Point(279, 69);
+            this.Agent_Profile_Image.Location = new System.Drawing.Point(279, 68);
             this.Agent_Profile_Image.Name = "Agent_Profile_Image";
             this.Agent_Profile_Image.Size = new System.Drawing.Size(40, 40);
             this.Agent_Profile_Image.TabIndex = 25;
