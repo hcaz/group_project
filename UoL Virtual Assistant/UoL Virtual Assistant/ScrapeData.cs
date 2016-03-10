@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Net;
 using System.IO;
 using System.Xml;
+using Newtonsoft.Json;
 
 namespace UoL_Virtual_Assistant
 {
@@ -68,6 +69,16 @@ namespace UoL_Virtual_Assistant
             }
 
             this.totalPcs = pcs.Count;
+            return true;
+        }
+
+        public bool staffData(string query)
+        {
+            string staffSearch = "http://staff.lincoln.ac.uk/search/json2?q=" + query;
+
+
+             //JsonConvert.
+
             return true;
         }
 
