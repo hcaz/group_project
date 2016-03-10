@@ -10,3 +10,5 @@ C:\Users\Computing\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virt
 C:\Users\Computing\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.pdb
 C:\Users\Computing\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Computing\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\Newtonsoft.Json.xml
+C:\Users\djwil\Desktop\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\UoL Virtual Assistant.exe.config
+C:\Users\djwil\Desktop\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.exe

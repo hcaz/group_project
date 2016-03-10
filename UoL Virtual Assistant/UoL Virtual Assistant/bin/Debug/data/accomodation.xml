@@ -1,0 +1,116 @@
+<courts>
+	<name>Lincoln Courts</name>
+	<minprice>£4285</minprice>
+	<maxprice>£4991</maxprice>
+	<address>Campus Way, Lincoln, LN6</address>
+	<tel>01522 886214</tel>
+	<website>https://www.lincoln.ac.uk/home/accommodation/oncampus/</website>
+</courts>
+
+<gateway>	
+	<name>The Gateway</name>
+	<minprice>£5328</minprice>
+	<maxprice>£6,600</maxprice>
+	<address>Tritton Road, Lincoln, LN6 7FQ</address>
+	<tel>01522 837115</tel>
+	<website>https://www.lincoln.ac.uk/home/media/universityoflincoln/globalmedia/documents/Accommodation,Agency,Brochure,The,Gateway2.pdf</website>
+</gateway>
+	
+<monson>
+	<name>Monson Street Apartments</name>
+	<minprice>£3696</minprice>
+	<maxprice>£3984</maxprice>
+	<address>Monson Street, Lincoln, LN5 7SB</address>
+	<tel>01522 837115</tel>
+	<website>https://www.lincoln.ac.uk/home/media/universityoflincoln/globalmedia/documents/Monson,Street,Brochure.pdf</website>
+</monson>
+	
+<aquahouse>	
+	<name>Aqua House</name>
+	<minprice>£3120</minprice>
+	<maxprice>£3504</maxprice>
+	<address>Harvey Street, Lincoln, LN1 1TE</address>
+	<tel>0845 331 3317</tel>
+	<website>http://www.aquahouselincoln.co.uk/</website>
+</aquahouse>
+	
+<brayfordcourt>
+	<name>Brayford Court</name>
+	<minprice>£4345</minprice>
+	<maxprice>£7150</maxprice>
+	<address>35A Carholme Road, Lincoln, LN1 1RS</address>
+	<tel>01522 780020</tel>
+	<website>http://www.brayfordcourt.co.uk/</website>
+</brayfordcourt>
+	
+<brayfordquay>
+	<name>Brayford Quays</name>
+	<minprice>£4876</minprice>
+	<maxprice>£5428</maxprice>
+	<address>Newland, Lincoln, LN1 1YA</address>
+	<tel>01522 246460</tel>
+	<website>http://www.wearehomesforstudents.com/property/brayfordquay/</website>
+</brayfordquay>
+	
+<cathedralstreet>
+	<name>Cathedral Street Apartments</name>
+	<minprice>£3840</minprice>
+	<maxprice>£4176</maxprice>
+	<address>Cathedral Street, Lincoln, LN2 5HH</address>
+	<tel>01432 367276</tel>
+	<website>http://www.accommodationforstudents.com/studentprivatehalls/lphs.asp?id=1675</website>
+</cathedralstreet>
+
+<danesgate>
+	<name>Danesgate House</name>
+	<minprice>£4800</minprice>
+	<maxprice>£6685</maxprice>
+	<address>Grantham Street, Lincoln, LN2 1BA</address>
+	<tel>01522 543838</tel>
+	<website>http://www.wearehomesforstudents.com/property/danesgate-house/</website>
+</danesgate>
+
+<hayeswharf>	
+	<name>Hayes Wharf</name>
+	<minprice>£5520</minprice>
+	<maxprice>£6336</maxprice>
+	<address>Holmes Road, Lincoln, LN1 1RF</address>
+	<tel>01522 930068</tel>
+	<website>https://www.prodigy-living.co.uk/cities/lincoln/hayes-wharf-house</website>
+</hayeswharf>
+	
+<junxion>
+	<name>Junxion</name>
+	<minprice>£5448</minprice>
+	<maxprice>£5448</maxprice>
+	<address>Brayford Wharf, Lincoln, LN5 7BG</address>
+	<tel>01522 548562</tel>
+	<website>http://www.mezzino.co.uk/the_junxion.php</website>
+</junxion>
+	
+<parkcourt>
+	<name>Park Court</name>
+	<minprice>£4416</minprice>
+	<maxprice>£5060</maxprice>
+	<address>50 Park Street, Lincoln, LN1 1UR</address>
+	<tel>01522 877777</tel>
+	<website>http://www.touchstonestudentliving.co.uk/locations/lincoln/park-court/</website>
+</parkcourt>
+	
+<pavilionhouse>
+	<name>Pavilion House</name>
+	<minprice>£5136</minprice>
+	<maxprice>£9435</maxprice>
+	<address>Ruston Way, Lincoln, LN6 7BQ</address>
+	<tel>01522 525757</tel>
+	<website>https://www.prodigy-living.co.uk/cities/lincoln/pavilion-house</website>
+</pavilionhouse>
+	
+<saulhouse>
+	<name>Saul House</name>
+	<minprice>£5712</minprice>
+	<maxprice>£5712</maxprice>
+	<address>Ruston Way, Lincoln, LN6 7FQ</address>
+	<tel>01522 797037</tel>
+	<website>http://www.aps-properties.com/Pages/Saul_House</website>
+</saulhouse>
