@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml;
 
 namespace UoL_Virtual_Assistant
 {
@@ -15,8 +16,8 @@ namespace UoL_Virtual_Assistant
     {
         //globally accessed values
         string Student_ID; //creates a string that will store the Student ID
-        string Student_First_Name; //creates a string that will store the student first name
-        string Student_Last_Name; //creates a string that will store the student last name
+        string Student_First_Name = ""; //creates a string that will store the student first name
+        string Student_Last_Name = ""; //creates a string that will store the student last name
         string Student_Course; //creates a string that will store the course that the student is on
         string Universal_Theme_Value; //creates a string that will store the current theme value
         int R; int G; int B; //creates R,G,B values for themes
@@ -41,6 +42,112 @@ namespace UoL_Virtual_Assistant
                 First_Run_UI FirstRun = new First_Run_UI(); //create a new instance of the First_Run_UI
                 FirstRun.ShowDialog(); //show the new window and halt Main_UI until it is closed
                 Read_User_Data(); //read in the user data from the settings file again (with new information this time)
+
+                bool foundYou = false;
+                string studentName = "";
+
+                using (XmlReader studentRead = XmlReader.Create("../Debug/data/students.xml")) //Creates XML Reader for students file
+                {
+                    while (studentRead.Read())
+                    {
+                        if (studentRead.IsStartElement())
+                        {
+                            if (studentRead.Name == "_" + Student_ID)
+                            {
+                                foundYou = true;
+                            }
+                            if (studentRead.Name == "NAME" && foundYou)
+                            {
+                                studentName = studentRead.ReadElementContentAsString();
+                            }
+                        }
+                        if (studentRead.NodeType == XmlNodeType.EndElement && foundYou)
+                        {
+                            foundYou = false;
+                        }
+                    }
+                }
+
+                bool firstName = true;
+                bool spaced = false;
+                foreach (char c in studentName)
+                {
+                    if (char.IsWhiteSpace(c) == true && spaced)
+                    {
+                        Student_Last_Name += c;
+                        continue;
+                    }
+
+                    if (char.IsWhiteSpace(c) == true)
+                    {
+                        firstName = false;
+                        spaced = true;
+                        continue;
+                    }
+
+                    if (firstName)
+                    {
+                        Student_First_Name += c;
+                    }
+                    else
+                    {
+                        Student_Last_Name += c;
+                    }
+                }
+            }
+            else
+            {
+                bool foundYou = false;
+                string studentName = "";
+
+                using (XmlReader studentRead = XmlReader.Create("../Debug/data/students.xml")) //Creates XML Reader for students file
+                {
+                    while (studentRead.Read())
+                    {
+                        if (studentRead.IsStartElement())
+                        {
+                            if (studentRead.Name == "_" + Student_ID)
+                            {
+                                foundYou = true;
+                            }
+                            if (studentRead.Name == "NAME" && foundYou)
+                            {
+                                studentName = studentRead.ReadElementContentAsString();
+                            }
+                        }
+                        if (studentRead.NodeType == XmlNodeType.EndElement && foundYou)
+                        {
+                            foundYou = false;
+                        }
+                    }
+                }
+
+                bool firstName = true;
+                bool spaced = false;
+                foreach (char c in studentName)
+                {
+                    if (char.IsWhiteSpace(c) == true && spaced)
+                    {
+                        Student_Last_Name += c;
+                        continue;
+                    }
+
+                    if (char.IsWhiteSpace(c) == true)
+                    {
+                        firstName = false;
+                        spaced = true;
+                        continue;
+                    }
+
+                    if (firstName)
+                    {
+                        Student_First_Name += c;
+                    }
+                    else
+                    {
+                        Student_Last_Name += c;
+                    }
+                }
             }
 
             InitializeComponent(); //initialize the component
