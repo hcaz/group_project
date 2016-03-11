@@ -24,24 +24,18 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
-
-        int AI_Message_Counter = 1;
+        int AI_Message_Counter = 0;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
         int Connected_Agent; //indicates the agent what will connect with the user
-
         string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
         string Latest_AI_Message = "";
 
-        //creates all the message textboxes - this may go on for a while -_-
-        TextBox AI_Message_1 = new TextBox();
-        TextBox AI_Message_1_Shell = new TextBox();
-        TextBox AI_Message_2 = new TextBox();
-        TextBox AI_Message_2_Shell = new TextBox();
+        TextBox[] AI_Message = new TextBox[25];
+        TextBox[] AI_Message_Shell = new TextBox[25];
 
-
-        TextBox User_Message_1 = new TextBox();
-        TextBox User_Message_1_Shell = new TextBox();
+        TextBox[] User_Message = new TextBox[25];
+        TextBox[] User_Message_Shell = new TextBox[25];
 
         public Main_UI()
         {
@@ -484,211 +478,469 @@ namespace UoL_Virtual_Assistant
 
         private async void Create_AI_Message()
         {
-<<<<<<< HEAD
-            if (AI_or_Human_Indicator == 0)
-=======
-            switch(AI_Message_Counter)
->>>>>>> origin/jack
+            AI_Message[AI_Message_Counter] = new TextBox();
+            AI_Message_Shell[AI_Message_Counter] = new TextBox();
+            this.Controls.Add(AI_Message[AI_Message_Counter]);
+            this.Controls.Add(AI_Message_Shell[AI_Message_Counter]);
+
+            AI_Message[AI_Message_Counter].WordWrap = true;
+            AI_Message[AI_Message_Counter].Multiline = true;
+            AI_Message[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
+            AI_Message[AI_Message_Counter].ForeColor = Color.FromArgb(255, 255, 255);
+            AI_Message[AI_Message_Counter].Font = new Font("Microsoft Sans Serif", 10);
+            AI_Message[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            AI_Message[AI_Message_Counter].BorderStyle = BorderStyle.None;
+            AI_Message[AI_Message_Counter].Text = Latest_AI_Message;
+            int Line_Counter = ((AI_Message[AI_Message_Counter].GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
+            AI_Message[AI_Message_Counter].Size = new Size(140, Line_Counter);
+
+
+            AI_Message_Shell[AI_Message_Counter].WordWrap = true;
+            AI_Message_Shell[AI_Message_Counter].Multiline = true;
+            AI_Message_Shell[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
+            AI_Message_Shell[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            AI_Message_Shell[AI_Message_Counter].BorderStyle = BorderStyle.None;
+            AI_Message_Shell[AI_Message_Counter].Size = new Size(150, (Line_Counter + 10));
+
+            AI_Message_Shell[AI_Message_Counter].BringToFront();
+            AI_Message[AI_Message_Counter].BringToFront();
+            Reiterate_Layers();
+
+            int Scroll_Steps = Line_Counter + 20;
+
+            for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
             {
-                case 1:
-                    AI_Message_1.WordWrap = true;
-                    AI_Message_1.Multiline = true;
-                    AI_Message_1.BackColor = Color.FromArgb(1, 63, 139);
-                    AI_Message_1.ForeColor = Color.FromArgb(255, 255, 255);
-                    AI_Message_1.Font = new Font("Microsoft Sans Serif", 10);
-                    AI_Message_1.Anchor = (AnchorStyles.Bottom);
-                    AI_Message_1.BorderStyle = BorderStyle.None;
-                    AI_Message_1.Text = Latest_AI_Message;
-                    int Line_Counter_1 = ((AI_Message_1.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    AI_Message_1.Size = new Size(140, Line_Counter_1);
-                    this.Controls.Add(AI_Message_1);
+                Scroll_AI_Message_Up(Message_Animation_Timer);
+                Scroll_User_Message_Up(Message_Animation_Timer);
+
+                AI_Message[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                AI_Message_Shell[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
 
 
-                    AI_Message_1_Shell.WordWrap = true;
-                    AI_Message_1_Shell.Multiline = true;
-                    AI_Message_1_Shell.BackColor = Color.FromArgb(1, 63, 139);
-                    AI_Message_1_Shell.Anchor = (AnchorStyles.Bottom);
-                    AI_Message_1_Shell.BorderStyle = BorderStyle.None;
-                    AI_Message_1_Shell.Size = new Size(150, (Line_Counter_1 + 10));
-                    this.Controls.Add(AI_Message_1_Shell);
 
-                    AI_Message_1_Shell.BringToFront();
-                    AI_Message_1.BringToFront();
-                    Reiterate_Layers();
-
-                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter_1 + 20); Message_Animation_Timer++)
-                    {
-                        AI_Message_1.Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        AI_Message_1_Shell.Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
-                        await Task.Delay(1); //delay for 1/100 of a second
-                    }
-                    AI_Message_Counter++;
-<<<<<<< HEAD
-
-                    TextBox Original_AI_Message = new TextBox();
-                    Original_AI_Message.WordWrap = true;
-                    Original_AI_Message.Multiline = true;
-                    Original_AI_Message.BackColor = Color.FromArgb(1, 63, 139);
-                    Original_AI_Message.ForeColor = Color.FromArgb(255, 255, 255);
-                    Original_AI_Message.Font = new Font("Microsoft Sans Serif", 10);
-                    Original_AI_Message.Anchor = (AnchorStyles.Bottom);
-                    Original_AI_Message.BorderStyle = BorderStyle.None;
-                    Original_AI_Message.Text = Latest_AI_Message;
-                    int Line_Counter = ((Original_AI_Message.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    Original_AI_Message.Size = new Size(140, Line_Counter);
-                    this.Controls.Add(Original_AI_Message);
-
-                    TextBox Original_AI_Message_Shell = new TextBox();
-                    Original_AI_Message_Shell.WordWrap = true;
-                    Original_AI_Message_Shell.Multiline = true;
-                    Original_AI_Message_Shell.BackColor = Color.FromArgb(1, 63, 139);
-                    Original_AI_Message_Shell.Anchor = (AnchorStyles.Bottom);
-                    Original_AI_Message_Shell.BorderStyle = BorderStyle.None;
-                    Original_AI_Message_Shell.Size = new Size(150, (Line_Counter + 10));
-                    this.Controls.Add(Original_AI_Message_Shell);
-
-                    Original_AI_Message.Show();
-                    Original_AI_Message_Shell.Show();
-                    Original_AI_Message_Shell.BringToFront();
-                    Original_AI_Message.BringToFront();
-=======
-                    break;
-                case 2:
-                    AI_Message_2.WordWrap = true;
-                    AI_Message_2.Multiline = true;
-                    AI_Message_2.BackColor = Color.FromArgb(1, 63, 139);
-                    AI_Message_2.ForeColor = Color.FromArgb(255, 255, 255);
-                    AI_Message_2.Font = new Font("Microsoft Sans Serif", 10);
-                    AI_Message_2.Anchor = (AnchorStyles.Bottom);
-                    AI_Message_2.BorderStyle = BorderStyle.None;
-                    AI_Message_2.Text = Latest_AI_Message;
-                    int Line_Counter_2 = ((AI_Message_1.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    AI_Message_2.Size = new Size(140, Line_Counter_2);
-                    this.Controls.Add(AI_Message_1);
-
-
-                    AI_Message_2_Shell.WordWrap = true;
-                    AI_Message_2_Shell.Multiline = true;
-                    AI_Message_2_Shell.BackColor = Color.FromArgb(1, 63, 139);
-                    AI_Message_2_Shell.Anchor = (AnchorStyles.Bottom);
-                    AI_Message_2_Shell.BorderStyle = BorderStyle.None;
-                    AI_Message_2_Shell.Size = new Size(150, (Line_Counter_2 + 10));
-                    this.Controls.Add(AI_Message_1_Shell);
-
-                    AI_Message_2_Shell.BringToFront();
-                    AI_Message_2.BringToFront();
->>>>>>> origin/jack
-                    Reiterate_Layers();
-
-                    int User_Message_1_Location = User_Message_1.Location.Y;
-                    int User_Message_1_Shell_Location = User_Message_1_Shell.Location.Y;
-                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter_2 + 20); Message_Animation_Timer++)
-                    {
-                        User_Message_1.Location = new Point(Message_Input.Location.X + 108, User_Message_1_Location - Message_Animation_Timer);
-                        User_Message_1_Shell.Location = new Point(Message_Input.Location.X + 103, User_Message_1_Shell_Location - Message_Animation_Timer);
-
-                        AI_Message_2.Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        AI_Message_2_Shell.Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
-                        await Task.Delay(1); //delay for 1/100 of a second
-                    }
-                    AI_Message_Counter++;
-                    break;
+                await Task.Delay(1); //delay for 1/100 of a second
             }
 
+            AI_Message_Counter++;
 
-<<<<<<< HEAD
-                else //otherwise create the initial message
-                {
-                    User_Message_Counter++;
-                    TextBox Original_User_Message = new TextBox();
-                    Original_User_Message.WordWrap = true;
-                    Original_User_Message.Multiline = true;
-                    Original_User_Message.TextAlign = HorizontalAlignment.Right;
-                    Original_User_Message.BackColor = Color.FromArgb(244, 244, 244);
-                    Original_User_Message.ForeColor = Color.FromArgb(0, 0, 0);
-                    Original_User_Message.Font = new Font("Microsoft Sans Serif", 10);
-                    Original_User_Message.Anchor = (AnchorStyles.Bottom);
-                    Original_User_Message.BorderStyle = BorderStyle.None;
-                    Original_User_Message.Text = Latest_User_Message;
-                    int Line_Counter = ((Original_User_Message.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    Original_User_Message.Size = new Size(140, Line_Counter);
-                    this.Controls.Add(Original_User_Message);
-
-                    TextBox Original_User_Message_Shell = new TextBox();
-                    Original_User_Message_Shell.WordWrap = true;
-                    Original_User_Message_Shell.Multiline = true;
-                    Original_User_Message_Shell.BackColor = Color.FromArgb(244, 244, 244);
-                    Original_User_Message_Shell.Anchor = (AnchorStyles.Bottom);
-                    Original_User_Message_Shell.BorderStyle = BorderStyle.None;
-                    Original_User_Message_Shell.Size = new Size(150, (Line_Counter + 10));
-                    this.Controls.Add(Original_User_Message_Shell);
-
-                    Original_User_Message_Shell.BringToFront();
-                    Original_User_Message.BringToFront();
-=======
-            
         }
 
         private async void Create_User_Message()
         {
-            switch (User_Message_Counter)
+            //User_Message_Counter--;
+            User_Message[User_Message_Counter] = new TextBox();
+            User_Message_Shell[User_Message_Counter] = new TextBox();
+            this.Controls.Add(User_Message[User_Message_Counter]);
+            this.Controls.Add(User_Message_Shell[User_Message_Counter]);
+
+            User_Message[User_Message_Counter].WordWrap = true;
+            User_Message[User_Message_Counter].Multiline = true;
+            User_Message[User_Message_Counter].BackColor = Color.FromArgb(244, 244, 244);
+            User_Message[User_Message_Counter].ForeColor = Color.FromArgb(0, 0, 0);
+            User_Message[User_Message_Counter].Font = new Font("Microsoft Sans Serif", 10);
+            User_Message[User_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            User_Message[User_Message_Counter].BorderStyle = BorderStyle.None;
+            User_Message[User_Message_Counter].TextAlign = HorizontalAlignment.Right;
+            User_Message[User_Message_Counter].Text = Latest_User_Message;
+            int Line_Counter = ((User_Message[User_Message_Counter].GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
+            User_Message[User_Message_Counter].Size = new Size(140, Line_Counter);
+
+            User_Message_Shell[User_Message_Counter].WordWrap = true;
+            User_Message_Shell[User_Message_Counter].Multiline = true;
+            User_Message_Shell[User_Message_Counter].BackColor = Color.FromArgb(244, 244, 244);
+            User_Message_Shell[User_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            User_Message_Shell[User_Message_Counter].BorderStyle = BorderStyle.None;
+            User_Message_Shell[User_Message_Counter].Size = new Size(150, (Line_Counter + 10));
+
+            User_Message_Shell[User_Message_Counter].BringToFront();
+            User_Message[User_Message_Counter].BringToFront();
+            Reiterate_Layers();
+
+            int Scroll_Steps = Line_Counter + 20;       
+
+            for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
             {
-                case 0:
-                    User_Message_1.WordWrap = true;
-                    User_Message_1.Multiline = true;
-                    User_Message_1.TextAlign = HorizontalAlignment.Right;
-                    User_Message_1.BackColor = Color.FromArgb(244, 244, 244);
-                    User_Message_1.ForeColor = Color.FromArgb(0, 0, 0);
-                    User_Message_1.Font = new Font("Microsoft Sans Serif", 10);
-                    User_Message_1.Anchor = (AnchorStyles.Bottom);
-                    User_Message_1.BorderStyle = BorderStyle.None;
-                    User_Message_1.Text = Latest_User_Message;
-                    int Line_Counter = ((User_Message_1.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    User_Message_1.Size = new Size(140, Line_Counter);
-                    this.Controls.Add(User_Message_1);
+                Scroll_AI_Message_Up(Message_Animation_Timer);
 
-                    User_Message_1_Shell.WordWrap = true;
-                    User_Message_1_Shell.Multiline = true;
-                    User_Message_1_Shell.BackColor = Color.FromArgb(244, 244, 244);
-                    User_Message_1_Shell.Anchor = (AnchorStyles.Bottom);
-                    User_Message_1_Shell.BorderStyle = BorderStyle.None;
-                    User_Message_1_Shell.Size = new Size(150, (Line_Counter + 10));
-                    this.Controls.Add(User_Message_1_Shell);
+                User_Message[User_Message_Counter].Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                User_Message_Shell[User_Message_Counter].Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
 
-                    User_Message_1_Shell.BringToFront();
-                    User_Message_1.BringToFront();
->>>>>>> origin/jack
-                    Reiterate_Layers();
+                if (User_Message_Counter > 0)
+                {
+                    Scroll_User_Message_Up(Message_Animation_Timer);
+                }
 
-                    int Old_AI_Message_Location = AI_Message_1.Location.Y;
-                    int Old_AI_Message_Shell_Location = AI_Message_1_Shell.Location.Y;
-                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter + 20); Message_Animation_Timer++)
-                    {
-<<<<<<< HEAD
-                        Original_User_Message.Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        Original_User_Message_Shell.Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+                await Task.Delay(1); //delay for 1/100 of a second
+            }
 
-                        Original_AI_Message.Visible = false;
+            //Continue_Scrolling = false;
+            User_Message_Counter++;
 
-                        //Original_AI_Message.Location = new Point(Original_AI_Message.Location.X, Original_AI_Message.Location.Y - Message_Animation_Timer);
-                        //Original_AI_Message_Shell.Location = new Point(Original_AI_Message_Shell.Location.X, Original_AI_Message_Shell.Location.Y - Message_Animation_Timer);
+            Latest_AI_Message = "LOL M8 U THINK U GOT IT WORKIN???";
+            Create_AI_Message();
+        }
 
-=======
-                        AI_Message_1.Location = new Point(Message_Input.Location.X + 18, Old_AI_Message_Location - Message_Animation_Timer);
-                        AI_Message_1_Shell.Location = new Point(Message_Input.Location.X + 18, Old_AI_Message_Shell_Location - Message_Animation_Timer);
+        private void Scroll_AI_Message_Up(int Message_Animation_Timer)
+        {
+            if (AI_Message_Counter == 0)
+            {
+                //do nothing
+            }
 
-                        User_Message_1.Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        User_Message_1_Shell.Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
->>>>>>> origin/jack
-                        await Task.Delay(1); //delay for 1/100 of a second
-                    }
+            else
+            {
+                if (AI_Message_Counter > 1)
+                {
+                    AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y - 1);
+                }
 
-                    User_Message_Counter++;
-                    Latest_AI_Message = "Lol M8";
-                    Create_AI_Message();
-                    break;
-                case 2:
-                    break;
+                if (AI_Message_Counter > 2)
+                {
+                    AI_Message[AI_Message_Counter - 3].Location = new Point(AI_Message[AI_Message_Counter - 3].Location.X, AI_Message[AI_Message_Counter - 3].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 3].Location = new Point(AI_Message_Shell[AI_Message_Counter - 3].Location.X, AI_Message_Shell[AI_Message_Counter - 3].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 3)
+                {
+                    AI_Message[AI_Message_Counter - 4].Location = new Point(AI_Message[AI_Message_Counter - 4].Location.X, AI_Message[AI_Message_Counter - 4].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 4].Location = new Point(AI_Message_Shell[AI_Message_Counter - 4].Location.X, AI_Message_Shell[AI_Message_Counter - 4].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 4)
+                {
+                    AI_Message[AI_Message_Counter - 5].Location = new Point(AI_Message[AI_Message_Counter - 5].Location.X, AI_Message[AI_Message_Counter - 5].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 5].Location = new Point(AI_Message_Shell[AI_Message_Counter - 5].Location.X, AI_Message_Shell[AI_Message_Counter - 5].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 5)
+                {
+                    AI_Message[AI_Message_Counter - 6].Location = new Point(AI_Message[AI_Message_Counter - 6].Location.X, AI_Message[AI_Message_Counter - 6].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 6].Location = new Point(AI_Message_Shell[AI_Message_Counter - 6].Location.X, AI_Message_Shell[AI_Message_Counter - 6].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 6)
+                {
+                    AI_Message[AI_Message_Counter - 7].Location = new Point(AI_Message[AI_Message_Counter - 7].Location.X, AI_Message[AI_Message_Counter - 7].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 7].Location = new Point(AI_Message_Shell[AI_Message_Counter - 7].Location.X, AI_Message_Shell[AI_Message_Counter - 7].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 7)
+                {
+                    AI_Message[AI_Message_Counter - 8].Location = new Point(AI_Message[AI_Message_Counter - 8].Location.X, AI_Message[AI_Message_Counter - 8].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 8].Location = new Point(AI_Message_Shell[AI_Message_Counter - 8].Location.X, AI_Message_Shell[AI_Message_Counter - 8].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 8)
+                {
+                    AI_Message[AI_Message_Counter - 9].Location = new Point(AI_Message[AI_Message_Counter - 9].Location.X, AI_Message[AI_Message_Counter - 9].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 9].Location = new Point(AI_Message_Shell[AI_Message_Counter - 9].Location.X, AI_Message_Shell[AI_Message_Counter - 9].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 9)
+                {
+                    AI_Message[AI_Message_Counter - 10].Location = new Point(AI_Message[AI_Message_Counter - 10].Location.X, AI_Message[AI_Message_Counter - 10].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 10].Location = new Point(AI_Message_Shell[AI_Message_Counter - 10].Location.X, AI_Message_Shell[AI_Message_Counter - 10].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 10)
+                {
+                    AI_Message[AI_Message_Counter - 11].Location = new Point(AI_Message[AI_Message_Counter - 11].Location.X, AI_Message[AI_Message_Counter - 11].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 11].Location = new Point(AI_Message_Shell[AI_Message_Counter - 11].Location.X, AI_Message_Shell[AI_Message_Counter - 11].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 11)
+                {
+                    AI_Message[AI_Message_Counter - 12].Location = new Point(AI_Message[AI_Message_Counter - 12].Location.X, AI_Message[AI_Message_Counter - 12].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 12].Location = new Point(AI_Message_Shell[AI_Message_Counter - 12].Location.X, AI_Message_Shell[AI_Message_Counter - 12].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 12)
+                {
+                    AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 13)
+                {
+                    AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 14)
+                {
+                    AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 15)
+                {
+                    AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 16)
+                {
+                    AI_Message[AI_Message_Counter - 15].Location = new Point(AI_Message[AI_Message_Counter - 15].Location.X, AI_Message[AI_Message_Counter - 15].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 15].Location = new Point(AI_Message_Shell[AI_Message_Counter - 15].Location.X, AI_Message_Shell[AI_Message_Counter - 15].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 17)
+                {
+                    AI_Message[AI_Message_Counter - 16].Location = new Point(AI_Message[AI_Message_Counter - 16].Location.X, AI_Message[AI_Message_Counter - 16].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 16].Location = new Point(AI_Message_Shell[AI_Message_Counter - 16].Location.X, AI_Message_Shell[AI_Message_Counter - 16].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 18)
+                {
+                    AI_Message[AI_Message_Counter - 17].Location = new Point(AI_Message[AI_Message_Counter - 17].Location.X, AI_Message[AI_Message_Counter - 17].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 17].Location = new Point(AI_Message_Shell[AI_Message_Counter - 17].Location.X, AI_Message_Shell[AI_Message_Counter - 17].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 19)
+                {
+                    AI_Message[AI_Message_Counter - 18].Location = new Point(AI_Message[AI_Message_Counter - 18].Location.X, AI_Message[AI_Message_Counter - 18].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 18].Location = new Point(AI_Message_Shell[AI_Message_Counter - 18].Location.X, AI_Message_Shell[AI_Message_Counter - 18].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 20)
+                {
+                    AI_Message[AI_Message_Counter - 19].Location = new Point(AI_Message[AI_Message_Counter - 19].Location.X, AI_Message[AI_Message_Counter - 19].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 19].Location = new Point(AI_Message_Shell[AI_Message_Counter - 19].Location.X, AI_Message_Shell[AI_Message_Counter - 19].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 21)
+                {
+                    AI_Message[AI_Message_Counter - 20].Location = new Point(AI_Message[AI_Message_Counter - 20].Location.X, AI_Message[AI_Message_Counter - 20].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 20].Location = new Point(AI_Message_Shell[AI_Message_Counter - 20].Location.X, AI_Message_Shell[AI_Message_Counter - 20].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 22)
+                {
+                    AI_Message[AI_Message_Counter - 21].Location = new Point(AI_Message[AI_Message_Counter - 21].Location.X, AI_Message[AI_Message_Counter - 21].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 21].Location = new Point(AI_Message_Shell[AI_Message_Counter - 21].Location.X, AI_Message_Shell[AI_Message_Counter - 21].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 23)
+                {
+                    AI_Message[AI_Message_Counter - 22].Location = new Point(AI_Message[AI_Message_Counter - 22].Location.X, AI_Message[AI_Message_Counter - 22].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 22].Location = new Point(AI_Message_Shell[AI_Message_Counter - 22].Location.X, AI_Message_Shell[AI_Message_Counter - 22].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 24)
+                {
+                    AI_Message[AI_Message_Counter - 23].Location = new Point(AI_Message[AI_Message_Counter - 23].Location.X, AI_Message[AI_Message_Counter - 23].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 23].Location = new Point(AI_Message_Shell[AI_Message_Counter - 23].Location.X, AI_Message_Shell[AI_Message_Counter - 23].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 25)
+                {
+                    AI_Message[AI_Message_Counter - 24].Location = new Point(AI_Message[AI_Message_Counter - 24].Location.X, AI_Message[AI_Message_Counter - 24].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 24].Location = new Point(AI_Message_Shell[AI_Message_Counter - 24].Location.X, AI_Message_Shell[AI_Message_Counter - 24].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 26)
+                {
+                    AI_Message[AI_Message_Counter - 25].Location = new Point(AI_Message[AI_Message_Counter - 25].Location.X, AI_Message[AI_Message_Counter - 25].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 25].Location = new Point(AI_Message_Shell[AI_Message_Counter - 25].Location.X, AI_Message_Shell[AI_Message_Counter - 25].Location.Y - 1);
+                }
+
+                else
+                {
+                    AI_Message[AI_Message_Counter - 1].Location = new Point(AI_Message[AI_Message_Counter - 1].Location.X, AI_Message[AI_Message_Counter - 1].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 1].Location = new Point(AI_Message_Shell[AI_Message_Counter - 1].Location.X, AI_Message_Shell[AI_Message_Counter - 1].Location.Y - 1);
+                }
+            }
+        }
+
+        private void Scroll_User_Message_Up(int Message_Animation_Timer)
+        {
+            if (User_Message_Counter == 0)
+            {
+                //do nothing
+            }
+
+            else
+            {
+                if (User_Message_Counter > 1)
+                {
+                    User_Message[User_Message_Counter - 2].Location = new Point(User_Message[User_Message_Counter - 2].Location.X, User_Message[User_Message_Counter - 2].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 2].Location = new Point(User_Message_Shell[User_Message_Counter - 2].Location.X, User_Message_Shell[User_Message_Counter - 2].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 2)
+                {
+                    User_Message[User_Message_Counter - 3].Location = new Point(User_Message[User_Message_Counter - 3].Location.X, User_Message[User_Message_Counter - 3].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 3].Location = new Point(User_Message_Shell[User_Message_Counter - 3].Location.X, User_Message_Shell[User_Message_Counter - 3].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 3)
+                {
+                    User_Message[User_Message_Counter - 4].Location = new Point(User_Message[User_Message_Counter - 4].Location.X, User_Message[User_Message_Counter - 4].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 4].Location = new Point(User_Message_Shell[User_Message_Counter - 4].Location.X, User_Message_Shell[User_Message_Counter - 4].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 4)
+                {
+                    User_Message[User_Message_Counter - 5].Location = new Point(User_Message[User_Message_Counter - 5].Location.X, User_Message[User_Message_Counter - 5].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 5].Location = new Point(User_Message_Shell[User_Message_Counter - 5].Location.X, User_Message_Shell[User_Message_Counter - 5].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 5)
+                {
+                    User_Message[User_Message_Counter - 6].Location = new Point(User_Message[User_Message_Counter - 6].Location.X, User_Message[User_Message_Counter - 6].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 6].Location = new Point(User_Message_Shell[User_Message_Counter - 6].Location.X, User_Message_Shell[User_Message_Counter - 6].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 6)
+                {
+                    User_Message[User_Message_Counter - 7].Location = new Point(User_Message[User_Message_Counter - 7].Location.X, User_Message[User_Message_Counter - 7].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 7].Location = new Point(User_Message_Shell[User_Message_Counter - 7].Location.X, User_Message_Shell[User_Message_Counter - 7].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 7)
+                {
+                    User_Message[User_Message_Counter - 8].Location = new Point(User_Message[User_Message_Counter - 8].Location.X, User_Message[User_Message_Counter - 8].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 8].Location = new Point(User_Message_Shell[User_Message_Counter - 8].Location.X, User_Message_Shell[User_Message_Counter - 8].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 8)
+                {
+                    User_Message[User_Message_Counter - 9].Location = new Point(User_Message[User_Message_Counter - 9].Location.X, User_Message[User_Message_Counter - 9].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 9].Location = new Point(User_Message_Shell[User_Message_Counter - 9].Location.X, User_Message_Shell[User_Message_Counter - 9].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 9)
+                {
+                    User_Message[User_Message_Counter - 10].Location = new Point(User_Message[User_Message_Counter - 10].Location.X, User_Message[User_Message_Counter - 10].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 10].Location = new Point(User_Message_Shell[User_Message_Counter - 10].Location.X, User_Message_Shell[User_Message_Counter - 10].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 10)
+                {
+                    User_Message[User_Message_Counter - 11].Location = new Point(User_Message[User_Message_Counter - 11].Location.X, User_Message[User_Message_Counter - 11].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 11].Location = new Point(User_Message_Shell[User_Message_Counter - 11].Location.X, User_Message_Shell[User_Message_Counter - 11].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 11)
+                {
+                    User_Message[User_Message_Counter - 12].Location = new Point(User_Message[User_Message_Counter - 12].Location.X, User_Message[User_Message_Counter - 12].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 12].Location = new Point(User_Message_Shell[User_Message_Counter - 12].Location.X, User_Message_Shell[User_Message_Counter - 12].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 12)
+                {
+                    User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 13)
+                {
+                    User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 14)
+                {
+                    User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 15)
+                {
+                    User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 16)
+                {
+                    User_Message[User_Message_Counter - 15].Location = new Point(User_Message[User_Message_Counter - 15].Location.X, User_Message[User_Message_Counter - 15].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 15].Location = new Point(User_Message_Shell[User_Message_Counter - 15].Location.X, User_Message_Shell[User_Message_Counter - 15].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 17)
+                {
+                    User_Message[User_Message_Counter - 16].Location = new Point(User_Message[User_Message_Counter - 16].Location.X, User_Message[User_Message_Counter - 16].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 16].Location = new Point(User_Message_Shell[User_Message_Counter - 16].Location.X, User_Message_Shell[User_Message_Counter - 16].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 18)
+                {
+                    User_Message[User_Message_Counter - 17].Location = new Point(User_Message[User_Message_Counter - 17].Location.X, User_Message[User_Message_Counter - 17].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 17].Location = new Point(User_Message_Shell[User_Message_Counter - 17].Location.X, User_Message_Shell[User_Message_Counter - 17].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 19)
+                {
+                    User_Message[User_Message_Counter - 18].Location = new Point(User_Message[User_Message_Counter - 18].Location.X, User_Message[User_Message_Counter - 18].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 18].Location = new Point(User_Message_Shell[User_Message_Counter - 18].Location.X, User_Message_Shell[User_Message_Counter - 18].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 20)
+                {
+                    User_Message[User_Message_Counter - 19].Location = new Point(User_Message[User_Message_Counter - 19].Location.X, User_Message[User_Message_Counter - 19].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 19].Location = new Point(User_Message_Shell[User_Message_Counter - 19].Location.X, User_Message_Shell[User_Message_Counter - 19].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 21)
+                {
+                    User_Message[User_Message_Counter - 20].Location = new Point(User_Message[User_Message_Counter - 20].Location.X, User_Message[User_Message_Counter - 20].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 20].Location = new Point(User_Message_Shell[User_Message_Counter - 20].Location.X, User_Message_Shell[User_Message_Counter - 20].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 22)
+                {
+                    User_Message[User_Message_Counter - 21].Location = new Point(User_Message[User_Message_Counter - 21].Location.X, User_Message[User_Message_Counter - 21].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 21].Location = new Point(User_Message_Shell[User_Message_Counter - 21].Location.X, User_Message_Shell[User_Message_Counter - 21].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 23)
+                {
+                    User_Message[User_Message_Counter - 22].Location = new Point(User_Message[User_Message_Counter - 22].Location.X, User_Message[User_Message_Counter - 22].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 22].Location = new Point(User_Message_Shell[User_Message_Counter - 22].Location.X, User_Message_Shell[User_Message_Counter - 22].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 24)
+                {
+                    User_Message[User_Message_Counter - 23].Location = new Point(User_Message[User_Message_Counter - 23].Location.X, User_Message[User_Message_Counter - 23].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 23].Location = new Point(User_Message_Shell[User_Message_Counter - 23].Location.X, User_Message_Shell[User_Message_Counter - 23].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 25)
+                {
+                    User_Message[User_Message_Counter - 24].Location = new Point(User_Message[User_Message_Counter - 24].Location.X, User_Message[User_Message_Counter - 24].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 24].Location = new Point(User_Message_Shell[User_Message_Counter - 24].Location.X, User_Message_Shell[User_Message_Counter - 24].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 26)
+                {
+                    User_Message[User_Message_Counter - 25].Location = new Point(User_Message[User_Message_Counter - 25].Location.X, User_Message[User_Message_Counter - 25].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 25].Location = new Point(User_Message_Shell[User_Message_Counter - 25].Location.X, User_Message_Shell[User_Message_Counter - 25].Location.Y - 1);
+                }
+
+
+
+
+
+
+                else
+                {
+                    User_Message[User_Message_Counter - 1].Location = new Point(User_Message[User_Message_Counter - 1].Location.X, User_Message[User_Message_Counter - 1].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
+                }
+            }
+        }        
+
+        private async void Scroll_Content_UpDown(int Scroll_Direction)
+        {
+            if(Scroll_Direction == 1) //if scroll direction is set to up
+            {
+                MessageBox.Show("Content will scroll up!");
+            }
+
+            else //otherwise go down
+            {
+                MessageBox.Show("Content will go down!");
             }
         }
 
@@ -925,7 +1177,7 @@ namespace UoL_Virtual_Assistant
             TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
             DayOfWeek Current_Day = DateTime.Now.DayOfWeek; //finds the current day of the week
 
-            if ((Current_Day <= DayOfWeek.Monday) && (Current_Day >= DayOfWeek.Friday)) //if the current day is not a weekend
+            if ((Current_Day >= DayOfWeek.Monday) && (Current_Day <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
                 if ((Current_Time >= Opening_Hours) && (Current_Time < Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
                 {
@@ -986,17 +1238,7 @@ namespace UoL_Virtual_Assistant
 
             else
             {
-                DialogResult Out_Of_Hours = MessageBox.Show("Sorry. Our response team is only available Monday to Friday, 9am until 6pm. Our Out of Hours service is automated and will take a request from you so that we can get back to you first thing the next working day. Would you like to use the Out of Hours service?", "Out of Hours", MessageBoxButtons.YesNo);
-
-                if (Out_Of_Hours == DialogResult.Yes) //if the user confirms their reset
-                {
-                    Connected_Agent = 4; //set the connected agent as the out of hours service
-                }
-
-                else
-                {
-                    Application.Restart();
-                }
+                Connected_Agent = 4;
             }
         }
 
@@ -1004,6 +1246,16 @@ namespace UoL_Virtual_Assistant
         {
             Connection_Status = 1;
             Initiate_Connection();
+        }
+
+        private void Scroll_Conversation_Up_Click(object sender, EventArgs e)
+        {
+            Scroll_Content_UpDown(1);
+        }
+
+        private void Scroll_Conversation_Down_Click(object sender, EventArgs e)
+        {
+            Scroll_Content_UpDown(0);
         }
     }
 }
