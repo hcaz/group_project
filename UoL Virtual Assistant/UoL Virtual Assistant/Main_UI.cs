@@ -28,8 +28,11 @@ namespace UoL_Virtual_Assistant
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
         int Connected_Agent; //indicates the agent what will connect with the user
+
         string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
+
         string Latest_AI_Message = "";
+        bool AI_Response_Handshake = false;
 
         TextBox[] AI_Message = new TextBox[25];
         TextBox[] AI_Message_Shell = new TextBox[25];
@@ -97,7 +100,11 @@ namespace UoL_Virtual_Assistant
             Agent_Profile_Image.Location = new Point(163, 236); //move the profile image to the proper location
             Agent_Profile_Image.Size = new Size(10, 10); //resize it
             Conversation_Exit.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
+            Scroll_Conversation_Up.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
+            Scroll_Conversation_Down.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
             Conversation_Exit.Visible = false; //make the exit button invisible
+            Scroll_Conversation_Up.Visible = false;
+            Scroll_Conversation_Down.Visible = false;
         }
 
         public void Tooltips_Generation()
@@ -198,6 +205,14 @@ namespace UoL_Virtual_Assistant
 
         }
 
+        private void Message_Input_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Send_Message.PerformClick();               
+            }
+        }
+
         private void UoL_Branding_Click(object sender, EventArgs e)
         {
             if (UoL_Logo_Link == "0") //if the logo link value is set to 0
@@ -233,7 +248,7 @@ namespace UoL_Virtual_Assistant
                     break;
                 case 1:
                     Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
-                    Message_Input.Text = ""; //clears the text field
+                    Message_Input.Text = String.Empty;
 
                     Create_User_Message();
                     break;
@@ -244,6 +259,8 @@ namespace UoL_Virtual_Assistant
         {
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
             {
+                Send_Message.Enabled = false;
+                Send_Message.BackgroundImage = Properties.Resources.Send_Icon__for_light_themes_;
                 Conversation_Window.Visible = true; //make the window visible
                 Open_Conversation_Window = 1; //set the window status as open
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
@@ -251,229 +268,291 @@ namespace UoL_Virtual_Assistant
                     await Task.Delay(1); //delay for 1/100 of a second
                     Conversation_Window.Location = new Point(Conversation_Window.Location.X, Conversation_Window.Location.Y - 10); //move the window so that it is on screen
                 }
-            }
 
-            Connecting_Label.Visible = true; //makes the connecting label visible
-            Conversation_Exit.Visible = true; //make the exit button visible
-            bool Exit_Visible = false;
-            while (Connection_Status == 0) //while the user is not connected to an agent
-            {
-                for (int Colour = 305; Colour >= 55; Colour--) //fades in the connecting label
+
+                Connecting_Label.Visible = true; //makes the connecting label visible
+                Conversation_Exit.Visible = true; //make the exit button visible
+                bool Exit_Visible = false;
+                while (Connection_Status == 0) //while the user is not connected to an agent
                 {
-                    await Task.Delay(1); //delay
-                    Connecting_Label.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
-
-                    if (Exit_Visible == false)
+                    for (int Colour = 305; Colour >= 55; Colour--) //fades in the connecting label
                     {
-                        Conversation_Exit.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
-                    }
-                }
+                        await Task.Delay(1); //delay
+                        Connecting_Label.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
 
-                Exit_Visible = true; //the exit button is visible
-
-                for (int Colour = 0; Colour < 255; Colour++) //fades out the connecting label
-                {
-                    if (Connection_Status == 1) //if the connection status changes
-                    {
-                        Connecting_Label.ForeColor = Color.FromArgb(0, 0, 0); //paint it black
-                        break; //break out of the fading cycle
-                    }
-
-                    if (Colour == 201) //if the value Colour is equal to 201
-                    {
-                        break; //break so that the next iteration will not exceed 255 for the colour value and crash
-                    }
-
-                    await Task.Delay(1); //delay
-                    Connecting_Label.ForeColor = Color.FromArgb(Colour + 50, Colour + 50, Colour + 50); //reduce the colour value of the label by 50 on each loop
-                }
-            }
-
-            if (Connection_Status == 1) //if the connection status is live
-            {
-                Connecting_Label.Text = "Connection Established"; //change the text to this
-                Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window
-                Random Randomise_Agent = new Random();
-                Connected_Agent = Randomise_Agent.Next(0, 4); //selects a random number between 0 and 4
-
-                Random Randomise_Probability = new Random();
-                int Preferred_Agent_Probability = Randomise_Probability.Next(0, 100); //selects a random number between 0 and 4
-                switch (Preferred_Agent) //apply the appropriate profile picture and label text
-                {
-                    case "0": //if the user does not have a preferred agent
-                        break;
-                    case "1": //if their preferred agent is Bruce
-                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                        if (Exit_Visible == false)
                         {
-                            Connected_Agent = 0; //give them their preferred agent
+                            Conversation_Exit.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
                         }
-                        break;
-                    case "2": //if their preferred agent is Hal
-                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                    }
+
+                    Exit_Visible = true; //the exit button is visible
+
+                    for (int Colour = 0; Colour < 255; Colour++) //fades out the connecting label
+                    {
+                        if (Connection_Status == 1) //if the connection status changes
                         {
-                            Connected_Agent = 1; //give them their preferred agent
+                            Connecting_Label.ForeColor = Color.FromArgb(0, 0, 0); //paint it black
+                            break; //break out of the fading cycle
                         }
-                        break;
-                    case "3": //if their preferred agent is Jason
 
-                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                        if (Colour == 201) //if the value Colour is equal to 201
                         {
-                            Connected_Agent = 2; //give them their preferred agent
+                            break; //break so that the next iteration will not exceed 255 for the colour value and crash
                         }
-                        break;
-                    case "4": //if their preferred agent is Suzie
-                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
-                        {
-                            Connected_Agent = 3; //give them their preferred agent
-                        }
-                        break;
+
+                        await Task.Delay(1); //delay
+                        Connecting_Label.ForeColor = Color.FromArgb(Colour + 50, Colour + 50, Colour + 50); //reduce the colour value of the label by 50 on each loop
+                    }
                 }
 
-
-                Is_Agent_Available(); //check if the agent is "available"
-                await Task.Delay(1000); //delay
-
-                for (int Connection_Hide = 0; Connection_Hide < 50; Connection_Hide++) //hide the connection text
+                if (Connection_Status == 1) //if the connection status is live
                 {
-                    Connecting_Label.Location = new Point(Connecting_Label.Location.X, Connecting_Label.Location.Y + 5); //move the text down
-                    await Task.Delay(1); //delay
-                }
+                    Connecting_Label.Text = "Connection Established"; //change the text to this
+                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window
+                    Random Randomiser = new Random(); //creates a randomiser item
+                    Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
-                switch (Connected_Agent) //apply the appropriate profile picture and label text
-                {
-                    case 0: //if the agent is bruce
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.BruceProfilePic;
-                        Agent_Name_Label.Text = "Bruce Hargrave";
-                        break;
-                    case 1: //if the agent is hal
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.HalProfilePic;
-                        Agent_Name_Label.Text = "Hal Chín-Nghìn";
-                        break;
-                    case 2: //if the agent is jason
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.JasonProfilePic;
-                        Agent_Name_Label.Text = "Jason Bradbury";
-                        break;
-                    case 3: //if the agent is suzie
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.SuziProfilePic;
-                        Agent_Name_Label.Text = "Suzi Perry";
-                        break;
-                    case 4: //if no agent is available
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.GenericProfilePic;
-                        Agent_Name_Label.Text = "Out of Hours";
-                        break;
-                }
-
-                Agent_Profile_Image.Visible = true; //make the agent profile picture visible
-                int Agent_Profile_Image_Starting_X = Agent_Profile_Image.Location.X; //grab the profile picture's X location
-                int Agent_Profile_Image_Starting_Y = Agent_Profile_Image.Location.Y; //grab the profile picture's Y location
-                int Agent_Profile_Image_Size = 10; //set the profile picture's X & Y size to 10
-                bool Resized_Image = false; //creates a bool for the resizing process
-
-                while (Resized_Image == false) //while the profile picture has not yet been fully resized
-                {
-                    switch (Agent_Profile_Image_Size)
+                    int Preferred_Agent_Probability = Randomiser.Next(0, 100); //selects a random number between 0 and 4
+                    switch (Preferred_Agent) //apply the appropriate profile picture and label text
                     {
-                        case 20: //if the image is at 20% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "0": //if the user does not have a preferred agent
                             break;
-                        case 40: //if the image is at 40% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "1": //if their preferred agent is Bruce
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 0; //give them their preferred agent
+                            }
                             break;
-                        case 60: //if the image is at 60% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "2": //if their preferred agent is Hal
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 1; //give them their preferred agent
+                            }
                             break;
-                        case 80: //if the image is at 80% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "3": //if their preferred agent is Jason
+
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 2; //give them their preferred agent
+                            }
                             break;
-                        case 100: //if the image is at 100% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
-                            Resized_Image = true; //stop the loop
+                        case "4": //if their preferred agent is Suzie
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 3; //give them their preferred agent
+                            }
                             break;
                     }
 
-                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size++, Agent_Profile_Image_Size++); //increment each of the size axis by 1 on each loop
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1); //adjust the location of the image by 1 on each axis every loop
-                    await Task.Delay(1); //delay
-                }
 
-                await Task.Delay(1000); //delay
-                for (int Profile_Picture_Timing = 0; Profile_Picture_Timing < 20; Profile_Picture_Timing++) //while the profile picture has not yet been fully resized
-                {
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //adjust the height of the image by 1 on every loop
-
-                    if (Profile_Picture_Timing >= 15) //if the profile picture has moved 15 steps or more out of 20
-                    {
-                        Agent_Name_Label.Visible = true; //make the agent name label visible
-                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X, Agent_Name_Label.Location.Y + 1); //adjust the height of the label by 1 on every loop
-                    }
-
-                    await Task.Delay(1); //delay
-                }
-                await Task.Delay(2000); //delay
-                Agent_Name_Label.Size = new Size(175, 31); //resize the name label
-                Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
-                Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
-                Agent_Profile_Image_Size = 100; //set the profile image size at 100
-                Conversation_Area_Header.Visible = true;
-                for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 30; Profile_Picture_Relocation++)
-                {
-                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
-                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 3);
-                    Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y - 7);
-                    if (Profile_Picture_Relocation >= 25) //when the number of steps reaches 25 and exceeds it
-                    {
-                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 3); //give it an extra boost
-                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y - 2); //give it an extra boost
-                    }
-
-                    if (Profile_Picture_Relocation == 28) //when the number of steps reaches 28
-                    {
-                        Agent_Status_Indicator.Visible = true; //make the indicator visible
-                    }
-
-                    await Task.Delay(1); //delay
-                }
-
-                Random Randomise_Wait_Time = new Random(); //create a new randomiser
-                int Wait_Time = Randomise_Wait_Time.Next(0, 15); //selects a random number between 0 and 15 for the wait time
-
-                if (Connected_Agent == 4)
-                {
-                    Wait_Time = Randomise_Wait_Time.Next(3, 5); //creates a new wait time between 3 and 5 since Agent 4 is automated
-                }
-
-                for (int Wait_Timer = 0; Wait_Timer < Wait_Time; Wait_Timer++)
-                {
-                    Agent_Status_Indicator.Text = "Connecting.";
+                    Is_Agent_Available(); //check if the agent is "available"
                     await Task.Delay(1000); //delay
-                    Wait_Timer = (Wait_Timer + 1); //add a second to the timer
-                    Agent_Status_Indicator.Text = "Connecting..";
-                    await Task.Delay(1000); //delay
-                    Wait_Timer = (Wait_Timer + 1); //add a second to the timer
-                    Agent_Status_Indicator.Text = "Connecting...";
-                    await Task.Delay(1000); //delay                    
-                }
 
-                Agent_Status_Indicator.Text = "Online";
-
-                TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
-
-
-                if (Connected_Agent == 4)
-                {
-                    TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
-                    string OOH_Bot_Response = "it is out of work hours. If you need to contact the team personally, please get in touch during 9am and 6pm, Monday to Friday. ";
-                    if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                    for (int Connection_Hide = 0; Connection_Hide < 50; Connection_Hide++) //hide the connection text
                     {
-                        OOH_Bot_Response = "they are currently out for lunch. If you need to contact the team personally please come back after 1pm and there will be someone on hand to answer your query. ";
+                        Connecting_Label.Location = new Point(Connecting_Label.Location.X, Connecting_Label.Location.Y + 5); //move the text down
+                        await Task.Delay(1); //delay
                     }
 
-                    Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available.";
-                }
+                    switch (Connected_Agent) //apply the appropriate profile picture and label text
+                    {
+                        case 0: //if the agent is bruce
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.BruceProfilePic;
+                            Agent_Name_Label.Text = "Bruce Hargrave";
+                            break;
+                        case 1: //if the agent is hal
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.HalProfilePic;
+                            Agent_Name_Label.Text = "Hal Chín-Nghìn";
+                            break;
+                        case 2: //if the agent is jason
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.JasonProfilePic;
+                            Agent_Name_Label.Text = "Jason Bradbury";
+                            break;
+                        case 3: //if the agent is suzie
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.SuziProfilePic;
+                            Agent_Name_Label.Text = "Suzi Perry";
+                            break;
+                        case 4: //if no agent is available
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.GenericProfilePic;
+                            Agent_Name_Label.Text = "Out of Hours";
+                            break;
+                    }
 
-                Create_AI_Message();
+                    Agent_Profile_Image.Visible = true; //make the agent profile picture visible
+                    int Agent_Profile_Image_Starting_X = Agent_Profile_Image.Location.X; //grab the profile picture's X location
+                    int Agent_Profile_Image_Starting_Y = Agent_Profile_Image.Location.Y; //grab the profile picture's Y location
+                    int Agent_Profile_Image_Size = 10; //set the profile picture's X & Y size to 10
+                    bool Resized_Image = false; //creates a bool for the resizing process
+
+                    while (Resized_Image == false) //while the profile picture has not yet been fully resized
+                    {
+                        switch (Agent_Profile_Image_Size)
+                        {
+                            case 20: //if the image is at 20% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 40: //if the image is at 40% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 60: //if the image is at 60% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 80: //if the image is at 80% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 100: //if the image is at 100% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                Resized_Image = true; //stop the loop
+                                break;
+                        }
+
+                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size++, Agent_Profile_Image_Size++); //increment each of the size axis by 1 on each loop
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1); //adjust the location of the image by 1 on each axis every loop
+                        await Task.Delay(1); //delay
+                    }
+
+                    await Task.Delay(1000); //delay
+                    for (int Profile_Picture_Timing = 0; Profile_Picture_Timing < 20; Profile_Picture_Timing++) //while the profile picture has not yet been fully resized
+                    {
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //adjust the height of the image by 1 on every loop
+
+                        if (Profile_Picture_Timing >= 15) //if the profile picture has moved 15 steps or more out of 20
+                        {
+                            Agent_Name_Label.Visible = true; //make the agent name label visible
+                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X, Agent_Name_Label.Location.Y + 1); //adjust the height of the label by 1 on every loop
+                        }
+
+                        await Task.Delay(1); //delay
+                    }
+                    await Task.Delay(2000); //delay
+                    Agent_Name_Label.Size = new Size(175, 31); //resize the name label
+                    Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                    Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
+                    Agent_Profile_Image_Size = 100; //set the profile image size at 100
+                    Conversation_Area_Header.Visible = true;
+                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 30; Profile_Picture_Relocation++)
+                    {
+                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
+                        Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 3);
+                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y - 7);
+                        if (Profile_Picture_Relocation >= 25) //when the number of steps reaches 25 and exceeds it
+                        {
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 3); //give it an extra boost
+                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y - 2); //give it an extra boost
+                        }
+
+                        if (Profile_Picture_Relocation == 28) //when the number of steps reaches 28
+                        {
+                            Agent_Status_Indicator.Visible = true; //make the indicator visible
+                        }
+
+                        await Task.Delay(1); //delay
+                    }
+
+                    int Wait_Time = Randomiser.Next(0, 15); //selects a random number between 0 and 15 for the wait time
+
+                    if (Connected_Agent == 4)
+                    {
+                        Wait_Time = Randomiser.Next(3, 5); //creates a new wait time between 3 and 5 since Agent 4 is automated
+                    }
+
+                    for (int Wait_Timer = 0; Wait_Timer < Wait_Time; Wait_Timer++)
+                    {
+                        Agent_Status_Indicator.Text = "Connecting.";
+                        await Task.Delay(1000); //delay
+                        Wait_Timer = (Wait_Timer + 1); //add a second to the timer
+                        Agent_Status_Indicator.Text = "Connecting..";
+                        await Task.Delay(1000); //delay
+                        Wait_Timer = (Wait_Timer + 1); //add a second to the timer
+                        Agent_Status_Indicator.Text = "Connecting...";
+                        await Task.Delay(1000); //delay                    
+                    }
+
+                    Agent_Status_Indicator.Text = "Online";
+                    if (Connected_Agent == 4)
+                    {
+                        TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
+                        TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
+                        string OOH_Bot_Response = "it is out of work hours. If you need to contact the team personally, please get in touch during 9am and 6pm, Monday to Friday. ";
+                        if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                        {
+                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact the team personally please come back after 1pm and there will be someone on hand to answer your query. ";
+                        }
+
+                        Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available, otherwise exit the chat.";
+                        AI_Response_Handshake = true;
+                    }
+
+                    while (AI_Response_Handshake == false)
+                    {
+                        await Task.Delay(1000); //delay                       
+                    }
+
+                    if (AI_Response_Handshake == true)
+                    {
+                        if (Connected_Agent == 4)
+                        {
+                            Create_AI_Message();
+                        }
+
+                        else
+                        {
+                            Agent_Status_Indicator.Text = "Typing";
+                            int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
+                            MessageBox.Show(Typing_Time.ToString());
+                            await Task.Delay(Typing_Time / 10);
+
+                            if (Randomiser.Next(0, 100) > 50)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 10000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 3);
+
+                            if (Randomiser.Next(0, 100) > 60)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 5000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 3);
+
+                            if (Randomiser.Next(0, 100) > 60)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 3000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 5);
+
+                            if (Randomiser.Next(0, 100) > 75)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 5000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 10);
+                            Create_AI_Message();
+                            Agent_Status_Indicator.Text = "Online";
+                        }
+
+                                           
+                    }                 
+                }
             }
+
+            else
+            {
+                //do nothing
+            }
+
         }
 
         private async void Create_AI_Message()
@@ -521,13 +600,15 @@ namespace UoL_Virtual_Assistant
                 await Task.Delay(1); //delay for 1/100 of a second
             }
 
+            Message_Input.Enabled = true;
+            Send_Message.Enabled = true;
             AI_Message_Counter++;
 
         }
 
         private async void Create_User_Message()
-        {
-            //User_Message_Counter--;
+        {          
+            Message_Input.Enabled = false;
             User_Message[User_Message_Counter] = new TextBox();
             User_Message_Shell[User_Message_Counter] = new TextBox();
             this.Controls.Add(User_Message[User_Message_Counter]);
@@ -572,12 +653,28 @@ namespace UoL_Virtual_Assistant
 
                 await Task.Delay(1); //delay for 1/100 of a second
             }
-
-            //Continue_Scrolling = false;
             User_Message_Counter++;
 
-            Latest_AI_Message = "LOL M8 U THINK U GOT IT WORKIN???";
-            Create_AI_Message();
+            if (Connected_Agent == 4 && User_Message_Counter == 1)
+            {
+                await Task.Delay(2000); //2 second delay
+                Latest_AI_Message = "Thanks for your query. This has been saved and will be seen by a member of the response team first thing the next working day. The chat will now automatically close in a few seconds. Have a nice day.";
+                Create_AI_Message();
+                await Task.Delay(5000); //5 second delay
+                Conversation_Exit.PerformClick();
+            }
+
+            if (User_Message_Counter > 1) //fade in the scrollable buttons
+            {
+                Scroll_Conversation_Up.Visible = true;
+                Scroll_Conversation_Down.Visible = true;
+                for (int Colour = 305; Colour >= 55; Colour--)
+                {
+                    await Task.Delay(1); //delay
+                    Scroll_Conversation_Up.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50);
+                    Scroll_Conversation_Down.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50);
+                }
+            }
         }
 
         private void Scroll_AI_Message_Up(int Message_Animation_Timer)
@@ -1242,12 +1339,6 @@ namespace UoL_Virtual_Assistant
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Connection_Status = 1;
-            Initiate_Connection();
-        }
-
         private void Scroll_Conversation_Up_Click(object sender, EventArgs e)
         {
             Scroll_Content_UpDown(1);
@@ -1256,6 +1347,39 @@ namespace UoL_Virtual_Assistant
         private void Scroll_Conversation_Down_Click(object sender, EventArgs e)
         {
             Scroll_Content_UpDown(0);
+        }
+
+        private void Conversation_Exit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (Open_Conversation_Window == 0) //if the window status is set to hidden
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                DialogResult Oi = MessageBox.Show("Only press this button once the conversation window is opened or you risk Bruce breaking free of where he's supposed to be and running rampage around the desktop! Am I an idiot?", "Oi", MessageBoxButtons.YesNo);
+                if (Oi == DialogResult.Yes)
+                {
+                    //do something
+                }
+                else if (Oi == DialogResult.No)
+                {
+                    System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=sCNrK-n68CM");
+                }
+            }
+
+            else
+            {
+                Connection_Status = 1;
+                //Initiate_Connection();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AI_Response_Handshake = true;
         }
     }
 }
