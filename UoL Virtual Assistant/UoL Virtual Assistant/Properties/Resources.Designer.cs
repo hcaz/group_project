@@ -173,6 +173,26 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Power_Button__for_light_themes_ {
+            get {
+                object obj = ResourceManager.GetObject("Power Button (for light themes)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Power_Button__for_light_themes_1 {
+            get {
+                object obj = ResourceManager.GetObject("Power Button (for light themes)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Send_Icon__for_light_themes_ {
             get {
                 object obj = ResourceManager.GetObject("Send Icon (for light themes)", resourceCulture);
