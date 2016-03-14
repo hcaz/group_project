@@ -53,7 +53,7 @@ namespace UoL_Virtual_Assistant
                 bool foundYou = false;
                 string studentName = "";
 
-                using (XmlReader studentRead = XmlReader.Create("../Debug/data/students.xml")) //Creates XML Reader for students file
+                using (XmlReader studentRead = XmlReader.Create("../../students.xml")) //Creates XML Reader for students file
                 {
                     while (studentRead.Read())
                     {
@@ -107,7 +107,7 @@ namespace UoL_Virtual_Assistant
                 bool foundYou = false;
                 string studentName = "";
 
-                using (XmlReader studentRead = XmlReader.Create("../Debug/data/students.xml")) //Creates XML Reader for students file
+                using (XmlReader studentRead = XmlReader.Create("../../students.xml")) //Creates XML Reader for students file
                 {
                     while (studentRead.Read())
                     {
