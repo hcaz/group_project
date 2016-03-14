@@ -23,7 +23,7 @@ namespace UoL_Virtual_Assistant
 
             ScrapeData data = new ScrapeData();
             //data.freePCData();
-            //MessageBox.Show("There are "+ data.totalPcs+ " pc's in total and " + data.freePcs + " of them are free.\n(Thats " + data.freePcsWin7 + " free win7 pc's and " + data.freePcsThin + " free thin clients.)");
+            //MessageBox.Show("There are " + data.totalPcs + " pc's in total and " + data.freePcs + " of them are free.\n(Thats " + data.freePcsWin7 + " free win7 pc's and " + data.freePcsThin + " free thin clients.)");
 
             Application.Run(new Main_UI());
         }
