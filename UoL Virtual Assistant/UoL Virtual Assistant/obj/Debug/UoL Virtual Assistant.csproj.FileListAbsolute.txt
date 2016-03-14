@@ -22,3 +22,15 @@ C:\Users\Jack_\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual 
 C:\Users\Jack_\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL_Virtual_Assistant.Properties.Resources.resources
 C:\Users\Jack_\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.csproj.GenerateResource.Cache
 C:\Users\Jack_\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.pdb
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\UoL Virtual Assistant.exe.config
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.exe
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.pdb
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\UoL Virtual Assistant.exe
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\UoL Virtual Assistant.pdb
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.csprojResolveAssemblyReference.cache
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL_Virtual_Assistant.First_Run_UI.resources
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL_Virtual_Assistant.Main_UI.resources
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL_Virtual_Assistant.Properties.Resources.resources
+C:\Users\Lukas\Documents\GitHub\group_project\UoL Virtual Assistant\UoL Virtual Assistant\obj\Debug\UoL Virtual Assistant.csproj.GenerateResource.Cache
