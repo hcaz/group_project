@@ -41,6 +41,8 @@ namespace UoL_Virtual_Assistant
         TextBox[] User_Message = new TextBox[25];
         TextBox[] User_Message_Shell = new TextBox[25];
 
+        Random Randomiser = new Random(); //creates a randomiser item
+
         public Main_UI()
         {
             Read_User_Data(); //read in the user data from the settings file
@@ -416,8 +418,7 @@ namespace UoL_Virtual_Assistant
                 if (Connection_Status == 1) //if the connection status is live
                 {
                     Connecting_Label.Text = "Connection Established"; //change the text to this
-                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window
-                    Random Randomiser = new Random(); //creates a randomiser item
+                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window                    
                     Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
                     int Preferred_Agent_Probability = Randomiser.Next(0, 100); //selects a random number between 0 and 4
@@ -582,13 +583,13 @@ namespace UoL_Virtual_Assistant
                     {
                         TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
                         TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
-                        string OOH_Bot_Response = "it is out of work hours. If you need to contact the team personally, please get in touch during 9am and 6pm, Monday to Friday. ";
+                        string OOH_Bot_Response = "it is out of work hours. If you need to contact them personally, please get in touch during 9am and 6pm, Monday to Friday. ";
                         if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                         {
-                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact the team personally please come back after 1pm and there will be someone on hand to answer your query. ";
+                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact them personally please come back after 1pm and there will be someone on hand to answer your query. ";
                         }
 
-                        Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available, otherwise exit the chat.";
+                        Latest_AI_Message = "Hi. Unfortunately our team is unable to respond as " + OOH_Bot_Response + "If you like, you can respond to this message with your query and the team will get back to you once they are available, otherwise exit the chat.";
                         AI_Response_Handshake = true;
                     }
 
@@ -599,59 +600,8 @@ namespace UoL_Virtual_Assistant
 
                     if (AI_Response_Handshake == true)
                     {
-                        if (Connected_Agent == 4)
-                        {
-                            Create_AI_Message();
-                        }
-
-                        else
-                        {
-                            Agent_Status_Indicator.Text = "Typing";
-                            int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
-                            MessageBox.Show(Typing_Time.ToString());
-                            await Task.Delay(Typing_Time / 10);
-
-                            if (Randomiser.Next(0, 100) > 50)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 10000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 3);
-
-                            if (Randomiser.Next(0, 100) > 60)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 5000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 3);
-
-                            if (Randomiser.Next(0, 100) > 60)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 3000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 5);
-
-                            if (Randomiser.Next(0, 100) > 75)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 5000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 10);
-                            Create_AI_Message();
-                            Agent_Status_Indicator.Text = "Online";
-                        }
-
-                                           
-                    }                 
+                        Realistic_AI_Typing();
+                    }
                 }
             }
 
@@ -659,8 +609,109 @@ namespace UoL_Virtual_Assistant
             {
                 //do nothing
             }
-
         }
+
+        private async void Realistic_AI_Typing()
+        {
+            if (Connected_Agent == 400)
+            {
+                Create_AI_Message();
+            }
+
+            else
+            {
+                Agent_Status_Indicator.Text = "Typing";
+                int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
+                MessageBox.Show(Typing_Time.ToString());
+                await Task.Delay(Typing_Time / 10);
+
+                if (Randomiser.Next(0, 100) > 50)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 10000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 3);
+
+                if (Randomiser.Next(0, 100) > 60)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 5000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 3);
+
+                if (Randomiser.Next(0, 100) > 60)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 3000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 5);
+
+                if (Randomiser.Next(0, 100) > 75)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 5000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 10);
+                Agent_Status_Indicator.Text = "Online";
+
+                Create_AI_Mistakes(Typing_Time);
+                Create_AI_Message(); //display the final message
+            }
+        }
+
+        private void Create_AI_Mistakes(int Typing_Time)
+        {            
+            int Mistake_Chance = 0; //creates an integer to store the possibility of a mistake and sets it to 0 for now
+            switch (Connected_Agent)
+            {
+                case 0: //bruce
+                    Mistake_Chance = 1; //10% chance of mistakes
+                    break;
+                case 1: //hal
+                    Mistake_Chance = 0; //0% chance of mistakes
+                    break;
+                case 2: //jason
+                    Mistake_Chance = 7; //70% chance of mistakes
+                    break;
+                case 3: //suzie
+                    Mistake_Chance = 2; //20% chance of mistakes
+                    break;
+            }
+
+            int Maximum_Mistakes = Typing_Time.ToString().Length;
+
+            MessageBox.Show(Maximum_Mistakes.ToString());
+
+            int Mistake_Counter = 0;
+            for (int Mistake_Generator = 0; Mistake_Generator <= (Mistake_Chance); Mistake_Generator++)
+            {
+                if (Randomiser.Next(0, 100) <= 10)
+                {
+                    if(Mistake_Counter == Maximum_Mistakes)
+                    {
+                        break;
+                    }
+
+                    char[] Latest_AI_Message_With_Mistake = Latest_AI_Message.ToCharArray();
+                    int Character_For_Mistake = Randomiser.Next(0, Latest_AI_Message.Length - 1);
+                    Latest_AI_Message_With_Mistake[Character_For_Mistake] = '#';
+                    Latest_AI_Message = new string(Latest_AI_Message_With_Mistake);
+
+                    Mistake_Counter++;
+                }
+            }
+
+            return;
+        }
+        
 
         private async void Create_AI_Message()
         {
@@ -1133,7 +1184,7 @@ namespace UoL_Virtual_Assistant
                     User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
                 }
             }
-        }        
+        }           
 
         private async void Scroll_Content_UpDown(int Scroll_Direction)
         {
