@@ -15,23 +15,29 @@ namespace UoL_Virtual_Assistant
     {
 
         XmlDocument staffData = new XmlDocument();
+        XmlDocument keywordData = new XmlDocument();
         XmlNodeList staffNames;
-
-        string[] questionWords = { "where", "who", "when", "how", "why" };
-        string[] greetingWords = { "hello", "hi", "howdy", "hey", "heya" };
+        XmlNodeList questionWords;
+        XmlNodeList greetingWords;
+        XmlNodeList keyWords;
+        
         string[] punctuation = { "?", "!", "." };
 
         public void SplitInput(string input)
         {
-            staffData.Load("staffData.xml");
+            staffData.Load("../../staffData.xml");
+            keywordData.Load("../../keywordData.xml");
             staffNames = staffData.SelectNodes("names/faculty");
-            
+            questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
+            greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
+            keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
+
             input.ToLower();
 
             string regexPattern = @"(\? )|(\! )|(\. )|(\?)|(\!)|(\.)";
             string[] sentences = Regex.Split(input, regexPattern);
             string[] separatedWords = input.Split(' ');
-            
+
             sentences = SentenceCleanup(sentences);
 
             string[] contexts = AnalyseContext(sentences);
@@ -84,20 +90,20 @@ namespace UoL_Virtual_Assistant
 
             for (int i = 0; i < sentences.Length; i++)
             {
-                for (int j = 0; j < questionWords.Length; j++)
+                for (int j = 0; j < questionWords[0].ChildNodes.Count; j++)
                 {
                     //check against question words in array
-                    if (sentences[i].Contains(questionWords[j]))
+                    if (sentences[i].Contains(questionWords[0].ChildNodes[j].Name.ToLower()))
                     {
-                        contexts[i] = contexts[i] + "[Question: " + questionWords[j] + "]";
+                        contexts[i] = contexts[i] + "[Question: " + questionWords[0].ChildNodes[j].Name.ToLower() + "]";
                     }
                 }
-                for (int j = 0; j < greetingWords.Length; j++)
+                for (int j = 0; j < greetingWords[0].ChildNodes.Count; j++)
                 {
                     //check against greeting words in array
-                    if (sentences[i].Contains(greetingWords[j]))
+                    if (sentences[i].Contains(greetingWords[0].ChildNodes[j].Name.ToLower()))
                     {
-                        contexts[i] = contexts[i] + "[Greeting: " + greetingWords[j] + "]";
+                        contexts[i] = contexts[i] + "[Greeting: " + greetingWords[0].ChildNodes[j].Name.ToLower() + "]";
                     }
                 }
                 for (int j = 0; j < sentences.Length; j++)
@@ -105,11 +111,21 @@ namespace UoL_Virtual_Assistant
                     for (int k = 0; k < staffNames[0].ChildNodes.Count; k++)
                     {
                         //check against staff names in the xml data file - any matching nodes can then be passed on to the output
-                        if ((sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()) || 
-                             sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[1].InnerText.ToLower())) &&
-                             !contexts[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[1].InnerText.ToLower()))
+                        if (sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()) ||
+                             sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[1].InnerText.ToLower()))
                         {
-                            contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + " " + staffNames[0].ChildNodes[k].ChildNodes[1].InnerText + "]";
+                            //error checking for context, can cause issues otherwise
+                            if (contexts[i] != null)
+                            {
+                                if (!contexts[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[1].InnerText.ToLower()))
+                                {
+                                    contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + " " + staffNames[0].ChildNodes[k].ChildNodes[1].InnerText + "]";
+                                }
+                            }
+                            else
+                            {
+                                contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + " " + staffNames[0].ChildNodes[k].ChildNodes[1].InnerText + "]";
+                            }
                         }
                     }
                 }
