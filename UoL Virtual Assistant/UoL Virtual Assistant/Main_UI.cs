@@ -25,6 +25,7 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
+        int Open_Profile_Card = 0; //the agent's profile card is not visible
         int AI_Message_Counter = 0;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
@@ -534,26 +535,55 @@ namespace UoL_Virtual_Assistant
                         await Task.Delay(1); //delay
                     }
                     await Task.Delay(2000); //delay
-                    Agent_Name_Label.Size = new Size(175, 31); //resize the name label
-                    Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
-                    Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
-                    Agent_Profile_Image_Size = 100; //set the profile image size at 100
-                    Conversation_Area_Header.Visible = true;
-                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 30; Profile_Picture_Relocation++)
+
+                    //Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                    //Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
+
+                    Agent_Profile_Image_Size = 100; //set the profile image size at 100                    
+                    int Label_Color = 0;
+                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 155; Profile_Picture_Relocation++)
                     {
-                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
-                        Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
-                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 3);
-                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y - 7);
-                        if (Profile_Picture_Relocation >= 25) //when the number of steps reaches 25 and exceeds it
+
+                        if (Profile_Picture_Relocation < 60)
                         {
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 3); //give it an extra boost
-                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y - 2); //give it an extra boost
+                            Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 1, Agent_Profile_Image_Size - 1);
+                            Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 1);
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1);
+                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color + 4, Label_Color + 4, Label_Color + 4);
+                            Label_Color = (Label_Color + 4);
+
+                            if (Profile_Picture_Relocation % 2 == 0)
+                            {
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 1, Agent_Profile_Image.Location.Y);
+                            }
                         }
 
-                        if (Profile_Picture_Relocation == 28) //when the number of steps reaches 28
+                        if (Profile_Picture_Relocation > 60 && Profile_Picture_Relocation <= 105)
                         {
+                            Agent_Name_Label.Visible = false;
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1);
+                        }
+
+                        if (Profile_Picture_Relocation == 105)
+                        {
+                            Conversation_Area_Header.Visible = true;
+                            await Task.Delay(1000);
+                            Agent_Name_Label.Size = new Size(175, 31); //resize the name label
+                            Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                            Agent_Name_Label.ForeColor = Color.FromArgb(0, 0, 0);
+                            Agent_Name_Label.Location = new Point(Agent_Status_Indicator.Location.X - 2, Agent_Status_Indicator.Location.X - 35);
+                            Label_Color = 255;
+                            Agent_Profile_Image.BringToFront();
+                        }
+
+                        if (Profile_Picture_Relocation > 105)
+                        {
+                            Agent_Name_Label.Visible = true;
                             Agent_Status_Indicator.Visible = true; //make the indicator visible
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y);
+                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color - 5, Label_Color - 5, Label_Color - 5);
+                            Agent_Status_Indicator.ForeColor = Color.FromArgb(Label_Color - 5, Label_Color - 5, Label_Color - 5);
+                            Label_Color = (Label_Color - 5);
                         }
 
                         await Task.Delay(1); //delay
@@ -613,7 +643,7 @@ namespace UoL_Virtual_Assistant
 
         private async void Realistic_AI_Typing()
         {
-            if (Connected_Agent == 400)
+            if (Connected_Agent == 4)
             {
                 Create_AI_Message();
             }
@@ -710,8 +740,7 @@ namespace UoL_Virtual_Assistant
             }
 
             return;
-        }
-        
+        }      
 
         private async void Create_AI_Message()
         {
@@ -1434,7 +1463,7 @@ namespace UoL_Virtual_Assistant
 
             if ((Current_Day >= DayOfWeek.Monday) && (Current_Day <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((Current_Time >= Opening_Hours) && (Current_Time < Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
+                if ((Current_Time >= Opening_Hours) && (Current_Time > Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
                 {
                     if((Current_Time > new TimeSpan(11, 55, 0)) && (Current_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
@@ -1538,6 +1567,48 @@ namespace UoL_Virtual_Assistant
         private void button2_Click(object sender, EventArgs e)
         {
             AI_Response_Handshake = true;
+        }
+
+        private void Agent_Profile_Image_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private async void Agent_Profile_Card()
+        {
+            if (Open_Profile_Card == 0) //if the card is not currently open
+            {
+                //GROW IMAGE CARD
+                Agent_Profile_Image.Enabled = false;
+                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100                    
+                for (int Timer = 0; Timer < 66; Timer++)
+                {
+                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 1, Agent_Profile_Image_Size + 1);
+                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size + 1);
+                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 1, Agent_Profile_Image.Location.Y + 1);
+                    await Task.Delay(1); //delay
+                }
+
+                Open_Profile_Card = 1;
+                Agent_Profile_Image.Enabled = true;
+            }
+
+            else
+            {
+                //SHRINK IMAGE CARD
+                Agent_Profile_Image.Enabled = false;
+                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100                    
+                for (int Timer = 0; Timer < 66; Timer++)
+                {
+                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 1, Agent_Profile_Image_Size - 1);
+                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 1);
+                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1);
+                    await Task.Delay(1); //delay
+                }
+
+                Open_Profile_Card = 0;
+                Agent_Profile_Image.Enabled = true;
+            }
         }
     }
 }
