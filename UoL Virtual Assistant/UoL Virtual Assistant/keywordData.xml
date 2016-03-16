@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KEYWORDS>
+	<GREETINGS>
+		<HELLO></HELLO>
+		<HI></HI>
+		<HOWDY></HOWDY>
+		<HEY></HEY>
+		<HEYA></HEYA>
+		<AHOY></AHOY>
+		<WASSUP></WASSUP>
+		<HEYY></HEYY>
+		<HIYA></HIYA>
+	</GREETINGS>
+
+	<QUESTIONS>
+		<WHERE></WHERE>
+		<WHO></WHO>
+		<WHEN></WHEN>
+		<HOW></HOW>
+		<WHY></WHY>
+	</QUESTIONS>
+	
+	<MISC>
+		<ACCOMODATION></ACCOMODATION>
+		<BAR></BAR>
+		<DRINKS></DRINKS>
+		<ENTERTAINMENT></ENTERTAINMENT>
+	</MISC>	
+</KEYWORDS>
