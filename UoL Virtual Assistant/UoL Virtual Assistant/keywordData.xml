@@ -18,6 +18,7 @@
 		<WHEN></WHEN>
 		<HOW></HOW>
 		<WHY></WHY>
+		<WHAT></WHAT>
 	</QUESTIONS>
 	
 	<MISC>
@@ -25,5 +26,9 @@
 		<BAR></BAR>
 		<DRINKS></DRINKS>
 		<ENTERTAINMENT></ENTERTAINMENT>
+		<GYM></GYM>
 	</MISC>	
+	<IGNOREWORDS>
+		he le can yo hi i
+	</IGNOREWORDS>
 </KEYWORDS>
