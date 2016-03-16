@@ -19,7 +19,7 @@ namespace UoL_Virtual_Assistant
 
             //ParseInput testing, comment out when not testing
             //ParseInput PI = new ParseInput();
-            //PI.SplitInput("hello! Do you know where I can find Amr? He's my bae. I like to shoot hoops with my bois!?!????.....??!?!?!?!?....!?!.?!?!?");
+            //PI.SplitInput("hello! Do you know where I can find Bruce Hargrave? He's my bae. I like to shoot hoops with my bois!?!????.....??!?!?!?!?....!?!.?!?!?");
 
             ScrapeData data = new ScrapeData();
             //data.freePCData();

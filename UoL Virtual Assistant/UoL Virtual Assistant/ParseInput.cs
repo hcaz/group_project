@@ -25,9 +25,9 @@ namespace UoL_Virtual_Assistant
 
         public void SplitInput(string input)
         {
-            staffData.Load("../../staffData.xml");
+            staffData.Load("../../staff.xml");
             keywordData.Load("../../keywordData.xml");
-            staffNames = staffData.SelectNodes("names/faculty");
+            staffNames = staffData.SelectNodes("STAFF");
             questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
             greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
@@ -87,6 +87,14 @@ namespace UoL_Virtual_Assistant
         string[] AnalyseContext(string[] sentences)
         {
             string[] contexts = new string[sentences.Length];
+            string[][] splitWords = new string[sentences.Length][];
+
+            for (int i = 0; i < splitWords.Length; i++)
+            {
+                 splitWords[i] = sentences[i].Split(' ');
+            }
+
+            //MessageBox.Show(splitWords[1][0] + " " + splitWords[1][1]);
 
             for (int i = 0; i < sentences.Length; i++)
             {
@@ -111,20 +119,19 @@ namespace UoL_Virtual_Assistant
                     for (int k = 0; k < staffNames[0].ChildNodes.Count; k++)
                     {
                         //check against staff names in the xml data file - any matching nodes can then be passed on to the output
-                        if (sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()) ||
-                             sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[1].InnerText.ToLower()))
+                        if (sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()))
                         {
                             //error checking for context, can cause issues otherwise
                             if (contexts[i] != null)
                             {
-                                if (!contexts[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[1].InnerText.ToLower()))
+                                if (!contexts[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()))
                                 {
-                                    contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + " " + staffNames[0].ChildNodes[k].ChildNodes[1].InnerText + "]";
+                                    contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
                                 }
                             }
                             else
                             {
-                                contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + " " + staffNames[0].ChildNodes[k].ChildNodes[1].InnerText + "]";
+                                contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
                             }
                         }
                     }
