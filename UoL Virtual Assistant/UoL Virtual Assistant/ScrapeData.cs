@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Net;
 using System.IO;
 using System.Xml;
-using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 
 namespace UoL_Virtual_Assistant
 {
@@ -17,6 +18,10 @@ namespace UoL_Virtual_Assistant
         public int freePcs = 0;
         public int freePcsWin7 = 0;
         public int freePcsThin = 0;
+        public bool libraryOpenNow = false;
+        public bool libraryDeskOpenNow = false;
+        public string libraryOpen = "";
+        public string libraryDeskOpen = "";
 
         public bool freePCData()
         {
@@ -72,12 +77,27 @@ namespace UoL_Virtual_Assistant
             return true;
         }
 
-        public bool staffData(string query)
+        public bool libraryOpening()
         {
-            string staffSearch = "http://staff.lincoln.ac.uk/search/json2?q=" + query;
+            string url = "https://api3.libcal.com/api_hours_today.php?iid=1718&lid=604&format=xml&context=object";
+            
+            XmlDocument doc = new XmlDocument();
+            doc.Load(url);
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/libcal/locations/location");
 
-
-             //JsonConvert.
+            foreach (XmlNode node in nodes)
+            {
+                if (node.SelectSingleNode("lid").InnerText == "604")
+                {
+                    this.libraryOpenNow = Boolean.Parse(node.SelectSingleNode("times").SelectSingleNode("currently_open").InnerText);
+                    this.libraryOpen = Regex.Replace(node.SelectSingleNode("rendered").InnerText, @"<[^>]+>|&nbsp", "").Replace("&ndash;", "-").Trim();
+                }
+                else
+                {
+                    this.libraryDeskOpenNow = Boolean.Parse(node.SelectSingleNode("times").SelectSingleNode("currently_open").InnerText);
+                    this.libraryDeskOpen = Regex.Replace(node.SelectSingleNode("rendered").InnerText, @"<[^>]+>|&nbsp;", "").Replace("&ndash;", "-").Trim();
+                }
+            }
 
             return true;
         }

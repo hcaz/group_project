@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Xml;
 
 namespace UoL_Virtual_Assistant
 {
@@ -15,8 +16,8 @@ namespace UoL_Virtual_Assistant
     {
         //globally accessed values
         string Student_ID; //creates a string that will store the Student ID
-        string Student_First_Name; //creates a string that will store the student first name
-        string Student_Last_Name; //creates a string that will store the student last name
+        string Student_First_Name = ""; //creates a string that will store the student first name
+        string Student_Last_Name = ""; //creates a string that will store the student last name
         string Student_Course; //creates a string that will store the course that the student is on
         string Universal_Theme_Value; //creates a string that will store the current theme value
         int R; int G; int B; //creates R,G,B values for themes
@@ -24,14 +25,21 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
-
         int AI_Message_Counter = 0;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
         int Connected_Agent; //indicates the agent what will connect with the user
 
         string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
+
         string Latest_AI_Message = "";
+        bool AI_Response_Handshake = false;
+
+        TextBox[] AI_Message = new TextBox[25];
+        TextBox[] AI_Message_Shell = new TextBox[25];
+
+        TextBox[] User_Message = new TextBox[25];
+        TextBox[] User_Message_Shell = new TextBox[25];
 
         public Main_UI()
         {
@@ -41,6 +49,112 @@ namespace UoL_Virtual_Assistant
                 First_Run_UI FirstRun = new First_Run_UI(); //create a new instance of the First_Run_UI
                 FirstRun.ShowDialog(); //show the new window and halt Main_UI until it is closed
                 Read_User_Data(); //read in the user data from the settings file again (with new information this time)
+
+                bool foundYou = false;
+                string studentName = "";
+
+                using (XmlReader studentRead = XmlReader.Create("../../students.xml")) //Creates XML Reader for students file
+                {
+                    while (studentRead.Read())
+                    {
+                        if (studentRead.IsStartElement())
+                        {
+                            if (studentRead.Name == "_" + Student_ID)
+                            {
+                                foundYou = true;
+                            }
+                            if (studentRead.Name == "NAME" && foundYou)
+                            {
+                                studentName = studentRead.ReadElementContentAsString();
+                            }
+                        }
+                        if (studentRead.NodeType == XmlNodeType.EndElement && foundYou)
+                        {
+                            foundYou = false;
+                        }
+                    }
+                }
+
+                bool firstName = true;
+                bool spaced = false;
+                foreach (char c in studentName)
+                {
+                    if (char.IsWhiteSpace(c) == true && spaced)
+                    {
+                        Student_Last_Name += c;
+                        continue;
+                    }
+
+                    if (char.IsWhiteSpace(c) == true)
+                    {
+                        firstName = false;
+                        spaced = true;
+                        continue;
+                    }
+
+                    if (firstName)
+                    {
+                        Student_First_Name += c;
+                    }
+                    else
+                    {
+                        Student_Last_Name += c;
+                    }
+                }
+            }
+            else
+            {
+                bool foundYou = false;
+                string studentName = "";
+
+                using (XmlReader studentRead = XmlReader.Create("../../students.xml")) //Creates XML Reader for students file
+                {
+                    while (studentRead.Read())
+                    {
+                        if (studentRead.IsStartElement())
+                        {
+                            if (studentRead.Name == "_" + Student_ID)
+                            {
+                                foundYou = true;
+                            }
+                            if (studentRead.Name == "NAME" && foundYou)
+                            {
+                                studentName = studentRead.ReadElementContentAsString();
+                            }
+                        }
+                        if (studentRead.NodeType == XmlNodeType.EndElement && foundYou)
+                        {
+                            foundYou = false;
+                        }
+                    }
+                }
+
+                bool firstName = true;
+                bool spaced = false;
+                foreach (char c in studentName)
+                {
+                    if (char.IsWhiteSpace(c) == true && spaced)
+                    {
+                        Student_Last_Name += c;
+                        continue;
+                    }
+
+                    if (char.IsWhiteSpace(c) == true)
+                    {
+                        firstName = false;
+                        spaced = true;
+                        continue;
+                    }
+
+                    if (firstName)
+                    {
+                        Student_First_Name += c;
+                    }
+                    else
+                    {
+                        Student_Last_Name += c;
+                    }
+                }
             }
 
             InitializeComponent(); //initialize the component
@@ -92,8 +206,12 @@ namespace UoL_Virtual_Assistant
             Conversation_Window.Location = new Point(37, 410); //move the window so that it is off screen
             Agent_Profile_Image.Location = new Point(163, 236); //move the profile image to the proper location
             Agent_Profile_Image.Size = new Size(10, 10); //resize it
-            Conversation_Exit.ForeColor = Color.FromArgb(255,255,255); //set the exit button colour to white
+            Conversation_Exit.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
+            Scroll_Conversation_Up.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
+            Scroll_Conversation_Down.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
             Conversation_Exit.Visible = false; //make the exit button invisible
+            Scroll_Conversation_Up.Visible = false;
+            Scroll_Conversation_Down.Visible = false;
         }
 
         public void Tooltips_Generation()
@@ -177,7 +295,7 @@ namespace UoL_Virtual_Assistant
                 this.BackgroundImage = null; //remove the background image
             }
 
-                this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background
+            this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background
         }
 
         private void Message_Input_TextChanged(object sender, EventArgs e)
@@ -192,6 +310,14 @@ namespace UoL_Virtual_Assistant
                 Message_Input.ScrollBars = ScrollBars.None; //hide the vertical scroll bar
             }
 
+        }
+
+        private void Message_Input_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                Send_Message.PerformClick();               
+            }
         }
 
         private void UoL_Branding_Click(object sender, EventArgs e)
@@ -229,10 +355,9 @@ namespace UoL_Virtual_Assistant
                     break;
                 case 1:
                     Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
-                    Message_Input.Text = ""; //clears the text field
+                    Message_Input.Text = String.Empty;
 
-                    int AI_or_Human_Indicator = 1;
-                    Create_Message(AI_or_Human_Indicator);
+                    Create_User_Message();
                     break;
             }
         }
@@ -241,6 +366,8 @@ namespace UoL_Virtual_Assistant
         {
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
             {
+                Send_Message.Enabled = false;
+                Send_Message.BackgroundImage = Properties.Resources.Send_Icon__for_light_themes_;
                 Conversation_Window.Visible = true; //make the window visible
                 Open_Conversation_Window = 1; //set the window status as open
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
@@ -248,332 +375,777 @@ namespace UoL_Virtual_Assistant
                     await Task.Delay(1); //delay for 1/100 of a second
                     Conversation_Window.Location = new Point(Conversation_Window.Location.X, Conversation_Window.Location.Y - 10); //move the window so that it is on screen
                 }
-            }
 
-            Connecting_Label.Visible = true; //makes the connecting label visible
-            Conversation_Exit.Visible = true; //make the exit button visible
-            bool Exit_Visible = false;
-            while (Connection_Status == 0) //while the user is not connected to an agent
-            {
-                for (int Colour = 305; Colour >= 55; Colour--) //fades in the connecting label
+
+                Connecting_Label.Visible = true; //makes the connecting label visible
+                Conversation_Exit.Visible = true; //make the exit button visible
+                bool Exit_Visible = false;
+                while (Connection_Status == 0) //while the user is not connected to an agent
                 {
-                    await Task.Delay(1); //delay
-                    Connecting_Label.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
-
-                    if (Exit_Visible == false)
+                    for (int Colour = 305; Colour >= 55; Colour--) //fades in the connecting label
                     {
-                        Conversation_Exit.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
-                    }
-                }
+                        await Task.Delay(1); //delay
+                        Connecting_Label.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
 
-                Exit_Visible = true; //the exit button is visible
-
-                for (int Colour = 0; Colour < 255; Colour++) //fades out the connecting label
-                {
-                    if (Connection_Status == 1) //if the connection status changes
-                    {
-                        Connecting_Label.ForeColor = Color.FromArgb(0, 0, 0); //paint it black
-                        break; //break out of the fading cycle
-                    }
-
-                    if (Colour == 201) //if the value Colour is equal to 201
-                    {
-                        break; //break so that the next iteration will not exceed 255 for the colour value and crash
-                    }
-
-                    await Task.Delay(1); //delay
-                    Connecting_Label.ForeColor = Color.FromArgb(Colour + 50, Colour + 50, Colour + 50); //reduce the colour value of the label by 50 on each loop
-                }
-            }
-
-            if (Connection_Status == 1) //if the connection status is live
-            {
-                Connecting_Label.Text = "Connection Established"; //change the text to this
-                Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window
-                Random Randomise_Agent = new Random();
-                Connected_Agent = Randomise_Agent.Next(0, 4); //selects a random number between 0 and 4
-
-                Random Randomise_Probability = new Random();
-                int Preferred_Agent_Probability = Randomise_Probability.Next(0, 100); //selects a random number between 0 and 4
-                switch (Preferred_Agent) //apply the appropriate profile picture and label text
-                {
-                    case "0": //if the user does not have a preferred agent
-                        break;
-                    case "1": //if their preferred agent is Bruce
-                        if(Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                        if (Exit_Visible == false)
                         {
-                            Connected_Agent = 0; //give them their preferred agent
+                            Conversation_Exit.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
                         }
-                        break;
-                    case "2": //if their preferred agent is Hal
-                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                    }
+
+                    Exit_Visible = true; //the exit button is visible
+
+                    for (int Colour = 0; Colour < 255; Colour++) //fades out the connecting label
+                    {
+                        if (Connection_Status == 1) //if the connection status changes
                         {
-                            Connected_Agent = 1; //give them their preferred agent
+                            Connecting_Label.ForeColor = Color.FromArgb(0, 0, 0); //paint it black
+                            break; //break out of the fading cycle
                         }
-                        break;
-                    case "3": //if their preferred agent is Jason
 
-                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                        if (Colour == 201) //if the value Colour is equal to 201
                         {
-                            Connected_Agent = 2; //give them their preferred agent
+                            break; //break so that the next iteration will not exceed 255 for the colour value and crash
                         }
-                        break;
-                    case "4": //if their preferred agent is Suzie
-                        if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
-                        {
-                            Connected_Agent = 3; //give them their preferred agent
-                        }
-                        break;
+
+                        await Task.Delay(1); //delay
+                        Connecting_Label.ForeColor = Color.FromArgb(Colour + 50, Colour + 50, Colour + 50); //reduce the colour value of the label by 50 on each loop
+                    }
                 }
 
-
-                Is_Agent_Available(); //check if the agent is "available"
-                await Task.Delay(1000); //delay
-
-                for (int Connection_Hide = 0; Connection_Hide < 50; Connection_Hide++) //hide the connection text
+                if (Connection_Status == 1) //if the connection status is live
                 {
-                    Connecting_Label.Location = new Point(Connecting_Label.Location.X, Connecting_Label.Location.Y + 5); //move the text down
-                    await Task.Delay(1); //delay
-                }
+                    Connecting_Label.Text = "Connection Established"; //change the text to this
+                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window
+                    Random Randomiser = new Random(); //creates a randomiser item
+                    Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
-                switch (Connected_Agent) //apply the appropriate profile picture and label text
-                {
-                    case 0: //if the agent is bruce
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.BruceProfilePic;
-                        Agent_Name_Label.Text = "Bruce Hargrave";
-                        break;
-                    case 1: //if the agent is hal
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.HalProfilePic;
-                        Agent_Name_Label.Text = "Hal Chín-Nghìn";
-                        break;
-                    case 2: //if the agent is jason
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.JasonProfilePic;
-                        Agent_Name_Label.Text = "Jason Bradbury";
-                        break;
-                    case 3: //if the agent is suzie
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.SuziProfilePic;
-                        Agent_Name_Label.Text = "Suzi Perry";
-                        break;
-                    case 4: //if no agent is available
-                        Agent_Profile_Image.BackgroundImage = Properties.Resources.GenericProfilePic;
-                        Agent_Name_Label.Text = "Out of Hours";
-                        break;
-                }
-
-                Agent_Profile_Image.Visible = true; //make the agent profile picture visible
-                int Agent_Profile_Image_Starting_X = Agent_Profile_Image.Location.X; //grab the profile picture's X location
-                int Agent_Profile_Image_Starting_Y = Agent_Profile_Image.Location.Y; //grab the profile picture's Y location
-                int Agent_Profile_Image_Size = 10; //set the profile picture's X & Y size to 10
-                bool Resized_Image = false; //creates a bool for the resizing process
-
-                while (Resized_Image == false) //while the profile picture has not yet been fully resized
-                {
-                    switch (Agent_Profile_Image_Size)
+                    int Preferred_Agent_Probability = Randomiser.Next(0, 100); //selects a random number between 0 and 4
+                    switch (Preferred_Agent) //apply the appropriate profile picture and label text
                     {
-                        case 20: //if the image is at 20% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "0": //if the user does not have a preferred agent
                             break;
-                        case 40: //if the image is at 40% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "1": //if their preferred agent is Bruce
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 0; //give them their preferred agent
+                            }
                             break;
-                        case 60: //if the image is at 60% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "2": //if their preferred agent is Hal
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 1; //give them their preferred agent
+                            }
                             break;
-                        case 80: //if the image is at 80% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                        case "3": //if their preferred agent is Jason
+
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 2; //give them their preferred agent
+                            }
                             break;
-                        case 100: //if the image is at 100% size
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
-                            Resized_Image = true; //stop the loop
+                        case "4": //if their preferred agent is Suzie
+                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            {
+                                Connected_Agent = 3; //give them their preferred agent
+                            }
                             break;
                     }
 
-                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size++, Agent_Profile_Image_Size++); //increment each of the size axis by 1 on each loop
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1); //adjust the location of the image by 1 on each axis every loop
-                    await Task.Delay(1); //delay
-                }
 
-                await Task.Delay(1000); //delay
-                for (int Profile_Picture_Timing = 0; Profile_Picture_Timing < 20; Profile_Picture_Timing++) //while the profile picture has not yet been fully resized
-                {
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //adjust the height of the image by 1 on every loop
-
-                    if (Profile_Picture_Timing >= 15) //if the profile picture has moved 15 steps or more out of 20
-                    {
-                        Agent_Name_Label.Visible = true; //make the agent name label visible
-                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X, Agent_Name_Label.Location.Y + 1); //adjust the height of the label by 1 on every loop
-                    }
-
-                    await Task.Delay(1); //delay
-                }
-                await Task.Delay(2000); //delay
-                Agent_Name_Label.Size = new Size(175, 31); //resize the name label
-                Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
-                Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
-                Agent_Profile_Image_Size = 100; //set the profile image size at 100
-                Conversation_Area_Header.Visible = true;
-                for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 30; Profile_Picture_Relocation++)
-                {
-                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
-                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 3);
-                    Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y - 7);
-                    if (Profile_Picture_Relocation >= 25) //when the number of steps reaches 25 and exceeds it
-                    {
-                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 3); //give it an extra boost
-                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y - 2); //give it an extra boost
-                    }
-
-                    if (Profile_Picture_Relocation == 28) //when the number of steps reaches 28
-                    {
-                        Agent_Status_Indicator.Visible = true; //make the indicator visible
-                    }
-
-                    await Task.Delay(1); //delay
-                }
-
-                Random Randomise_Wait_Time = new Random(); //create a new randomiser
-                int Wait_Time = Randomise_Wait_Time.Next(0, 15); //selects a random number between 0 and 15 for the wait time
-
-                if(Connected_Agent == 4)
-                {
-                    Wait_Time = Randomise_Wait_Time.Next(3, 5); //creates a new wait time between 3 and 5 since Agent 4 is automated
-                }
-
-                for (int Wait_Timer = 0; Wait_Timer < Wait_Time; Wait_Timer++)
-                {
-                    Agent_Status_Indicator.Text = "Connecting.";
+                    Is_Agent_Available(); //check if the agent is "available"
                     await Task.Delay(1000); //delay
-                    Wait_Timer = (Wait_Timer + 1); //add a second to the timer
-                    Agent_Status_Indicator.Text = "Connecting..";
+
+                    for (int Connection_Hide = 0; Connection_Hide < 50; Connection_Hide++) //hide the connection text
+                    {
+                        Connecting_Label.Location = new Point(Connecting_Label.Location.X, Connecting_Label.Location.Y + 5); //move the text down
+                        await Task.Delay(1); //delay
+                    }
+
+                    switch (Connected_Agent) //apply the appropriate profile picture and label text
+                    {
+                        case 0: //if the agent is bruce
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.BruceProfilePic;
+                            Agent_Name_Label.Text = "Bruce Hargrave";
+                            break;
+                        case 1: //if the agent is hal
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.HalProfilePic;
+                            Agent_Name_Label.Text = "Hal Chín-Nghìn";
+                            break;
+                        case 2: //if the agent is jason
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.JasonProfilePic;
+                            Agent_Name_Label.Text = "Jason Bradbury";
+                            break;
+                        case 3: //if the agent is suzie
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.SuziProfilePic;
+                            Agent_Name_Label.Text = "Suzi Perry";
+                            break;
+                        case 4: //if no agent is available
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.GenericProfilePic;
+                            Agent_Name_Label.Text = "Out of Hours";
+                            break;
+                    }
+
+                    Agent_Profile_Image.Visible = true; //make the agent profile picture visible
+                    int Agent_Profile_Image_Starting_X = Agent_Profile_Image.Location.X; //grab the profile picture's X location
+                    int Agent_Profile_Image_Starting_Y = Agent_Profile_Image.Location.Y; //grab the profile picture's Y location
+                    int Agent_Profile_Image_Size = 10; //set the profile picture's X & Y size to 10
+                    bool Resized_Image = false; //creates a bool for the resizing process
+
+                    while (Resized_Image == false) //while the profile picture has not yet been fully resized
+                    {
+                        switch (Agent_Profile_Image_Size)
+                        {
+                            case 20: //if the image is at 20% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 40: //if the image is at 40% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 60: //if the image is at 60% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 80: //if the image is at 80% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                break;
+                            case 100: //if the image is at 100% size
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //move slightly more on the Y axis
+                                Resized_Image = true; //stop the loop
+                                break;
+                        }
+
+                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size++, Agent_Profile_Image_Size++); //increment each of the size axis by 1 on each loop
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1); //adjust the location of the image by 1 on each axis every loop
+                        await Task.Delay(1); //delay
+                    }
+
                     await Task.Delay(1000); //delay
-                    Wait_Timer = (Wait_Timer + 1); //add a second to the timer
-                    Agent_Status_Indicator.Text = "Connecting...";
-                    await Task.Delay(1000); //delay                    
-                }
-
-                Agent_Status_Indicator.Text = "Online";
-
-                TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
-
-
-                if (Connected_Agent == 4)
-                {
-                    TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
-                    string OOH_Bot_Response = "it is out of work hours. If you need to contact the team personally, please get in touch during 9am and 6pm, Monday to Friday. ";
-                    if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                    for (int Profile_Picture_Timing = 0; Profile_Picture_Timing < 20; Profile_Picture_Timing++) //while the profile picture has not yet been fully resized
                     {
-                        OOH_Bot_Response = "they are currently out for lunch. If you need to contact the team personally please come back after 1pm and there will be someone on hand to answer your query. ";
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //adjust the height of the image by 1 on every loop
+
+                        if (Profile_Picture_Timing >= 15) //if the profile picture has moved 15 steps or more out of 20
+                        {
+                            Agent_Name_Label.Visible = true; //make the agent name label visible
+                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X, Agent_Name_Label.Location.Y + 1); //adjust the height of the label by 1 on every loop
+                        }
+
+                        await Task.Delay(1); //delay
+                    }
+                    await Task.Delay(2000); //delay
+                    Agent_Name_Label.Size = new Size(175, 31); //resize the name label
+                    Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                    Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
+                    Agent_Profile_Image_Size = 100; //set the profile image size at 100
+                    Conversation_Area_Header.Visible = true;
+                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 30; Profile_Picture_Relocation++)
+                    {
+                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
+                        Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 3);
+                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y - 7);
+                        if (Profile_Picture_Relocation >= 25) //when the number of steps reaches 25 and exceeds it
+                        {
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 3); //give it an extra boost
+                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y - 2); //give it an extra boost
+                        }
+
+                        if (Profile_Picture_Relocation == 28) //when the number of steps reaches 28
+                        {
+                            Agent_Status_Indicator.Visible = true; //make the indicator visible
+                        }
+
+                        await Task.Delay(1); //delay
                     }
 
-                    Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available.";
-                }
+                    int Wait_Time = Randomiser.Next(0, 15); //selects a random number between 0 and 15 for the wait time
 
-                int AI_or_Human_Indicator = 0;
-                Create_Message(AI_or_Human_Indicator);
-            }
-        }
-
-        private async void Create_Message(int AI_or_Human_Indicator)
-        {
-            TextBox Original_AI_Message = new TextBox();
-            TextBox Original_AI_Message_Shell = new TextBox();
-            TextBox Original_User_Message = new TextBox();
-            TextBox Original_User_Message_Shell = new TextBox();
-
-            if (AI_or_Human_Indicator == 0)
-            {
-                if (AI_Message_Counter > 0)
-                {
-                    AI_Message_Counter++;
-                }
-
-                else //otherwise create the initial message
-                {
-                    AI_Message_Counter++;
-
-                    Original_AI_Message.WordWrap = true;
-                    Original_AI_Message.Multiline = true;
-                    Original_AI_Message.BackColor = Color.FromArgb(1, 63, 139);
-                    Original_AI_Message.ForeColor = Color.FromArgb(255, 255, 255);
-                    Original_AI_Message.Font = new Font("Microsoft Sans Serif", 10);
-                    Original_AI_Message.Anchor = (AnchorStyles.Bottom);
-                    Original_AI_Message.BorderStyle = BorderStyle.None;
-                    Original_AI_Message.Text = Latest_AI_Message;
-                    int Line_Counter = ((Original_AI_Message.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    Original_AI_Message.Size = new Size(140, Line_Counter);
-                    this.Controls.Add(Original_AI_Message);
-
-                    
-                    Original_AI_Message_Shell.WordWrap = true;
-                    Original_AI_Message_Shell.Multiline = true;
-                    Original_AI_Message_Shell.BackColor = Color.FromArgb(1, 63, 139);
-                    Original_AI_Message_Shell.Anchor = (AnchorStyles.Bottom);
-                    Original_AI_Message_Shell.BorderStyle = BorderStyle.None;
-                    Original_AI_Message_Shell.Size = new Size(150, (Line_Counter + 10));
-                    this.Controls.Add(Original_AI_Message_Shell);
-
-                    Original_AI_Message_Shell.BringToFront();
-                    Original_AI_Message.BringToFront();
-                    Reiterate_Layers();
-
-                    //stuff needs to happen here to figure out how many values should be added on to the size to animate to fill the text supplied by the AI
-                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter + 20); Message_Animation_Timer++)
+                    if (Connected_Agent == 4)
                     {
-                        //Original_AI_Message.Location = new Point(Message_Input.Location.X + 10, Message_Input.Location.Y - Message_Animation_Timer);
-                        Original_AI_Message.Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        Original_AI_Message_Shell.Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
-                        await Task.Delay(1); //delay for 1/100 of a second
+                        Wait_Time = Randomiser.Next(3, 5); //creates a new wait time between 3 and 5 since Agent 4 is automated
                     }
+
+                    for (int Wait_Timer = 0; Wait_Timer < Wait_Time; Wait_Timer++)
+                    {
+                        Agent_Status_Indicator.Text = "Connecting.";
+                        await Task.Delay(1000); //delay
+                        Wait_Timer = (Wait_Timer + 1); //add a second to the timer
+                        Agent_Status_Indicator.Text = "Connecting..";
+                        await Task.Delay(1000); //delay
+                        Wait_Timer = (Wait_Timer + 1); //add a second to the timer
+                        Agent_Status_Indicator.Text = "Connecting...";
+                        await Task.Delay(1000); //delay                    
+                    }
+
+                    Agent_Status_Indicator.Text = "Online";
+                    if (Connected_Agent == 4)
+                    {
+                        TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
+                        TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
+                        string OOH_Bot_Response = "it is out of work hours. If you need to contact the team personally, please get in touch during 9am and 6pm, Monday to Friday. ";
+                        if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                        {
+                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact the team personally please come back after 1pm and there will be someone on hand to answer your query. ";
+                        }
+
+                        Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available, otherwise exit the chat.";
+                        AI_Response_Handshake = true;
+                    }
+
+                    while (AI_Response_Handshake == false)
+                    {
+                        await Task.Delay(1000); //delay                       
+                    }
+
+                    if (AI_Response_Handshake == true)
+                    {
+                        if (Connected_Agent == 4)
+                        {
+                            Create_AI_Message();
+                        }
+
+                        else
+                        {
+                            Agent_Status_Indicator.Text = "Typing";
+                            int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
+                            MessageBox.Show(Typing_Time.ToString());
+                            await Task.Delay(Typing_Time / 10);
+
+                            if (Randomiser.Next(0, 100) > 50)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 10000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 3);
+
+                            if (Randomiser.Next(0, 100) > 60)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 5000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 3);
+
+                            if (Randomiser.Next(0, 100) > 60)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 3000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 5);
+
+                            if (Randomiser.Next(0, 100) > 75)
+                            {
+                                Agent_Status_Indicator.Text = "Online";
+                                await Task.Delay(Randomiser.Next(1000, 5000));
+                                Agent_Status_Indicator.Text = "Typing";
+                            }
+
+                            await Task.Delay(Typing_Time / 10);
+                            Create_AI_Message();
+                            Agent_Status_Indicator.Text = "Online";
+                        }
+
+                                           
+                    }                 
                 }
             }
 
             else
             {
+                //do nothing
+            }
+
+        }
+
+        private async void Create_AI_Message()
+        {
+            AI_Message[AI_Message_Counter] = new TextBox();
+            AI_Message_Shell[AI_Message_Counter] = new TextBox();
+            this.Controls.Add(AI_Message[AI_Message_Counter]);
+            this.Controls.Add(AI_Message_Shell[AI_Message_Counter]);
+
+            AI_Message[AI_Message_Counter].WordWrap = true;
+            AI_Message[AI_Message_Counter].Multiline = true;
+            AI_Message[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
+            AI_Message[AI_Message_Counter].ForeColor = Color.FromArgb(255, 255, 255);
+            AI_Message[AI_Message_Counter].Font = new Font("Microsoft Sans Serif", 10);
+            AI_Message[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            AI_Message[AI_Message_Counter].BorderStyle = BorderStyle.None;
+            AI_Message[AI_Message_Counter].Text = Latest_AI_Message;
+            int Line_Counter = ((AI_Message[AI_Message_Counter].GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
+            AI_Message[AI_Message_Counter].Size = new Size(140, Line_Counter);
+
+
+            AI_Message_Shell[AI_Message_Counter].WordWrap = true;
+            AI_Message_Shell[AI_Message_Counter].Multiline = true;
+            AI_Message_Shell[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
+            AI_Message_Shell[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            AI_Message_Shell[AI_Message_Counter].BorderStyle = BorderStyle.None;
+            AI_Message_Shell[AI_Message_Counter].Size = new Size(150, (Line_Counter + 10));
+
+            AI_Message_Shell[AI_Message_Counter].BringToFront();
+            AI_Message[AI_Message_Counter].BringToFront();
+            Reiterate_Layers();
+
+            int Scroll_Steps = Line_Counter + 20;
+
+            for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
+            {
+                Scroll_AI_Message_Up(Message_Animation_Timer);
+                Scroll_User_Message_Up(Message_Animation_Timer);
+
+                AI_Message[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                AI_Message_Shell[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+
+
+
+                await Task.Delay(1); //delay for 1/100 of a second
+            }
+
+            Message_Input.Enabled = true;
+            Send_Message.Enabled = true;
+            AI_Message_Counter++;
+
+        }
+
+        private async void Create_User_Message()
+        {          
+            Message_Input.Enabled = false;
+            User_Message[User_Message_Counter] = new TextBox();
+            User_Message_Shell[User_Message_Counter] = new TextBox();
+            this.Controls.Add(User_Message[User_Message_Counter]);
+            this.Controls.Add(User_Message_Shell[User_Message_Counter]);
+
+            User_Message[User_Message_Counter].WordWrap = true;
+            User_Message[User_Message_Counter].Multiline = true;
+            User_Message[User_Message_Counter].BackColor = Color.FromArgb(244, 244, 244);
+            User_Message[User_Message_Counter].ForeColor = Color.FromArgb(0, 0, 0);
+            User_Message[User_Message_Counter].Font = new Font("Microsoft Sans Serif", 10);
+            User_Message[User_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            User_Message[User_Message_Counter].BorderStyle = BorderStyle.None;
+            User_Message[User_Message_Counter].TextAlign = HorizontalAlignment.Right;
+            User_Message[User_Message_Counter].Text = Latest_User_Message;
+            int Line_Counter = ((User_Message[User_Message_Counter].GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
+            User_Message[User_Message_Counter].Size = new Size(140, Line_Counter);
+
+            User_Message_Shell[User_Message_Counter].WordWrap = true;
+            User_Message_Shell[User_Message_Counter].Multiline = true;
+            User_Message_Shell[User_Message_Counter].BackColor = Color.FromArgb(244, 244, 244);
+            User_Message_Shell[User_Message_Counter].Anchor = (AnchorStyles.Bottom);
+            User_Message_Shell[User_Message_Counter].BorderStyle = BorderStyle.None;
+            User_Message_Shell[User_Message_Counter].Size = new Size(150, (Line_Counter + 10));
+
+            User_Message_Shell[User_Message_Counter].BringToFront();
+            User_Message[User_Message_Counter].BringToFront();
+            Reiterate_Layers();
+
+            int Scroll_Steps = Line_Counter + 20;       
+
+            for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
+            {
+                Scroll_AI_Message_Up(Message_Animation_Timer);
+
+                User_Message[User_Message_Counter].Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                User_Message_Shell[User_Message_Counter].Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+
                 if (User_Message_Counter > 0)
                 {
-                    User_Message_Counter++;
+                    Scroll_User_Message_Up(Message_Animation_Timer);
                 }
 
-                else //otherwise create the initial message
+                await Task.Delay(1); //delay for 1/100 of a second
+            }
+            User_Message_Counter++;
+
+            if (Connected_Agent == 4 && User_Message_Counter == 1)
+            {
+                await Task.Delay(2000); //2 second delay
+                Latest_AI_Message = "Thanks for your query. This has been saved and will be seen by a member of the response team first thing the next working day. The chat will now automatically close in a few seconds. Have a nice day.";
+                Create_AI_Message();
+                await Task.Delay(5000); //5 second delay
+                Conversation_Exit.PerformClick();
+            }
+
+            if (User_Message_Counter > 1) //fade in the scrollable buttons
+            {
+                Scroll_Conversation_Up.Visible = true;
+                Scroll_Conversation_Down.Visible = true;
+                for (int Colour = 305; Colour >= 55; Colour--)
                 {
-                    User_Message_Counter++;
-
-                    Original_User_Message.WordWrap = true;
-                    Original_User_Message.Multiline = true;
-                    Original_User_Message.TextAlign = HorizontalAlignment.Right;
-                    Original_User_Message.BackColor = Color.FromArgb(244, 244, 244);
-                    Original_User_Message.ForeColor = Color.FromArgb(0, 0, 0);
-                    Original_User_Message.Font = new Font("Microsoft Sans Serif", 10);
-                    Original_User_Message.Anchor = (AnchorStyles.Bottom);
-                    Original_User_Message.BorderStyle = BorderStyle.None;
-                    Original_User_Message.Text = Latest_User_Message;
-                    int Line_Counter = ((Original_User_Message.GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
-                    Original_User_Message.Size = new Size(140, Line_Counter);
-                    this.Controls.Add(Original_User_Message);
-
-                    
-                    Original_User_Message_Shell.WordWrap = true;
-                    Original_User_Message_Shell.Multiline = true;
-                    Original_User_Message_Shell.BackColor = Color.FromArgb(244, 244, 244);
-                    Original_User_Message_Shell.Anchor = (AnchorStyles.Bottom);
-                    Original_User_Message_Shell.BorderStyle = BorderStyle.None;
-                    Original_User_Message_Shell.Size = new Size(150, (Line_Counter + 10));
-                    this.Controls.Add(Original_User_Message_Shell);
-
-                    Original_User_Message_Shell.BringToFront();
-                    Original_User_Message.BringToFront();
-                    Reiterate_Layers();
-
-                    //stuff needs to happen here to figure out how many values should be added on to the size to animate to fill the text supplied by the AI
-                    for (int Message_Animation_Timer = 0; Message_Animation_Timer <= (Line_Counter + 20); Message_Animation_Timer++)
-                    {
-                        Original_User_Message.Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                        Original_User_Message_Shell.Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
-                        await Task.Delay(1); //delay for 1/100 of a second
-                    }
+                    await Task.Delay(1); //delay
+                    Scroll_Conversation_Up.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50);
+                    Scroll_Conversation_Down.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50);
                 }
-            }     
+            }
+        }
+
+        private void Scroll_AI_Message_Up(int Message_Animation_Timer)
+        {
+            if (AI_Message_Counter == 0)
+            {
+                //do nothing
+            }
+
+            else
+            {
+                if (AI_Message_Counter > 1)
+                {
+                    AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 2)
+                {
+                    AI_Message[AI_Message_Counter - 3].Location = new Point(AI_Message[AI_Message_Counter - 3].Location.X, AI_Message[AI_Message_Counter - 3].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 3].Location = new Point(AI_Message_Shell[AI_Message_Counter - 3].Location.X, AI_Message_Shell[AI_Message_Counter - 3].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 3)
+                {
+                    AI_Message[AI_Message_Counter - 4].Location = new Point(AI_Message[AI_Message_Counter - 4].Location.X, AI_Message[AI_Message_Counter - 4].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 4].Location = new Point(AI_Message_Shell[AI_Message_Counter - 4].Location.X, AI_Message_Shell[AI_Message_Counter - 4].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 4)
+                {
+                    AI_Message[AI_Message_Counter - 5].Location = new Point(AI_Message[AI_Message_Counter - 5].Location.X, AI_Message[AI_Message_Counter - 5].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 5].Location = new Point(AI_Message_Shell[AI_Message_Counter - 5].Location.X, AI_Message_Shell[AI_Message_Counter - 5].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 5)
+                {
+                    AI_Message[AI_Message_Counter - 6].Location = new Point(AI_Message[AI_Message_Counter - 6].Location.X, AI_Message[AI_Message_Counter - 6].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 6].Location = new Point(AI_Message_Shell[AI_Message_Counter - 6].Location.X, AI_Message_Shell[AI_Message_Counter - 6].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 6)
+                {
+                    AI_Message[AI_Message_Counter - 7].Location = new Point(AI_Message[AI_Message_Counter - 7].Location.X, AI_Message[AI_Message_Counter - 7].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 7].Location = new Point(AI_Message_Shell[AI_Message_Counter - 7].Location.X, AI_Message_Shell[AI_Message_Counter - 7].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 7)
+                {
+                    AI_Message[AI_Message_Counter - 8].Location = new Point(AI_Message[AI_Message_Counter - 8].Location.X, AI_Message[AI_Message_Counter - 8].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 8].Location = new Point(AI_Message_Shell[AI_Message_Counter - 8].Location.X, AI_Message_Shell[AI_Message_Counter - 8].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 8)
+                {
+                    AI_Message[AI_Message_Counter - 9].Location = new Point(AI_Message[AI_Message_Counter - 9].Location.X, AI_Message[AI_Message_Counter - 9].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 9].Location = new Point(AI_Message_Shell[AI_Message_Counter - 9].Location.X, AI_Message_Shell[AI_Message_Counter - 9].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 9)
+                {
+                    AI_Message[AI_Message_Counter - 10].Location = new Point(AI_Message[AI_Message_Counter - 10].Location.X, AI_Message[AI_Message_Counter - 10].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 10].Location = new Point(AI_Message_Shell[AI_Message_Counter - 10].Location.X, AI_Message_Shell[AI_Message_Counter - 10].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 10)
+                {
+                    AI_Message[AI_Message_Counter - 11].Location = new Point(AI_Message[AI_Message_Counter - 11].Location.X, AI_Message[AI_Message_Counter - 11].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 11].Location = new Point(AI_Message_Shell[AI_Message_Counter - 11].Location.X, AI_Message_Shell[AI_Message_Counter - 11].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 11)
+                {
+                    AI_Message[AI_Message_Counter - 12].Location = new Point(AI_Message[AI_Message_Counter - 12].Location.X, AI_Message[AI_Message_Counter - 12].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 12].Location = new Point(AI_Message_Shell[AI_Message_Counter - 12].Location.X, AI_Message_Shell[AI_Message_Counter - 12].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 12)
+                {
+                    AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 13)
+                {
+                    AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 14)
+                {
+                    AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 15)
+                {
+                    AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 16)
+                {
+                    AI_Message[AI_Message_Counter - 15].Location = new Point(AI_Message[AI_Message_Counter - 15].Location.X, AI_Message[AI_Message_Counter - 15].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 15].Location = new Point(AI_Message_Shell[AI_Message_Counter - 15].Location.X, AI_Message_Shell[AI_Message_Counter - 15].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 17)
+                {
+                    AI_Message[AI_Message_Counter - 16].Location = new Point(AI_Message[AI_Message_Counter - 16].Location.X, AI_Message[AI_Message_Counter - 16].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 16].Location = new Point(AI_Message_Shell[AI_Message_Counter - 16].Location.X, AI_Message_Shell[AI_Message_Counter - 16].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 18)
+                {
+                    AI_Message[AI_Message_Counter - 17].Location = new Point(AI_Message[AI_Message_Counter - 17].Location.X, AI_Message[AI_Message_Counter - 17].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 17].Location = new Point(AI_Message_Shell[AI_Message_Counter - 17].Location.X, AI_Message_Shell[AI_Message_Counter - 17].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 19)
+                {
+                    AI_Message[AI_Message_Counter - 18].Location = new Point(AI_Message[AI_Message_Counter - 18].Location.X, AI_Message[AI_Message_Counter - 18].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 18].Location = new Point(AI_Message_Shell[AI_Message_Counter - 18].Location.X, AI_Message_Shell[AI_Message_Counter - 18].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 20)
+                {
+                    AI_Message[AI_Message_Counter - 19].Location = new Point(AI_Message[AI_Message_Counter - 19].Location.X, AI_Message[AI_Message_Counter - 19].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 19].Location = new Point(AI_Message_Shell[AI_Message_Counter - 19].Location.X, AI_Message_Shell[AI_Message_Counter - 19].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 21)
+                {
+                    AI_Message[AI_Message_Counter - 20].Location = new Point(AI_Message[AI_Message_Counter - 20].Location.X, AI_Message[AI_Message_Counter - 20].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 20].Location = new Point(AI_Message_Shell[AI_Message_Counter - 20].Location.X, AI_Message_Shell[AI_Message_Counter - 20].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 22)
+                {
+                    AI_Message[AI_Message_Counter - 21].Location = new Point(AI_Message[AI_Message_Counter - 21].Location.X, AI_Message[AI_Message_Counter - 21].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 21].Location = new Point(AI_Message_Shell[AI_Message_Counter - 21].Location.X, AI_Message_Shell[AI_Message_Counter - 21].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 23)
+                {
+                    AI_Message[AI_Message_Counter - 22].Location = new Point(AI_Message[AI_Message_Counter - 22].Location.X, AI_Message[AI_Message_Counter - 22].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 22].Location = new Point(AI_Message_Shell[AI_Message_Counter - 22].Location.X, AI_Message_Shell[AI_Message_Counter - 22].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 24)
+                {
+                    AI_Message[AI_Message_Counter - 23].Location = new Point(AI_Message[AI_Message_Counter - 23].Location.X, AI_Message[AI_Message_Counter - 23].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 23].Location = new Point(AI_Message_Shell[AI_Message_Counter - 23].Location.X, AI_Message_Shell[AI_Message_Counter - 23].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 25)
+                {
+                    AI_Message[AI_Message_Counter - 24].Location = new Point(AI_Message[AI_Message_Counter - 24].Location.X, AI_Message[AI_Message_Counter - 24].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 24].Location = new Point(AI_Message_Shell[AI_Message_Counter - 24].Location.X, AI_Message_Shell[AI_Message_Counter - 24].Location.Y - 1);
+                }
+
+                if (AI_Message_Counter > 26)
+                {
+                    AI_Message[AI_Message_Counter - 25].Location = new Point(AI_Message[AI_Message_Counter - 25].Location.X, AI_Message[AI_Message_Counter - 25].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 25].Location = new Point(AI_Message_Shell[AI_Message_Counter - 25].Location.X, AI_Message_Shell[AI_Message_Counter - 25].Location.Y - 1);
+                }
+
+                else
+                {
+                    AI_Message[AI_Message_Counter - 1].Location = new Point(AI_Message[AI_Message_Counter - 1].Location.X, AI_Message[AI_Message_Counter - 1].Location.Y - 1);
+                    AI_Message_Shell[AI_Message_Counter - 1].Location = new Point(AI_Message_Shell[AI_Message_Counter - 1].Location.X, AI_Message_Shell[AI_Message_Counter - 1].Location.Y - 1);
+                }
+            }
+        }
+
+        private void Scroll_User_Message_Up(int Message_Animation_Timer)
+        {
+            if (User_Message_Counter == 0)
+            {
+                //do nothing
+            }
+
+            else
+            {
+                if (User_Message_Counter > 1)
+                {
+                    User_Message[User_Message_Counter - 2].Location = new Point(User_Message[User_Message_Counter - 2].Location.X, User_Message[User_Message_Counter - 2].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 2].Location = new Point(User_Message_Shell[User_Message_Counter - 2].Location.X, User_Message_Shell[User_Message_Counter - 2].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 2)
+                {
+                    User_Message[User_Message_Counter - 3].Location = new Point(User_Message[User_Message_Counter - 3].Location.X, User_Message[User_Message_Counter - 3].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 3].Location = new Point(User_Message_Shell[User_Message_Counter - 3].Location.X, User_Message_Shell[User_Message_Counter - 3].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 3)
+                {
+                    User_Message[User_Message_Counter - 4].Location = new Point(User_Message[User_Message_Counter - 4].Location.X, User_Message[User_Message_Counter - 4].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 4].Location = new Point(User_Message_Shell[User_Message_Counter - 4].Location.X, User_Message_Shell[User_Message_Counter - 4].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 4)
+                {
+                    User_Message[User_Message_Counter - 5].Location = new Point(User_Message[User_Message_Counter - 5].Location.X, User_Message[User_Message_Counter - 5].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 5].Location = new Point(User_Message_Shell[User_Message_Counter - 5].Location.X, User_Message_Shell[User_Message_Counter - 5].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 5)
+                {
+                    User_Message[User_Message_Counter - 6].Location = new Point(User_Message[User_Message_Counter - 6].Location.X, User_Message[User_Message_Counter - 6].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 6].Location = new Point(User_Message_Shell[User_Message_Counter - 6].Location.X, User_Message_Shell[User_Message_Counter - 6].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 6)
+                {
+                    User_Message[User_Message_Counter - 7].Location = new Point(User_Message[User_Message_Counter - 7].Location.X, User_Message[User_Message_Counter - 7].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 7].Location = new Point(User_Message_Shell[User_Message_Counter - 7].Location.X, User_Message_Shell[User_Message_Counter - 7].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 7)
+                {
+                    User_Message[User_Message_Counter - 8].Location = new Point(User_Message[User_Message_Counter - 8].Location.X, User_Message[User_Message_Counter - 8].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 8].Location = new Point(User_Message_Shell[User_Message_Counter - 8].Location.X, User_Message_Shell[User_Message_Counter - 8].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 8)
+                {
+                    User_Message[User_Message_Counter - 9].Location = new Point(User_Message[User_Message_Counter - 9].Location.X, User_Message[User_Message_Counter - 9].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 9].Location = new Point(User_Message_Shell[User_Message_Counter - 9].Location.X, User_Message_Shell[User_Message_Counter - 9].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 9)
+                {
+                    User_Message[User_Message_Counter - 10].Location = new Point(User_Message[User_Message_Counter - 10].Location.X, User_Message[User_Message_Counter - 10].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 10].Location = new Point(User_Message_Shell[User_Message_Counter - 10].Location.X, User_Message_Shell[User_Message_Counter - 10].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 10)
+                {
+                    User_Message[User_Message_Counter - 11].Location = new Point(User_Message[User_Message_Counter - 11].Location.X, User_Message[User_Message_Counter - 11].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 11].Location = new Point(User_Message_Shell[User_Message_Counter - 11].Location.X, User_Message_Shell[User_Message_Counter - 11].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 11)
+                {
+                    User_Message[User_Message_Counter - 12].Location = new Point(User_Message[User_Message_Counter - 12].Location.X, User_Message[User_Message_Counter - 12].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 12].Location = new Point(User_Message_Shell[User_Message_Counter - 12].Location.X, User_Message_Shell[User_Message_Counter - 12].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 12)
+                {
+                    User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 13)
+                {
+                    User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 14)
+                {
+                    User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 15)
+                {
+                    User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 16)
+                {
+                    User_Message[User_Message_Counter - 15].Location = new Point(User_Message[User_Message_Counter - 15].Location.X, User_Message[User_Message_Counter - 15].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 15].Location = new Point(User_Message_Shell[User_Message_Counter - 15].Location.X, User_Message_Shell[User_Message_Counter - 15].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 17)
+                {
+                    User_Message[User_Message_Counter - 16].Location = new Point(User_Message[User_Message_Counter - 16].Location.X, User_Message[User_Message_Counter - 16].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 16].Location = new Point(User_Message_Shell[User_Message_Counter - 16].Location.X, User_Message_Shell[User_Message_Counter - 16].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 18)
+                {
+                    User_Message[User_Message_Counter - 17].Location = new Point(User_Message[User_Message_Counter - 17].Location.X, User_Message[User_Message_Counter - 17].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 17].Location = new Point(User_Message_Shell[User_Message_Counter - 17].Location.X, User_Message_Shell[User_Message_Counter - 17].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 19)
+                {
+                    User_Message[User_Message_Counter - 18].Location = new Point(User_Message[User_Message_Counter - 18].Location.X, User_Message[User_Message_Counter - 18].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 18].Location = new Point(User_Message_Shell[User_Message_Counter - 18].Location.X, User_Message_Shell[User_Message_Counter - 18].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 20)
+                {
+                    User_Message[User_Message_Counter - 19].Location = new Point(User_Message[User_Message_Counter - 19].Location.X, User_Message[User_Message_Counter - 19].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 19].Location = new Point(User_Message_Shell[User_Message_Counter - 19].Location.X, User_Message_Shell[User_Message_Counter - 19].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 21)
+                {
+                    User_Message[User_Message_Counter - 20].Location = new Point(User_Message[User_Message_Counter - 20].Location.X, User_Message[User_Message_Counter - 20].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 20].Location = new Point(User_Message_Shell[User_Message_Counter - 20].Location.X, User_Message_Shell[User_Message_Counter - 20].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 22)
+                {
+                    User_Message[User_Message_Counter - 21].Location = new Point(User_Message[User_Message_Counter - 21].Location.X, User_Message[User_Message_Counter - 21].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 21].Location = new Point(User_Message_Shell[User_Message_Counter - 21].Location.X, User_Message_Shell[User_Message_Counter - 21].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 23)
+                {
+                    User_Message[User_Message_Counter - 22].Location = new Point(User_Message[User_Message_Counter - 22].Location.X, User_Message[User_Message_Counter - 22].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 22].Location = new Point(User_Message_Shell[User_Message_Counter - 22].Location.X, User_Message_Shell[User_Message_Counter - 22].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 24)
+                {
+                    User_Message[User_Message_Counter - 23].Location = new Point(User_Message[User_Message_Counter - 23].Location.X, User_Message[User_Message_Counter - 23].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 23].Location = new Point(User_Message_Shell[User_Message_Counter - 23].Location.X, User_Message_Shell[User_Message_Counter - 23].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 25)
+                {
+                    User_Message[User_Message_Counter - 24].Location = new Point(User_Message[User_Message_Counter - 24].Location.X, User_Message[User_Message_Counter - 24].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 24].Location = new Point(User_Message_Shell[User_Message_Counter - 24].Location.X, User_Message_Shell[User_Message_Counter - 24].Location.Y - 1);
+                }
+
+                if (User_Message_Counter > 26)
+                {
+                    User_Message[User_Message_Counter - 25].Location = new Point(User_Message[User_Message_Counter - 25].Location.X, User_Message[User_Message_Counter - 25].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 25].Location = new Point(User_Message_Shell[User_Message_Counter - 25].Location.X, User_Message_Shell[User_Message_Counter - 25].Location.Y - 1);
+                }
+
+
+
+
+
+
+                else
+                {
+                    User_Message[User_Message_Counter - 1].Location = new Point(User_Message[User_Message_Counter - 1].Location.X, User_Message[User_Message_Counter - 1].Location.Y - 1);
+                    User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
+                }
+            }
+        }        
+
+        private async void Scroll_Content_UpDown(int Scroll_Direction)
+        {
+            if(Scroll_Direction == 1) //if scroll direction is set to up
+            {
+                MessageBox.Show("Content will scroll up!");
+            }
+
+            else //otherwise go down
+            {
+                MessageBox.Show("Content will go down!");
+            }
         }
 
         private async void Hamburger_Menu_Click(object sender, EventArgs e)
@@ -651,6 +1223,11 @@ namespace UoL_Virtual_Assistant
             Message_Input_Area.BringToFront();
             Message_Input.BringToFront();
             Send_Message.BringToFront();
+
+            Conversation_Area_Header.BringToFront();
+            Agent_Name_Label.BringToFront();
+            Agent_Status_Indicator.BringToFront();
+            Agent_Profile_Image.BringToFront();
 
             Settings_Drawer.BringToFront();
             Settings_Title.BringToFront();
@@ -865,24 +1442,51 @@ namespace UoL_Virtual_Assistant
 
             else
             {
-                DialogResult Out_Of_Hours = MessageBox.Show("Sorry. Our response team is only available Monday to Friday, 9am until 6pm. Our Out of Hours service is automated and will take a request from you so that we can get back to you first thing the next working day. Would you like to use the Out of Hours service?", "Out of Hours", MessageBoxButtons.YesNo);
-
-                if (Out_Of_Hours == DialogResult.Yes) //if the user confirms their reset
-                {
-                    Connected_Agent = 4; //set the connected agent as the out of hours service
-                }
-
-                else
-                {
-                    Application.Restart();
-                }
+                Connected_Agent = 4;
             }
+        }
+
+        private void Scroll_Conversation_Up_Click(object sender, EventArgs e)
+        {
+            Scroll_Content_UpDown(1);
+        }
+
+        private void Scroll_Conversation_Down_Click(object sender, EventArgs e)
+        {
+            Scroll_Content_UpDown(0);
+        }
+
+        private void Conversation_Exit_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Connection_Status = 1;
-            Initiate_Connection();
+            if (Open_Conversation_Window == 0) //if the window status is set to hidden
+            {
+                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                DialogResult Oi = MessageBox.Show("Only press this button once the conversation window is opened or you risk Bruce breaking free of where he's supposed to be and running rampage around the desktop! Am I an idiot?", "Oi", MessageBoxButtons.YesNo);
+                if (Oi == DialogResult.Yes)
+                {
+                    //do something
+                }
+                else if (Oi == DialogResult.No)
+                {
+                    System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=sCNrK-n68CM");
+                }
+            }
+
+            else
+            {
+                Connection_Status = 1;
+                //Initiate_Connection();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AI_Response_Handshake = true;
         }
     }
 }
