@@ -1,5 +1,4 @@
-﻿
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <STAFF>
 	<_000855>
 		<NAME>Jon Audis</NAME>
@@ -20,7 +19,7 @@
 	<_503944>
 		<NAME>Sinclair Ashman</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sashman@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7110</PHONE>
@@ -99,7 +98,7 @@
 	</_003359>
 	<_003424>
 		<NAME>Amy Robinson</NAME>
-		<JOBTITLE>Student Experience & Academic Liason Officer</JOBTITLE>
+		<JOBTITLE>Student Experience and Academic Liason Officer</JOBTITLE>
 		<DEPARTMENT>College of Arts Executive Office</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>amrobinson@lincoln.ac.uk</EMAIL>
@@ -108,7 +107,7 @@
 	<_003464>
 		<NAME>Anna Catalani</NAME>
 		<JOBTITLE>Reader in Architecture</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>acatalani@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7182</PHONE>
@@ -132,7 +131,7 @@
 	<_003677>
 		<NAME>Ali Roscoe</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aroscoe@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -188,7 +187,7 @@
 	<_004106>
 		<NAME>Alexa Mottram</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>amottram@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -196,7 +195,7 @@
 	<_503190>
 		<NAME>Andy Pepper</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>apepper@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5227</PHONE>
@@ -260,7 +259,7 @@
 	<_880516>
 		<NAME>Ahmed Elseragy</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aelseragy@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7181</PHONE>
@@ -268,7 +267,7 @@
 	<_881234>
 		<NAME>Alice Dale</NAME>
 		<JOBTITLE>Arts Marketing Intern</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>adale@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -276,7 +275,7 @@
 	<_881745>
 		<NAME>Adam Rush</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>arush@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -300,7 +299,7 @@
 	<_002983>
 		<NAME>Andrew Ashenden</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aashenden@lincoln.ac.uk</EMAIL>
 		<PHONE>Email only</PHONE>
@@ -524,7 +523,7 @@
 	<_507051>
 		<NAME>Olaniyi Olanipekun Aluko</NAME>
 		<JOBTITLE>Visiting Researcher</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ooaluko@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -548,7 +547,7 @@
 	<_000269>
 		<NAME>Andy Earl</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aearl@lincoln.ac.uk</EMAIL>
 		<PHONE>Email only</PHONE>
@@ -579,7 +578,7 @@
 	</_000853>
 	<_000927>
 		<NAME>Angela Jackson-Croft</NAME>
-		<JOBTITLE>Principal Officer (CoSS & Logistics)</JOBTITLE>
+		<JOBTITLE>Principal Officer (CoSS and Logistics)</JOBTITLE>
 		<DEPARTMENT>Student Administration</DEPARTMENT>
 		<DIVISION>Student Affairs</DIVISION>
 		<EMAIL>ajacksoncroft@lincoln.ac.uk</EMAIL>
@@ -595,7 +594,7 @@
 	</_000995>
 	<_001309>
 		<NAME>Andrew Stevenson</NAME>
-		<JOBTITLE>Director of Research & Enterprise</JOBTITLE>
+		<JOBTITLE>Director of Research and Enterprise</JOBTITLE>
 		<DEPARTMENT>Research and Enterprise Executive Office</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>astevenson@lincoln.ac.uk</EMAIL>
@@ -620,7 +619,7 @@
 	<_001867>
 		<NAME>Andy Jordan</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ajordan@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7041</PHONE>
@@ -628,7 +627,7 @@
 	<_002004>
 		<NAME>Andrew Bracey</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>abracey@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5123</PHONE>
@@ -660,7 +659,7 @@
 	<_002289>
 		<NAME>Annie Richardson</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>anrichardson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5220</PHONE>
@@ -668,7 +667,7 @@
 	<_002358>
 		<NAME>Amira Elnokaly</NAME>
 		<JOBTITLE>Principal Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aelnokaly@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7178</PHONE>
@@ -692,7 +691,7 @@
 	<_002587>
 		<NAME>Arya Madhavan</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>amadhavan@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7609</PHONE>
@@ -716,7 +715,7 @@
 	<_002922>
 		<NAME>Andrew Westerside</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>awesterside@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7672</PHONE>
@@ -724,7 +723,7 @@
 	<_003007>
 		<NAME>Anne Chick</NAME>
 		<JOBTITLE>Professor of Design</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>achick@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6812</PHONE>
@@ -740,7 +739,7 @@
 	<_003196>
 		<NAME>Aylwyn Walsh</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>awalsh@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7671</PHONE>
@@ -756,7 +755,7 @@
 	<_003317>
 		<NAME>Angela Bartram</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>abartram@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5181</PHONE>
@@ -764,7 +763,7 @@
 	<_003390>
 		<NAME>Arnaud Dechelle</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>adechelle@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7140</PHONE>
@@ -788,7 +787,7 @@
 	<_003779>
 		<NAME>Alex Evans</NAME>
 		<JOBTITLE>Visiting Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aevans@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7133</PHONE>
@@ -803,7 +802,7 @@
 	</_003790>
 	<_801166>
 		<NAME>Aaron Smith</NAME>
-		<JOBTITLE>Student Experience & Standards Officer</JOBTITLE>
+		<JOBTITLE>Student Experience and Standards Officer</JOBTITLE>
 		<DEPARTMENT>School of Health and Social Care</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>aasmith@lincoln.ac.uk</EMAIL>
@@ -828,7 +827,7 @@
 	<_503926>
 		<NAME>Dale Fearnley</NAME>
 		<JOBTITLE>AA2A Artist</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dfearnley@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -868,7 +867,7 @@
 	<_506568>
 		<NAME>James Hubble</NAME>
 		<JOBTITLE>AA2A artist</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jhubble@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -876,7 +875,7 @@
 	<_506569>
 		<NAME>Diane Hall</NAME>
 		<JOBTITLE>AA2A artist</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dihall@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -900,7 +899,7 @@
 	<_507050>
 		<NAME>Alexander Adeyemi Fakere</NAME>
 		<JOBTITLE>Visiting Researcher</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aafakere@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -908,7 +907,7 @@
 	<_507220>
 		<NAME>Laura Mahony</NAME>
 		<JOBTITLE>AA2A Artist</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lmahony@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -1012,7 +1011,7 @@
 	<_507389>
 		<NAME>Abigail Dorr</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>adorr@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -1156,7 +1155,7 @@
 	<_881063>
 		<NAME>Alex Bevan</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>abevan@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -1227,7 +1226,7 @@
 	</_502269>
 	<_000602>
 		<NAME>Di Walker</NAME>
-		<JOBTITLE>Acquisitions Librarian & Finance Manager</JOBTITLE>
+		<JOBTITLE>Acquisitions Librarian and Finance Manager</JOBTITLE>
 		<DEPARTMENT>Library Acquisitions Team</DEPARTMENT>
 		<DIVISION>Library</DIVISION>
 		<EMAIL>dwalker@lincoln.ac.uk</EMAIL>
@@ -1636,14 +1635,14 @@
 	<_000661>
 		<NAME>Deborah Wilson</NAME>
 		<JOBTITLE>Acting Deputy Head of School</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>debwilson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6134</PHONE>
 	</_000661>
 	<_000686>
 		<NAME>Faye Cleminson</NAME>
-		<JOBTITLE>Snr Academic Subject Librarian (Education & Students)</JOBTITLE>
+		<JOBTITLE>Snr Academic Subject Librarian (Education and Students)</JOBTITLE>
 		<DEPARTMENT>Library Specialist Support</DEPARTMENT>
 		<DIVISION>Library</DIVISION>
 		<EMAIL>fcleminson@lincoln.ac.uk</EMAIL>
@@ -1684,7 +1683,7 @@
 	<_001049>
 		<NAME>Ola Ogunyemi</NAME>
 		<JOBTITLE>Principal Lecturer/Director of Academic Affairs</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>oogunyemi@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6362</PHONE>
@@ -1788,7 +1787,7 @@
 	<_002003>
 		<NAME>Catherine George</NAME>
 		<JOBTITLE>College Director of Academic Affairs</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cgeorge@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5134</PHONE>
@@ -1851,7 +1850,7 @@
 	</_003405>
 	<_003445>
 		<NAME>William Richard</NAME>
-		<JOBTITLE>Estates, Capital & Project Accountant</JOBTITLE>
+		<JOBTITLE>Estates, Capital and Project Accountant</JOBTITLE>
 		<DEPARTMENT>Business Partnering</DEPARTMENT>
 		<DIVISION>Finance</DIVISION>
 		<EMAIL>wrichard@lincoln.ac.uk</EMAIL>
@@ -1915,7 +1914,7 @@
 	</_503402>
 	<_504496>
 		<NAME>Philippa Dyson</NAME>
-		<JOBTITLE>Deputy Librarian: Academic & Customer Services</JOBTITLE>
+		<JOBTITLE>Deputy Librarian: Academic and Customer Services</JOBTITLE>
 		<DEPARTMENT></DEPARTMENT>
 		<DIVISION>Emeritus Professors</DIVISION>
 		<EMAIL>pdyson@lincoln.ac.uk</EMAIL>
@@ -1932,7 +1931,7 @@
 	<_002007>
 		<NAME>Adam Smith</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>adsmith@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6797</PHONE>
@@ -2027,7 +2026,7 @@
 	</_001168>
 	<_001373>
 		<NAME>Stephen Gilliatt</NAME>
-		<JOBTITLE>Student Administration Manager (CoSS & Logistics)</JOBTITLE>
+		<JOBTITLE>Student Administration Manager (CoSS and Logistics)</JOBTITLE>
 		<DEPARTMENT>Student Administration</DEPARTMENT>
 		<DIVISION>Student Affairs</DIVISION>
 		<EMAIL>sgilliatt@lincoln.ac.uk</EMAIL>
@@ -2043,7 +2042,7 @@
 	</_001434>
 	<_002062>
 		<NAME>Denise Morton</NAME>
-		<JOBTITLE>Senior Administration Officer (CoS & PGR)</JOBTITLE>
+		<JOBTITLE>Senior Administration Officer (CoS and PGR)</JOBTITLE>
 		<DEPARTMENT>Student Administration</DEPARTMENT>
 		<DIVISION>Student Affairs</DIVISION>
 		<EMAIL>dmorton@lincoln.ac.uk</EMAIL>
@@ -2196,7 +2195,7 @@
 	<_000908>
 		<NAME>Adam OMeara</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aomeara@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6189</PHONE>
@@ -2204,7 +2203,7 @@
 	<_001459>
 		<NAME>Siân Adiseshiah</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sadiseshiah@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6840</PHONE>
@@ -2227,7 +2226,7 @@
 	</_002246>
 	<_002639>
 		<NAME>Vicky Addison</NAME>
-		<JOBTITLE>Head of Business Incubation & Growth</JOBTITLE>
+		<JOBTITLE>Head of Business Incubation and Growth</JOBTITLE>
 		<DEPARTMENT>Business Incubation</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>vaddison@lincoln.ac.uk</EMAIL>
@@ -2244,7 +2243,7 @@
 	<_003044>
 		<NAME>Geoffrey Adams</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gadams@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6893</PHONE>
@@ -2475,7 +2474,7 @@
 	</_002742>
 	<_002815>
 		<NAME>Elly Sample</NAME>
-		<JOBTITLE>Director of Communications, Development & Marketing</JOBTITLE>
+		<JOBTITLE>Director of Communications, Development and Marketing</JOBTITLE>
 		<DEPARTMENT>Marketing and Advertising</DEPARTMENT>
 		<DIVISION>Marketing</DIVISION>
 		<EMAIL>esample@lincoln.ac.uk</EMAIL>
@@ -2588,7 +2587,7 @@
 	<_002699>
 		<NAME>Andrew Elliott</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aelliott@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7377</PHONE>
@@ -3179,7 +3178,7 @@
 	</_002497>
 	<_002927>
 		<NAME>Alasdair Houser</NAME>
-		<JOBTITLE>Programme Manager & Senior EAP Tutor</JOBTITLE>
+		<JOBTITLE>Programme Manager and Senior EAP Tutor</JOBTITLE>
 		<DEPARTMENT>English Language Centre</DEPARTMENT>
 		<DIVISION>Student Affairs</DIVISION>
 		<EMAIL>ahouser@lincoln.ac.uk</EMAIL>
@@ -3204,7 +3203,7 @@
 	<_503326>
 		<NAME>Amanda Hufford</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ahufford@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7174</PHONE>
@@ -3228,7 +3227,7 @@
 	<_507136>
 		<NAME>Anna Hoyles</NAME>
 		<JOBTITLE>PhD Student</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ahoyles@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6219</PHONE>
@@ -3236,7 +3235,7 @@
 	<_800959>
 		<NAME>Antje Hildebrandt</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ahildebrandt@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6975</PHONE>
@@ -3364,7 +3363,7 @@
 	<_506134>
 		<NAME>Alex Kent</NAME>
 		<JOBTITLE>Theatre Technician</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>akent@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -3372,7 +3371,7 @@
 	<_880569>
 		<NAME>Andrew Kerr</NAME>
 		<JOBTITLE>Research Assistant</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>akerr@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -3388,7 +3387,7 @@
 	<_000432>
 		<NAME>Alex Lewczuk</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>alewczuk@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6245</PHONE>
@@ -3443,7 +3442,7 @@
 	</_002339>
 	<_002465>
 		<NAME>Thirzah McSherry</NAME>
-		<JOBTITLE>Head of Alumni & Fundraising</JOBTITLE>
+		<JOBTITLE>Head of Alumni and Fundraising</JOBTITLE>
 		<DEPARTMENT>Alumni Office</DEPARTMENT>
 		<DIVISION>Development</DIVISION>
 		<EMAIL>tmcsherry@lincoln.ac.uk</EMAIL>
@@ -3532,7 +3531,7 @@
 	<_004131>
 		<NAME>Alberto Micali</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>amicali@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -3724,7 +3723,7 @@
 	<_800455>
 		<NAME>Alessandro Pesaro</NAME>
 		<JOBTITLE>Digital Archive Developer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>apesaro@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -3732,7 +3731,7 @@
 	<_800961>
 		<NAME>Alyson Wharton</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>awharton@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -3756,7 +3755,7 @@
 	<_801819>
 		<NAME>Alice Crossley</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>acrossley@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -3812,7 +3811,7 @@
 	<_002209>
 		<NAME>Amy Culley</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aculley@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6048</PHONE>
@@ -3892,7 +3891,7 @@
 	<_002397>
 		<NAME>Annie Morrad</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>amorrad@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5130</PHONE>
@@ -3916,7 +3915,7 @@
 	<_506123>
 		<NAME>Andy McKay</NAME>
 		<JOBTITLE>Principal Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>amckay@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6435</PHONE>
@@ -3996,7 +3995,7 @@
 	<_506833>
 		<NAME>Ann Jones</NAME>
 		<JOBTITLE>CoA Consultant</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>anjones@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -4244,7 +4243,7 @@
 	<_000800>
 		<NAME>Anthony Richards</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>arichards@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6261</PHONE>
@@ -4332,7 +4331,7 @@
 	<_003047>
 		<NAME>Andy Palmer</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>apalmer@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6340</PHONE>
@@ -4340,7 +4339,7 @@
 	<_003119>
 		<NAME>Antonella Palmieri</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>apalmieri@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6630</PHONE>
@@ -4460,7 +4459,7 @@
 	<_801357>
 		<NAME>Thomas Howarth</NAME>
 		<JOBTITLE>Technical Theatre Apprentice</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>thowarth@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -4500,15 +4499,15 @@
 	<_000470>
 		<NAME>Behzad Sodagar</NAME>
 		<JOBTITLE>Professor of Sustainable Architecture</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bsodagar@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7141</PHONE>
 	</_000470>
 	<_002724>
 		<NAME>Mark O'Thomas</NAME>
-		<JOBTITLE>Head of School of Fine & Performing Arts</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<JOBTITLE>Head of School of Fine and Performing Arts</JOBTITLE>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mothomas@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7668</PHONE>
@@ -4516,7 +4515,7 @@
 	<_002818>
 		<NAME>Craig Morrow</NAME>
 		<JOBTITLE>Artistic Director</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cmorrow@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7670</PHONE>
@@ -4524,7 +4523,7 @@
 	<_003008>
 		<NAME>Steve Dutton</NAME>
 		<JOBTITLE>Professor of Contemporary Art</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sdutton@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6816</PHONE>
@@ -4532,7 +4531,7 @@
 	<_003375>
 		<NAME>Hugh Byrd</NAME>
 		<JOBTITLE>Professor of Architecture</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hbyrd@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5721</PHONE>
@@ -4547,8 +4546,8 @@
 	</_003526>
 	<_003648>
 		<NAME>Karen Savage</NAME>
-		<JOBTITLE>Deputy Head of School of Fine & Performing Arts</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<JOBTITLE>Deputy Head of School of Fine and Performing Arts</JOBTITLE>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ksavage@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6988</PHONE>
@@ -4564,7 +4563,7 @@
 	<_505641>
 		<NAME>Duncan Mackenzie</NAME>
 		<JOBTITLE>Art Collection</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dmackenzie@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -4572,7 +4571,7 @@
 	<_506097>
 		<NAME>Tao Zhang</NAME>
 		<JOBTITLE>Associate Professor Fine Art</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tzhang@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5011</PHONE>
@@ -4587,8 +4586,8 @@
 	</_507496>
 	<_800062>
 		<NAME>Glen Mills</NAME>
-		<JOBTITLE>Head of School of Architecture & Design</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<JOBTITLE>Head of School of Architecture and Design</JOBTITLE>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gmills@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7043</PHONE>
@@ -4612,7 +4611,7 @@
 	<_003536>
 		<NAME>Lucie Armitt</NAME>
 		<JOBTITLE>Professor in Contemporary English Literature</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>larmitt@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7384</PHONE>
@@ -4684,7 +4683,7 @@
 	<_000013>
 		<NAME>Brian Peacock</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bpeacock@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5243</PHONE>
@@ -4692,7 +4691,7 @@
 	<_000182>
 		<NAME>Paul Edwards</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>paedwards@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5128</PHONE>
@@ -4700,7 +4699,7 @@
 	<_000183>
 		<NAME>Sue Edwards</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sedwards@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5214</PHONE>
@@ -4708,7 +4707,7 @@
 	<_000184>
 		<NAME>Medina Hammad</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mhammad@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5011</PHONE>
@@ -4724,7 +4723,7 @@
 	<_000235>
 		<NAME>Philippa Wood</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pwood@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5208</PHONE>
@@ -4732,14 +4731,14 @@
 	<_000417>
 		<NAME>David Bramston</NAME>
 		<JOBTITLE>Principal Lecturer (Enterprise)</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dbramston@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7153</PHONE>
 	</_000417>
 	<_000428>
 		<NAME>Geoff Thompson</NAME>
-		<JOBTITLE>Media & Broadcast Manager</JOBTITLE>
+		<JOBTITLE>Media and Broadcast Manager</JOBTITLE>
 		<DEPARTMENT>College of Arts Technical</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gthompson@lincoln.ac.uk</EMAIL>
@@ -4748,7 +4747,7 @@
 	<_000438>
 		<NAME>Chris Dunne</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cdunne@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5209</PHONE>
@@ -4756,7 +4755,7 @@
 	<_000442>
 		<NAME>Pauline Lancaster</NAME>
 		<JOBTITLE>Technician</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>plancaster@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5235</PHONE>
@@ -4772,7 +4771,7 @@
 	<_000504>
 		<NAME>Diane Dubois</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>diane@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6448</PHONE>
@@ -4788,7 +4787,7 @@
 	<_000537>
 		<NAME>Ian Waites</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>iwaites@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5152</PHONE>
@@ -4804,14 +4803,14 @@
 	<_000544>
 		<NAME>Stewart Bibby</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sbibby@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7157</PHONE>
 	</_000544>
 	<_000574>
 		<NAME>Steve Kirkby</NAME>
-		<JOBTITLE>Learning Adviser - Radio & Audio</JOBTITLE>
+		<JOBTITLE>Learning Adviser - Radio and Audio</JOBTITLE>
 		<DEPARTMENT>College of Arts Technical</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>skirkby@lincoln.ac.uk</EMAIL>
@@ -4828,7 +4827,7 @@
 	<_000707>
 		<NAME>Richard Wright</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>riwright@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7132</PHONE>
@@ -4852,7 +4851,7 @@
 	<_000777>
 		<NAME>Neil Maycroft</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nmaycroft@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5151</PHONE>
@@ -4876,7 +4875,7 @@
 	<_000868>
 		<NAME>Phil Eastwood</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>peastwood@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5239</PHONE>
@@ -4884,7 +4883,7 @@
 	<_000920>
 		<NAME>Philip Hyde</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>phyde@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7146</PHONE>
@@ -4916,7 +4915,7 @@
 	<_001119>
 		<NAME>Barrie Tullett</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>btullett@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5211</PHONE>
@@ -4924,7 +4923,7 @@
 	<_001175>
 		<NAME>Darren Diss</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ddiss@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5243</PHONE>
@@ -4940,7 +4939,7 @@
 	<_001211>
 		<NAME>Maria Karaolides</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mkaraolides@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -4948,7 +4947,7 @@
 	<_001212>
 		<NAME>Trevor Elvin</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>telvin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7145</PHONE>
@@ -4964,7 +4963,7 @@
 	<_001440>
 		<NAME>Gyles Lingwood</NAME>
 		<JOBTITLE>Director of Education</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>glingwood@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5212</PHONE>
@@ -4972,7 +4971,7 @@
 	<_001443>
 		<NAME>John Stocker</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jstocker@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5242</PHONE>
@@ -4988,7 +4987,7 @@
 	<_001641>
 		<NAME>Wayne Christian</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>wchristian@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -5004,7 +5003,7 @@
 	<_001709>
 		<NAME>Chloe Twells</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ctwells@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5074</PHONE>
@@ -5012,7 +5011,7 @@
 	<_001718>
 		<NAME>Karolina Szynalska</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kszynalska@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6422</PHONE>
@@ -5124,7 +5123,7 @@
 	<_003638>
 		<NAME>Anna Scott</NAME>
 		<JOBTITLE>Research Assistant</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ascott@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5112</PHONE>
@@ -5195,7 +5194,7 @@
 	</_000812>
 	<_000864>
 		<NAME>Lesley Thompson</NAME>
-		<JOBTITLE>Assistant Director: User Experience & Learning</JOBTITLE>
+		<JOBTITLE>Assistant Director: User Experience and Learning</JOBTITLE>
 		<DEPARTMENT>Library Services Lincoln</DEPARTMENT>
 		<DIVISION>Library</DIVISION>
 		<EMAIL>lthompson@lincoln.ac.uk</EMAIL>
@@ -5364,7 +5363,7 @@
 	<_002274>
 		<NAME>Mike Murphy</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mmurphy@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5230</PHONE>
@@ -5508,7 +5507,7 @@
 	<_002749>
 		<NAME>Jim Dale</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jdale@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7444</PHONE>
@@ -5524,7 +5523,7 @@
 	<_002765>
 		<NAME>Ruth Chapman</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rchapman@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -5540,7 +5539,7 @@
 	<_002878>
 		<NAME>Clare Nice</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cnice@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -5588,7 +5587,7 @@
 	<_003031>
 		<NAME>Martin Drury</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mdrury@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -5596,7 +5595,7 @@
 	<_003048>
 		<NAME>Grant Bridgeman</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gbridgeman@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -5604,7 +5603,7 @@
 	<_003503>
 		<NAME>Ben Atkinson</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>batkinson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6765</PHONE>
@@ -5876,7 +5875,7 @@
 	<_881260>
 		<NAME>Andrew West</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>awest@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -6140,14 +6139,14 @@
 	<_000100>
 		<NAME>Bryan Rudd</NAME>
 		<JOBTITLE>Principal Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>brudd@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6270</PHONE>
 	</_000100>
 	<_000726>
 		<NAME>Bev Jones</NAME>
-		<JOBTITLE>Research Repository & Information Officer</JOBTITLE>
+		<JOBTITLE>Research Repository and Information Officer</JOBTITLE>
 		<DEPARTMENT>Graduate School</DEPARTMENT>
 		<DIVISION>Graduate School</DIVISION>
 		<EMAIL>bjones@lincoln.ac.uk</EMAIL>
@@ -6156,7 +6155,7 @@
 	<_000809>
 		<NAME>Bernie Russell</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>brussell@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6361</PHONE>
@@ -6172,7 +6171,7 @@
 	<_000971>
 		<NAME>Brian Winston</NAME>
 		<JOBTITLE>Lincoln Chair</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bwinston@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6871</PHONE>
@@ -6228,7 +6227,7 @@
 	<_001990>
 		<NAME>Barbara Griffin</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bgriffin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7444</PHONE>
@@ -6236,7 +6235,7 @@
 	<_002238>
 		<NAME>Barry Turner</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bturner@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6898</PHONE>
@@ -6244,7 +6243,7 @@
 	<_002273>
 		<NAME>Brian Voce</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bvoce@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5218</PHONE>
@@ -6316,7 +6315,7 @@
 	<_503166>
 		<NAME>Ben Keaton</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bkeaton@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7672</PHONE>
@@ -6548,7 +6547,7 @@
 	<_002509>
 		<NAME>Karen Bartlett</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kbartlett@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7140</PHONE>
@@ -6556,15 +6555,15 @@
 	<_002630>
 		<NAME>Peter Baldwin</NAME>
 		<JOBTITLE>CAD Technician</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pbaldwin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7479</PHONE>
 	</_002630>
 	<_002655>
 		<NAME>Sarah Barrow</NAME>
-		<JOBTITLE>Head of School of Film & Media</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<JOBTITLE>Head of School of Film and Media</JOBTITLE>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sbarrow@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6615</PHONE>
@@ -6644,7 +6643,7 @@
 	<_003708>
 		<NAME>Ian Barnsley</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ibarnsley@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6020</PHONE>
@@ -6652,7 +6651,7 @@
 	<_003714>
 		<NAME>Stuart Baird</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sbaird@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -6676,7 +6675,7 @@
 	<_004086>
 		<NAME>Rachel Barraclough</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rbarraclough@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -6692,7 +6691,7 @@
 	<_004151>
 		<NAME>Rachel Baynton</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rbaynton@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -6708,7 +6707,7 @@
 	<_502278>
 		<NAME>Jane Batkin</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jbatkin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7154</PHONE>
@@ -6772,7 +6771,7 @@
 	<_506001>
 		<NAME>Christine Ball</NAME>
 		<JOBTITLE>Recruitment co-ordinator</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cball@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6319</PHONE>
@@ -6860,7 +6859,7 @@
 	<_507326>
 		<NAME>Shellie Barrowcliffe</NAME>
 		<JOBTITLE>Theatre Technician</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sbarrowcliffe@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -6876,7 +6875,7 @@
 	<_507424>
 		<NAME>Catherine Bajic-Hunt</NAME>
 		<JOBTITLE>Jeweller</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cbajichunt@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -6963,7 +6962,7 @@
 	</_882141>
 	<_001241>
 		<NAME>Michael Howitt</NAME>
-		<JOBTITLE>Head of Work-based Distance Learning & Subject Group Leader</JOBTITLE>
+		<JOBTITLE>Head of Work-based Distance Learning and Subject Group Leader</JOBTITLE>
 		<DEPARTMENT>Lincoln Business School</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>mhowitt@lincoln.ac.uk</EMAIL>
@@ -6980,7 +6979,7 @@
 	<_003804>
 		<NAME>Holly Cox</NAME>
 		<JOBTITLE>Front of House and Cafe Bar Manager</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hcox@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7613</PHONE>
@@ -7003,7 +7002,7 @@
 	</_882500>
 	<_882526>
 		<NAME>Gemma Smart</NAME>
-		<JOBTITLE>Head Chef Tower Bars & Engine Shed</JOBTITLE>
+		<JOBTITLE>Head Chef Tower Bars and Engine Shed</JOBTITLE>
 		<DEPARTMENT>Engine Shed</DEPARTMENT>
 		<DIVISION>Engine Shed</DIVISION>
 		<EMAIL>gsmart@lincoln.ac.uk</EMAIL>
@@ -7011,7 +7010,7 @@
 	</_882526>
 	<_882527>
 		<NAME>Ryan Campbell</NAME>
-		<JOBTITLE>Head Chef Tower Bars & Engine Shed</JOBTITLE>
+		<JOBTITLE>Head Chef Tower Bars and Engine Shed</JOBTITLE>
 		<DEPARTMENT>Engine Shed</DEPARTMENT>
 		<DIVISION>Engine Shed</DIVISION>
 		<EMAIL>rcampbell@lincoln.ac.uk</EMAIL>
@@ -7027,7 +7026,7 @@
 	</_506505>
 	<_001801>
 		<NAME>Kevin Pasco</NAME>
-		<JOBTITLE>Senior Business Intelligence Officer (BC & Risk)</JOBTITLE>
+		<JOBTITLE>Senior Business Intelligence Officer (BC and Risk)</JOBTITLE>
 		<DEPARTMENT>Planning and Business Intelligence</DEPARTMENT>
 		<DIVISION>Planning and Business Intelligence</DIVISION>
 		<EMAIL>kpasco@lincoln.ac.uk</EMAIL>
@@ -7060,7 +7059,7 @@
 	<_001600>
 		<NAME>Erin Bell</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ebell@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6941</PHONE>
@@ -7092,7 +7091,7 @@
 	<_002217>
 		<NAME>Victoria Bellandini</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>vbellandini@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5231</PHONE>
@@ -7100,7 +7099,7 @@
 	<_002519>
 		<NAME>Mike Belton</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mbelton@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5118</PHONE>
@@ -7148,7 +7147,7 @@
 	<_505706>
 		<NAME>Nicholas Bennett</NAME>
 		<JOBTITLE>Visiting Senior Fellow</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nbennett@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -7252,7 +7251,7 @@
 	<_800943>
 		<NAME>Chiara Beccalossi</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cbeccalossi@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -7260,7 +7259,7 @@
 	<_800962>
 		<NAME>Bethanie Jacob</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bjacob@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5238</PHONE>
@@ -7532,7 +7531,7 @@
 	<_501253>
 		<NAME>Michael Blackburn</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mblackburn@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7109</PHONE>
@@ -7636,7 +7635,7 @@
 	<_002226>
 		<NAME>Kayla Bowtell</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kbowtell@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7643</PHONE>
@@ -7644,7 +7643,7 @@
 	<_003353>
 		<NAME>Jacqueline Bolton</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jbolton@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7675</PHONE>
@@ -7660,7 +7659,7 @@
 	<_004012>
 		<NAME>Dave Boothroyd</NAME>
 		<JOBTITLE>Professor of Media and Culture</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dboothroyd@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7339</PHONE>
@@ -7748,7 +7747,7 @@
 	<_800044>
 		<NAME>Nicola Bowring</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nbowring@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -7763,7 +7762,7 @@
 	</_801052>
 	<_801077>
 		<NAME>Kirsty Bolam</NAME>
-		<JOBTITLE>Events & Conferencing Officer</JOBTITLE>
+		<JOBTITLE>Events and Conferencing Officer</JOBTITLE>
 		<DEPARTMENT>Events Office</DEPARTMENT>
 		<DIVISION>Marketing</DIVISION>
 		<EMAIL>kbolam@lincoln.ac.uk</EMAIL>
@@ -7804,7 +7803,7 @@
 	<_507397>
 		<NAME>David Kavanagh</NAME>
 		<JOBTITLE>Volunteer for Bomber Command Digital Archives Project</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dkavanagh@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -7812,7 +7811,7 @@
 	<_507405>
 		<NAME>Sue Taylor</NAME>
 		<JOBTITLE>PA for the Bomber Command Centre</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>staylor@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -7820,7 +7819,7 @@
 	<_800014>
 		<NAME>Phoebe Wall-Palmer</NAME>
 		<JOBTITLE>Box Office Coordinator</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pwall-palmer@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7618</PHONE>
@@ -7828,7 +7827,7 @@
 	<_801529>
 		<NAME>Peter Jones</NAME>
 		<JOBTITLE>Archive Assistant, Bomber Command Digital Archive</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pejones@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -7836,14 +7835,14 @@
 	<_801530>
 		<NAME>Robin Evans</NAME>
 		<JOBTITLE>Archive Assistant, Bomber Command Digital Archive</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>revans@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
 	</_801530>
 	<_000237>
 		<NAME>Val Braybrooks</NAME>
-		<JOBTITLE>Dean of Holbeach & NCFM</JOBTITLE>
+		<JOBTITLE>Dean of Holbeach and NCFM</JOBTITLE>
 		<DEPARTMENT>National Centre for Food Manufacturing</DEPARTMENT>
 		<DIVISION>College of Science</DIVISION>
 		<EMAIL>vbraybrooks@lincoln.ac.uk</EMAIL>
@@ -7851,7 +7850,7 @@
 	</_000237>
 	<_000379>
 		<NAME>Jacqui Briggs</NAME>
-		<JOBTITLE>Head of School of Social & Political Sciences</JOBTITLE>
+		<JOBTITLE>Head of School of Social and Political Sciences</JOBTITLE>
 		<DEPARTMENT>School of Social and Political Sciences</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>jbriggs@lincoln.ac.uk</EMAIL>
@@ -7931,7 +7930,7 @@
 	</_002903>
 	<_003072>
 		<NAME>Elizabeth Bruzas</NAME>
-		<JOBTITLE>Careers & Employability Advisor (College of Science)</JOBTITLE>
+		<JOBTITLE>Careers and Employability Advisor (College of Science)</JOBTITLE>
 		<DEPARTMENT>Careers and Employability Services</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>ebruzas@lincoln.ac.uk</EMAIL>
@@ -7940,7 +7939,7 @@
 	<_003296>
 		<NAME>Douglas Brown</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dbrown@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -7996,7 +7995,7 @@
 	<_004005>
 		<NAME>Scott Brewster</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sbrewster@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7592</PHONE>
@@ -8012,7 +8011,7 @@
 	<_004031>
 		<NAME>Carol Breen</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cbreen@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -8036,7 +8035,7 @@
 	<_004095>
 		<NAME>Mark Brewer</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mbrewer@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -8068,7 +8067,7 @@
 	<_506052>
 		<NAME>Philip Braund</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pbraund@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6898</PHONE>
@@ -8148,7 +8147,7 @@
 	<_507275>
 		<NAME>Tom O'Brien</NAME>
 		<JOBTITLE>PhD student</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tobrien@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -8212,7 +8211,7 @@
 	<_800971>
 		<NAME>Brooke Shilling</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>bshilling@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -8307,7 +8306,7 @@
 	</_003448>
 	<_003480>
 		<NAME>Sara Healy</NAME>
-		<JOBTITLE>Business Intelligence Officer (Curriculum & Planning)</JOBTITLE>
+		<JOBTITLE>Business Intelligence Officer (Curriculum and Planning)</JOBTITLE>
 		<DEPARTMENT>Planning and Business Intelligence</DEPARTMENT>
 		<DIVISION>Planning and Business Intelligence</DIVISION>
 		<EMAIL>shealy@lincoln.ac.uk</EMAIL>
@@ -8436,7 +8435,7 @@
 	<_003281>
 		<NAME>John Bull</NAME>
 		<JOBTITLE>Visiting Professorship in Drama</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jbull@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -8492,7 +8491,7 @@
 	<_503968>
 		<NAME>Dave Bussey</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dbussey@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -8540,7 +8539,7 @@
 	<_801339>
 		<NAME>Emma Butcher</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>embutcher@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -8939,7 +8938,7 @@
 	</_003624>
 	<_003722>
 		<NAME>Lynda Crosby</NAME>
-		<JOBTITLE>Careers & Employability Delivery Manager</JOBTITLE>
+		<JOBTITLE>Careers and Employability Delivery Manager</JOBTITLE>
 		<DEPARTMENT>Careers and Employability Services</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>lcrosby@lincoln.ac.uk</EMAIL>
@@ -9243,7 +9242,7 @@
 	</_507100>
 	<_800046>
 		<NAME>Carlos Rodriguez Pascual</NAME>
-		<JOBTITLE>Professor & Honorary Consultant in Care of the Older Person</JOBTITLE>
+		<JOBTITLE>Professor and Honorary Consultant in Care of the Older Person</JOBTITLE>
 		<DEPARTMENT>School of Pharmacy</DEPARTMENT>
 		<DIVISION>College of Science</DIVISION>
 		<EMAIL>crodriguezpascual@lincoln.ac.uk</EMAIL>
@@ -9387,7 +9386,7 @@
 	</_507078>
 	<_001627>
 		<NAME>Niro Siriwardena</NAME>
-		<JOBTITLE>Professor of Primary & Pre-Hospital Health Care</JOBTITLE>
+		<JOBTITLE>Professor of Primary and Pre-Hospital Health Care</JOBTITLE>
 		<DEPARTMENT>School of Health and Social Care</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>nsiriwardena@lincoln.ac.uk</EMAIL>
@@ -9395,7 +9394,7 @@
 	</_001627>
 	<_002200>
 		<NAME>Nigel Horner</NAME>
-		<JOBTITLE>Head of School of Health & Social Care</JOBTITLE>
+		<JOBTITLE>Head of School of Health and Social Care</JOBTITLE>
 		<DEPARTMENT>School of Health and Social Care</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>nhorner@lincoln.ac.uk</EMAIL>
@@ -9403,7 +9402,7 @@
 	</_002200>
 	<_002437>
 		<NAME>Mark Stow</NAME>
-		<JOBTITLE>Head of Careers & Employability</JOBTITLE>
+		<JOBTITLE>Head of Careers and Employability</JOBTITLE>
 		<DEPARTMENT>Careers and Employability Services</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>mstow@lincoln.ac.uk</EMAIL>
@@ -9411,7 +9410,7 @@
 	</_002437>
 	<_002972>
 		<NAME>Helen McCarron</NAME>
-		<JOBTITLE>Careers & Employability Advisor</JOBTITLE>
+		<JOBTITLE>Careers and Employability Advisor</JOBTITLE>
 		<DEPARTMENT>Careers and Employability Services</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>hmccarron@lincoln.ac.uk</EMAIL>
@@ -9419,7 +9418,7 @@
 	</_002972>
 	<_003241>
 		<NAME>Pauline Tait</NAME>
-		<JOBTITLE>Careers & Employability Advisor</JOBTITLE>
+		<JOBTITLE>Careers and Employability Advisor</JOBTITLE>
 		<DEPARTMENT>Careers and Employability Services</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>ptait@lincoln.ac.uk</EMAIL>
@@ -9427,7 +9426,7 @@
 	</_003241>
 	<_003366>
 		<NAME>Judy Turner</NAME>
-		<JOBTITLE>Careers & Employability Advisor (Int)</JOBTITLE>
+		<JOBTITLE>Careers and Employability Advisor (Int)</JOBTITLE>
 		<DEPARTMENT>Careers and Employability Services</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>juturner@lincoln.ac.uk</EMAIL>
@@ -9435,7 +9434,7 @@
 	</_003366>
 	<_003989>
 		<NAME>Laura Talbot</NAME>
-		<JOBTITLE>Careers & Employability Info Officer</JOBTITLE>
+		<JOBTITLE>Careers and Employability Info Officer</JOBTITLE>
 		<DEPARTMENT>Careers and Employability Services</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>ltalbot@lincoln.ac.uk</EMAIL>
@@ -9500,7 +9499,7 @@
 	<_001714>
 		<NAME>Catherine Redpath</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>credpath@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6813</PHONE>
@@ -9516,14 +9515,14 @@
 	<_001876>
 		<NAME>John Cafferkey</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jcafferkey@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7395</PHONE>
 	</_001876>
 	<_001997>
 		<NAME>Catherine Thomas</NAME>
-		<JOBTITLE>Head of School of Sport & Exercise Science</JOBTITLE>
+		<JOBTITLE>Head of School of Sport and Exercise Science</JOBTITLE>
 		<DEPARTMENT>School of Sport and Exercise Science</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>cthomas@lincoln.ac.uk</EMAIL>
@@ -9540,7 +9539,7 @@
 	<_002229>
 		<NAME>Cairo Hickman</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>chickman@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6796</PHONE>
@@ -9548,7 +9547,7 @@
 	<_002719>
 		<NAME>Doina Carter</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>docarter@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7655</PHONE>
@@ -9620,7 +9619,7 @@
 	<_503128>
 		<NAME>Catherine Parry</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cparry@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -9636,14 +9635,14 @@
 	<_003134>
 		<NAME>Chris Chohan</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cchohan@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
 	</_003134>
 	<_003223>
 		<NAME>Claire Collier</NAME>
-		<JOBTITLE>Mechanical & Electrical Maintenance Manager</JOBTITLE>
+		<JOBTITLE>Mechanical and Electrical Maintenance Manager</JOBTITLE>
 		<DEPARTMENT>Maintenance</DEPARTMENT>
 		<DIVISION>Estates</DIVISION>
 		<EMAIL>ccollier@lincoln.ac.uk</EMAIL>
@@ -9724,7 +9723,7 @@
 	<_800957>
 		<NAME>Cathy Daly</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cdaly@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -10107,7 +10106,7 @@
 	</_800999>
 	<_801070>
 		<NAME>Sara Joseph</NAME>
-		<JOBTITLE>Sports & Fitness Activator</JOBTITLE>
+		<JOBTITLE>Sports and Fitness Activator</JOBTITLE>
 		<DEPARTMENT>Sports Centre</DEPARTMENT>
 		<DIVISION>Commercial Facilities</DIVISION>
 		<EMAIL>sjoseph@lincoln.ac.uk</EMAIL>
@@ -10180,7 +10179,7 @@
 	<_003507>
 		<NAME>Christine Grandy</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cgrandy@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6901</PHONE>
@@ -10236,7 +10235,7 @@
 	<_002322>
 		<NAME>Chris Hainstock</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>chainstock@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6370</PHONE>
@@ -10372,7 +10371,7 @@
 	<_000786>
 		<NAME>Diane Charlesworth</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dcharlesworth@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6817</PHONE>
@@ -10380,7 +10379,7 @@
 	<_000821>
 		<NAME>Jim Cheshire</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jcheshire@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5020</PHONE>
@@ -10396,7 +10395,7 @@
 	<_001455>
 		<NAME>Christopher Marlow</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cmarlow@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7358</PHONE>
@@ -10404,7 +10403,7 @@
 	<_001738>
 		<NAME>Jane Chapman</NAME>
 		<JOBTITLE>Professor of Communications</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jachapman@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6327</PHONE>
@@ -10420,7 +10419,7 @@
 	<_002205>
 		<NAME>Christopher Twigg</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ctwigg@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5080</PHONE>
@@ -10428,7 +10427,7 @@
 	<_002613>
 		<NAME>Christopher Roantree</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>croantree@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -10468,7 +10467,7 @@
 	<_002938>
 		<NAME>Dagmara Childs</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dchilds@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5236</PHONE>
@@ -10484,7 +10483,7 @@
 	<_003027>
 		<NAME>Chris Matthews</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cmatthews@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -10508,7 +10507,7 @@
 	<_003545>
 		<NAME>Ruth Charnock</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rcharnock@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7386</PHONE>
@@ -10524,7 +10523,7 @@
 	<_003803>
 		<NAME>Charlotte Parker</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cparker@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -10555,7 +10554,7 @@
 	</_003929>
 	<_004110>
 		<NAME>Chi wa Tsang</NAME>
-		<JOBTITLE>Research & Development Engineer (KTP)</JOBTITLE>
+		<JOBTITLE>Research and Development Engineer (KTP)</JOBTITLE>
 		<DEPARTMENT>Knowledge Transfer Partnerships</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>ctsang@lincoln.ac.uk</EMAIL>
@@ -10668,7 +10667,7 @@
 	<_507495>
 		<NAME>Charlie Johns</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cjohns@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -11172,7 +11171,7 @@
 	<_882018>
 		<NAME>Clare Lynch</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>clynch@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -11196,7 +11195,7 @@
 	<_000690>
 		<NAME>Clive McCarthy</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cmccarthy@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5233</PHONE>
@@ -11204,7 +11203,7 @@
 	<_002407>
 		<NAME>Clementine Monro</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cmonro@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6271</PHONE>
@@ -11228,7 +11227,7 @@
 	<_002717>
 		<NAME>Paul Clarke</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>paclarke@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7659</PHONE>
@@ -11276,7 +11275,7 @@
 	<_503878>
 		<NAME>Owen Clayton</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>oclayton@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7382</PHONE>
@@ -11467,7 +11466,7 @@
 	</_001826>
 	<_001908>
 		<NAME>Sam Williams</NAME>
-		<JOBTITLE>Head of Strategy & Communications</JOBTITLE>
+		<JOBTITLE>Head of Strategy and Communications</JOBTITLE>
 		<DEPARTMENT>Strategy and Communications</DEPARTMENT>
 		<DIVISION>Estates</DIVISION>
 		<EMAIL>sawilliams@lincoln.ac.uk</EMAIL>
@@ -11644,7 +11643,7 @@
 	<_001494>
 		<NAME>Graham Cooper</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gcooper@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6994</PHONE>
@@ -11660,7 +11659,7 @@
 	<_001945>
 		<NAME>Stewart Collinson</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>scollinson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5158</PHONE>
@@ -11668,7 +11667,7 @@
 	<_001979>
 		<NAME>Krista Cowman</NAME>
 		<JOBTITLE>Professor of History/Director of Research</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kcowman@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6093</PHONE>
@@ -11684,7 +11683,7 @@
 	<_002667>
 		<NAME>Rob Coley</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rcoley@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6129</PHONE>
@@ -11692,7 +11691,7 @@
 	<_002921>
 		<NAME>Conan Lawrence</NAME>
 		<JOBTITLE>Principal Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>clawrence@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7608</PHONE>
@@ -11828,14 +11827,14 @@
 	<_507328>
 		<NAME>Christopher Peter Robinson</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cprobinson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
 	</_507328>
 	<_001116>
 		<NAME>Karin Crawford</NAME>
-		<JOBTITLE>Director of Educational Devt & Enhancement Unit</JOBTITLE>
+		<JOBTITLE>Director of Educational Devt and Enhancement Unit</JOBTITLE>
 		<DEPARTMENT>Educational Development and Enhancement</DEPARTMENT>
 		<DIVISION>Educational Development And Enhancement Unit</DIVISION>
 		<EMAIL>kcrawford@lincoln.ac.uk</EMAIL>
@@ -11868,7 +11867,7 @@
 	<_002057>
 		<NAME>Michael Crick-Smith</NAME>
 		<JOBTITLE>Senior Researcher</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mcrick-smith@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5051</PHONE>
@@ -11876,7 +11875,7 @@
 	<_002060>
 		<NAME>Ian Crick-Smith</NAME>
 		<JOBTITLE>Senior Researcher</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>icrick-smith@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5051</PHONE>
@@ -11884,7 +11883,7 @@
 	<_002236>
 		<NAME>Paul Croft</NAME>
 		<JOBTITLE>Research Fellow</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pcroft@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5055</PHONE>
@@ -11892,7 +11891,7 @@
 	<_002439>
 		<NAME>Crystal Walker</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kwalker@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7064</PHONE>
@@ -11956,7 +11955,7 @@
 	<_801609>
 		<NAME>Anna Cruse</NAME>
 		<JOBTITLE>Research Assistant (Our Lincolnshire)</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>acruse@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -11964,7 +11963,7 @@
 	<_801703>
 		<NAME>Diletta De Cristofaro</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ddecristofaro@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -11972,7 +11971,7 @@
 	<_801767>
 		<NAME>Danielle Crooks</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dcrooks@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -11995,7 +11994,7 @@
 	</_001930>
 	<_003837>
 		<NAME>Matthew Hall</NAME>
-		<JOBTITLE>Professor of Law & Criminal Justice</JOBTITLE>
+		<JOBTITLE>Professor of Law and Criminal Justice</JOBTITLE>
 		<DEPARTMENT>Lincoln Law School</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>mhall@lincoln.ac.uk</EMAIL>
@@ -12028,7 +12027,7 @@
 	<_507117>
 		<NAME>Colin Reiners</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>creiners@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6216</PHONE>
@@ -12044,7 +12043,7 @@
 	<_801651>
 		<NAME>Rafaelle Nicholson</NAME>
 		<JOBTITLE>Research Assistant (Lincolnshire Cricket)</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rnicholson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5117</PHONE>
@@ -12052,7 +12051,7 @@
 	<_881611>
 		<NAME>Phillipa Mcdonnell</NAME>
 		<JOBTITLE>Research Fellow (Crick Smith)</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pmcdonnell@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12116,7 +12115,7 @@
 	<_800910>
 		<NAME>Conohar Scott</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>cscott@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12148,7 +12147,7 @@
 	<_002583>
 		<NAME>Martin Curtis</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>macurtis@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7644</PHONE>
@@ -12163,7 +12162,7 @@
 	</_003474>
 	<_003510>
 		<NAME>Matthew Cumber</NAME>
-		<JOBTITLE>Events & Conferencing Officer</JOBTITLE>
+		<JOBTITLE>Events and Conferencing Officer</JOBTITLE>
 		<DEPARTMENT>Events Office</DEPARTMENT>
 		<DIVISION>Marketing</DIVISION>
 		<EMAIL>mcumber@lincoln.ac.uk</EMAIL>
@@ -12220,7 +12219,7 @@
 	<_666660>
 		<NAME>Robert Cullis</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rcullis@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12244,7 +12243,7 @@
 	<_003589>
 		<NAME>Jeanine Griffin</NAME>
 		<JOBTITLE>Reader in Contemporary Curatorial Practice</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jgriffin@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12252,14 +12251,14 @@
 	<_800068>
 		<NAME>Dan Ellin</NAME>
 		<JOBTITLE>Archive and Exhibition Curator</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dellin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7706</PHONE>
 	</_800068>
 	<_505069>
 		<NAME>Caroline Wills</NAME>
-		<JOBTITLE>Evening & Weekend Assistant</JOBTITLE>
+		<JOBTITLE>Evening and Weekend Assistant</JOBTITLE>
 		<DEPARTMENT>Library Services - Holbeach</DEPARTMENT>
 		<DIVISION>Library</DIVISION>
 		<EMAIL>cwills@lincoln.ac.uk</EMAIL>
@@ -12340,7 +12339,7 @@
 	<_003994>
 		<NAME>David Thompson</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dthompson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5168</PHONE>
@@ -12348,7 +12347,7 @@
 	<_004105>
 		<NAME>Daniel Martin</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dmartin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5152</PHONE>
@@ -12356,7 +12355,7 @@
 	<_004125>
 		<NAME>David Younger</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dyounger@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12364,7 +12363,7 @@
 	<_004126>
 		<NAME>Danai Giamalaki</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dgiamalaki@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12372,7 +12371,7 @@
 	<_503102>
 		<NAME>David Hall</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dhall@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12388,7 +12387,7 @@
 	<_002158>
 		<NAME>Daniel Meyer-Dinkgräfe</NAME>
 		<JOBTITLE>Professor of Drama</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dmeyerdinkgrafe@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7371</PHONE>
@@ -12404,7 +12403,7 @@
 	<_001771>
 		<NAME>David Smelt</NAME>
 		<JOBTITLE>Learning Adviser - Drama</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dsmelt@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7457</PHONE>
@@ -12452,7 +12451,7 @@
 	<_800668>
 		<NAME>Katie Dayman</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kdayman@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12460,7 +12459,7 @@
 	<_800807>
 		<NAME>Elana Van Der Wath</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>evanderwath@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12468,7 +12467,7 @@
 	<_881968>
 		<NAME>John Dowling</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jdowling@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -12540,7 +12539,7 @@
 	<_000811>
 		<NAME>Dean Lockwood</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dlockwood@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6088</PHONE>
@@ -12556,7 +12555,7 @@
 	<_001695>
 		<NAME>Dave McCaig</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dmccaig@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6796</PHONE>
@@ -12604,7 +12603,7 @@
 	<_002391>
 		<NAME>Donald Pulford</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dpulford@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7674</PHONE>
@@ -12612,7 +12611,7 @@
 	<_002415>
 		<NAME>David McSherry</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dmcsherry@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7129</PHONE>
@@ -12628,7 +12627,7 @@
 	<_002527>
 		<NAME>Dylan Roys</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>droys@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6431</PHONE>
@@ -12660,7 +12659,7 @@
 	<_002691>
 		<NAME>Daniel Hunt</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dhunt@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7665</PHONE>
@@ -12724,7 +12723,7 @@
 	<_003184>
 		<NAME>Darren Page</NAME>
 		<JOBTITLE>Stage Manager</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dpage@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7457</PHONE>
@@ -12764,7 +12763,7 @@
 	<_504067>
 		<NAME>Dave Evans</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>daevans@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5227</PHONE>
@@ -12844,7 +12843,7 @@
 	<_003333>
 		<NAME>Darren Scales</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dscales@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13036,7 +13035,7 @@
 	<_003836>
 		<NAME>Jantze Tullett</NAME>
 		<JOBTITLE>Demonstrator - Claim</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jtullett@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5234</PHONE>
@@ -13068,7 +13067,7 @@
 	<_801287>
 		<NAME>Sophia Kyprianou</NAME>
 		<JOBTITLE>Hourly Paid Demonstrator</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>skyprianou@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13132,7 +13131,7 @@
 	<_003998>
 		<NAME>Robert Dean</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rdean@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6924</PHONE>
@@ -13148,7 +13147,7 @@
 	<_004102>
 		<NAME>Debbie Russell</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>drussell@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5171</PHONE>
@@ -13180,7 +13179,7 @@
 	<_503078>
 		<NAME>Nigel Devereux</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ndevereux@lincoln.ac.uk</EMAIL>
 		<PHONE>01507 353 246</PHONE>
@@ -13268,7 +13267,7 @@
 	<_507406>
 		<NAME>Debbie Record</NAME>
 		<JOBTITLE>Admin Volunteer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>drecord@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13380,7 +13379,7 @@
 	<_002220>
 		<NAME>Pietro Dipaola</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pdipaola@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6682</PHONE>
@@ -13484,7 +13483,7 @@
 	<_000886>
 		<NAME>Nigel Morris</NAME>
 		<JOBTITLE>Principal Lecturer/Director of Students and Education</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nmorris@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6392</PHONE>
@@ -13500,7 +13499,7 @@
 	<_002930>
 		<NAME>James Patterson</NAME>
 		<JOBTITLE>Director of MACE</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jpatterson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7751</PHONE>
@@ -13540,7 +13539,7 @@
 	<_505135>
 		<NAME>Martyn Horner-Glister</NAME>
 		<JOBTITLE>Young Company Director</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mhornerglister@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13548,7 +13547,7 @@
 	<_505888>
 		<NAME>Joanna White</NAME>
 		<JOBTITLE>HLF Technician - Digital</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jowhite@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7758</PHONE>
@@ -13563,7 +13562,7 @@
 	</_506070>
 	<_507333>
 		<NAME>Louise Edworthy</NAME>
-		<JOBTITLE>EA/SGO & Distribution Manager</JOBTITLE>
+		<JOBTITLE>EA/SGO and Distribution Manager</JOBTITLE>
 		<DEPARTMENT>GA College of Social Science</DEPARTMENT>
 		<DIVISION>Guest Academics</DIVISION>
 		<EMAIL>ledworthy@lincoln.ac.uk</EMAIL>
@@ -13628,7 +13627,7 @@
 	<_001229>
 		<NAME>Mike Downing</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mdowning@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6118</PHONE>
@@ -13644,7 +13643,7 @@
 	<_003465>
 		<NAME>Dominic Symonds</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dsymonds@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6151</PHONE>
@@ -13660,7 +13659,7 @@
 	<_003828>
 		<NAME>Edmund Downey</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>edowney@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13668,7 +13667,7 @@
 	<_004087>
 		<NAME>Rachel Dodds</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rdodds@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13676,7 +13675,7 @@
 	<_004101>
 		<NAME>Dominic Parczuk</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dparczuk@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13692,7 +13691,7 @@
 	<_503375>
 		<NAME>Dominique Webb</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dwebb@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6493</PHONE>
@@ -13724,7 +13723,7 @@
 	<_505463>
 		<NAME>Hazel Donnelly</NAME>
 		<JOBTITLE>Consultant/Co-ordinator</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hdonnelly@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13780,7 +13779,7 @@
 	<_801236>
 		<NAME>James Dooley</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jdooley@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13796,7 +13795,7 @@
 	<_506827>
 		<NAME>John Francis Davies</NAME>
 		<JOBTITLE>Doctoral Researcher</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jdavies@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13844,7 +13843,7 @@
 	<_507325>
 		<NAME>Danny Ridealgh</NAME>
 		<JOBTITLE>Theatre Technician</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>dridealgh@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -13916,7 +13915,7 @@
 	<_881300>
 		<NAME>Helen Durham</NAME>
 		<JOBTITLE>Administrative Assistant</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hedurham@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -14036,7 +14035,7 @@
 	<_801516>
 		<NAME>Ellen Ricketts</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ericketts@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -14044,7 +14043,7 @@
 	<_881132>
 		<NAME>Ed Wellman</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ewellman@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7337</PHONE>
@@ -14156,7 +14155,7 @@
 	<_002008>
 		<NAME>Emily Wilczek</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ewilczek@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6437</PHONE>
@@ -14188,7 +14187,7 @@
 	<_002987>
 		<NAME>Ewen Glass</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>eglass@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -14251,7 +14250,7 @@
 	</_003805>
 	<_003826>
 		<NAME>Emma Seamer</NAME>
-		<JOBTITLE>Head of Alumni & Fundraising</JOBTITLE>
+		<JOBTITLE>Head of Alumni and Fundraising</JOBTITLE>
 		<DEPARTMENT>Development (fundraising)</DEPARTMENT>
 		<DIVISION>Development</DIVISION>
 		<EMAIL>eseamer@lincoln.ac.uk</EMAIL>
@@ -14460,7 +14459,7 @@
 	<_505797>
 		<NAME>Eliza Richardson</NAME>
 		<JOBTITLE>Rights administrator</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>erichardson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7750</PHONE>
@@ -14764,7 +14763,7 @@
 	<_506908>
 		<NAME>Leana Sherwood</NAME>
 		<JOBTITLE>Edinburgh Project Coordinator</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lsherwood@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -14772,7 +14771,7 @@
 	<_002934>
 		<NAME>Sultan Efe</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sefe@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7406</PHONE>
@@ -14787,7 +14786,7 @@
 	</_506444>
 	<_003734>
 		<NAME>Silvia Hanley</NAME>
-		<JOBTITLE>Equality & Engagement Officer</JOBTITLE>
+		<JOBTITLE>Equality and Engagement Officer</JOBTITLE>
 		<DEPARTMENT>Employee Engagement and Business Efficiency</DEPARTMENT>
 		<DIVISION>Human Resources</DIVISION>
 		<EMAIL>shanley@lincoln.ac.uk</EMAIL>
@@ -14820,7 +14819,7 @@
 	<_507187>
 		<NAME>Elizabeth Wright</NAME>
 		<JOBTITLE>Project worker</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>elwright@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -14860,7 +14859,7 @@
 	<_002761>
 		<NAME>Rosie Elvin</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>relvin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6130</PHONE>
@@ -14868,7 +14867,7 @@
 	<_002931>
 		<NAME>Julie Ellerby</NAME>
 		<JOBTITLE>Marketing Manager</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jellerby@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7677</PHONE>
@@ -14971,7 +14970,7 @@
 	</_882154>
 	<_001691>
 		<NAME>Mark Skinner</NAME>
-		<JOBTITLE>Mechanical & Electrical Engineer</JOBTITLE>
+		<JOBTITLE>Mechanical and Electrical Engineer</JOBTITLE>
 		<DEPARTMENT>Maintenance</DEPARTMENT>
 		<DIVISION>Estates</DIVISION>
 		<EMAIL>mskinner@lincoln.ac.uk</EMAIL>
@@ -14979,7 +14978,7 @@
 	</_001691>
 	<_800119>
 		<NAME>Paul Metcalf</NAME>
-		<JOBTITLE>Mechanical & Electrical Maintenance Engineer</JOBTITLE>
+		<JOBTITLE>Mechanical and Electrical Maintenance Engineer</JOBTITLE>
 		<DEPARTMENT>Maintenance</DEPARTMENT>
 		<DIVISION>Estates</DIVISION>
 		<EMAIL>pmetcalf@lincoln.ac.uk</EMAIL>
@@ -15147,8 +15146,8 @@
 	</_003631>
 	<_800045>
 		<NAME>Jason Whittaker</NAME>
-		<JOBTITLE>Head of School of English & Journalism</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<JOBTITLE>Head of School of English and Journalism</JOBTITLE>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jwhittaker@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6926</PHONE>
@@ -15188,7 +15187,7 @@
 	<_000279>
 		<NAME>Phil Redpath</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>predpath@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6185</PHONE>
@@ -15196,7 +15195,7 @@
 	<_000490>
 		<NAME>Rupert Hildyard</NAME>
 		<JOBTITLE>Principal Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rhildyard@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6070</PHONE>
@@ -15204,7 +15203,7 @@
 	<_001745>
 		<NAME>Tim Greenfield</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tgreenfield@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7075</PHONE>
@@ -15212,7 +15211,7 @@
 	<_001868>
 		<NAME>Gary Stevens</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gstevens@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6339</PHONE>
@@ -15220,7 +15219,7 @@
 	<_002204>
 		<NAME>Rebecca Styler</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rstyler@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6381</PHONE>
@@ -15252,7 +15251,7 @@
 	<_003071>
 		<NAME>Sanem Sahin</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ssahin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6132</PHONE>
@@ -15284,7 +15283,7 @@
 	<_003111>
 		<NAME>Jon Grubb</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jgrubb@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6898</PHONE>
@@ -15292,7 +15291,7 @@
 	<_003115>
 		<NAME>Les Sheehan</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lsheehan@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -15300,7 +15299,7 @@
 	<_003133>
 		<NAME>Stuart Wilde</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>swilde@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6898</PHONE>
@@ -15635,7 +15634,7 @@
 	</_801053>
 	<_002654>
 		<NAME>Rachel Farrow</NAME>
-		<JOBTITLE>Library Team Leader (Evening & Weekend Team)</JOBTITLE>
+		<JOBTITLE>Library Team Leader (Evening and Weekend Team)</JOBTITLE>
 		<DEPARTMENT>Library Services Lincoln</DEPARTMENT>
 		<DIVISION>Library</DIVISION>
 		<EMAIL>rfarrow@lincoln.ac.uk</EMAIL>
@@ -15667,7 +15666,7 @@
 	</_800020>
 	<_800805>
 		<NAME>Harry Mcwilliams</NAME>
-		<JOBTITLE>Library Events & Media Intern</JOBTITLE>
+		<JOBTITLE>Library Events and Media Intern</JOBTITLE>
 		<DEPARTMENT>Library Services Lincoln</DEPARTMENT>
 		<DIVISION>Library</DIVISION>
 		<EMAIL>hmcwilliams@lincoln.ac.uk</EMAIL>
@@ -15707,7 +15706,7 @@
 	</_001786>
 	<_001808>
 		<NAME>Zoe Homes</NAME>
-		<JOBTITLE>Marketing Intelligence & Recruitment Officer</JOBTITLE>
+		<JOBTITLE>Marketing Intelligence and Recruitment Officer</JOBTITLE>
 		<DEPARTMENT>College of Social Science Executive Office</DEPARTMENT>
 		<DIVISION>College of Social Science</DIVISION>
 		<EMAIL>zhomes@lincoln.ac.uk</EMAIL>
@@ -15795,7 +15794,7 @@
 	</_002475>
 	<_002690>
 		<NAME>Natalie Mawson</NAME>
-		<JOBTITLE>Marketing Intelligence & Recruitment Officer</JOBTITLE>
+		<JOBTITLE>Marketing Intelligence and Recruitment Officer</JOBTITLE>
 		<DEPARTMENT>College of Arts Executive Office</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nmawson@lincoln.ac.uk</EMAIL>
@@ -15852,7 +15851,7 @@
 	<_003451>
 		<NAME>Fiona Robertson</NAME>
 		<JOBTITLE>Fashion Technician</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>frobertson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -15892,7 +15891,7 @@
 	<_001446>
 		<NAME>Ronald Fowler</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rfowler@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6391</PHONE>
@@ -15900,7 +15899,7 @@
 	<_001717>
 		<NAME>Marcella Forster</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mforster@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6403</PHONE>
@@ -15908,7 +15907,7 @@
 	<_002848>
 		<NAME>James Field</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jfield@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6994</PHONE>
@@ -15916,7 +15915,7 @@
 	<_003773>
 		<NAME>Steve Fossey</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sfossey@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -15924,7 +15923,7 @@
 	<_507241>
 		<NAME>Stephen Fisher</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sfisher@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -15932,7 +15931,7 @@
 	<_801729>
 		<NAME>Paul Franklin</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pfranklin@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -15956,7 +15955,7 @@
 	<_002457>
 		<NAME>Finn Pollard</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>fpollard@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6692</PHONE>
@@ -16044,7 +16043,7 @@
 	<_502800>
 		<NAME>Florian Zollmann</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>fzollmann@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6940</PHONE>
@@ -16252,15 +16251,15 @@
 	<_881493>
 		<NAME>Federica Labanca</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>flabanca@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
 	</_881493>
 	<_001024>
 		<NAME>Richard Vickers</NAME>
-		<JOBTITLE>Deputy Head of School of Film & Media</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<JOBTITLE>Deputy Head of School of Film and Media</JOBTITLE>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rvickers@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6377</PHONE>
@@ -16428,7 +16427,7 @@
 	<_800686>
 		<NAME>Laura Fernandez-Gonzalez</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lfernandezgonzalez@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5032</PHONE>
@@ -16516,7 +16515,7 @@
 	<_501149>
 		<NAME>Mark Hocknull</NAME>
 		<JOBTITLE>Visiting Senior Fellow</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mhocknull@lincoln.ac.uk</EMAIL>
 		<PHONE>01522504050</PHONE>
@@ -16588,7 +16587,7 @@
 	<_800015>
 		<NAME>Sarah Lewis</NAME>
 		<JOBTITLE>Research Fellow</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>salewis@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -16644,7 +16643,7 @@
 	<_801580>
 		<NAME>Hollie Morgan</NAME>
 		<JOBTITLE>Research Fellow</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hmorgan@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -16668,7 +16667,7 @@
 	<_004009>
 		<NAME>Mikey Murray</NAME>
 		<JOBTITLE>Lecturer in Film Production</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mmurray@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6136</PHONE>
@@ -16724,7 +16723,7 @@
 	<_000386>
 		<NAME>Ros Garland</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rgarland@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7353</PHONE>
@@ -16732,7 +16731,7 @@
 	<_000478>
 		<NAME>Keith James</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kjames@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5113</PHONE>
@@ -16740,7 +16739,7 @@
 	<_000729>
 		<NAME>Neil Kendall</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nkendall@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6386</PHONE>
@@ -16748,7 +16747,7 @@
 	<_000747>
 		<NAME>Tom Nicholls</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tnicholls@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6430</PHONE>
@@ -16756,7 +16755,7 @@
 	<_001445>
 		<NAME>Janice Kearns</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jkearns@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6492</PHONE>
@@ -16764,7 +16763,7 @@
 	<_001475>
 		<NAME>Zara Healy</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>zhealy@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6260</PHONE>
@@ -16772,7 +16771,7 @@
 	<_001710>
 		<NAME>Neil Housego</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nhousego@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7161</PHONE>
@@ -16780,7 +16779,7 @@
 	<_001864>
 		<NAME>Sreenath Nair</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>snair@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7040</PHONE>
@@ -16788,7 +16787,7 @@
 	<_002225>
 		<NAME>Kelly Jones</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kejones@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7645</PHONE>
@@ -16796,7 +16795,7 @@
 	<_002577>
 		<NAME>Tracey Means</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tmeans@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5158</PHONE>
@@ -16804,7 +16803,7 @@
 	<_002592>
 		<NAME>John Hudson</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>johudson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6372</PHONE>
@@ -16812,7 +16811,7 @@
 	<_002740>
 		<NAME>Neil Jackson</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>njackson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -16964,7 +16963,7 @@
 	<_801488>
 		<NAME>Harry Foley</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hfoley@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17004,7 +17003,7 @@
 	<_506499>
 		<NAME>Tamsyn Webley</NAME>
 		<JOBTITLE>Project Worker for Lincolnshire One Venues </JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>twebley@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17035,8 +17034,8 @@
 	</_505874>
 	<_506945>
 		<NAME>Meredith Freeman</NAME>
-		<JOBTITLE>Intern & Research Student</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<JOBTITLE>Intern and Research Student</JOBTITLE>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mfreeman@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7119</PHONE>
@@ -17052,7 +17051,7 @@
 	<_506790>
 		<NAME>Veronica Grubb</NAME>
 		<JOBTITLE>Front of House Staff</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>vgrubb@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17060,7 +17059,7 @@
 	<_506792>
 		<NAME>Stacie Griffiths</NAME>
 		<JOBTITLE>Front of House Staff</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sgriffiths@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17068,7 +17067,7 @@
 	<_506796>
 		<NAME>Katherine Copley</NAME>
 		<JOBTITLE>Front of House Staff</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kcopley@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17148,7 +17147,7 @@
 	<_507520>
 		<NAME>Hannah Phizacklea</NAME>
 		<JOBTITLE>Front of House Staff</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hphizacklea@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7618</PHONE>
@@ -17236,7 +17235,7 @@
 	<_800903>
 		<NAME>Gabor Gergely</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ggergely@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17340,7 +17339,7 @@
 	<_050208>
 		<NAME>Gerard Williams</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gewilliams@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17420,7 +17419,7 @@
 	<_506820>
 		<NAME>Grace Harvey</NAME>
 		<JOBTITLE>PhD Student</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gharvey@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17460,7 +17459,7 @@
 	<_801204>
 		<NAME>Gozde Naiboglu</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>gnaiboglu@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17483,7 +17482,7 @@
 	</_000067>
 	<_001566>
 		<NAME>Wayne Gathergood</NAME>
-		<JOBTITLE>Infrastructure & Projects Manager</JOBTITLE>
+		<JOBTITLE>Infrastructure and Projects Manager</JOBTITLE>
 		<DEPARTMENT>Technical Services</DEPARTMENT>
 		<DIVISION>ICT Services</DIVISION>
 		<EMAIL>wgathergood@lincoln.ac.uk</EMAIL>
@@ -17500,7 +17499,7 @@
 	<_003287>
 		<NAME>Lisa Gaughan</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lgaughan@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7614</PHONE>
@@ -17588,7 +17587,7 @@
 	<_800955>
 		<NAME>Rowan Gatfield</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rgatfield@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5216</PHONE>
@@ -17659,7 +17658,7 @@
 	</_506133>
 	<_000603>
 		<NAME>Tricia Marshall</NAME>
-		<JOBTITLE>Research & Income Generation Support Manager</JOBTITLE>
+		<JOBTITLE>Research and Income Generation Support Manager</JOBTITLE>
 		<DEPARTMENT>Research and Income Generation Support</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>tmarshall@lincoln.ac.uk</EMAIL>
@@ -17852,7 +17851,7 @@
 	<_507207>
 		<NAME>Teo Ghil</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tghil@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -17860,7 +17859,7 @@
 	<_801145>
 		<NAME>Teo Ghilardi</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tghilardi@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18012,7 +18011,7 @@
 	<_003585>
 		<NAME>Jeremy Goffin</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jgoffin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7469</PHONE>
@@ -18044,7 +18043,7 @@
 	<_506738>
 		<NAME>Kritika Golchha</NAME>
 		<JOBTITLE>Visiting Scholar</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kgolchha@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18100,7 +18099,7 @@
 	<_801772>
 		<NAME>Siobhan O'Gorman</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sogorman@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18140,7 +18139,7 @@
 	<_003584>
 		<NAME>Hilary Gresty</NAME>
 		<JOBTITLE>Principal Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hgresty@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5240</PHONE>
@@ -18148,7 +18147,7 @@
 	<_003768>
 		<NAME>Lee Gretton</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lgretton@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18164,7 +18163,7 @@
 	<_003986>
 		<NAME>James Greenhalgh</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jgreenhalgh@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7729</PHONE>
@@ -18244,7 +18243,7 @@
 	<_801755>
 		<NAME>Kerry Greenwood</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kgreenwood@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18484,7 +18483,7 @@
 	<_000458>
 		<NAME>Harry Ziegler</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hziegler@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6208</PHONE>
@@ -18492,7 +18491,7 @@
 	<_002569>
 		<NAME>Henning Schulze</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hschulze@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5171</PHONE>
@@ -18500,7 +18499,7 @@
 	<_003996>
 		<NAME>Helen Smith</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hsmith@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7761</PHONE>
@@ -18556,7 +18555,7 @@
 	<_000539>
 		<NAME>Kate Hill</NAME>
 		<JOBTITLE>Principal Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>khill@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6125</PHONE>
@@ -18572,7 +18571,7 @@
 	<_002652>
 		<NAME>Joanna Huntington</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jhuntington@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6942</PHONE>
@@ -18580,7 +18579,7 @@
 	<_002762>
 		<NAME>Philippa Hoskin</NAME>
 		<JOBTITLE>Professor of Medieval Studies</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>phoskin@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6021</PHONE>
@@ -18596,7 +18595,7 @@
 	<_507388>
 		<NAME>Sam Howden</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>showden@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18756,7 +18755,7 @@
 	<_003863>
 		<NAME>Heather Young Reed</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hyoung@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7630</PHONE>
@@ -18764,7 +18763,7 @@
 	<_004132>
 		<NAME>Hannah Wroe</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>hwroe@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5121</PHONE>
@@ -18868,7 +18867,7 @@
 	<_002715>
 		<NAME>Sarah O'Hana</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sohana@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7797</PHONE>
@@ -18900,7 +18899,7 @@
 	<_003391>
 		<NAME>Susanne Sklepek-Hatton</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ssklepekhatton@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18908,7 +18907,7 @@
 	<_003817>
 		<NAME>Lee Hassall</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lhassall@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7029</PHONE>
@@ -18923,7 +18922,7 @@
 	</_003883>
 	<_003950>
 		<NAME>Steve Haddock</NAME>
-		<JOBTITLE>Technician/Demonstrator - Photography & Moving Image</JOBTITLE>
+		<JOBTITLE>Technician/Demonstrator - Photography and Moving Image</JOBTITLE>
 		<DEPARTMENT>College of Arts Technical</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>shaddock@lincoln.ac.uk</EMAIL>
@@ -18948,7 +18947,7 @@
 	<_004088>
 		<NAME>Shaun Hazell</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>shazell@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -18956,7 +18955,7 @@
 	<_004096>
 		<NAME>Matthew Hancock</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mahancock@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19068,7 +19067,7 @@
 	<_507202>
 		<NAME>Matthew Hancock</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mhancock@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19099,8 +19098,8 @@
 	</_507374>
 	<_800033>
 		<NAME>Paul Stephenson</NAME>
-		<JOBTITLE>Head of School of History & Heritage</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<JOBTITLE>Head of School of History and Heritage</JOBTITLE>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pstephenson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19132,7 +19131,7 @@
 	<_502873>
 		<NAME>Kat Hendy</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>khendy@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7651</PHONE>
@@ -19140,7 +19139,7 @@
 	<_503208>
 		<NAME>Susan Hennessy</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>shennessy@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7672</PHONE>
@@ -19172,7 +19171,7 @@
 	<_800967>
 		<NAME>Imke Henkel</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ihenkel@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6475</PHONE>
@@ -19212,7 +19211,7 @@
 	<_001450>
 		<NAME>Ian Packer</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ipacker@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7360</PHONE>
@@ -19220,7 +19219,7 @@
 	<_001472>
 		<NAME>Peter Shinner</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pshinner@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7367</PHONE>
@@ -19372,7 +19371,7 @@
 	<_002877>
 		<NAME>Lynda Skipper</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lskipper@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5066</PHONE>
@@ -19380,7 +19379,7 @@
 	<_003116>
 		<NAME>Marianne Wilson</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mwilson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19388,7 +19387,7 @@
 	<_003312>
 		<NAME>Sara Mederos</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>smederos@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19396,7 +19395,7 @@
 	<_003356>
 		<NAME>Jamie Wood</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jwood@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7389</PHONE>
@@ -19404,7 +19403,7 @@
 	<_003419>
 		<NAME>Anna Marie Roos</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aroos@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6823</PHONE>
@@ -19412,7 +19411,7 @@
 	<_003454>
 		<NAME>Antonella Liuzzo Scorpo</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>aliuzzoscorpo@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7381</PHONE>
@@ -19420,7 +19419,7 @@
 	<_003629>
 		<NAME>Sara Slinn</NAME>
 		<JOBTITLE>Research Assistant</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sslinn@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19428,7 +19427,7 @@
 	<_003683>
 		<NAME>Leah Warriner-Wood</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lwarrinerwood@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5023</PHONE>
@@ -19436,7 +19435,7 @@
 	<_003984>
 		<NAME>Robert Portass</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rportass@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19444,7 +19443,7 @@
 	<_004019>
 		<NAME>Melina Smirniou</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>msmirniou@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5021</PHONE>
@@ -19452,7 +19451,7 @@
 	<_507418>
 		<NAME>Matthew Pickering</NAME>
 		<JOBTITLE>Consultant on the Our Lincolnshire project</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mpickering@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19460,7 +19459,7 @@
 	<_507466>
 		<NAME>Peter Schultz</NAME>
 		<JOBTITLE>Archive Volunteer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pschultz@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19468,7 +19467,7 @@
 	<_800108>
 		<NAME>Carenza Lewis</NAME>
 		<JOBTITLE>Professor for the Public Understanding of Research</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>clewis@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7107</PHONE>
@@ -19476,7 +19475,7 @@
 	<_800932>
 		<NAME>Michele Vescovi</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mvescovi@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5034</PHONE>
@@ -19484,7 +19483,7 @@
 	<_881645>
 		<NAME>Rachel Yemm</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of History & Heritage</DEPARTMENT>
+		<DEPARTMENT>School of History and Heritage</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ryemm@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19524,7 +19523,7 @@
 	<_003147>
 		<NAME>Michael Hoyle</NAME>
 		<JOBTITLE>Technical Manager</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mhoyle@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7617</PHONE>
@@ -19556,7 +19555,7 @@
 	<_004116>
 		<NAME>Nicholas Holden</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>niholden@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19628,7 +19627,7 @@
 	<_800966>
 		<NAME>Jon Holmes</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jholmes@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19796,7 +19795,7 @@
 	<_004075>
 		<NAME>Matt Hurst</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mhurst@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19812,7 +19811,7 @@
 	<_503871>
 		<NAME>James Hudson</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jahudson@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7685</PHONE>
@@ -19820,7 +19819,7 @@
 	<_507347>
 		<NAME>Rebecca Hursthouse</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rhursthouse@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -19931,7 +19930,7 @@
 	</_000776>
 	<_003156>
 		<NAME>Peng Isitt</NAME>
-		<JOBTITLE>Senior International Officer (China & SE Asia)</JOBTITLE>
+		<JOBTITLE>Senior International Officer (China and SE Asia)</JOBTITLE>
 		<DEPARTMENT>International Office</DEPARTMENT>
 		<DIVISION>International Office</DIVISION>
 		<EMAIL>pengisitt@lincoln.ac.uk</EMAIL>
@@ -20012,7 +20011,7 @@
 	<_002964>
 		<NAME>Ilsa Parry</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>iparry@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -20260,14 +20259,14 @@
 	<_507494>
 		<NAME>Kia-Illana King</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kking@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7618</PHONE>
 	</_507494>
 	<_800873>
 		<NAME>Marie Seller</NAME>
-		<JOBTITLE>Administrator (Incubation & Careers)</JOBTITLE>
+		<JOBTITLE>Administrator (Incubation and Careers)</JOBTITLE>
 		<DEPARTMENT>Business Incubation</DEPARTMENT>
 		<DIVISION>Research and Enterprise</DIVISION>
 		<EMAIL>mseller@lincoln.ac.uk</EMAIL>
@@ -20404,7 +20403,7 @@
 	<_003709>
 		<NAME>Janet Marshall</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jmarshall@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -20412,7 +20411,7 @@
 	<_507206>
 		<NAME>Jessica Day</NAME>
 		<JOBTITLE>PhD Student</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jday@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -20500,7 +20499,7 @@
 	<_002202>
 		<NAME>Jamie Oliver</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>joliver@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5210</PHONE>
@@ -20540,7 +20539,7 @@
 	<_002678>
 		<NAME>John Napier</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jnapier@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7432</PHONE>
@@ -20548,7 +20547,7 @@
 	<_002707>
 		<NAME>Justin Tagg</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jtagg@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5230</PHONE>
@@ -20676,7 +20675,7 @@
 	<_004141>
 		<NAME>James Shorthose</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jshorthose@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -20820,7 +20819,7 @@
 	<_507423>
 		<NAME>Victoria Spooner</NAME>
 		<JOBTITLE>Jeweller</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>vspooner@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -20844,7 +20843,7 @@
 	<_801167>
 		<NAME>James Harvey-Davitt</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jharveydavitt@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -20852,7 +20851,7 @@
 	<_507124>
 		<NAME>Jirina Smejkalova</NAME>
 		<JOBTITLE>Reader</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jsmejkalova@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7339</PHONE>
@@ -20988,7 +20987,7 @@
 	<_506417>
 		<NAME>Richard Keeble</NAME>
 		<JOBTITLE>Professor of Journalism</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rkeeble@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21012,7 +21011,7 @@
 	<_003723>
 		<NAME>Richard Johnson</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rjohnson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21036,7 +21035,7 @@
 	<_502751>
 		<NAME>Jon Rowlands</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jrowlands@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6128</PHONE>
@@ -21140,7 +21139,7 @@
 	<_800909>
 		<NAME>Jack Shelbourn</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>jshelbourn@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6279</PHONE>
@@ -21292,7 +21291,7 @@
 	<_004111>
 		<NAME>Kirsty Russell</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>krussell@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21460,7 +21459,7 @@
 	<_003650>
 		<NAME>Tony Kelly</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tkelly@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21468,7 +21467,7 @@
 	<_004163>
 		<NAME>Steve Kemp</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>skemp@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21580,7 +21579,7 @@
 	<_002683>
 		<NAME>Marcin Kolakowski</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mkolakowski@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21588,7 +21587,7 @@
 	<_801818>
 		<NAME>Kristian Shaw</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>kshaw@lincoln.ac.uk</EMAIL>
 		<PHONE>07707 078534</PHONE>
@@ -21628,7 +21627,7 @@
 	<_003801>
 		<NAME>Nicola Liddiard</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nliddiard@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21668,7 +21667,7 @@
 	<_003667>
 		<NAME>Luke Pickering</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lpickering@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21692,7 +21691,7 @@
 	<_801226>
 		<NAME>Les Spink</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lspink@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21812,7 +21811,7 @@
 	<_507204>
 		<NAME>Liya Yang</NAME>
 		<JOBTITLE>Visiting Scholar</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lyang@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21828,7 +21827,7 @@
 	<_003698>
 		<NAME>Wayne Lockwood</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>wlockwood@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -21836,7 +21835,7 @@
 	<_505757>
 		<NAME>Michael Lent</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mlent@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 5022</PHONE>
@@ -22092,7 +22091,7 @@
 	<_801714>
 		<NAME>Lynn Chapman</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lchapman@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -22116,7 +22115,7 @@
 	<_507512>
 		<NAME>Lewis North</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lnorth@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7444</PHONE>
@@ -22204,7 +22203,7 @@
 	<_504572>
 		<NAME>Lin Song</NAME>
 		<JOBTITLE>PhD Student</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>lsong@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7119</PHONE>
@@ -22468,7 +22467,7 @@
 	<_003096>
 		<NAME>Michelle Walsh</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mwalsh@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -22476,7 +22475,7 @@
 	<_003684>
 		<NAME>Marie Thompson</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mthompson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -22492,7 +22491,7 @@
 	<_050408>
 		<NAME>Martyn Thayne</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mthayne@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6994</PHONE>
@@ -22556,7 +22555,7 @@
 	<_800264>
 		<NAME>Tom Martin</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tmartin@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -22572,7 +22571,7 @@
 	<_001943>
 		<NAME>Manish Mandhar</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mmandhar@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7148</PHONE>
@@ -22684,7 +22683,7 @@
 	<_003800>
 		<NAME>Matt Smith</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>matsmith@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -22828,7 +22827,7 @@
 	<_003152>
 		<NAME>Radica Wright</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rawright@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6349</PHONE>
@@ -22836,7 +22835,7 @@
 	<_003783>
 		<NAME>Philip Stevens</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pstevens@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -22844,7 +22843,7 @@
 	<_801877>
 		<NAME>Matt Hawthorn</NAME>
 		<JOBTITLE></JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mhawthorn@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -22900,7 +22899,7 @@
 	<_003358>
 		<NAME>Michael Pinchbeck</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mpinchbeck@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7603</PHONE>
@@ -22972,7 +22971,7 @@
 	<_507372>
 		<NAME>Michael Woodhall</NAME>
 		<JOBTITLE>Young People’s Associate</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mwoodhall@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23084,7 +23083,7 @@
 	<_801190>
 		<NAME>Nick Mobbs</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nmobbs@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23116,7 +23115,7 @@
 	<_505134>
 		<NAME>Martin Rousseau</NAME>
 		<JOBTITLE>Technician</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mrousseau@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7106</PHONE>
@@ -23188,7 +23187,7 @@
 	<_004128>
 		<NAME>Scott Munroe</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>smunroe@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23236,7 +23235,7 @@
 	<_003305>
 		<NAME>Mark Wilde</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>mwilde@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23276,7 +23275,7 @@
 	<_507499>
 		<NAME>Nastaran Namvar</NAME>
 		<JOBTITLE>Research Assistant</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nnamvar@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23308,7 +23307,7 @@
 	<_502768>
 		<NAME>Natascha Madeiski</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>nmadeiski@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23516,7 +23515,7 @@
 	<_050602>
 		<NAME>Sue North</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>snorth@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6273</PHONE>
@@ -23548,7 +23547,7 @@
 	<_502567>
 		<NAME>Pat Nurse</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pnurse@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23716,7 +23715,7 @@
 	<_800963>
 		<NAME>Sophia Preston</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>spreston@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 88 6978</PHONE>
@@ -23732,7 +23731,7 @@
 	<_002888>
 		<NAME>Primali Paranagamage</NAME>
 		<JOBTITLE>Senior Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>pparanagamage@lincoln.ac.uk</EMAIL>
 		<PHONE>01522 83 7175</PHONE>
@@ -23788,7 +23787,7 @@
 	<_003653>
 		<NAME>Paul Sinclair</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>psinclair@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23932,7 +23931,7 @@
 	<_801705>
 		<NAME>Peter Templeton</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ptempleton@lincoln.ac.uk</EMAIL>
 		<PHONE>07966 244 328</PHONE>
@@ -23948,7 +23947,7 @@
 	<_003619>
 		<NAME>Rachel Yarsley</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>ryarsley@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -23964,7 +23963,7 @@
 	<_801141>
 		<NAME>Phil Smith</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>phsmith@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -24388,7 +24387,7 @@
 	<_800173>
 		<NAME>Rebecca Mann</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rmann@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -24420,7 +24419,7 @@
 	<_801795>
 		<NAME>Ruth Hawthorn</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>rhawthorn@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -24476,7 +24475,7 @@
 	<_004074>
 		<NAME>Andrew Rowcroft</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>arowcroft@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -24500,7 +24499,7 @@
 	<_507019>
 		<NAME>Simon Rogers</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>Lincoln School of Film & Media</DEPARTMENT>
+		<DEPARTMENT>Lincoln School of Film and Media</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>srogers@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -24628,7 +24627,7 @@
 	<_004010>
 		<NAME>Sarah Stovell</NAME>
 		<JOBTITLE>Lecturer</JOBTITLE>
-		<DEPARTMENT>School of English & Journalism</DEPARTMENT>
+		<DEPARTMENT>School of English and Journalism</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>sstovell@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -24668,7 +24667,7 @@
 	<_506910>
 		<NAME>Wei Chenq</NAME>
 		<JOBTITLE>Visiting Scholar</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>wchenq@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -25060,7 +25059,7 @@
 	<_801281>
 		<NAME>Tamar Maclellan</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>tmaclellan@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -25156,7 +25155,7 @@
 	<_880727>
 		<NAME>Will Wilson</NAME>
 		<JOBTITLE>Associate Lecturer</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>wwilson@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -25212,7 +25211,7 @@
 	<_801889>
 		<NAME>Wilailak Choochuy</NAME>
 		<JOBTITLE>Visiting Researcher</JOBTITLE>
-		<DEPARTMENT>School of Architecture & Design</DEPARTMENT>
+		<DEPARTMENT>School of Architecture and Design</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>wchoochuy@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
@@ -25228,7 +25227,7 @@
 	<_505871>
 		<NAME>Xiao Dan</NAME>
 		<JOBTITLE>Research Student</JOBTITLE>
-		<DEPARTMENT>School of Fine & Performing Arts</DEPARTMENT>
+		<DEPARTMENT>School of Fine and Performing Arts</DEPARTMENT>
 		<DIVISION>College of Arts</DIVISION>
 		<EMAIL>xdan@lincoln.ac.uk</EMAIL>
 		<PHONE></PHONE>
