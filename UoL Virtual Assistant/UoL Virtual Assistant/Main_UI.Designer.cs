@@ -327,7 +327,7 @@
             this.Agent_Status_Indicator.AutoSize = true;
             this.Agent_Status_Indicator.BackColor = System.Drawing.Color.White;
             this.Agent_Status_Indicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Agent_Status_Indicator.Location = new System.Drawing.Point(263, 84);
+            this.Agent_Status_Indicator.Location = new System.Drawing.Point(263, 85);
             this.Agent_Status_Indicator.Name = "Agent_Status_Indicator";
             this.Agent_Status_Indicator.Size = new System.Drawing.Size(84, 16);
             this.Agent_Status_Indicator.TabIndex = 27;

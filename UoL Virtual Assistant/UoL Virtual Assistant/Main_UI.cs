@@ -546,9 +546,14 @@ namespace UoL_Virtual_Assistant
 
                         if (Profile_Picture_Relocation < 60)
                         {
+                            if (Profile_Picture_Relocation < 52)
+                            {
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 2);
+                            }
+
                             Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 1, Agent_Profile_Image_Size - 1);
                             Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 1);
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1);
+                            //Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 2);
                             Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color + 4, Label_Color + 4, Label_Color + 4);
                             Label_Color = (Label_Color + 4);
 
@@ -561,13 +566,11 @@ namespace UoL_Virtual_Assistant
                         if (Profile_Picture_Relocation > 60 && Profile_Picture_Relocation <= 105)
                         {
                             Agent_Name_Label.Visible = false;
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1);
+                            Conversation_Area_Header.Visible = true;
                         }
 
                         if (Profile_Picture_Relocation == 105)
-                        {
-                            Conversation_Area_Header.Visible = true;
-                            await Task.Delay(1000);
+                        {                           
                             Agent_Name_Label.Size = new Size(175, 31); //resize the name label
                             Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
                             Agent_Name_Label.ForeColor = Color.FromArgb(0, 0, 0);
@@ -576,14 +579,14 @@ namespace UoL_Virtual_Assistant
                             Agent_Profile_Image.BringToFront();
                         }
 
-                        if (Profile_Picture_Relocation > 105)
+                        if (Profile_Picture_Relocation > 130)
                         {
                             Agent_Name_Label.Visible = true;
                             Agent_Status_Indicator.Visible = true; //make the indicator visible
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y);
-                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color - 5, Label_Color - 5, Label_Color - 5);
-                            Agent_Status_Indicator.ForeColor = Color.FromArgb(Label_Color - 5, Label_Color - 5, Label_Color - 5);
-                            Label_Color = (Label_Color - 5);
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 4, Agent_Profile_Image.Location.Y);
+                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color - 10, Label_Color - 10, Label_Color - 10);
+                            Agent_Status_Indicator.ForeColor = Color.FromArgb(Label_Color - 10, Label_Color - 10, Label_Color - 10);
+                            Label_Color = (Label_Color - 10);
                         }
 
                         await Task.Delay(1); //delay
@@ -643,7 +646,7 @@ namespace UoL_Virtual_Assistant
 
         private async void Realistic_AI_Typing()
         {
-            if (Connected_Agent == 4)
+            if (Connected_Agent == 400)
             {
                 Create_AI_Message();
             }
@@ -652,7 +655,8 @@ namespace UoL_Virtual_Assistant
             {
                 Agent_Status_Indicator.Text = "Typing";
                 int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
-                MessageBox.Show(Typing_Time.ToString());
+                //int Typing_Time = 0; //SPEED THINGS UP TIMER (COMMENT ^ OUT)
+                //MessageBox.Show(Typing_Time.ToString());
                 await Task.Delay(Typing_Time / 10);
 
                 if (Randomiser.Next(0, 100) > 50)
@@ -692,55 +696,179 @@ namespace UoL_Virtual_Assistant
                 await Task.Delay(Typing_Time / 10);
                 Agent_Status_Indicator.Text = "Online";
 
-                Create_AI_Mistakes(Typing_Time);
+                int Probability = 0;
+                int Random = 0;
+                int Mistakes_To_Make = 0;
+
+                switch (Connected_Agent)
+                {
+                    case 0: //bruce
+                        Probability = 1;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 1: //hal
+                        Probability = 0;
+                        //for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        //{
+                        //    if (Mistakes_To_Make == 0)
+                        //    {
+                        //        break;
+                        //    }
+
+                        //    Random = Randomiser.Next(0, 100);
+                        //    if (Random > 50)
+                        //    {
+                        //        Make_A_Mistake();
+                        //    }
+                        //}
+                        break;
+                    case 2: //jason
+                        Probability = 7;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 3: //suzie
+                        Probability = 3;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 4: //out of hours
+                        Make_A_Mistake();
+                        break;
+                }
+
                 Create_AI_Message(); //display the final message
             }
         }
 
-        private void Create_AI_Mistakes(int Typing_Time)
-        {            
-            int Mistake_Chance = 0; //creates an integer to store the possibility of a mistake and sets it to 0 for now
-            switch (Connected_Agent)
+        private void Make_A_Mistake()
+        {
+            #region read
+            string[] characterMap = new string[54];
+            int counter = 0;
+            string line;
+
+            // Read the charactermap file
+            var Grandparent_Directory = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory.ToString()).ToString());
+            System.IO.StreamReader file = new System.IO.StreamReader(Grandparent_Directory + "\\resources\\files\\charMap.txt");
+
+
+            while ((line = file.ReadLine()) != null)
             {
-                case 0: //bruce
-                    Mistake_Chance = 1; //10% chance of mistakes
-                    break;
-                case 1: //hal
-                    Mistake_Chance = 0; //0% chance of mistakes
-                    break;
-                case 2: //jason
-                    Mistake_Chance = 7; //70% chance of mistakes
-                    break;
-                case 3: //suzie
-                    Mistake_Chance = 2; //20% chance of mistakes
-                    break;
+                characterMap[counter] = line;
+                counter++;
             }
+            file.Close();
+            #endregion
 
-            int Maximum_Mistakes = Typing_Time.ToString().Length;
+            #region variables
+            char character, newchar;
+            int indexFound = 0, value;
 
-            MessageBox.Show(Maximum_Mistakes.ToString());
 
-            int Mistake_Counter = 0;
-            for (int Mistake_Generator = 0; Mistake_Generator <= (Mistake_Chance); Mistake_Generator++)
+            Random rand = new Random();
+            int num = rand.Next(0, Latest_AI_Message.Length - 1);
+            #endregion
+
+            #region errorcheck
+            if (Convert.ToString(Latest_AI_Message[num]) == " " || char.IsNumber(Convert.ToChar(Latest_AI_Message[num])))
             {
-                if (Randomiser.Next(0, 100) <= 10)
+                num = rand.Next(0, Latest_AI_Message.Length - 1);
+            }
+            #endregion
+
+            #region search
+            else
+            {
+                //Convert chosen character to lowecase
+                character = char.ToLower(Convert.ToChar(Latest_AI_Message[num]));
+                //Search array for result
+                for (int j = 0; j <= 53;)
                 {
-                    if(Mistake_Counter == Maximum_Mistakes)
+                    if (Convert.ToString(character) == characterMap[j])
                     {
+                        indexFound = j;
                         break;
                     }
+                    else
+                    {
+                        j++;
+                    }
 
-                    char[] Latest_AI_Message_With_Mistake = Latest_AI_Message.ToCharArray();
-                    int Character_For_Mistake = Randomiser.Next(0, Latest_AI_Message.Length - 1);
-                    Latest_AI_Message_With_Mistake[Character_For_Mistake] = '#';
-                    Latest_AI_Message = new string(Latest_AI_Message_With_Mistake);
-
-                    Mistake_Counter++;
                 }
-            }
+                #endregion
 
-            return;
-        }      
+                #region keyhandling
+                //Prevents correction being the first key of the next row of the keyboard
+                if (indexFound == 0 || indexFound == 20 || indexFound == 40)
+                {
+                    value = 1;
+                }
+                //Prevents correction being the last key on the previous row of the keyboard
+                else if (indexFound == 18 || indexFound == 38 || indexFound == 52)
+                {
+                    value = -1;
+                }
+                //Randomize Value between -1 and 1
+                else
+                {
+                    value = rand.Next(-1, 2);
+                }
+                //Changes selected value to next key to the right
+                if (value == 1)
+                {
+                    newchar = Convert.ToChar(characterMap[indexFound + 2]);
+                }
+                //Changes selected value to next key to the left
+                else
+                {
+                    newchar = Convert.ToChar(characterMap[indexFound - 2]);
+                }
+                #endregion
+
+                #region chararray
+                //Build new string based on original and modifications
+                char[] chars = Latest_AI_Message.ToCharArray();
+                chars[num] = Convert.ToChar(newchar);
+                Latest_AI_Message = new string(chars);
+
+                #endregion
+            }
+        }
 
         private async void Create_AI_Message()
         {
