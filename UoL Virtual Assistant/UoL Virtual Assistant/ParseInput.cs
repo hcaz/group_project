@@ -20,7 +20,8 @@ namespace UoL_Virtual_Assistant
         XmlNodeList questionWords;
         XmlNodeList greetingWords;
         XmlNodeList keyWords;
-        
+        XmlNode ignoreWords;
+
         string[] punctuation = { "?", "!", "." };
 
         public void SplitInput(string input)
@@ -31,6 +32,7 @@ namespace UoL_Virtual_Assistant
             questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
             greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
+            ignoreWords = keywordData.SelectSingleNode("KEYWORDS/IGNOREWORDS");
 
             input.ToLower();
 
@@ -91,7 +93,7 @@ namespace UoL_Virtual_Assistant
 
             for (int i = 0; i < splitWords.Length; i++)
             {
-                 splitWords[i] = sentences[i].Split(' ');
+                splitWords[i] = Regex.Replace(sentences[i], "[?!.,-/]", "").Split(' ');
             }
 
             //MessageBox.Show(splitWords[1][0] + " " + splitWords[1][1]);
@@ -118,20 +120,30 @@ namespace UoL_Virtual_Assistant
                 {
                     for (int k = 0; k < staffNames[0].ChildNodes.Count; k++)
                     {
+                        string[] temp = staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower().Split(' ');
+                        //MessageBox.Show(temp.Length.ToString());
+                        
+
                         //check against staff names in the xml data file - any matching nodes can then be passed on to the output
-                        if (sentences[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()))
+                        for (int x = 0; x < splitWords[j].Length; x++)
                         {
-                            //error checking for context, can cause issues otherwise
-                            if (contexts[i] != null)
+                            //MessageBox.Show(splitWords[j][x].ToLower() + " " + temp[0] + " " + temp[1]);
+                            if ((splitWords[j][x].ToLower() == temp[0] || splitWords[j][x].ToLower() == temp[1]) && !ignoreWords.InnerText.ToLower().Contains(splitWords[j][x].ToLower()))
                             {
-                                if (!contexts[i].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()))
+                               
+                                //error checking for context, can cause issues otherwise
+                                if (contexts[j] != null)
                                 {
-                                    contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                    //MessageBox.Show(contexts[j]);
+                                    if (!contexts[j].ToLower().Contains(staffNames[0].ChildNodes[k].ChildNodes[0].InnerText.ToLower()))
+                                    {
+                                        contexts[j] = contexts[j] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                else
+                                {
+                                    contexts[j] = contexts[j] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                }
                             }
                         }
                     }
