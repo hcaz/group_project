@@ -25,6 +25,7 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
+        int Open_Profile_Card = 0; //the agent's profile card is not visible
         int AI_Message_Counter = 0;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
@@ -40,6 +41,8 @@ namespace UoL_Virtual_Assistant
 
         TextBox[] User_Message = new TextBox[25];
         TextBox[] User_Message_Shell = new TextBox[25];
+
+        Random Randomiser = new Random(); //creates a randomiser item
 
         public Main_UI()
         {
@@ -416,8 +419,7 @@ namespace UoL_Virtual_Assistant
                 if (Connection_Status == 1) //if the connection status is live
                 {
                     Connecting_Label.Text = "Connection Established"; //change the text to this
-                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window
-                    Random Randomiser = new Random(); //creates a randomiser item
+                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window                    
                     Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
                     int Preferred_Agent_Probability = Randomiser.Next(0, 100); //selects a random number between 0 and 4
@@ -533,26 +535,58 @@ namespace UoL_Virtual_Assistant
                         await Task.Delay(1); //delay
                     }
                     await Task.Delay(2000); //delay
-                    Agent_Name_Label.Size = new Size(175, 31); //resize the name label
-                    Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
-                    Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
-                    Agent_Profile_Image_Size = 100; //set the profile image size at 100
-                    Conversation_Area_Header.Visible = true;
-                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 30; Profile_Picture_Relocation++)
+
+                    //Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                    //Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
+
+                    Agent_Profile_Image_Size = 100; //set the profile image size at 100                    
+                    int Label_Color = 0;
+                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 155; Profile_Picture_Relocation++)
                     {
-                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
-                        Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
-                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 3);
-                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y - 7);
-                        if (Profile_Picture_Relocation >= 25) //when the number of steps reaches 25 and exceeds it
+
+                        if (Profile_Picture_Relocation < 60)
                         {
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 3); //give it an extra boost
-                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y - 2); //give it an extra boost
+                            if (Profile_Picture_Relocation < 52)
+                            {
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 2);
+                            }
+
+                            Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 1, Agent_Profile_Image_Size - 1);
+                            Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 1);
+                            //Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 2);
+                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color + 4, Label_Color + 4, Label_Color + 4);
+                            Label_Color = (Label_Color + 4);
+
+                            if (Profile_Picture_Relocation % 2 == 0)
+                            {
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 1, Agent_Profile_Image.Location.Y);
+                            }
                         }
 
-                        if (Profile_Picture_Relocation == 28) //when the number of steps reaches 28
+                        if (Profile_Picture_Relocation > 60 && Profile_Picture_Relocation <= 105)
                         {
+                            Agent_Name_Label.Visible = false;
+                            Conversation_Area_Header.Visible = true;
+                        }
+
+                        if (Profile_Picture_Relocation == 105)
+                        {                           
+                            Agent_Name_Label.Size = new Size(175, 31); //resize the name label
+                            Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                            Agent_Name_Label.ForeColor = Color.FromArgb(0, 0, 0);
+                            Agent_Name_Label.Location = new Point(Agent_Status_Indicator.Location.X - 2, Agent_Status_Indicator.Location.X - 35);
+                            Label_Color = 255;
+                            Agent_Profile_Image.BringToFront();
+                        }
+
+                        if (Profile_Picture_Relocation > 130)
+                        {
+                            Agent_Name_Label.Visible = true;
                             Agent_Status_Indicator.Visible = true; //make the indicator visible
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 4, Agent_Profile_Image.Location.Y);
+                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color - 10, Label_Color - 10, Label_Color - 10);
+                            Agent_Status_Indicator.ForeColor = Color.FromArgb(Label_Color - 10, Label_Color - 10, Label_Color - 10);
+                            Label_Color = (Label_Color - 10);
                         }
 
                         await Task.Delay(1); //delay
@@ -582,13 +616,13 @@ namespace UoL_Virtual_Assistant
                     {
                         TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
                         TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
-                        string OOH_Bot_Response = "it is out of work hours. If you need to contact the team personally, please get in touch during 9am and 6pm, Monday to Friday. ";
+                        string OOH_Bot_Response = "it is out of work hours. If you need to contact them personally, please get in touch during 9am and 6pm, Monday to Friday. ";
                         if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                         {
-                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact the team personally please come back after 1pm and there will be someone on hand to answer your query. ";
+                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact them personally please come back after 1pm and there will be someone on hand to answer your query. ";
                         }
 
-                        Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available, otherwise exit the chat.";
+                        Latest_AI_Message = "Hi. Unfortunately our team is unable to respond as " + OOH_Bot_Response + "If you like, you can respond to this message with your query and the team will get back to you once they are available, otherwise exit the chat.";
                         AI_Response_Handshake = true;
                     }
 
@@ -599,59 +633,8 @@ namespace UoL_Virtual_Assistant
 
                     if (AI_Response_Handshake == true)
                     {
-                        if (Connected_Agent == 4)
-                        {
-                            Create_AI_Message();
-                        }
-
-                        else
-                        {
-                            Agent_Status_Indicator.Text = "Typing";
-                            int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
-                            MessageBox.Show(Typing_Time.ToString());
-                            await Task.Delay(Typing_Time / 10);
-
-                            if (Randomiser.Next(0, 100) > 50)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 10000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 3);
-
-                            if (Randomiser.Next(0, 100) > 60)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 5000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 3);
-
-                            if (Randomiser.Next(0, 100) > 60)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 3000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 5);
-
-                            if (Randomiser.Next(0, 100) > 75)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 5000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 10);
-                            Create_AI_Message();
-                            Agent_Status_Indicator.Text = "Online";
-                        }
-
-                                           
-                    }                 
+                        Realistic_AI_Typing();
+                    }
                 }
             }
 
@@ -659,7 +642,232 @@ namespace UoL_Virtual_Assistant
             {
                 //do nothing
             }
+        }
 
+        private async void Realistic_AI_Typing()
+        {
+            if (Connected_Agent == 400)
+            {
+                Create_AI_Message();
+            }
+
+            else
+            {
+                Agent_Status_Indicator.Text = "Typing";
+                int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
+                //int Typing_Time = 0; //SPEED THINGS UP TIMER (COMMENT ^ OUT)
+                //MessageBox.Show(Typing_Time.ToString());
+                await Task.Delay(Typing_Time / 10);
+
+                if (Randomiser.Next(0, 100) > 50)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 10000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 3);
+
+                if (Randomiser.Next(0, 100) > 60)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 5000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 3);
+
+                if (Randomiser.Next(0, 100) > 60)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 3000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 5);
+
+                if (Randomiser.Next(0, 100) > 75)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 5000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 10);
+                Agent_Status_Indicator.Text = "Online";
+
+                int Probability = 0;
+                int Random = 0;
+                int Mistakes_To_Make = 0;
+
+                switch (Connected_Agent)
+                {
+                    case 0: //bruce
+                        Probability = 1;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 1: //hal
+                        Probability = 0;
+                        //for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        //{
+                        //    if (Mistakes_To_Make == 0)
+                        //    {
+                        //        break;
+                        //    }
+
+                        //    Random = Randomiser.Next(0, 100);
+                        //    if (Random > 50)
+                        //    {
+                        //        Make_A_Mistake();
+                        //    }
+                        //}
+                        break;
+                    case 2: //jason
+                        Probability = 7;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 3: //suzie
+                        Probability = 3;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 4: //out of hours
+                        Make_A_Mistake();
+                        break;
+                }
+
+                Create_AI_Message(); //display the final message
+            }
+        }
+
+        private void Make_A_Mistake()
+        {
+            #region read
+            string[] characterMap = new string[54];
+            int counter = 0;
+            string line;
+
+            // Read the charactermap file
+            var Grandparent_Directory = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory.ToString()).ToString());
+            System.IO.StreamReader file = new System.IO.StreamReader(Grandparent_Directory + "\\resources\\files\\charMap.txt");
+
+
+            while ((line = file.ReadLine()) != null)
+            {
+                characterMap[counter] = line;
+                counter++;
+            }
+            file.Close();
+            #endregion
+
+            #region variables
+            char character, newchar;
+            int indexFound = 0, value;
+
+
+            Random rand = new Random();
+            int num = rand.Next(0, Latest_AI_Message.Length - 1);
+            #endregion
+
+            #region errorcheck
+            if (Convert.ToString(Latest_AI_Message[num]) == " " || char.IsNumber(Convert.ToChar(Latest_AI_Message[num])))
+            {
+                num = rand.Next(0, Latest_AI_Message.Length - 1);
+            }
+            #endregion
+
+            #region search
+            else
+            {
+                //Convert chosen character to lowecase
+                character = char.ToLower(Convert.ToChar(Latest_AI_Message[num]));
+                //Search array for result
+                for (int j = 0; j <= 53;)
+                {
+                    if (Convert.ToString(character) == characterMap[j])
+                    {
+                        indexFound = j;
+                        break;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+
+                }
+                #endregion
+
+                #region keyhandling
+                //Prevents correction being the first key of the next row of the keyboard
+                if (indexFound == 0 || indexFound == 20 || indexFound == 40)
+                {
+                    value = 1;
+                }
+                //Prevents correction being the last key on the previous row of the keyboard
+                else if (indexFound == 18 || indexFound == 38 || indexFound == 52)
+                {
+                    value = -1;
+                }
+                //Randomize Value between -1 and 1
+                else
+                {
+                    value = rand.Next(-1, 2);
+                }
+                //Changes selected value to next key to the right
+                if (value == 1)
+                {
+                    newchar = Convert.ToChar(characterMap[indexFound + 2]);
+                }
+                //Changes selected value to next key to the left
+                else
+                {
+                    newchar = Convert.ToChar(characterMap[indexFound - 2]);
+                }
+                #endregion
+
+                #region chararray
+                //Build new string based on original and modifications
+                char[] chars = Latest_AI_Message.ToCharArray();
+                chars[num] = Convert.ToChar(newchar);
+                Latest_AI_Message = new string(chars);
+
+                #endregion
+            }
         }
 
         private async void Create_AI_Message()
@@ -1133,7 +1341,7 @@ namespace UoL_Virtual_Assistant
                     User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
                 }
             }
-        }        
+        }           
 
         private async void Scroll_Content_UpDown(int Scroll_Direction)
         {
@@ -1383,7 +1591,7 @@ namespace UoL_Virtual_Assistant
 
             if ((Current_Day >= DayOfWeek.Monday) && (Current_Day <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((Current_Time >= Opening_Hours) && (Current_Time < Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
+                if ((Current_Time >= Opening_Hours) && (Current_Time > Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
                 {
                     if((Current_Time > new TimeSpan(11, 55, 0)) && (Current_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
@@ -1487,6 +1695,48 @@ namespace UoL_Virtual_Assistant
         private void button2_Click(object sender, EventArgs e)
         {
             AI_Response_Handshake = true;
+        }
+
+        private void Agent_Profile_Image_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private async void Agent_Profile_Card()
+        {
+            if (Open_Profile_Card == 0) //if the card is not currently open
+            {
+                //GROW IMAGE CARD
+                Agent_Profile_Image.Enabled = false;
+                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100                    
+                for (int Timer = 0; Timer < 66; Timer++)
+                {
+                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 1, Agent_Profile_Image_Size + 1);
+                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size + 1);
+                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 1, Agent_Profile_Image.Location.Y + 1);
+                    await Task.Delay(1); //delay
+                }
+
+                Open_Profile_Card = 1;
+                Agent_Profile_Image.Enabled = true;
+            }
+
+            else
+            {
+                //SHRINK IMAGE CARD
+                Agent_Profile_Image.Enabled = false;
+                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100                    
+                for (int Timer = 0; Timer < 66; Timer++)
+                {
+                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 1, Agent_Profile_Image_Size - 1);
+                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 1);
+                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1);
+                    await Task.Delay(1); //delay
+                }
+
+                Open_Profile_Card = 0;
+                Agent_Profile_Image.Enabled = true;
+            }
         }
     }
 }

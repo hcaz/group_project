@@ -327,7 +327,7 @@
             this.Agent_Status_Indicator.AutoSize = true;
             this.Agent_Status_Indicator.BackColor = System.Drawing.Color.White;
             this.Agent_Status_Indicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Agent_Status_Indicator.Location = new System.Drawing.Point(263, 84);
+            this.Agent_Status_Indicator.Location = new System.Drawing.Point(263, 85);
             this.Agent_Status_Indicator.Name = "Agent_Status_Indicator";
             this.Agent_Status_Indicator.Size = new System.Drawing.Size(84, 16);
             this.Agent_Status_Indicator.TabIndex = 27;
@@ -340,7 +340,7 @@
             this.Conversation_Exit.BackColor = System.Drawing.Color.White;
             this.Conversation_Exit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Conversation_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Conversation_Exit.Location = new System.Drawing.Point(439, 57);
+            this.Conversation_Exit.Location = new System.Drawing.Point(439, 62);
             this.Conversation_Exit.Name = "Conversation_Exit";
             this.Conversation_Exit.Size = new System.Drawing.Size(23, 23);
             this.Conversation_Exit.TabIndex = 29;
@@ -421,12 +421,13 @@
             this.Agent_Profile_Image.BackColor = System.Drawing.Color.White;
             this.Agent_Profile_Image.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.GenericProfilePic;
             this.Agent_Profile_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Agent_Profile_Image.Location = new System.Drawing.Point(219, 68);
+            this.Agent_Profile_Image.Location = new System.Drawing.Point(219, 61);
             this.Agent_Profile_Image.Name = "Agent_Profile_Image";
             this.Agent_Profile_Image.Size = new System.Drawing.Size(40, 40);
             this.Agent_Profile_Image.TabIndex = 25;
             this.Agent_Profile_Image.TabStop = false;
             this.Agent_Profile_Image.Visible = false;
+            this.Agent_Profile_Image.Click += new System.EventHandler(this.Agent_Profile_Image_Click);
             // 
             // Send_Message
             // 
@@ -462,7 +463,7 @@
             this.Conversation_Area_Header.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Conversation_Area_Header.BackColor = System.Drawing.Color.White;
             this.Conversation_Area_Header.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Conversation_Area_Header__for_light_themes_;
-            this.Conversation_Area_Header.Location = new System.Drawing.Point(213, 76);
+            this.Conversation_Area_Header.Location = new System.Drawing.Point(213, 73);
             this.Conversation_Area_Header.Name = "Conversation_Area_Header";
             this.Conversation_Area_Header.Size = new System.Drawing.Size(252, 39);
             this.Conversation_Area_Header.TabIndex = 28;
