@@ -66,7 +66,7 @@
             // 
             // ID_Input_Area
             // 
-            this.ID_Input_Area.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Message_Input_Area__for_light_themes_;
+            this.ID_Input_Area.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Message_Input_Area;
             this.ID_Input_Area.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ID_Input_Area.Location = new System.Drawing.Point(17, 177);
             this.ID_Input_Area.Name = "ID_Input_Area";
@@ -100,7 +100,7 @@
             // 
             // Course_Input_Area
             // 
-            this.Course_Input_Area.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Message_Input_Area__for_light_themes_;
+            this.Course_Input_Area.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Message_Input_Area;
             this.Course_Input_Area.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Course_Input_Area.Location = new System.Drawing.Point(17, 275);
             this.Course_Input_Area.Name = "Course_Input_Area";

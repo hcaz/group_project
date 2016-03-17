@@ -25,14 +25,13 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
-        int Open_Profile_Card = 0; //the agent's profile card is not visible
+        int Open_Profile_Card = 1; //sets this as the middle value (0, 1, 2) so that it cannot be opened until the items are in the right place!
         int AI_Message_Counter = 0;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
         int Connected_Agent; //indicates the agent what will connect with the user
 
         string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
-
         string Latest_AI_Message = "";
         bool AI_Response_Handshake = false;
 
@@ -347,7 +346,7 @@ namespace UoL_Virtual_Assistant
             }
         }
 
-        private void Send_Message_Click(object sender, EventArgs e)
+        private async void Send_Message_Click(object sender, EventArgs e)
         {
             string User_Message = (Message_Input.Text); //write the user message to a string
 
@@ -357,10 +356,26 @@ namespace UoL_Virtual_Assistant
                     Initiate_Connection(); //initiate the connection, resize the window, pair with an agent etc.
                     break;
                 case 1:
+                    if (Open_Profile_Card == 2)
+                    {
+                        Agent_Profile_Card();
+                    }
+
                     Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
                     Message_Input.Text = String.Empty;
 
                     Create_User_Message();
+
+                    while (AI_Response_Handshake == false)
+                    {
+                        await Task.Delay(1000); //delay                       
+                    }
+
+                    if (AI_Response_Handshake == true)
+                    {
+                        Realistic_AI_Typing();
+                    }
+
                     break;
             }
         }
@@ -370,8 +385,9 @@ namespace UoL_Virtual_Assistant
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
             {
                 Send_Message.Enabled = false;
-                Send_Message.BackgroundImage = Properties.Resources.Send_Icon__for_light_themes_;
+                Send_Message.BackgroundImage = Properties.Resources.Send_Icon;
                 Conversation_Window.Visible = true; //make the window visible
+
                 Open_Conversation_Window = 1; //set the window status as open
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
                 {
@@ -574,7 +590,7 @@ namespace UoL_Virtual_Assistant
                             Agent_Name_Label.Size = new Size(175, 31); //resize the name label
                             Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
                             Agent_Name_Label.ForeColor = Color.FromArgb(0, 0, 0);
-                            Agent_Name_Label.Location = new Point(Agent_Status_Indicator.Location.X - 2, Agent_Status_Indicator.Location.X - 35);
+                            Agent_Name_Label.Location = new Point(Agent_Status_Indicator.Location.X - 2, Agent_Status_Indicator.Location.Y - 27);
                             Label_Color = 255;
                             Agent_Profile_Image.BringToFront();
                         }
@@ -592,6 +608,9 @@ namespace UoL_Virtual_Assistant
                         await Task.Delay(1); //delay
                     }
 
+                    Open_Profile_Card = 0;
+
+                    Agent_Status_Indicator.BringToFront();
                     int Wait_Time = Randomiser.Next(0, 15); //selects a random number between 0 and 15 for the wait time
 
                     if (Connected_Agent == 4)
@@ -646,7 +665,7 @@ namespace UoL_Virtual_Assistant
 
         private async void Realistic_AI_Typing()
         {
-            if (Connected_Agent == 400)
+            if (Connected_Agent == 4)
             {
                 Create_AI_Message();
             }
@@ -694,7 +713,16 @@ namespace UoL_Virtual_Assistant
                 }
 
                 await Task.Delay(Typing_Time / 10);
-                Agent_Status_Indicator.Text = "Online";
+
+                if (Open_Profile_Card > 0)
+                {
+                    Agent_Status_Indicator.Text = "One New Message...";
+                }
+
+                else
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                }            
 
                 int Probability = 0;
                 int Random = 0;
@@ -910,13 +938,33 @@ namespace UoL_Virtual_Assistant
                 AI_Message[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
                 AI_Message_Shell[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
 
+                if (Open_Profile_Card == 2)
+                {
+                    Agent_Card.BringToFront();
+                    Conversation_Area_Header.BringToFront();
+                    Agent_Name_Label.BringToFront();
+                    Agent_Status_Indicator.BringToFront();
+                    Agent_Profile_Image.BringToFront();
+                    Conversation_Exit.BringToFront();
 
+                    Agent_Card_Name.BringToFront();
+                    Agent_Card_Profession.BringToFront();
+                    Agent_Card_Email.BringToFront();
+                    Agent_Card_Phone_Number.BringToFront();
+                    Agent_Card_Room.BringToFront();
+                    Agent_Card_Like_Button.BringToFront();
+
+                    Message_Input_Area.BringToFront();
+                    Message_Input.BringToFront();
+                    Send_Message.BringToFront();
+                }
 
                 await Task.Delay(1); //delay for 1/100 of a second
             }
 
             Message_Input.Enabled = true;
             Send_Message.Enabled = true;
+            AI_Response_Handshake = false;
             AI_Message_Counter++;
 
         }
@@ -952,7 +1000,8 @@ namespace UoL_Virtual_Assistant
             User_Message[User_Message_Counter].BringToFront();
             Reiterate_Layers();
 
-            int Scroll_Steps = Line_Counter + 20;       
+            int Scroll_Steps = Line_Counter + 20;
+            //MessageBox.Show(Scroll_Steps.ToString());
 
             for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
             {
@@ -968,6 +1017,7 @@ namespace UoL_Virtual_Assistant
 
                 await Task.Delay(1); //delay for 1/100 of a second
             }
+
             User_Message_Counter++;
 
             if (Connected_Agent == 4 && User_Message_Counter == 1)
@@ -1001,10 +1051,16 @@ namespace UoL_Virtual_Assistant
 
             else
             {
+                if (AI_Message_Counter == 1)
+                {
+                    Fade_In_Out_Message(AI_Message_Counter - 1, 1);
+                }
+
                 if (AI_Message_Counter > 1)
                 {
                     AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y - 1);
                     AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y - 1);
+                    Fade_In_Out_Message(AI_Message_Counter - 2, 1);
                 }
 
                 if (AI_Message_Counter > 2)
@@ -1341,6 +1397,41 @@ namespace UoL_Virtual_Assistant
                     User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
                 }
             }
+        }
+
+        private void Fade_In_Out_Message(int Message_Number, int In_Or_Out)
+        {
+            if (In_Or_Out == 0) //if it wants to fade in
+            {
+
+            }
+
+            else
+            {
+                //if (AI_Message_Shell[Message_Number].Location.Y >= Conversation_Window.Location.Y + 20)
+                //{
+                //    int R_Colour = AI_Message[Message_Number].BackColor.R;
+                //    if (R_Colour + 5 < 255)
+                //    {
+                //        R_Colour = (R_Colour + 5);
+                //    }
+
+                //    int G_Colour = AI_Message[Message_Number].BackColor.G;
+                //    if (G_Colour + 5 < 255)
+                //    {
+                //        G_Colour = (G_Colour + 5);
+                //    }
+
+                //    int B_Colour = AI_Message[Message_Number].BackColor.B;
+                //    if (B_Colour + 5 < 255)
+                //    {
+                //        B_Colour = (B_Colour + 5);
+                //    }
+
+                //    AI_Message[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
+                //    AI_Message_Shell[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
+                //}                
+            }           
         }           
 
         private async void Scroll_Content_UpDown(int Scroll_Direction)
@@ -1360,6 +1451,25 @@ namespace UoL_Virtual_Assistant
         {
             if(Open_Settings_Drawer == 0) //if the drawer status is set to closed
             {
+                Settings_Drawer.BringToFront();
+                Settings_Title.BringToFront();
+                Hamburger_Menu.BringToFront();
+                Course_Building.BringToFront();
+                Student_Name_Title.BringToFront();
+                Student_ID_Title.BringToFront();
+                Theme_Title.BringToFront();
+                Theme_Selection.BringToFront();
+                Preferred_Agent_Title.BringToFront();
+                Preferred_Agent_Selection.BringToFront();
+                UoL_Logo_Link_Title.BringToFront();
+                UoL_Logo_Link_Selection.BringToFront();
+                Reset_Title.BringToFront();
+                Reset_Button.BringToFront();
+                About_Title.BringToFront();
+                About_Content.BringToFront();
+
+
+
                 Settings_Drawer.Visible = true; //make the drawer visible
                 Hamburger_Menu.Enabled = false; //disable the button so it can't be clicked
                 for (int Drawer_Steps = 0; Drawer_Steps <= 15; Drawer_Steps++) //establishes the number of individual steps the drawer needs to take
@@ -1432,10 +1542,14 @@ namespace UoL_Virtual_Assistant
             Message_Input.BringToFront();
             Send_Message.BringToFront();
 
+
             Conversation_Area_Header.BringToFront();
+            //Chat_Scroll_Cloak.BringToFront();
+            //UoL_Branding.BringToFront();
             Agent_Name_Label.BringToFront();
             Agent_Status_Indicator.BringToFront();
             Agent_Profile_Image.BringToFront();
+            Conversation_Exit.BringToFront();           
 
             Settings_Drawer.BringToFront();
             Settings_Title.BringToFront();
@@ -1669,6 +1783,383 @@ namespace UoL_Virtual_Assistant
 
         }
 
+        private void Agent_Profile_Image_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Name_Label_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Status_Indicator_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private async void Agent_Profile_Card()
+        {
+            if (Open_Profile_Card == 0) //if the card is not currently open
+            {
+                Open_Profile_Card = 1; //currently in the process of opening
+                //GROW IMAGE CARD
+                Agent_Card.BringToFront();
+                Conversation_Area_Header.BringToFront();
+                Agent_Name_Label.BringToFront();
+                Agent_Status_Indicator.BringToFront();
+                Agent_Profile_Image.BringToFront();
+                Conversation_Exit.BringToFront();
+
+                Agent_Card_Name.BringToFront();
+                Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Profession.BringToFront();
+                Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Email.BringToFront();
+                Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Phone_Number.BringToFront();
+                Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Room.BringToFront();
+                Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Like_Button.BringToFront();
+                Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Message_Input_Area.Location.Y);
+
+                Message_Input_Area.BringToFront();
+                Message_Input.BringToFront();
+                Send_Message.BringToFront();
+
+                int Agent_Card_Accent_X = 0;
+                int Agent_Card_Accent_Y = 0;
+                int Agent_Card_Accent_Z = 0;
+
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Agent_Card_Accent_X = 16;
+                        Agent_Card_Accent_Y = 16;
+                        Agent_Card_Accent_Z = 16;
+
+                        Agent_Card_Name.ForeColor = Color.White;
+                        Agent_Card_Profession.ForeColor = Color.White;
+                        Agent_Card_Email.ForeColor = Color.White;
+                        Agent_Card_Phone_Number.ForeColor = Color.White;
+                        Agent_Card_Room.ForeColor = Color.White;
+
+                        Agent_Card_Name.Text = "Bruce Hargrave";
+                        Agent_Card_Profession.Text = "Lecturer of Computer Science";
+                        Agent_Card_Email.Text = "bhargrave@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "01522 837312";
+                        Agent_Card_Room.Text = "MC 3112";
+                        break;
+                    case 1: //if the agent is hal
+                        Agent_Card_Accent_X = 232;
+                        Agent_Card_Accent_Y = 231;
+                        Agent_Card_Accent_Z = 237;
+
+                        Agent_Card_Name.ForeColor = Color.Black;
+                        Agent_Card_Profession.ForeColor = Color.Black;
+                        Agent_Card_Email.ForeColor = Color.Black;
+                        Agent_Card_Phone_Number.ForeColor = Color.Black;
+                        Agent_Card_Room.ForeColor = Color.Black;
+
+                        Agent_Card_Name.Text = "Hal Chín-Nghìn";
+                        Agent_Card_Profession.Text = "SoCs Admin";
+                        Agent_Card_Email.Text = "hal9000@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "Phone Number N/A";
+                        Agent_Card_Room.Text = "SoCs Office";
+                        break;
+                    case 2: //if the agent is jason
+                        Agent_Card_Accent_X = 135;
+                        Agent_Card_Accent_Y = 125;
+                        Agent_Card_Accent_Z = 127;
+
+                        Agent_Card_Name.ForeColor = Color.White;
+                        Agent_Card_Profession.ForeColor = Color.White;
+                        Agent_Card_Email.ForeColor = Color.White;
+                        Agent_Card_Phone_Number.ForeColor = Color.White;
+                        Agent_Card_Room.ForeColor = Color.White;
+
+                        Agent_Card_Name.Text = "Jason Bradbury";
+                        Agent_Card_Profession.Text = "TV Personality (Not Bruce's M8)";
+                        Agent_Card_Email.Text = "brucesmatejb@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "0207 580 0702";
+                        Agent_Card_Room.Text = "SoCs Office";
+                        break;
+                    case 3: //if the agent is suzi
+                        Agent_Card_Accent_X = 109;
+                        Agent_Card_Accent_Y = 143;
+                        Agent_Card_Accent_Z = 209;
+
+                        Agent_Card_Name.ForeColor = Color.White;
+                        Agent_Card_Profession.ForeColor = Color.White;
+                        Agent_Card_Email.ForeColor = Color.White;
+                        Agent_Card_Phone_Number.ForeColor = Color.White;
+                        Agent_Card_Room.ForeColor = Color.White;
+
+                        Agent_Card_Name.Text = "Suzi Perry";
+                        Agent_Card_Profession.Text = "Moving on to better things :-)";
+                        Agent_Card_Email.Text = "suzi@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "Phone Number N/A";
+                        Agent_Card_Room.Text = "SoCs Office";
+                        break;
+                    case 4: //if no agent is available
+                        Agent_Card_Accent_X = 233;
+                        Agent_Card_Accent_Y = 233;
+                        Agent_Card_Accent_Z = 233;
+
+                        Agent_Card_Name.ForeColor = Color.Black;
+                        Agent_Card_Profession.ForeColor = Color.Black;
+                        Agent_Card_Email.ForeColor = Color.Black;
+                        Agent_Card_Phone_Number.ForeColor = Color.Black;
+                        Agent_Card_Room.ForeColor = Color.Black;
+
+                        Agent_Card_Name.Text = "Out of Hours";
+                        Agent_Card_Profession.Text = "Automated Bot";
+                        Agent_Card_Email.Text = "Email N/A";
+                        Agent_Card_Phone_Number.Text = "Phone Number N/A";
+                        Agent_Card_Room.Text = "Room Number N/A";
+                        break;
+                }
+
+                Conversation_Area_Header.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                
+                Agent_Card.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Name.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Profession.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Email.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Phone_Number.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Room.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                //Agent_Card_Like_Button.BackColor = Color.FromArgb(Agent_Card_Accent_X + 20, Agent_Card_Accent_Y + 20, Agent_Card_Accent_Z + 20);
+
+                Agent_Profile_Image.Enabled = false;
+                Agent_Card.Visible = true;
+                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100   
+                int Agent_Card_Size = 30;
+                for (int Timer = 0; Timer <= 100; Timer++)
+                {
+                    if (Timer <= 15)
+                    {
+                        Agent_Card.Size = new Size(252, Agent_Card_Size + 20);
+                        Agent_Card_Size = (Agent_Card_Size + 20);
+                    }
+
+                    if (Timer <= 31)
+                    {
+
+                        if (Timer == 7)
+                        {
+                            Agent_Profile_Image.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                        }
+
+                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 2, Agent_Profile_Image_Size + 2);
+                        Agent_Profile_Image_Size = (Agent_Profile_Image_Size + 2);
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 2, Agent_Profile_Image.Location.Y + 2);
+                    }
+
+                    if (Timer >= 20 && Timer <= 35)
+                    {
+                        Agent_Card_Name.Visible = true;
+                        Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y - 11);
+                    }
+
+                    if (Timer >= 25 && Timer <= 39)
+                    {
+                        Agent_Card_Profession.Visible = true;
+                        Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Agent_Card_Profession.Location.Y - 10);
+                    }
+
+                    if (Timer >= 30 && Timer <= 43)
+                    {
+                        Agent_Card_Email.Visible = true;
+                        Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Agent_Card_Email.Location.Y - 9);
+                    }
+
+                    if (Timer >= 35 && Timer <= 47)
+                    {
+                        Agent_Card_Phone_Number.Visible = true;
+                        Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Agent_Card_Phone_Number.Location.Y - 8);
+                    }
+
+                    if (Timer >= 40 && Timer <= 51)
+                    {
+                        Agent_Card_Room.Visible = true;
+                        Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Agent_Card_Room.Location.Y - 7);
+                    }
+
+                    if (Timer >= 45 && Timer <= 55 && Connected_Agent < 4)
+                    {
+                        Agent_Card_Like_Button.Visible = true;
+                        Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Agent_Card_Like_Button.Location.Y - 5);
+                    }
+
+                    if (Timer >= 55)
+                    {
+                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y);
+                        Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator.Location.X - 1, Agent_Status_Indicator.Location.Y);
+                    }
+
+                    await Task.Delay(1); //delay
+                }
+
+                Agent_Profile_Image.Enabled = true;
+                Open_Profile_Card = 2; //card is open
+            }
+
+            else
+            {
+                if (Open_Profile_Card == 2)
+                {
+                    Open_Profile_Card = 1;
+                    Agent_Profile_Image.Enabled = false;
+                    int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size   
+                    int Agent_Card_Size = 330;
+                    for (int Timer = 0; Timer <= 51; Timer++)
+                    {
+                        if (Timer <= 45)
+                        {
+                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y);
+                            Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator.Location.X + 1, Agent_Status_Indicator.Location.Y);
+                        }
+
+                        if (Timer >= 0 && Timer <= 15 && Connected_Agent < 4)
+                        {
+                            Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Agent_Card_Like_Button.Location.Y + 10);
+                        }
+
+                        if (Timer >= 5 && Timer <= 19)
+                        {
+                            Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Agent_Card_Room.Location.Y + 11);
+                        }
+
+                        if (Timer >= 10 && Timer <= 23)
+                        {
+                            Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Agent_Card_Phone_Number.Location.Y + 12);
+                        }
+
+                        if (Timer >= 15 && Timer <= 27)
+                        {
+                            Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Agent_Card_Email.Location.Y + 13);
+                        }
+
+                        if (Timer >= 20 && Timer <= 31)
+                        {
+                            Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Agent_Card_Profession.Location.Y + 14);
+                        }
+
+                        if (Timer >= 25 && Timer <= 35)
+                        {
+                            Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y + 15);
+                        }
+
+                        if (Timer >= 20 && Timer <= 51)
+                        {
+                            if (Timer == 35)
+                            {
+                                Agent_Profile_Image.BackColor = Color.White;
+                            }
+
+                            Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
+                            Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 2);
+                        }
+
+                        if (Timer >= 30 && Timer <= 45)
+                        {
+                            Agent_Card_Name.Visible = false;
+                            Agent_Card_Profession.Visible = false;
+                            Agent_Card_Email.Visible = false;
+                            Agent_Card_Phone_Number.Visible = false;
+                            Agent_Card_Room.Visible = false;
+                            Agent_Card_Like_Button.Visible = false;
+
+                            Agent_Card.Size = new Size(252, Agent_Card_Size - 20);
+                            Agent_Card_Size = (Agent_Card_Size - 20);
+
+                            if (Timer == 45)
+                            {
+                                Conversation_Area_Header.BackColor = Color.FromArgb(255, 255, 255);
+                            }
+                        }
+                        await Task.Delay(1); //delay
+                    }
+
+                    Agent_Card.Visible = false;
+                    Agent_Profile_Image.Enabled = true;
+                    Open_Profile_Card = 0;
+
+                    if (Agent_Status_Indicator.Text == "One New Message...")
+                    {
+                        Agent_Status_Indicator.Text = "Online";
+                    }
+
+                }
+            }
+                    
+        }
+
+        private void Agent_Card_Like_Button_Click(object sender, EventArgs e)
+        {
+            switch (Connected_Agent) //retrieve the preferred agent value
+            {
+                case 0: //if the preferred agent is set to bruce
+                    Preferred_Agent = "1";  //set the preferred agent to 1
+                    Preferred_Agent_Selection.SelectedIndex = 1;
+                    break;
+                case 1: //if the preferred agent is set to hal
+                    Preferred_Agent = "2";  //set the preferred agent to 2
+                    Preferred_Agent_Selection.SelectedIndex = 2;
+                    break;
+                case 2: //if the preferred agent is set to jason
+                    Preferred_Agent = "3";  //set the preferred agent to 3
+                    Preferred_Agent_Selection.SelectedIndex = 3;
+                    break;
+                case 3: //if the preferred agent is set to suzie
+                    Preferred_Agent = "4";  //set the preferred agent to 4
+                    Preferred_Agent_Selection.SelectedIndex = 4;
+                    break;
+            }
+
+            Save_Changes(); //save the changes
+        }
+
+        private void Agent_Card_Email_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Phone_Number_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Profession_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Name_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Room_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+
+
+
+
+
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
@@ -1697,46 +2188,5 @@ namespace UoL_Virtual_Assistant
             AI_Response_Handshake = true;
         }
 
-        private void Agent_Profile_Image_Click(object sender, EventArgs e)
-        {
-            Agent_Profile_Card();
-        }
-
-        private async void Agent_Profile_Card()
-        {
-            if (Open_Profile_Card == 0) //if the card is not currently open
-            {
-                //GROW IMAGE CARD
-                Agent_Profile_Image.Enabled = false;
-                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100                    
-                for (int Timer = 0; Timer < 66; Timer++)
-                {
-                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 1, Agent_Profile_Image_Size + 1);
-                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size + 1);
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 1, Agent_Profile_Image.Location.Y + 1);
-                    await Task.Delay(1); //delay
-                }
-
-                Open_Profile_Card = 1;
-                Agent_Profile_Image.Enabled = true;
-            }
-
-            else
-            {
-                //SHRINK IMAGE CARD
-                Agent_Profile_Image.Enabled = false;
-                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100                    
-                for (int Timer = 0; Timer < 66; Timer++)
-                {
-                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 1, Agent_Profile_Image_Size - 1);
-                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 1);
-                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1);
-                    await Task.Delay(1); //delay
-                }
-
-                Open_Profile_Card = 0;
-                Agent_Profile_Image.Enabled = true;
-            }
-        }
     }
 }
