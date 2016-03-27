@@ -270,6 +270,7 @@ namespace UoL_Virtual_Assistant
                     break;
                 case "6": //if theme value is set to 6
                     this.BackgroundImage = Properties.Resources.JB; //set the background image to the following resource
+                    Conversation_Cloak.BackColor = Color.Transparent;
                     R = 255; G = 255; B = 255; //set the R,G,B values to these
                     break;
                 case "7": //if theme value is set to 7
@@ -295,9 +296,11 @@ namespace UoL_Virtual_Assistant
             if (Universal_Theme_Value != "6") //if the theme value is not set to a theme with a dedicated background image
             {
                 this.BackgroundImage = null; //remove the background image
+                this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background    
+                Conversation_Cloak.BackColor = Color.FromArgb(R, G, B);
             }
 
-            this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background        
+             
         }
 
         private void Message_Input_TextChanged(object sender, EventArgs e)
@@ -398,7 +401,8 @@ namespace UoL_Virtual_Assistant
                     Conversation_Window.Location = new Point(Conversation_Window.Location.X, Conversation_Window.Location.Y - 10); //move the window so that it is on screen
                 }
 
-
+                Overlap_Fix.Visible = true;
+                Overlap_Fix.BringToFront();
                 Connecting_Label.Visible = true; //makes the connecting label visible
                 Conversation_Exit.Visible = true; //make the exit button visible
 
@@ -2057,7 +2061,9 @@ namespace UoL_Virtual_Assistant
             Message_Input.BringToFront();
             Send_Message.BringToFront();
 
+
             Conversation_Area_Header.BringToFront();
+            Overlap_Fix.BringToFront();
             Agent_Name_Label.BringToFront();
             Agent_Status_Indicator.BringToFront();
             Agent_Profile_Image.BringToFront();
