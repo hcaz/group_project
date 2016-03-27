@@ -2285,7 +2285,23 @@ namespace UoL_Virtual_Assistant
 
         private void Conversation_Exit_Click(object sender, EventArgs e)
         {
+            if (Connection_Status == 1)
+            {
+                DialogResult Exit_Confirmation = MessageBox.Show("You are about to close the current conversation. Are you sure that you want to do this?", "Exit Conversation", MessageBoxButtons.YesNo);
+                if (Exit_Confirmation == DialogResult.Yes)
+                {
+                    Application.Restart();
+                }
+                else if (Exit_Confirmation == DialogResult.No)
+                {
+                    //do nothing
+                }
+            }
 
+            else
+            {
+                Application.Restart();
+            }
         }
 
         private void Agent_Profile_Image_Click(object sender, EventArgs e)
