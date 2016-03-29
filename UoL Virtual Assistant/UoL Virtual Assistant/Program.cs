@@ -18,8 +18,8 @@ namespace UoL_Virtual_Assistant
             Application.SetCompatibleTextRenderingDefault(false);
 
             //ParseInput testing, comment out when not testing
-            ParseInput PI = new ParseInput();
-            PI.SplitInput("hello Amr! Do you know where I can find Bruce? He's my bae. I like to shoot hoops with my bois!?!????.....??!?!?!?!?....!?!.?!?!?");
+            //ParseInput PI = new ParseInput();
+            //PI.SplitInput("hello Amr! Do you know where I can find Bruce? He's my bae. I like to shoot hoops with my bois!?!????.....??!?!?!?!?....!?!.?!?!?");
 
             //ScrapeData data = new ScrapeData();
             //data.libraryOpening();
