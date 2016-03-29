@@ -25,13 +25,13 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
+        int Open_Profile_Card = 1; //sets this as the middle value (0, 1, 2) so that it cannot be opened until the items are in the right place!
         int AI_Message_Counter = 0;
         int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
         int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
         int Connected_Agent; //indicates the agent what will connect with the user
 
         string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
-
         string Latest_AI_Message = "";
         bool AI_Response_Handshake = false;
 
@@ -40,6 +40,8 @@ namespace UoL_Virtual_Assistant
 
         TextBox[] User_Message = new TextBox[25];
         TextBox[] User_Message_Shell = new TextBox[25];
+
+        Random Randomiser = new Random(); //creates a randomiser item
 
         public Main_UI()
         {
@@ -268,6 +270,7 @@ namespace UoL_Virtual_Assistant
                     break;
                 case "6": //if theme value is set to 6
                     this.BackgroundImage = Properties.Resources.JB; //set the background image to the following resource
+                    Conversation_Cloak.BackColor = Color.Transparent;
                     R = 255; G = 255; B = 255; //set the R,G,B values to these
                     break;
                 case "7": //if theme value is set to 7
@@ -293,9 +296,11 @@ namespace UoL_Virtual_Assistant
             if (Universal_Theme_Value != "6") //if the theme value is not set to a theme with a dedicated background image
             {
                 this.BackgroundImage = null; //remove the background image
+                this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background    
+                Conversation_Cloak.BackColor = Color.FromArgb(R, G, B);
             }
 
-            this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background
+             
         }
 
         private void Message_Input_TextChanged(object sender, EventArgs e)
@@ -344,7 +349,7 @@ namespace UoL_Virtual_Assistant
             }
         }
 
-        private void Send_Message_Click(object sender, EventArgs e)
+        private async void Send_Message_Click(object sender, EventArgs e)
         {
             string User_Message = (Message_Input.Text); //write the user message to a string
 
@@ -354,10 +359,26 @@ namespace UoL_Virtual_Assistant
                     Initiate_Connection(); //initiate the connection, resize the window, pair with an agent etc.
                     break;
                 case 1:
+                    if (Open_Profile_Card == 2)
+                    {
+                        Agent_Profile_Card();
+                    }
+
                     Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
                     Message_Input.Text = String.Empty;
 
                     Create_User_Message();
+
+                    while (AI_Response_Handshake == false)
+                    {
+                        await Task.Delay(1000); //delay                       
+                    }
+
+                    if (AI_Response_Handshake == true)
+                    {
+                        Realistic_AI_Typing();
+                    }
+
                     break;
             }
         }
@@ -367,8 +388,12 @@ namespace UoL_Virtual_Assistant
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
             {
                 Send_Message.Enabled = false;
-                Send_Message.BackgroundImage = Properties.Resources.Send_Icon__for_light_themes_;
+                Send_Message.BackgroundImage = Properties.Resources.Send_Icon;
                 Conversation_Window.Visible = true; //make the window visible
+
+
+
+
                 Open_Conversation_Window = 1; //set the window status as open
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
                 {
@@ -376,9 +401,11 @@ namespace UoL_Virtual_Assistant
                     Conversation_Window.Location = new Point(Conversation_Window.Location.X, Conversation_Window.Location.Y - 10); //move the window so that it is on screen
                 }
 
-
+                Overlap_Fix.Visible = true;
+                Overlap_Fix.BringToFront();
                 Connecting_Label.Visible = true; //makes the connecting label visible
                 Conversation_Exit.Visible = true; //make the exit button visible
+
                 bool Exit_Visible = false;
                 while (Connection_Status == 0) //while the user is not connected to an agent
                 {
@@ -416,8 +443,7 @@ namespace UoL_Virtual_Assistant
                 if (Connection_Status == 1) //if the connection status is live
                 {
                     Connecting_Label.Text = "Connection Established"; //change the text to this
-                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window
-                    Random Randomiser = new Random(); //creates a randomiser item
+                    Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window                    
                     Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
                     int Preferred_Agent_Probability = Randomiser.Next(0, 100); //selects a random number between 0 and 4
@@ -487,6 +513,7 @@ namespace UoL_Virtual_Assistant
                     }
 
                     Agent_Profile_Image.Visible = true; //make the agent profile picture visible
+                    Agent_Profile_Image.BringToFront();
                     int Agent_Profile_Image_Starting_X = Agent_Profile_Image.Location.X; //grab the profile picture's X location
                     int Agent_Profile_Image_Starting_Y = Agent_Profile_Image.Location.Y; //grab the profile picture's Y location
                     int Agent_Profile_Image_Size = 10; //set the profile picture's X & Y size to 10
@@ -519,6 +546,7 @@ namespace UoL_Virtual_Assistant
                         await Task.Delay(1); //delay
                     }
 
+                    Agent_Name_Label.BringToFront();
                     await Task.Delay(1000); //delay
                     for (int Profile_Picture_Timing = 0; Profile_Picture_Timing < 20; Profile_Picture_Timing++) //while the profile picture has not yet been fully resized
                     {
@@ -533,31 +561,66 @@ namespace UoL_Virtual_Assistant
                         await Task.Delay(1); //delay
                     }
                     await Task.Delay(2000); //delay
-                    Agent_Name_Label.Size = new Size(175, 31); //resize the name label
-                    Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
-                    Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
-                    Agent_Profile_Image_Size = 100; //set the profile image size at 100
-                    Conversation_Area_Header.Visible = true;
-                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 30; Profile_Picture_Relocation++)
+
+                    //Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                    //Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
+
+                    Agent_Profile_Image_Size = 100; //set the profile image size at 100                    
+                    int Label_Color = 0;
+                    for (int Profile_Picture_Relocation = 0; Profile_Picture_Relocation < 155; Profile_Picture_Relocation++)
                     {
-                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
-                        Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
-                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 3);
-                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y - 7);
-                        if (Profile_Picture_Relocation >= 25) //when the number of steps reaches 25 and exceeds it
+
+                        if (Profile_Picture_Relocation < 60)
                         {
-                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 3); //give it an extra boost
-                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y - 2); //give it an extra boost
+                            if (Profile_Picture_Relocation < 52)
+                            {
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 2);
+                            }
+
+                            Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 1, Agent_Profile_Image_Size - 1);
+                            Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 1);
+                            //Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 2);
+                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color + 4, Label_Color + 4, Label_Color + 4);
+                            Label_Color = (Label_Color + 4);
+
+                            if (Profile_Picture_Relocation % 2 == 0)
+                            {
+                                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 1, Agent_Profile_Image.Location.Y);
+                            }
                         }
 
-                        if (Profile_Picture_Relocation == 28) //when the number of steps reaches 28
+                        if (Profile_Picture_Relocation > 60 && Profile_Picture_Relocation <= 105)
                         {
+                            Agent_Name_Label.Visible = false;
+                            Conversation_Area_Header.Visible = true;
+                        }
+
+                        if (Profile_Picture_Relocation == 105)
+                        {                           
+                            Agent_Name_Label.Size = new Size(175, 31); //resize the name label
+                            Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
+                            Agent_Name_Label.ForeColor = Color.FromArgb(0, 0, 0);
+                            Agent_Name_Label.Location = new Point(Agent_Status_Indicator.Location.X - 2, Agent_Status_Indicator.Location.Y - 27);
+                            Label_Color = 255;
+                            Agent_Profile_Image.BringToFront();
+                        }
+
+                        if (Profile_Picture_Relocation > 130)
+                        {
+                            Agent_Name_Label.Visible = true;
                             Agent_Status_Indicator.Visible = true; //make the indicator visible
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 4, Agent_Profile_Image.Location.Y);
+                            Agent_Name_Label.ForeColor = Color.FromArgb(Label_Color - 10, Label_Color - 10, Label_Color - 10);
+                            Agent_Status_Indicator.ForeColor = Color.FromArgb(Label_Color - 10, Label_Color - 10, Label_Color - 10);
+                            Label_Color = (Label_Color - 10);
                         }
 
                         await Task.Delay(1); //delay
                     }
 
+                    Open_Profile_Card = 0;
+
+                    Agent_Status_Indicator.BringToFront();
                     int Wait_Time = Randomiser.Next(0, 15); //selects a random number between 0 and 15 for the wait time
 
                     if (Connected_Agent == 4)
@@ -582,13 +645,13 @@ namespace UoL_Virtual_Assistant
                     {
                         TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
                         TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
-                        string OOH_Bot_Response = "it is out of work hours. If you need to contact the team personally, please get in touch during 9am and 6pm, Monday to Friday. ";
+                        string OOH_Bot_Response = "it is out of work hours. If you need to contact them personally, please get in touch during 9am and 6pm, Monday to Friday. ";
                         if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                         {
-                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact the team personally please come back after 1pm and there will be someone on hand to answer your query. ";
+                            OOH_Bot_Response = "they are currently out for lunch. If you need to contact them personally please come back after 1pm and there will be someone on hand to answer your query. ";
                         }
 
-                        Latest_AI_Message = "Hi " + Student_ID + ". Unfortunately our team is unable to respond to you as " + OOH_Bot_Response + "If you would like, you can respond to this message with your query and the team will get back to you via email once they are available, otherwise exit the chat.";
+                        Latest_AI_Message = "Hi. Unfortunately our team is unable to respond as " + OOH_Bot_Response + "If you like, you can respond to this message with your query and the team will get back to you once they are available, otherwise exit the chat.";
                         AI_Response_Handshake = true;
                     }
 
@@ -599,59 +662,8 @@ namespace UoL_Virtual_Assistant
 
                     if (AI_Response_Handshake == true)
                     {
-                        if (Connected_Agent == 4)
-                        {
-                            Create_AI_Message();
-                        }
-
-                        else
-                        {
-                            Agent_Status_Indicator.Text = "Typing";
-                            int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
-                            MessageBox.Show(Typing_Time.ToString());
-                            await Task.Delay(Typing_Time / 10);
-
-                            if (Randomiser.Next(0, 100) > 50)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 10000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 3);
-
-                            if (Randomiser.Next(0, 100) > 60)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 5000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 3);
-
-                            if (Randomiser.Next(0, 100) > 60)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 3000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 5);
-
-                            if (Randomiser.Next(0, 100) > 75)
-                            {
-                                Agent_Status_Indicator.Text = "Online";
-                                await Task.Delay(Randomiser.Next(1000, 5000));
-                                Agent_Status_Indicator.Text = "Typing";
-                            }
-
-                            await Task.Delay(Typing_Time / 10);
-                            Create_AI_Message();
-                            Agent_Status_Indicator.Text = "Online";
-                        }
-
-                                           
-                    }                 
+                        Realistic_AI_Typing();
+                    }
                 }
             }
 
@@ -659,7 +671,241 @@ namespace UoL_Virtual_Assistant
             {
                 //do nothing
             }
+        }
 
+        private async void Realistic_AI_Typing()
+        {
+            if (Connected_Agent == 4)
+            {
+                Create_AI_Message();
+            }
+
+            else
+            {
+                Agent_Status_Indicator.Text = "Typing";
+                int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
+                //int Typing_Time = 0; //SPEED THINGS UP TIMER (COMMENT ^ OUT)
+                //MessageBox.Show(Typing_Time.ToString());
+                await Task.Delay(Typing_Time / 10);
+
+                if (Randomiser.Next(0, 100) > 50)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 10000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 3);
+
+                if (Randomiser.Next(0, 100) > 60)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 5000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 3);
+
+                if (Randomiser.Next(0, 100) > 60)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 3000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 5);
+
+                if (Randomiser.Next(0, 100) > 75)
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                    await Task.Delay(Randomiser.Next(1000, 5000));
+                    Agent_Status_Indicator.Text = "Typing";
+                }
+
+                await Task.Delay(Typing_Time / 10);
+
+                if (Open_Profile_Card > 0)
+                {
+                    Agent_Status_Indicator.Text = "One New Message...";
+                }
+
+                else
+                {
+                    Agent_Status_Indicator.Text = "Online";
+                }            
+
+                int Probability = 0;
+                int Random = 0;
+                int Mistakes_To_Make = 0;
+
+                switch (Connected_Agent)
+                {
+                    case 0: //bruce
+                        Probability = 1;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 1: //hal
+                        Probability = 0;
+                        //for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        //{
+                        //    if (Mistakes_To_Make == 0)
+                        //    {
+                        //        break;
+                        //    }
+
+                        //    Random = Randomiser.Next(0, 100);
+                        //    if (Random > 50)
+                        //    {
+                        //        Make_A_Mistake();
+                        //    }
+                        //}
+                        break;
+                    case 2: //jason
+                        Probability = 7;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 3: //suzie
+                        Probability = 3;
+                        for (int Mistakes = 0; Mistakes >= Probability; Mistakes++)
+                        {
+                            if (Mistakes_To_Make == 0)
+                            {
+                                break;
+                            }
+
+                            Random = Randomiser.Next(0, 100);
+                            if (Random > 50)
+                            {
+                                Make_A_Mistake();
+                            }
+                        }
+                        break;
+                    case 4: //out of hours
+                        Make_A_Mistake();
+                        break;
+                }
+
+                Create_AI_Message(); //display the final message
+            }
+        }
+
+        private void Make_A_Mistake()
+        {
+            #region read
+            string[] characterMap = new string[54];
+            int counter = 0;
+            string line;
+
+            // Read the charactermap file
+            var Grandparent_Directory = Directory.GetParent(Directory.GetParent(Environment.CurrentDirectory.ToString()).ToString());
+            System.IO.StreamReader file = new System.IO.StreamReader(Grandparent_Directory + "\\resources\\files\\charMap.txt");
+
+
+            while ((line = file.ReadLine()) != null)
+            {
+                characterMap[counter] = line;
+                counter++;
+            }
+            file.Close();
+            #endregion
+
+            #region variables
+            char character, newchar;
+            int indexFound = 0, value;
+
+
+            Random rand = new Random();
+            int num = rand.Next(0, Latest_AI_Message.Length - 1);
+            #endregion
+
+            #region errorcheck
+            if (Convert.ToString(Latest_AI_Message[num]) == " " || char.IsNumber(Convert.ToChar(Latest_AI_Message[num])))
+            {
+                num = rand.Next(0, Latest_AI_Message.Length - 1);
+            }
+            #endregion
+
+            #region search
+            else
+            {
+                //Convert chosen character to lowecase
+                character = char.ToLower(Convert.ToChar(Latest_AI_Message[num]));
+                //Search array for result
+                for (int j = 0; j <= 53;)
+                {
+                    if (Convert.ToString(character) == characterMap[j])
+                    {
+                        indexFound = j;
+                        break;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+
+                }
+                #endregion
+
+                #region keyhandling
+                //Prevents correction being the first key of the next row of the keyboard
+                if (indexFound == 0 || indexFound == 20 || indexFound == 40)
+                {
+                    value = 1;
+                }
+                //Prevents correction being the last key on the previous row of the keyboard
+                else if (indexFound == 18 || indexFound == 38 || indexFound == 52)
+                {
+                    value = -1;
+                }
+                //Randomize Value between -1 and 1
+                else
+                {
+                    value = rand.Next(-1, 2);
+                }
+                //Changes selected value to next key to the right
+                if (value == 1)
+                {
+                    newchar = Convert.ToChar(characterMap[indexFound + 2]);
+                }
+                //Changes selected value to next key to the left
+                else
+                {
+                    newchar = Convert.ToChar(characterMap[indexFound - 2]);
+                }
+                #endregion
+
+                #region chararray
+                //Build new string based on original and modifications
+                char[] chars = Latest_AI_Message.ToCharArray();
+                chars[num] = Convert.ToChar(newchar);
+                Latest_AI_Message = new string(chars);
+
+                #endregion
+            }
         }
 
         private async void Create_AI_Message()
@@ -688,8 +934,12 @@ namespace UoL_Virtual_Assistant
             AI_Message_Shell[AI_Message_Counter].BorderStyle = BorderStyle.None;
             AI_Message_Shell[AI_Message_Counter].Size = new Size(150, (Line_Counter + 10));
 
+
+
+
             AI_Message_Shell[AI_Message_Counter].BringToFront();
             AI_Message[AI_Message_Counter].BringToFront();
+
             Reiterate_Layers();
 
             int Scroll_Steps = Line_Counter + 20;
@@ -702,13 +952,33 @@ namespace UoL_Virtual_Assistant
                 AI_Message[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
                 AI_Message_Shell[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
 
+                if (Open_Profile_Card == 2)
+                {
+                    Agent_Card.BringToFront();
+                    Conversation_Area_Header.BringToFront();
+                    Agent_Name_Label.BringToFront();
+                    Agent_Status_Indicator.BringToFront();
+                    Agent_Profile_Image.BringToFront();
+                    Conversation_Exit.BringToFront();
 
+                    Agent_Card_Name.BringToFront();
+                    Agent_Card_Profession.BringToFront();
+                    Agent_Card_Email.BringToFront();
+                    Agent_Card_Phone_Number.BringToFront();
+                    Agent_Card_Room.BringToFront();
+                    Agent_Card_Like_Button.BringToFront();
+
+                    Message_Input_Area.BringToFront();
+                    Message_Input.BringToFront();
+                    Send_Message.BringToFront();
+                }
 
                 await Task.Delay(1); //delay for 1/100 of a second
             }
 
             Message_Input.Enabled = true;
             Send_Message.Enabled = true;
+            AI_Response_Handshake = false;
             AI_Message_Counter++;
 
         }
@@ -744,7 +1014,8 @@ namespace UoL_Virtual_Assistant
             User_Message[User_Message_Counter].BringToFront();
             Reiterate_Layers();
 
-            int Scroll_Steps = Line_Counter + 20;       
+            int Scroll_Steps = Line_Counter + 20;
+            //MessageBox.Show(Scroll_Steps.ToString());
 
             for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
             {
@@ -760,6 +1031,7 @@ namespace UoL_Virtual_Assistant
 
                 await Task.Delay(1); //delay for 1/100 of a second
             }
+
             User_Message_Counter++;
 
             if (Connected_Agent == 4 && User_Message_Counter == 1)
@@ -793,10 +1065,16 @@ namespace UoL_Virtual_Assistant
 
             else
             {
+                if (AI_Message_Counter == 1)
+                {
+                    Fade_In_Out_Message(AI_Message_Counter - 1, 1);
+                }
+
                 if (AI_Message_Counter > 1)
                 {
                     AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y - 1);
                     AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y - 1);
+                    Fade_In_Out_Message(AI_Message_Counter - 2, 1);
                 }
 
                 if (AI_Message_Counter > 2)
@@ -954,6 +1232,8 @@ namespace UoL_Virtual_Assistant
                     AI_Message[AI_Message_Counter - 1].Location = new Point(AI_Message[AI_Message_Counter - 1].Location.X, AI_Message[AI_Message_Counter - 1].Location.Y - 1);
                     AI_Message_Shell[AI_Message_Counter - 1].Location = new Point(AI_Message_Shell[AI_Message_Counter - 1].Location.X, AI_Message_Shell[AI_Message_Counter - 1].Location.Y - 1);
                 }
+
+                //Reiterate_Layers();
             }
         }
 
@@ -1132,19 +1412,556 @@ namespace UoL_Virtual_Assistant
                     User_Message[User_Message_Counter - 1].Location = new Point(User_Message[User_Message_Counter - 1].Location.X, User_Message[User_Message_Counter - 1].Location.Y - 1);
                     User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
                 }
+
+                //Reiterate_Layers();
             }
-        }        
+        }
+
+        private void Fade_In_Out_Message(int Message_Number, int In_Or_Out)
+        {
+            if (In_Or_Out == 0) //if it wants to fade in
+            {
+
+            }
+
+            else
+            {
+                //if (AI_Message_Shell[Message_Number].Location.Y >= Conversation_Window.Location.Y + 20)
+                //{
+                //    int R_Colour = AI_Message[Message_Number].BackColor.R;
+                //    if (R_Colour + 5 < 255)
+                //    {
+                //        R_Colour = (R_Colour + 5);
+                //    }
+
+                //    int G_Colour = AI_Message[Message_Number].BackColor.G;
+                //    if (G_Colour + 5 < 255)
+                //    {
+                //        G_Colour = (G_Colour + 5);
+                //    }
+
+                //    int B_Colour = AI_Message[Message_Number].BackColor.B;
+                //    if (B_Colour + 5 < 255)
+                //    {
+                //        B_Colour = (B_Colour + 5);
+                //    }
+
+                //    AI_Message[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
+                //    AI_Message_Shell[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
+                //}                
+            }           
+        }           
 
         private async void Scroll_Content_UpDown(int Scroll_Direction)
         {
-            if(Scroll_Direction == 1) //if scroll direction is set to up
+            if (Scroll_Direction == 1) //if scroll direction is set to up
             {
-                MessageBox.Show("Content will scroll up!");
+                for (int Up_Timer = 0; Up_Timer < 100; Up_Timer++)
+                {
+                    if (AI_Message_Counter > 1)
+                    {
+                        AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 2].Location = new Point(User_Message[User_Message_Counter - 2].Location.X, User_Message[User_Message_Counter - 2].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 2].Location = new Point(User_Message_Shell[User_Message_Counter - 2].Location.X, User_Message_Shell[User_Message_Counter - 2].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 2)
+                    {
+                        AI_Message[AI_Message_Counter - 3].Location = new Point(AI_Message[AI_Message_Counter - 3].Location.X, AI_Message[AI_Message_Counter - 3].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 3].Location = new Point(AI_Message_Shell[AI_Message_Counter - 3].Location.X, AI_Message_Shell[AI_Message_Counter - 3].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 3].Location = new Point(User_Message[User_Message_Counter - 3].Location.X, User_Message[User_Message_Counter - 3].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 3].Location = new Point(User_Message_Shell[User_Message_Counter - 3].Location.X, User_Message_Shell[User_Message_Counter - 3].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 3)
+                    {
+                        AI_Message[AI_Message_Counter - 4].Location = new Point(AI_Message[AI_Message_Counter - 4].Location.X, AI_Message[AI_Message_Counter - 4].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 4].Location = new Point(AI_Message_Shell[AI_Message_Counter - 4].Location.X, AI_Message_Shell[AI_Message_Counter - 4].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 4].Location = new Point(User_Message[User_Message_Counter - 4].Location.X, User_Message[User_Message_Counter - 4].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 4].Location = new Point(User_Message_Shell[User_Message_Counter - 4].Location.X, User_Message_Shell[User_Message_Counter - 4].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 4)
+                    {
+                        AI_Message[AI_Message_Counter - 5].Location = new Point(AI_Message[AI_Message_Counter - 5].Location.X, AI_Message[AI_Message_Counter - 5].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 5].Location = new Point(AI_Message_Shell[AI_Message_Counter - 5].Location.X, AI_Message_Shell[AI_Message_Counter - 5].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 5].Location = new Point(User_Message[User_Message_Counter - 5].Location.X, User_Message[User_Message_Counter - 5].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 5].Location = new Point(User_Message_Shell[User_Message_Counter - 5].Location.X, User_Message_Shell[User_Message_Counter - 5].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 5)
+                    {
+                        AI_Message[AI_Message_Counter - 6].Location = new Point(AI_Message[AI_Message_Counter - 6].Location.X, AI_Message[AI_Message_Counter - 6].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 6].Location = new Point(AI_Message_Shell[AI_Message_Counter - 6].Location.X, AI_Message_Shell[AI_Message_Counter - 6].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 6].Location = new Point(User_Message[User_Message_Counter - 6].Location.X, User_Message[User_Message_Counter - 6].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 6].Location = new Point(User_Message_Shell[User_Message_Counter - 6].Location.X, User_Message_Shell[User_Message_Counter - 6].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 6)
+                    {
+                        AI_Message[AI_Message_Counter - 7].Location = new Point(AI_Message[AI_Message_Counter - 7].Location.X, AI_Message[AI_Message_Counter - 7].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 7].Location = new Point(AI_Message_Shell[AI_Message_Counter - 7].Location.X, AI_Message_Shell[AI_Message_Counter - 7].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 7].Location = new Point(User_Message[User_Message_Counter - 7].Location.X, User_Message[User_Message_Counter - 7].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 7].Location = new Point(User_Message_Shell[User_Message_Counter - 7].Location.X, User_Message_Shell[User_Message_Counter - 7].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 7)
+                    {
+                        AI_Message[AI_Message_Counter - 8].Location = new Point(AI_Message[AI_Message_Counter - 8].Location.X, AI_Message[AI_Message_Counter - 8].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 8].Location = new Point(AI_Message_Shell[AI_Message_Counter - 8].Location.X, AI_Message_Shell[AI_Message_Counter - 8].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 8].Location = new Point(User_Message[User_Message_Counter - 8].Location.X, User_Message[User_Message_Counter - 8].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 8].Location = new Point(User_Message_Shell[User_Message_Counter - 8].Location.X, User_Message_Shell[User_Message_Counter - 8].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 8)
+                    {
+                        AI_Message[AI_Message_Counter - 9].Location = new Point(AI_Message[AI_Message_Counter - 9].Location.X, AI_Message[AI_Message_Counter - 9].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 9].Location = new Point(AI_Message_Shell[AI_Message_Counter - 9].Location.X, AI_Message_Shell[AI_Message_Counter - 9].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 9].Location = new Point(User_Message[User_Message_Counter - 9].Location.X, User_Message[User_Message_Counter - 9].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 9].Location = new Point(User_Message_Shell[User_Message_Counter - 9].Location.X, User_Message_Shell[User_Message_Counter - 9].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 9)
+                    {
+                        AI_Message[AI_Message_Counter - 10].Location = new Point(AI_Message[AI_Message_Counter - 10].Location.X, AI_Message[AI_Message_Counter - 10].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 10].Location = new Point(AI_Message_Shell[AI_Message_Counter - 10].Location.X, AI_Message_Shell[AI_Message_Counter - 10].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 10].Location = new Point(User_Message[User_Message_Counter - 10].Location.X, User_Message[User_Message_Counter - 10].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 10].Location = new Point(User_Message_Shell[User_Message_Counter - 10].Location.X, User_Message_Shell[User_Message_Counter - 10].Location.Y - 1);
+
+                    }
+
+                    if (AI_Message_Counter > 10)
+                    {
+                        AI_Message[AI_Message_Counter - 11].Location = new Point(AI_Message[AI_Message_Counter - 11].Location.X, AI_Message[AI_Message_Counter - 11].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 11].Location = new Point(AI_Message_Shell[AI_Message_Counter - 11].Location.X, AI_Message_Shell[AI_Message_Counter - 11].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 11].Location = new Point(User_Message[User_Message_Counter - 11].Location.X, User_Message[User_Message_Counter - 11].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 11].Location = new Point(User_Message_Shell[User_Message_Counter - 11].Location.X, User_Message_Shell[User_Message_Counter - 11].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 11)
+                    {
+                        AI_Message[AI_Message_Counter - 12].Location = new Point(AI_Message[AI_Message_Counter - 12].Location.X, AI_Message[AI_Message_Counter - 12].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 12].Location = new Point(AI_Message_Shell[AI_Message_Counter - 12].Location.X, AI_Message_Shell[AI_Message_Counter - 12].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 12].Location = new Point(User_Message[User_Message_Counter - 12].Location.X, User_Message[User_Message_Counter - 12].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 12].Location = new Point(User_Message_Shell[User_Message_Counter - 12].Location.X, User_Message_Shell[User_Message_Counter - 12].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 12)
+                    {
+                        AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 13)
+                    {
+                        AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 14)
+                    {
+                        AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 15)
+                    {
+                        AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 16)
+                    {
+                        AI_Message[AI_Message_Counter - 15].Location = new Point(AI_Message[AI_Message_Counter - 15].Location.X, AI_Message[AI_Message_Counter - 15].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 15].Location = new Point(AI_Message_Shell[AI_Message_Counter - 15].Location.X, AI_Message_Shell[AI_Message_Counter - 15].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 15].Location = new Point(User_Message[User_Message_Counter - 15].Location.X, User_Message[User_Message_Counter - 15].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 15].Location = new Point(User_Message_Shell[User_Message_Counter - 15].Location.X, User_Message_Shell[User_Message_Counter - 15].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 17)
+                    {
+                        AI_Message[AI_Message_Counter - 16].Location = new Point(AI_Message[AI_Message_Counter - 16].Location.X, AI_Message[AI_Message_Counter - 16].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 16].Location = new Point(AI_Message_Shell[AI_Message_Counter - 16].Location.X, AI_Message_Shell[AI_Message_Counter - 16].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 16].Location = new Point(User_Message[User_Message_Counter - 16].Location.X, User_Message[User_Message_Counter - 16].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 16].Location = new Point(User_Message_Shell[User_Message_Counter - 16].Location.X, User_Message_Shell[User_Message_Counter - 16].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 18)
+                    {
+                        AI_Message[AI_Message_Counter - 17].Location = new Point(AI_Message[AI_Message_Counter - 17].Location.X, AI_Message[AI_Message_Counter - 17].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 17].Location = new Point(AI_Message_Shell[AI_Message_Counter - 17].Location.X, AI_Message_Shell[AI_Message_Counter - 17].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 17].Location = new Point(User_Message[User_Message_Counter - 17].Location.X, User_Message[User_Message_Counter - 17].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 17].Location = new Point(User_Message_Shell[User_Message_Counter - 17].Location.X, User_Message_Shell[User_Message_Counter - 17].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 19)
+                    {
+                        AI_Message[AI_Message_Counter - 18].Location = new Point(AI_Message[AI_Message_Counter - 18].Location.X, AI_Message[AI_Message_Counter - 18].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 18].Location = new Point(AI_Message_Shell[AI_Message_Counter - 18].Location.X, AI_Message_Shell[AI_Message_Counter - 18].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 18].Location = new Point(User_Message[User_Message_Counter - 18].Location.X, User_Message[User_Message_Counter - 18].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 18].Location = new Point(User_Message_Shell[User_Message_Counter - 18].Location.X, User_Message_Shell[User_Message_Counter - 18].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 20)
+                    {
+                        AI_Message[AI_Message_Counter - 19].Location = new Point(AI_Message[AI_Message_Counter - 19].Location.X, AI_Message[AI_Message_Counter - 19].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 19].Location = new Point(AI_Message_Shell[AI_Message_Counter - 19].Location.X, AI_Message_Shell[AI_Message_Counter - 19].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 19].Location = new Point(User_Message[User_Message_Counter - 19].Location.X, User_Message[User_Message_Counter - 19].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 19].Location = new Point(User_Message_Shell[User_Message_Counter - 19].Location.X, User_Message_Shell[User_Message_Counter - 19].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 21)
+                    {
+                        AI_Message[AI_Message_Counter - 20].Location = new Point(AI_Message[AI_Message_Counter - 20].Location.X, AI_Message[AI_Message_Counter - 20].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 20].Location = new Point(AI_Message_Shell[AI_Message_Counter - 20].Location.X, AI_Message_Shell[AI_Message_Counter - 20].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 20].Location = new Point(User_Message[User_Message_Counter - 20].Location.X, User_Message[User_Message_Counter - 20].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 20].Location = new Point(User_Message_Shell[User_Message_Counter - 20].Location.X, User_Message_Shell[User_Message_Counter - 20].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 22)
+                    {
+                        AI_Message[AI_Message_Counter - 21].Location = new Point(AI_Message[AI_Message_Counter - 21].Location.X, AI_Message[AI_Message_Counter - 21].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 21].Location = new Point(AI_Message_Shell[AI_Message_Counter - 21].Location.X, AI_Message_Shell[AI_Message_Counter - 21].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 21].Location = new Point(User_Message[User_Message_Counter - 21].Location.X, User_Message[User_Message_Counter - 21].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 21].Location = new Point(User_Message_Shell[User_Message_Counter - 21].Location.X, User_Message_Shell[User_Message_Counter - 21].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 23)
+                    {
+                        AI_Message[AI_Message_Counter - 22].Location = new Point(AI_Message[AI_Message_Counter - 22].Location.X, AI_Message[AI_Message_Counter - 22].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 22].Location = new Point(AI_Message_Shell[AI_Message_Counter - 22].Location.X, AI_Message_Shell[AI_Message_Counter - 22].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 22].Location = new Point(User_Message[User_Message_Counter - 22].Location.X, User_Message[User_Message_Counter - 22].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 22].Location = new Point(User_Message_Shell[User_Message_Counter - 22].Location.X, User_Message_Shell[User_Message_Counter - 22].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 24)
+                    {
+                        AI_Message[AI_Message_Counter - 23].Location = new Point(AI_Message[AI_Message_Counter - 23].Location.X, AI_Message[AI_Message_Counter - 23].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 23].Location = new Point(AI_Message_Shell[AI_Message_Counter - 23].Location.X, AI_Message_Shell[AI_Message_Counter - 23].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 23].Location = new Point(User_Message[User_Message_Counter - 23].Location.X, User_Message[User_Message_Counter - 23].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 23].Location = new Point(User_Message_Shell[User_Message_Counter - 23].Location.X, User_Message_Shell[User_Message_Counter - 23].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 25)
+                    {
+                        AI_Message[AI_Message_Counter - 24].Location = new Point(AI_Message[AI_Message_Counter - 24].Location.X, AI_Message[AI_Message_Counter - 24].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 24].Location = new Point(AI_Message_Shell[AI_Message_Counter - 24].Location.X, AI_Message_Shell[AI_Message_Counter - 24].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 24].Location = new Point(User_Message[User_Message_Counter - 24].Location.X, User_Message[User_Message_Counter - 24].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 24].Location = new Point(User_Message_Shell[User_Message_Counter - 24].Location.X, User_Message_Shell[User_Message_Counter - 24].Location.Y - 1);
+                    }
+
+                    if (AI_Message_Counter > 26)
+                    {
+                        AI_Message[AI_Message_Counter - 25].Location = new Point(AI_Message[AI_Message_Counter - 25].Location.X, AI_Message[AI_Message_Counter - 25].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 25].Location = new Point(AI_Message_Shell[AI_Message_Counter - 25].Location.X, AI_Message_Shell[AI_Message_Counter - 25].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 25].Location = new Point(User_Message[User_Message_Counter - 25].Location.X, User_Message[User_Message_Counter - 25].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 25].Location = new Point(User_Message_Shell[User_Message_Counter - 25].Location.X, User_Message_Shell[User_Message_Counter - 25].Location.Y - 1);
+                    }
+
+                    else
+                    {
+                        AI_Message[AI_Message_Counter - 1].Location = new Point(AI_Message[AI_Message_Counter - 1].Location.X, AI_Message[AI_Message_Counter - 1].Location.Y - 1);
+                        AI_Message_Shell[AI_Message_Counter - 1].Location = new Point(AI_Message_Shell[AI_Message_Counter - 1].Location.X, AI_Message_Shell[AI_Message_Counter - 1].Location.Y - 1);
+
+                        User_Message[User_Message_Counter - 1].Location = new Point(User_Message[User_Message_Counter - 1].Location.X, User_Message[User_Message_Counter - 1].Location.Y - 1);
+                        User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
+                    }
+
+                    if (Up_Timer % 2 == 0)
+                    {
+                        await Task.Delay(1);
+                    }
+                }
             }
 
             else //otherwise go down
             {
-                MessageBox.Show("Content will go down!");
+                for (int Down_Timer = 0; Down_Timer < 100; Down_Timer++)
+                {
+                    if (AI_Message_Counter > 1)
+                    {
+                        AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 2].Location = new Point(User_Message[User_Message_Counter - 2].Location.X, User_Message[User_Message_Counter - 2].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 2].Location = new Point(User_Message_Shell[User_Message_Counter - 2].Location.X, User_Message_Shell[User_Message_Counter - 2].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 2)
+                    {
+                        AI_Message[AI_Message_Counter - 3].Location = new Point(AI_Message[AI_Message_Counter - 3].Location.X, AI_Message[AI_Message_Counter - 3].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 3].Location = new Point(AI_Message_Shell[AI_Message_Counter - 3].Location.X, AI_Message_Shell[AI_Message_Counter - 3].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 3].Location = new Point(User_Message[User_Message_Counter - 3].Location.X, User_Message[User_Message_Counter - 3].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 3].Location = new Point(User_Message_Shell[User_Message_Counter - 3].Location.X, User_Message_Shell[User_Message_Counter - 3].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 3)
+                    {
+                        AI_Message[AI_Message_Counter - 4].Location = new Point(AI_Message[AI_Message_Counter - 4].Location.X, AI_Message[AI_Message_Counter - 4].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 4].Location = new Point(AI_Message_Shell[AI_Message_Counter - 4].Location.X, AI_Message_Shell[AI_Message_Counter - 4].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 4].Location = new Point(User_Message[User_Message_Counter - 4].Location.X, User_Message[User_Message_Counter - 4].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 4].Location = new Point(User_Message_Shell[User_Message_Counter - 4].Location.X, User_Message_Shell[User_Message_Counter - 4].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 4)
+                    {
+                        AI_Message[AI_Message_Counter - 5].Location = new Point(AI_Message[AI_Message_Counter - 5].Location.X, AI_Message[AI_Message_Counter - 5].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 5].Location = new Point(AI_Message_Shell[AI_Message_Counter - 5].Location.X, AI_Message_Shell[AI_Message_Counter - 5].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 5].Location = new Point(User_Message[User_Message_Counter - 5].Location.X, User_Message[User_Message_Counter - 5].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 5].Location = new Point(User_Message_Shell[User_Message_Counter - 5].Location.X, User_Message_Shell[User_Message_Counter - 5].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 5)
+                    {
+                        AI_Message[AI_Message_Counter - 6].Location = new Point(AI_Message[AI_Message_Counter - 6].Location.X, AI_Message[AI_Message_Counter - 6].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 6].Location = new Point(AI_Message_Shell[AI_Message_Counter - 6].Location.X, AI_Message_Shell[AI_Message_Counter - 6].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 6].Location = new Point(User_Message[User_Message_Counter - 6].Location.X, User_Message[User_Message_Counter - 6].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 6].Location = new Point(User_Message_Shell[User_Message_Counter - 6].Location.X, User_Message_Shell[User_Message_Counter - 6].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 6)
+                    {
+                        AI_Message[AI_Message_Counter - 7].Location = new Point(AI_Message[AI_Message_Counter - 7].Location.X, AI_Message[AI_Message_Counter - 7].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 7].Location = new Point(AI_Message_Shell[AI_Message_Counter - 7].Location.X, AI_Message_Shell[AI_Message_Counter - 7].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 7].Location = new Point(User_Message[User_Message_Counter - 7].Location.X, User_Message[User_Message_Counter - 7].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 7].Location = new Point(User_Message_Shell[User_Message_Counter - 7].Location.X, User_Message_Shell[User_Message_Counter - 7].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 7)
+                    {
+                        AI_Message[AI_Message_Counter - 8].Location = new Point(AI_Message[AI_Message_Counter - 8].Location.X, AI_Message[AI_Message_Counter - 8].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 8].Location = new Point(AI_Message_Shell[AI_Message_Counter - 8].Location.X, AI_Message_Shell[AI_Message_Counter - 8].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 8].Location = new Point(User_Message[User_Message_Counter - 8].Location.X, User_Message[User_Message_Counter - 8].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 8].Location = new Point(User_Message_Shell[User_Message_Counter - 8].Location.X, User_Message_Shell[User_Message_Counter - 8].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 8)
+                    {
+                        AI_Message[AI_Message_Counter - 9].Location = new Point(AI_Message[AI_Message_Counter - 9].Location.X, AI_Message[AI_Message_Counter - 9].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 9].Location = new Point(AI_Message_Shell[AI_Message_Counter - 9].Location.X, AI_Message_Shell[AI_Message_Counter - 9].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 9].Location = new Point(User_Message[User_Message_Counter - 9].Location.X, User_Message[User_Message_Counter - 9].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 9].Location = new Point(User_Message_Shell[User_Message_Counter - 9].Location.X, User_Message_Shell[User_Message_Counter - 9].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 9)
+                    {
+                        AI_Message[AI_Message_Counter+ 10].Location = new Point(AI_Message[AI_Message_Counter+ 10].Location.X, AI_Message[AI_Message_Counter+ 10].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 10].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 10].Location.X, AI_Message_Shell[AI_Message_Counter+ 10].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 10].Location = new Point(User_Message[User_Message_Counter+ 10].Location.X, User_Message[User_Message_Counter+ 10].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 10].Location = new Point(User_Message_Shell[User_Message_Counter+ 10].Location.X, User_Message_Shell[User_Message_Counter+ 10].Location.Y+ 1);
+
+                    }
+
+                    if (AI_Message_Counter > 10)
+                    {
+                        AI_Message[AI_Message_Counter+ 11].Location = new Point(AI_Message[AI_Message_Counter+ 11].Location.X, AI_Message[AI_Message_Counter+ 11].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 11].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 11].Location.X, AI_Message_Shell[AI_Message_Counter+ 11].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 11].Location = new Point(User_Message[User_Message_Counter+ 11].Location.X, User_Message[User_Message_Counter+ 11].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 11].Location = new Point(User_Message_Shell[User_Message_Counter+ 11].Location.X, User_Message_Shell[User_Message_Counter+ 11].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 11)
+                    {
+                        AI_Message[AI_Message_Counter+ 12].Location = new Point(AI_Message[AI_Message_Counter+ 12].Location.X, AI_Message[AI_Message_Counter+ 12].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 12].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 12].Location.X, AI_Message_Shell[AI_Message_Counter+ 12].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 12].Location = new Point(User_Message[User_Message_Counter+ 12].Location.X, User_Message[User_Message_Counter+ 12].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 12].Location = new Point(User_Message_Shell[User_Message_Counter+ 12].Location.X, User_Message_Shell[User_Message_Counter+ 12].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 12)
+                    {
+                        AI_Message[AI_Message_Counter+ 13].Location = new Point(AI_Message[AI_Message_Counter+ 13].Location.X, AI_Message[AI_Message_Counter+ 13].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 13].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 13].Location.X, AI_Message_Shell[AI_Message_Counter+ 13].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 13].Location = new Point(User_Message[User_Message_Counter+ 13].Location.X, User_Message[User_Message_Counter+ 13].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 13].Location = new Point(User_Message_Shell[User_Message_Counter+ 13].Location.X, User_Message_Shell[User_Message_Counter+ 13].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 13)
+                    {
+                        AI_Message[AI_Message_Counter+ 14].Location = new Point(AI_Message[AI_Message_Counter+ 14].Location.X, AI_Message[AI_Message_Counter+ 14].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 14].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 14].Location.X, AI_Message_Shell[AI_Message_Counter+ 14].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 14].Location = new Point(User_Message[User_Message_Counter+ 14].Location.X, User_Message[User_Message_Counter+ 14].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 14].Location = new Point(User_Message_Shell[User_Message_Counter+ 14].Location.X, User_Message_Shell[User_Message_Counter+ 14].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 14)
+                    {
+                        AI_Message[AI_Message_Counter+ 13].Location = new Point(AI_Message[AI_Message_Counter+ 13].Location.X, AI_Message[AI_Message_Counter+ 13].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 13].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 13].Location.X, AI_Message_Shell[AI_Message_Counter+ 13].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 13].Location = new Point(User_Message[User_Message_Counter+ 13].Location.X, User_Message[User_Message_Counter+ 13].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 13].Location = new Point(User_Message_Shell[User_Message_Counter+ 13].Location.X, User_Message_Shell[User_Message_Counter+ 13].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 15)
+                    {
+                        AI_Message[AI_Message_Counter+ 14].Location = new Point(AI_Message[AI_Message_Counter+ 14].Location.X, AI_Message[AI_Message_Counter+ 14].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 14].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 14].Location.X, AI_Message_Shell[AI_Message_Counter+ 14].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 14].Location = new Point(User_Message[User_Message_Counter+ 14].Location.X, User_Message[User_Message_Counter+ 14].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 14].Location = new Point(User_Message_Shell[User_Message_Counter+ 14].Location.X, User_Message_Shell[User_Message_Counter+ 14].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 16)
+                    {
+                        AI_Message[AI_Message_Counter+ 15].Location = new Point(AI_Message[AI_Message_Counter+ 15].Location.X, AI_Message[AI_Message_Counter+ 15].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 15].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 15].Location.X, AI_Message_Shell[AI_Message_Counter+ 15].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 15].Location = new Point(User_Message[User_Message_Counter+ 15].Location.X, User_Message[User_Message_Counter+ 15].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 15].Location = new Point(User_Message_Shell[User_Message_Counter+ 15].Location.X, User_Message_Shell[User_Message_Counter+ 15].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 17)
+                    {
+                        AI_Message[AI_Message_Counter+ 16].Location = new Point(AI_Message[AI_Message_Counter+ 16].Location.X, AI_Message[AI_Message_Counter+ 16].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 16].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 16].Location.X, AI_Message_Shell[AI_Message_Counter+ 16].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 16].Location = new Point(User_Message[User_Message_Counter+ 16].Location.X, User_Message[User_Message_Counter+ 16].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 16].Location = new Point(User_Message_Shell[User_Message_Counter+ 16].Location.X, User_Message_Shell[User_Message_Counter+ 16].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 18)
+                    {
+                        AI_Message[AI_Message_Counter+ 17].Location = new Point(AI_Message[AI_Message_Counter+ 17].Location.X, AI_Message[AI_Message_Counter+ 17].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 17].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 17].Location.X, AI_Message_Shell[AI_Message_Counter+ 17].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 17].Location = new Point(User_Message[User_Message_Counter+ 17].Location.X, User_Message[User_Message_Counter+ 17].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 17].Location = new Point(User_Message_Shell[User_Message_Counter+ 17].Location.X, User_Message_Shell[User_Message_Counter+ 17].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 19)
+                    {
+                        AI_Message[AI_Message_Counter+ 18].Location = new Point(AI_Message[AI_Message_Counter+ 18].Location.X, AI_Message[AI_Message_Counter+ 18].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 18].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 18].Location.X, AI_Message_Shell[AI_Message_Counter+ 18].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 18].Location = new Point(User_Message[User_Message_Counter+ 18].Location.X, User_Message[User_Message_Counter+ 18].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 18].Location = new Point(User_Message_Shell[User_Message_Counter+ 18].Location.X, User_Message_Shell[User_Message_Counter+ 18].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 20)
+                    {
+                        AI_Message[AI_Message_Counter+ 19].Location = new Point(AI_Message[AI_Message_Counter+ 19].Location.X, AI_Message[AI_Message_Counter+ 19].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter+ 19].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 19].Location.X, AI_Message_Shell[AI_Message_Counter+ 19].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter+ 19].Location = new Point(User_Message[User_Message_Counter+ 19].Location.X, User_Message[User_Message_Counter+ 19].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter+ 19].Location = new Point(User_Message_Shell[User_Message_Counter+ 19].Location.X, User_Message_Shell[User_Message_Counter+ 19].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 21)
+                    {
+                        AI_Message[AI_Message_Counter - 20].Location = new Point(AI_Message[AI_Message_Counter - 20].Location.X, AI_Message[AI_Message_Counter - 20].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 20].Location = new Point(AI_Message_Shell[AI_Message_Counter - 20].Location.X, AI_Message_Shell[AI_Message_Counter - 20].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 20].Location = new Point(User_Message[User_Message_Counter - 20].Location.X, User_Message[User_Message_Counter - 20].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 20].Location = new Point(User_Message_Shell[User_Message_Counter - 20].Location.X, User_Message_Shell[User_Message_Counter - 20].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 22)
+                    {
+                        AI_Message[AI_Message_Counter - 21].Location = new Point(AI_Message[AI_Message_Counter - 21].Location.X, AI_Message[AI_Message_Counter - 21].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 21].Location = new Point(AI_Message_Shell[AI_Message_Counter - 21].Location.X, AI_Message_Shell[AI_Message_Counter - 21].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 21].Location = new Point(User_Message[User_Message_Counter - 21].Location.X, User_Message[User_Message_Counter - 21].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 21].Location = new Point(User_Message_Shell[User_Message_Counter - 21].Location.X, User_Message_Shell[User_Message_Counter - 21].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 23)
+                    {
+                        AI_Message[AI_Message_Counter - 22].Location = new Point(AI_Message[AI_Message_Counter - 22].Location.X, AI_Message[AI_Message_Counter - 22].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 22].Location = new Point(AI_Message_Shell[AI_Message_Counter - 22].Location.X, AI_Message_Shell[AI_Message_Counter - 22].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 22].Location = new Point(User_Message[User_Message_Counter - 22].Location.X, User_Message[User_Message_Counter - 22].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 22].Location = new Point(User_Message_Shell[User_Message_Counter - 22].Location.X, User_Message_Shell[User_Message_Counter - 22].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 24)
+                    {
+                        AI_Message[AI_Message_Counter - 23].Location = new Point(AI_Message[AI_Message_Counter - 23].Location.X, AI_Message[AI_Message_Counter - 23].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 23].Location = new Point(AI_Message_Shell[AI_Message_Counter - 23].Location.X, AI_Message_Shell[AI_Message_Counter - 23].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 23].Location = new Point(User_Message[User_Message_Counter - 23].Location.X, User_Message[User_Message_Counter - 23].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 23].Location = new Point(User_Message_Shell[User_Message_Counter - 23].Location.X, User_Message_Shell[User_Message_Counter - 23].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 25)
+                    {
+                        AI_Message[AI_Message_Counter - 24].Location = new Point(AI_Message[AI_Message_Counter - 24].Location.X, AI_Message[AI_Message_Counter - 24].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 24].Location = new Point(AI_Message_Shell[AI_Message_Counter - 24].Location.X, AI_Message_Shell[AI_Message_Counter - 24].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 24].Location = new Point(User_Message[User_Message_Counter - 24].Location.X, User_Message[User_Message_Counter - 24].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 24].Location = new Point(User_Message_Shell[User_Message_Counter - 24].Location.X, User_Message_Shell[User_Message_Counter - 24].Location.Y+ 1);
+                    }
+
+                    if (AI_Message_Counter > 26)
+                    {
+                        AI_Message[AI_Message_Counter - 25].Location = new Point(AI_Message[AI_Message_Counter - 25].Location.X, AI_Message[AI_Message_Counter - 25].Location.Y+ 1);
+                        AI_Message_Shell[AI_Message_Counter - 25].Location = new Point(AI_Message_Shell[AI_Message_Counter - 25].Location.X, AI_Message_Shell[AI_Message_Counter - 25].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 25].Location = new Point(User_Message[User_Message_Counter - 25].Location.X, User_Message[User_Message_Counter - 25].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 25].Location = new Point(User_Message_Shell[User_Message_Counter - 25].Location.X, User_Message_Shell[User_Message_Counter - 25].Location.Y+ 1);
+                    }
+
+                    else
+                    {
+                        AI_Message[AI_Message_Counter - 1].Location = new Point(AI_Message[AI_Message_Counter - 1].Location.X, AI_Message[AI_Message_Counter - 1].Location.Y + 1);
+                        AI_Message_Shell[AI_Message_Counter - 1].Location = new Point(AI_Message_Shell[AI_Message_Counter - 1].Location.X, AI_Message_Shell[AI_Message_Counter - 1].Location.Y+ 1);
+
+                        User_Message[User_Message_Counter - 1].Location = new Point(User_Message[User_Message_Counter - 1].Location.X, User_Message[User_Message_Counter - 1].Location.Y+ 1);
+                        User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y+ 1);
+                    }
+
+                    if (Down_Timer % 2 == 0)
+                    {
+                        await Task.Delay(1);
+                    }
+                }
             }
         }
 
@@ -1152,6 +1969,25 @@ namespace UoL_Virtual_Assistant
         {
             if(Open_Settings_Drawer == 0) //if the drawer status is set to closed
             {
+                Settings_Drawer.BringToFront();
+                Settings_Title.BringToFront();
+                Hamburger_Menu.BringToFront();
+                Course_Building.BringToFront();
+                Student_Name_Title.BringToFront();
+                Student_ID_Title.BringToFront();
+                Theme_Title.BringToFront();
+                Theme_Selection.BringToFront();
+                Preferred_Agent_Title.BringToFront();
+                Preferred_Agent_Selection.BringToFront();
+                UoL_Logo_Link_Title.BringToFront();
+                UoL_Logo_Link_Selection.BringToFront();
+                Reset_Title.BringToFront();
+                Reset_Button.BringToFront();
+                About_Title.BringToFront();
+                About_Content.BringToFront();
+
+
+
                 Settings_Drawer.Visible = true; //make the drawer visible
                 Hamburger_Menu.Enabled = false; //disable the button so it can't be clicked
                 for (int Drawer_Steps = 0; Drawer_Steps <= 15; Drawer_Steps++) //establishes the number of individual steps the drawer needs to take
@@ -1220,31 +2056,21 @@ namespace UoL_Virtual_Assistant
 
         private void Reiterate_Layers()
         {
+            Conversation_Cloak.BringToFront();
             Message_Input_Area.BringToFront();
             Message_Input.BringToFront();
             Send_Message.BringToFront();
 
+
             Conversation_Area_Header.BringToFront();
+            Overlap_Fix.BringToFront();
             Agent_Name_Label.BringToFront();
             Agent_Status_Indicator.BringToFront();
             Agent_Profile_Image.BringToFront();
+            Conversation_Exit.BringToFront();
 
-            Settings_Drawer.BringToFront();
-            Settings_Title.BringToFront();
-            Hamburger_Menu.BringToFront();
-            Course_Building.BringToFront();
-            Student_Name_Title.BringToFront();
-            Student_ID_Title.BringToFront();
-            Theme_Title.BringToFront();
-            Theme_Selection.BringToFront();
-            Preferred_Agent_Title.BringToFront();
-            Preferred_Agent_Selection.BringToFront();
-            UoL_Logo_Link_Title.BringToFront();
-            UoL_Logo_Link_Selection.BringToFront();
-            Reset_Title.BringToFront();
-            Reset_Button.BringToFront();
-            About_Title.BringToFront();
-            About_Content.BringToFront();
+            button1.BringToFront();
+            button2.BringToFront(); 
         }
 
         private void Theme_Selection_SelectedIndexChanged(object sender, EventArgs e)
@@ -1383,7 +2209,7 @@ namespace UoL_Virtual_Assistant
 
             if ((Current_Day >= DayOfWeek.Monday) && (Current_Day <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((Current_Time >= Opening_Hours) && (Current_Time < Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
+                if ((Current_Time >= Opening_Hours) && (Current_Time > Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
                 {
                     if((Current_Time > new TimeSpan(11, 55, 0)) && (Current_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
@@ -1436,6 +2262,7 @@ namespace UoL_Virtual_Assistant
 
                 else
                 {
+                    
                     Connected_Agent = 4;
                 }
             }
@@ -1448,18 +2275,412 @@ namespace UoL_Virtual_Assistant
 
         private void Scroll_Conversation_Up_Click(object sender, EventArgs e)
         {
-            Scroll_Content_UpDown(1);
+            Scroll_Content_UpDown(0);
         }
 
         private void Scroll_Conversation_Down_Click(object sender, EventArgs e)
         {
-            Scroll_Content_UpDown(0);
+            Scroll_Content_UpDown(1);
         }
 
         private void Conversation_Exit_Click(object sender, EventArgs e)
         {
+            if (Connection_Status == 1)
+            {
+                DialogResult Exit_Confirmation = MessageBox.Show("You are about to close the current conversation. Are you sure that you want to do this?", "Exit Conversation", MessageBoxButtons.YesNo);
+                if (Exit_Confirmation == DialogResult.Yes)
+                {
+                    Application.Restart();
+                }
+                else if (Exit_Confirmation == DialogResult.No)
+                {
+                    //do nothing
+                }
+            }
 
+            else
+            {
+                Application.Restart();
+            }
         }
+
+        private void Agent_Profile_Image_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Name_Label_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Status_Indicator_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private async void Agent_Profile_Card()
+        {
+            if (Open_Profile_Card == 0) //if the card is not currently open
+            {
+                Open_Profile_Card = 1; //currently in the process of opening
+                //GROW IMAGE CARD
+                Agent_Card.BringToFront();
+                Conversation_Area_Header.BringToFront();
+                Agent_Name_Label.BringToFront();
+                Agent_Status_Indicator.BringToFront();
+                Agent_Profile_Image.BringToFront();
+                Conversation_Exit.BringToFront();
+
+                Agent_Card_Name.BringToFront();
+                Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Profession.BringToFront();
+                Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Email.BringToFront();
+                Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Phone_Number.BringToFront();
+                Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Room.BringToFront();
+                Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Like_Button.BringToFront();
+                Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Message_Input_Area.Location.Y);
+
+                Message_Input_Area.BringToFront();
+                Message_Input.BringToFront();
+                Send_Message.BringToFront();
+
+                int Agent_Card_Accent_X = 0;
+                int Agent_Card_Accent_Y = 0;
+                int Agent_Card_Accent_Z = 0;
+
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Agent_Card_Accent_X = 16;
+                        Agent_Card_Accent_Y = 16;
+                        Agent_Card_Accent_Z = 16;
+
+                        Agent_Card_Name.ForeColor = Color.White;
+                        Agent_Card_Profession.ForeColor = Color.White;
+                        Agent_Card_Email.ForeColor = Color.White;
+                        Agent_Card_Phone_Number.ForeColor = Color.White;
+                        Agent_Card_Room.ForeColor = Color.White;
+
+                        Agent_Card_Name.Text = "Bruce Hargrave";
+                        Agent_Card_Profession.Text = "Lecturer of Computer Science";
+                        Agent_Card_Email.Text = "bhargrave@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "01522 837312";
+                        Agent_Card_Room.Text = "MC 3112";
+                        break;
+                    case 1: //if the agent is hal
+                        Agent_Card_Accent_X = 232;
+                        Agent_Card_Accent_Y = 231;
+                        Agent_Card_Accent_Z = 237;
+
+                        Agent_Card_Name.ForeColor = Color.Black;
+                        Agent_Card_Profession.ForeColor = Color.Black;
+                        Agent_Card_Email.ForeColor = Color.Black;
+                        Agent_Card_Phone_Number.ForeColor = Color.Black;
+                        Agent_Card_Room.ForeColor = Color.Black;
+
+                        Agent_Card_Name.Text = "Hal Chín-Nghìn";
+                        Agent_Card_Profession.Text = "SoCs Admin";
+                        Agent_Card_Email.Text = "hal9000@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "Phone Number N/A";
+                        Agent_Card_Room.Text = "SoCs Office";
+                        break;
+                    case 2: //if the agent is jason
+                        Agent_Card_Accent_X = 135;
+                        Agent_Card_Accent_Y = 125;
+                        Agent_Card_Accent_Z = 127;
+
+                        Agent_Card_Name.ForeColor = Color.White;
+                        Agent_Card_Profession.ForeColor = Color.White;
+                        Agent_Card_Email.ForeColor = Color.White;
+                        Agent_Card_Phone_Number.ForeColor = Color.White;
+                        Agent_Card_Room.ForeColor = Color.White;
+
+                        Agent_Card_Name.Text = "Jason Bradbury";
+                        Agent_Card_Profession.Text = "TV Personality (Not Bruce's M8)";
+                        Agent_Card_Email.Text = "brucesmatejb@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "0207 580 0702";
+                        Agent_Card_Room.Text = "SoCs Office";
+                        break;
+                    case 3: //if the agent is suzi
+                        Agent_Card_Accent_X = 109;
+                        Agent_Card_Accent_Y = 143;
+                        Agent_Card_Accent_Z = 209;
+
+                        Agent_Card_Name.ForeColor = Color.White;
+                        Agent_Card_Profession.ForeColor = Color.White;
+                        Agent_Card_Email.ForeColor = Color.White;
+                        Agent_Card_Phone_Number.ForeColor = Color.White;
+                        Agent_Card_Room.ForeColor = Color.White;
+
+                        Agent_Card_Name.Text = "Suzi Perry";
+                        Agent_Card_Profession.Text = "Moving on to better things :-)";
+                        Agent_Card_Email.Text = "suzi@lincoln.ac.uk";
+                        Agent_Card_Phone_Number.Text = "Phone Number N/A";
+                        Agent_Card_Room.Text = "SoCs Office";
+                        break;
+                    case 4: //if no agent is available
+                        Agent_Card_Accent_X = 233;
+                        Agent_Card_Accent_Y = 233;
+                        Agent_Card_Accent_Z = 233;
+
+                        Agent_Card_Name.ForeColor = Color.Black;
+                        Agent_Card_Profession.ForeColor = Color.Black;
+                        Agent_Card_Email.ForeColor = Color.Black;
+                        Agent_Card_Phone_Number.ForeColor = Color.Black;
+                        Agent_Card_Room.ForeColor = Color.Black;
+
+                        Agent_Card_Name.Text = "Out of Hours";
+                        Agent_Card_Profession.Text = "Automated Bot";
+                        Agent_Card_Email.Text = "Email N/A";
+                        Agent_Card_Phone_Number.Text = "Phone Number N/A";
+                        Agent_Card_Room.Text = "Room Number N/A";
+                        break;
+                }
+
+                Conversation_Area_Header.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                
+                Agent_Card.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Name.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Profession.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Email.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Phone_Number.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Agent_Card_Room.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                //Agent_Card_Like_Button.BackColor = Color.FromArgb(Agent_Card_Accent_X + 20, Agent_Card_Accent_Y + 20, Agent_Card_Accent_Z + 20);
+
+                Agent_Profile_Image.Enabled = false;
+                Agent_Card.Visible = true;
+                int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100   
+                int Agent_Card_Size = 30;
+                for (int Timer = 0; Timer <= 100; Timer++)
+                {
+                    if (Timer <= 15)
+                    {
+                        Agent_Card.Size = new Size(252, Agent_Card_Size + 20);
+                        Agent_Card_Size = (Agent_Card_Size + 20);
+                    }
+
+                    if (Timer <= 31)
+                    {
+
+                        if (Timer == 7)
+                        {
+                            Agent_Profile_Image.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                        }
+
+                        Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 2, Agent_Profile_Image_Size + 2);
+                        Agent_Profile_Image_Size = (Agent_Profile_Image_Size + 2);
+                        Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 2, Agent_Profile_Image.Location.Y + 2);
+                    }
+
+                    if (Timer >= 20 && Timer <= 35)
+                    {
+                        Agent_Card_Name.Visible = true;
+                        Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y - 11);
+                    }
+
+                    if (Timer >= 25 && Timer <= 39)
+                    {
+                        Agent_Card_Profession.Visible = true;
+                        Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Agent_Card_Profession.Location.Y - 10);
+                    }
+
+                    if (Timer >= 30 && Timer <= 43)
+                    {
+                        Agent_Card_Email.Visible = true;
+                        Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Agent_Card_Email.Location.Y - 9);
+                    }
+
+                    if (Timer >= 35 && Timer <= 47)
+                    {
+                        Agent_Card_Phone_Number.Visible = true;
+                        Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Agent_Card_Phone_Number.Location.Y - 8);
+                    }
+
+                    if (Timer >= 40 && Timer <= 51)
+                    {
+                        Agent_Card_Room.Visible = true;
+                        Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Agent_Card_Room.Location.Y - 7);
+                    }
+
+                    if (Timer >= 45 && Timer <= 55 && Connected_Agent < 4)
+                    {
+                        Agent_Card_Like_Button.Visible = true;
+                        Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Agent_Card_Like_Button.Location.Y - 5);
+                    }
+
+                    if (Timer >= 55)
+                    {
+                        Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X - 1, Agent_Name_Label.Location.Y);
+                        Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator.Location.X - 1, Agent_Status_Indicator.Location.Y);
+                    }
+
+                    await Task.Delay(1); //delay
+                }
+
+                Agent_Profile_Image.Enabled = true;
+                Open_Profile_Card = 2; //card is open
+            }
+
+            else
+            {
+                if (Open_Profile_Card == 2)
+                {
+                    Open_Profile_Card = 1;
+                    Agent_Profile_Image.Enabled = false;
+                    int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size   
+                    int Agent_Card_Size = 330;
+                    for (int Timer = 0; Timer <= 51; Timer++)
+                    {
+                        if (Timer <= 45)
+                        {
+                            Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 1, Agent_Name_Label.Location.Y);
+                            Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator.Location.X + 1, Agent_Status_Indicator.Location.Y);
+                        }
+
+                        if (Timer >= 0 && Timer <= 15 && Connected_Agent < 4)
+                        {
+                            Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Agent_Card_Like_Button.Location.Y + 10);
+                        }
+
+                        if (Timer >= 5 && Timer <= 19)
+                        {
+                            Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Agent_Card_Room.Location.Y + 11);
+                        }
+
+                        if (Timer >= 10 && Timer <= 23)
+                        {
+                            Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Agent_Card_Phone_Number.Location.Y + 12);
+                        }
+
+                        if (Timer >= 15 && Timer <= 27)
+                        {
+                            Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Agent_Card_Email.Location.Y + 13);
+                        }
+
+                        if (Timer >= 20 && Timer <= 31)
+                        {
+                            Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Agent_Card_Profession.Location.Y + 14);
+                        }
+
+                        if (Timer >= 25 && Timer <= 35)
+                        {
+                            Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y + 15);
+                        }
+
+                        if (Timer >= 20 && Timer <= 51)
+                        {
+                            if (Timer == 35)
+                            {
+                                Agent_Profile_Image.BackColor = Color.White;
+                            }
+
+                            Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
+                            Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
+                            Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 2);
+                        }
+
+                        if (Timer >= 30 && Timer <= 45)
+                        {
+                            Agent_Card_Name.Visible = false;
+                            Agent_Card_Profession.Visible = false;
+                            Agent_Card_Email.Visible = false;
+                            Agent_Card_Phone_Number.Visible = false;
+                            Agent_Card_Room.Visible = false;
+                            Agent_Card_Like_Button.Visible = false;
+
+                            Agent_Card.Size = new Size(252, Agent_Card_Size - 20);
+                            Agent_Card_Size = (Agent_Card_Size - 20);
+
+                            if (Timer == 45)
+                            {
+                                Conversation_Area_Header.BackColor = Color.FromArgb(255, 255, 255);
+                            }
+                        }
+                        await Task.Delay(1); //delay
+                    }
+
+                    Agent_Card.Visible = false;
+                    Agent_Profile_Image.Enabled = true;
+                    Open_Profile_Card = 0;
+
+                    if (Agent_Status_Indicator.Text == "One New Message...")
+                    {
+                        Agent_Status_Indicator.Text = "Online";
+                    }
+
+                }
+            }
+                    
+        }
+
+        private void Agent_Card_Like_Button_Click(object sender, EventArgs e)
+        {
+            switch (Connected_Agent) //retrieve the preferred agent value
+            {
+                case 0: //if the preferred agent is set to bruce
+                    Preferred_Agent = "1";  //set the preferred agent to 1
+                    Preferred_Agent_Selection.SelectedIndex = 1;
+                    break;
+                case 1: //if the preferred agent is set to hal
+                    Preferred_Agent = "2";  //set the preferred agent to 2
+                    Preferred_Agent_Selection.SelectedIndex = 2;
+                    break;
+                case 2: //if the preferred agent is set to jason
+                    Preferred_Agent = "3";  //set the preferred agent to 3
+                    Preferred_Agent_Selection.SelectedIndex = 3;
+                    break;
+                case 3: //if the preferred agent is set to suzie
+                    Preferred_Agent = "4";  //set the preferred agent to 4
+                    Preferred_Agent_Selection.SelectedIndex = 4;
+                    break;
+            }
+
+            Save_Changes(); //save the changes
+        }
+
+        private void Agent_Card_Email_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Phone_Number_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Profession_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Name_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Room_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+        private void Agent_Card_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Card();
+        }
+
+
+
+
+
+
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1488,5 +2709,6 @@ namespace UoL_Virtual_Assistant
         {
             AI_Response_Handshake = true;
         }
+
     }
 }
