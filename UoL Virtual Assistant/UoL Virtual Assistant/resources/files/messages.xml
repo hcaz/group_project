@@ -5,7 +5,7 @@
 			<BRUCE>
 				<MESSAGE>Hi, Im Bruce Hargrave and I'll be dealing with your query today. What would you like me to do for you?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName. What would you like me to do for you today?</MESSAGE>
-				<MESSAGEHi, Im Bruce. What can I do for you today?></MESSAGE>
+				<MESSAGE>Hi, Im Bruce. What can I do for you today?></MESSAGE>
 				<MESSAGE>Hi $studentFirstName. How can I help?</MESSAGE>
 				<MESSAGE>Hi, I'm Bruce Hargrave. How can I help you today?</MESSAGE>
 			</BRUCE>
