@@ -46,5 +46,13 @@
 		<LIBRARY_PC>
 			<DEFAULT>The system says there are currently $freePCS free computers in the library right now.</DEFAULT>
 		</LIBRARY_PC>
+		<OTHER>
+			<DEFAULT>It is located at $location, and is open $times today.</DEFAULT>
+		</OTHER>
 	</BULDINGS>
+	<DEPARTMENT>
+		<PASSON>
+			<DEFAULT>I am sorry, I cant help you with that, however if you email the department at $email they can help.</DEFAULT>
+		</PASSON>
+	</DEPARTMENT>
 </MESSAGES>
