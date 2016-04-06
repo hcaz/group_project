@@ -15,25 +15,28 @@ namespace UoL_Virtual_Assistant
     public partial class Main_UI : Form
     {
         //globally accessed values
-        string Student_ID; //creates a string that will store the Student ID
-        string Student_First_Name = ""; //creates a string that will store the student first name
-        string Student_Last_Name = ""; //creates a string that will store the student last name
         string Student_Course; //creates a string that will store the course that the student is on
         string Universal_Theme_Value; //creates a string that will store the current theme value
-        int R; int G; int B; //creates R,G,B values for themes
         string Preferred_Agent; //creates a string that stores the users preferred agent
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*//
+        public static string Student_ID; //creates a string that will store the Student ID
+        public static string Student_First_Name = ""; //creates a string that will store the student first name
+        public static string Student_Last_Name = ""; //creates a string that will store the student last name
+        public static string Latest_User_Message = ""; //this is a string that contains the latest user message. it is easily accessable from other areas of the system
+        public static string Latest_AI_Message = ""; // ....
+
+        int R; int G; int B; //creates R,G,B values for themes
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
         int Open_Profile_Card = 1; //sets this as the middle value (0, 1, 2) so that it cannot be opened until the items are in the right place!
-        int AI_Message_Counter = 0;
-        int User_Message_Counter = 0; //this will keep track of how many messages the user has sent so the chat interface can be resized accordingly
-        int Connection_Status = 0; //indicates the current connection status of the conversation, 0 means no conversation is connected, 1 means an agent has been chosen
-        int Connected_Agent; //indicates the agent what will connect with the user
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*//
+        public static int AI_Message_Counter = 0; //keeps track of how many messages the AI has sent
+        public static int User_Message_Counter = 0; //this will keep track of how many messages the user has sent
+        public static int Connection_Status = 0; //indicates the current connection status, 0 means no conversation is connected, 1 means an agent has been chosen
+        public static int Connected_Agent; //indicates the agent what will connect with the user
 
-        string Latest_User_Message = ""; //this is a string that contains the latest user message. it is here because it is easily accessable from other areas of the system
-        string Latest_AI_Message = "";
-        bool AI_Response_Handshake = false;
+        public static bool AI_Response_Handshake = false;
 
         TextBox[] AI_Message = new TextBox[25];
         TextBox[] AI_Message_Shell = new TextBox[25];
@@ -163,7 +166,6 @@ namespace UoL_Virtual_Assistant
             this.Width = 350; this.Height = 500; //resizes the UI to be it's default starting value
             UI_Theming(); //apply the theme to the UI
             Hide_Items(); //make sure certain items are hidden when the UI loads
-            Tooltips_Generation(); //generates tooltips for certain items in the UI
         }
 
         public void Hide_Items()
@@ -216,13 +218,6 @@ namespace UoL_Virtual_Assistant
             Scroll_Conversation_Down.Visible = false;
         }
 
-        public void Tooltips_Generation()
-        {
-            //generate tooltips
-            ToolTip Tooltips = new ToolTip(); //creates a new tooltip
-            Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln website."); //assigns a tooltip description
-        }
-
         public void Read_User_Data()
         {
             string Local_Name = Environment.UserName; //retrieves the PC's name and saves it to a string
@@ -247,7 +242,7 @@ namespace UoL_Virtual_Assistant
 
         public void UI_Theming()
         {
-
+            Tooltips_Generation();
             switch (Universal_Theme_Value) //retrieve the Universal Theme Value
             {
                 case "0": //if theme value is set to 0
@@ -303,6 +298,28 @@ namespace UoL_Virtual_Assistant
              
         }
 
+        public void Tooltips_Generation()
+        {
+            //generate tooltips
+
+            ToolTip Tooltips = new ToolTip(); //creates a new tooltip
+            switch (UoL_Logo_Link)
+            {
+                case "0":
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to Blackboard."); //assigns a tooltip description
+                    break;
+                case "1":
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln website."); //assigns a tooltip description
+                    break;
+                case "2":
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln Library website."); //assigns a tooltip description
+                    break;
+                case "3":
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to your personal Timetable."); //assigns a tooltip description
+                    break;
+            }
+        }
+
         private void Message_Input_TextChanged(object sender, EventArgs e)
         {
             if (Message_Input.Text.Length > 28) //if the number of characters in the message input field exceeds 28
@@ -327,25 +344,22 @@ namespace UoL_Virtual_Assistant
 
         private void UoL_Branding_Click(object sender, EventArgs e)
         {
-            if (UoL_Logo_Link == "0") //if the logo link value is set to 0
+            switch (UoL_Logo_Link)
             {
-                System.Diagnostics.Process.Start("http://blackboard.lincoln.ac.uk"); //opens the users default browser and displays the page
-            }
-
-            if (UoL_Logo_Link == "1") //if the logo link value is set to 1
-            {
-                System.Diagnostics.Process.Start("http://www.lincoln.ac.uk/home/"); //opens the users default browser and displays the page
-            }
-
-            if (UoL_Logo_Link == "2") //if the logo link value is set to 2
-            {
-                System.Diagnostics.Process.Start("http://library.lincoln.ac.uk/"); //opens the users default browser and displays the page
-            }
-
-            if (UoL_Logo_Link == "3") //if the logo link value is set to 3
-            {
-                string Timetable_URL = ("http://timetables.lincoln.ac.uk/mytimetable/" + Student_ID + ".htm"); //create the URL for the users personal timetable
-                System.Diagnostics.Process.Start(Timetable_URL); //opens the users default browser and displays the page
+                case "0":
+                    System.Diagnostics.Process.Start("http://blackboard.lincoln.ac.uk"); //opens the users default browser and displays the page
+                    break;
+                case "1":
+                    System.Diagnostics.Process.Start("http://www.lincoln.ac.uk/home/"); //opens the users default browser and displays the page
+                    break;
+                case "2":
+                    System.Diagnostics.Process.Start("http://library.lincoln.ac.uk/"); //opens the users default browser and displays the page
+                    break;
+                case "3":
+                    Timetable_UI Timetable_UI = new Timetable_UI();
+                    Timetable_UI.Timetable_URL(Student_ID);
+                    Timetable_UI.Show();
+                    break;
             }
         }
 
@@ -366,8 +380,10 @@ namespace UoL_Virtual_Assistant
 
                     Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
                     Message_Input.Text = String.Empty;
-
                     Create_User_Message();
+
+                    ParseInput Parse_Input = new ParseInput();
+                    Parse_Input.SplitInput(Latest_User_Message);
 
                     while (AI_Response_Handshake == false)
                     {
@@ -450,28 +466,29 @@ namespace UoL_Virtual_Assistant
                     switch (Preferred_Agent) //apply the appropriate profile picture and label text
                     {
                         case "0": //if the user does not have a preferred agent
+                            Connected_Agent = Randomiser.Next(1, 4); //pick a random agent
                             break;
                         case "1": //if their preferred agent is Bruce
-                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            if (Preferred_Agent_Probability > 25)
                             {
                                 Connected_Agent = 0; //give them their preferred agent
                             }
                             break;
                         case "2": //if their preferred agent is Hal
-                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            if (Preferred_Agent_Probability > 25)
                             {
                                 Connected_Agent = 1; //give them their preferred agent
                             }
                             break;
                         case "3": //if their preferred agent is Jason
 
-                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            if (Preferred_Agent_Probability > 25)
                             {
                                 Connected_Agent = 2; //give them their preferred agent
                             }
                             break;
                         case "4": //if their preferred agent is Suzie
-                            if (Preferred_Agent_Probability < 50) //if the probability is less than 50%
+                            if (Preferred_Agent_Probability > 25)
                             {
                                 Connected_Agent = 3; //give them their preferred agent
                             }
@@ -682,13 +699,16 @@ namespace UoL_Virtual_Assistant
 
             else
             {
+                Output Create_Response = new Output();
+                Create_Response.Generate_AI_Response();
+
                 Agent_Status_Indicator.Text = "Typing";
-                int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
+                int Typing_Time = ((Latest_AI_Message.Length * 100));
                 //int Typing_Time = 0; //SPEED THINGS UP TIMER (COMMENT ^ OUT)
                 //MessageBox.Show(Typing_Time.ToString());
                 await Task.Delay(Typing_Time / 10);
 
-                if (Randomiser.Next(0, 100) > 50)
+                if (Randomiser.Next(0, 100) > 75)
                 {
                     Agent_Status_Indicator.Text = "Online";
                     await Task.Delay(Randomiser.Next(1000, 10000));
@@ -697,7 +717,7 @@ namespace UoL_Virtual_Assistant
 
                 await Task.Delay(Typing_Time / 3);
 
-                if (Randomiser.Next(0, 100) > 60)
+                if (Randomiser.Next(0, 100) > 80)
                 {
                     Agent_Status_Indicator.Text = "Online";
                     await Task.Delay(Randomiser.Next(1000, 5000));
@@ -706,7 +726,7 @@ namespace UoL_Virtual_Assistant
 
                 await Task.Delay(Typing_Time / 3);
 
-                if (Randomiser.Next(0, 100) > 60)
+                if (Randomiser.Next(0, 100) > 85)
                 {
                     Agent_Status_Indicator.Text = "Online";
                     await Task.Delay(Randomiser.Next(1000, 3000));
@@ -715,7 +735,7 @@ namespace UoL_Virtual_Assistant
 
                 await Task.Delay(Typing_Time / 5);
 
-                if (Randomiser.Next(0, 100) > 75)
+                if (Randomiser.Next(0, 100) > 90)
                 {
                     Agent_Status_Indicator.Text = "Online";
                     await Task.Delay(Randomiser.Next(1000, 5000));
