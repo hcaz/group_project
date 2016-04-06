@@ -6,5 +6,10 @@
 			<JASON>Hey, my names JB and I am from the telly!! What can I do for you?</JASON>
 			<DEFAULT>Hello, how can I help?</DEFAULT>
 		</GREETINGS>
+		<FAREWELLS>
+			<BRUCE>Have a fantastic day, I remain, Bruce.</BRUCE>
+			<JASON>Follow me on twitter @JasonBradbury</JASON>
+			<DEFAULT>Thanks for contacting us, have a great day!</DEFAULT>
+		</FAREWELLS>
 	</FILLER>
 </MESSAGES>
