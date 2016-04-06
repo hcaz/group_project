@@ -163,9 +163,16 @@ namespace UoL_Virtual_Assistant
                         }
                     }
                 }
-
             }
             return contexts;
         }
+    }
+
+    class ContextObject
+    {
+        public SentenceType sentenceType;
+        //
+        public enum SubjectType {name_faculty, name_location, type_location};
+        public enum SentenceType {greeting, statement, insult, question_where, question_why, question_when, question_what, question_who};
     }
 }
