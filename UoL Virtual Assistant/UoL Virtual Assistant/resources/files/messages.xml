@@ -2,9 +2,38 @@
 <MESSAGES>
 	<FILLER>
 		<GREETINGS>
-			<BRUCE>Good day to you, how can I help?</BRUCE>
-			<JASON>Hey, my names JB and I am from the telly!! What can I do for you?</JASON>
-			<DEFAULT>Hello, how can I help?</DEFAULT>
+			<BRUCE>
+				<MESSAGE>Hi, Im Bruce Hargrave and I'll be dealing with your query today. What would you like me to do for you?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName. What would you like me to do for you today?</MESSAGE>
+				<MESSAGEHi, Im Bruce. What can I do for you today?></MESSAGE>
+				<MESSAGE>Hi $studentFirstName. How can I help?</MESSAGE>
+				<MESSAGE>Hi, I'm Bruce Hargrave. How can I help you today?</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Hello, $studentFirstName. What is your query?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. What is your query today?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. How can I assist you?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. How can I help you today?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. What task can I perform for you today?</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Hi! I'm Jason Bradbury. What can I do for you? :)</MESSAGE>
+				<MESSAGE>Hi! What can I do for you today? :)</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Jason! What can I do for you today? ;)</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Jason Bradbury! What will I be doing for you today? :)</MESSAGE>
+				<MESSAGE>Hi I'm Jason! What would you like me do for you today?? :)</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 How can I help you today?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 What can I do for you?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 What can I do to help you today?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi! How can I help? :)</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi. How can I help you out today? :3</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Hello, how can I help you?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, What can I do to help?</MESSAGE>
+			</DEFAULT>
 		</GREETINGS>
 		<PROMPT>
 			<BRUCE>Are you still there?</BRUCE>
