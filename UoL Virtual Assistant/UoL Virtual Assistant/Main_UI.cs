@@ -385,9 +385,20 @@ namespace UoL_Virtual_Assistant
                     ParseInput Parse_Input = new ParseInput();
                     Parse_Input.SplitInput(Latest_User_Message);
 
+                    int AI_Handshake_Delay = Randomiser.Next(1, 10);
+
                     while (AI_Response_Handshake == false)
                     {
-                        await Task.Delay(1000); //delay                       
+                        await Task.Delay(1000); //delay
+                        if (AI_Handshake_Delay == 0)
+                        {
+                            AI_Response_Handshake = true;
+                        }            
+                        
+                        else
+                        {
+                            AI_Handshake_Delay--;
+                        }     
                     }
 
                     if (AI_Response_Handshake == true)
@@ -406,10 +417,6 @@ namespace UoL_Virtual_Assistant
                 Send_Message.Enabled = false;
                 Send_Message.BackgroundImage = Properties.Resources.Send_Icon;
                 Conversation_Window.Visible = true; //make the window visible
-
-
-
-
                 Open_Conversation_Window = 1; //set the window status as open
                 for (int Window_Steps = 0; Window_Steps <= 35; Window_Steps++) //establishes the number of individual steps the window needs to take
                 {
@@ -422,7 +429,9 @@ namespace UoL_Virtual_Assistant
                 Connecting_Label.Visible = true; //makes the connecting label visible
                 Conversation_Exit.Visible = true; //make the exit button visible
 
+                int Connection_Timer = Randomiser.Next(1, 5);
                 bool Exit_Visible = false;
+                bool Pulse = true;            
                 while (Connection_Status == 0) //while the user is not connected to an agent
                 {
                     for (int Colour = 305; Colour >= 55; Colour--) //fades in the connecting label
@@ -436,23 +445,35 @@ namespace UoL_Virtual_Assistant
                         }
                     }
 
-                    Exit_Visible = true; //the exit button is visible
-
-                    for (int Colour = 0; Colour < 255; Colour++) //fades out the connecting label
+                    if (Pulse == true)
                     {
-                        if (Connection_Status == 1) //if the connection status changes
+                        Exit_Visible = true; //the exit button is visible
+                        for (int Colour = 0; Colour < 255; Colour++) //fades out the connecting label
                         {
-                            Connecting_Label.ForeColor = Color.FromArgb(0, 0, 0); //paint it black
-                            break; //break out of the fading cycle
-                        }
+                            if (Colour == 201) //if the value Colour is equal to 201
+                            {
+                                break; //break so that the next iteration will not exceed 255 for the colour value and crash
+                            }
 
-                        if (Colour == 201) //if the value Colour is equal to 201
-                        {
-                            break; //break so that the next iteration will not exceed 255 for the colour value and crash
+                            await Task.Delay(1); //delay
+                            Connecting_Label.ForeColor = Color.FromArgb(Colour + 50, Colour + 50, Colour + 50); //reduce the colour value of the label by 50 on each loop
                         }
+                    }      
+                    
+                    else
+                    {
+                        Connection_Status = 1;
+                    }              
 
-                        await Task.Delay(1); //delay
-                        Connecting_Label.ForeColor = Color.FromArgb(Colour + 50, Colour + 50, Colour + 50); //reduce the colour value of the label by 50 on each loop
+                    Connection_Timer--;
+                    if (Connection_Timer == 0)
+                    {
+                        Pulse = false;
+                    }
+
+                    if ((DateTime.Now.TimeOfDay > new TimeSpan(17, 55, 0)))
+                    {
+                        Connection_Status = 1;
                     }
                 }
 
@@ -494,7 +515,6 @@ namespace UoL_Virtual_Assistant
                             }
                             break;
                     }
-
 
                     Is_Agent_Available(); //check if the agent is "available"
                     await Task.Delay(1000); //delay
@@ -613,7 +633,7 @@ namespace UoL_Virtual_Assistant
                         }
 
                         if (Profile_Picture_Relocation == 105)
-                        {                           
+                        {
                             Agent_Name_Label.Size = new Size(175, 31); //resize the name label
                             Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
                             Agent_Name_Label.ForeColor = Color.FromArgb(0, 0, 0);
@@ -672,6 +692,14 @@ namespace UoL_Virtual_Assistant
                         AI_Response_Handshake = true;
                     }
 
+                    if (AI_Response_Handshake == false)
+                    {
+
+                        int Response_Pause = Randomiser.Next(0, 10000);
+                        await Task.Delay(Response_Pause); //create a pause before the AI starts typing
+                        AI_Response_Handshake = true;
+                    }
+
                     while (AI_Response_Handshake == false)
                     {
                         await Task.Delay(1000); //delay                       
@@ -703,7 +731,7 @@ namespace UoL_Virtual_Assistant
                 Create_Response.Generate_AI_Response();
 
                 Agent_Status_Indicator.Text = "Typing";
-                int Typing_Time = ((Latest_AI_Message.Length * 100));
+                int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
                 //int Typing_Time = 0; //SPEED THINGS UP TIMER (COMMENT ^ OUT)
                 //MessageBox.Show(Typing_Time.ToString());
                 await Task.Delay(Typing_Time / 10);
@@ -2081,16 +2109,12 @@ namespace UoL_Virtual_Assistant
             Message_Input.BringToFront();
             Send_Message.BringToFront();
 
-
             Conversation_Area_Header.BringToFront();
             Overlap_Fix.BringToFront();
             Agent_Name_Label.BringToFront();
             Agent_Status_Indicator.BringToFront();
             Agent_Profile_Image.BringToFront();
             Conversation_Exit.BringToFront();
-
-            button1.BringToFront();
-            button2.BringToFront(); 
         }
 
         private void Theme_Selection_SelectedIndexChanged(object sender, EventArgs e)
@@ -2222,33 +2246,28 @@ namespace UoL_Virtual_Assistant
 
         private void Is_Agent_Available()
         {
-            TimeSpan Opening_Hours = new TimeSpan(09, 0, 0); //opening hours are set to 9am
-            TimeSpan Closing_Hours = new TimeSpan(18, 0, 0); //closing hours is set to 6pm
-            TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
-            DayOfWeek Current_Day = DateTime.Now.DayOfWeek; //finds the current day of the week
-
-            if ((Current_Day >= DayOfWeek.Monday) && (Current_Day <= DayOfWeek.Friday)) //if the current day is not a weekend
+            if ((DateTime.Now.DayOfWeek >= DayOfWeek.Monday) && (DateTime.Now.DayOfWeek <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((Current_Time >= Opening_Hours) && (Current_Time > Closing_Hours)) //if the current time falls between the opening hours of 9am and 6pm
+                if ((DateTime.Now.TimeOfDay >= new TimeSpan(09, 0, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
                 {
-                    if((Current_Time > new TimeSpan(11, 55, 0)) && (Current_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                    if((DateTime.Now.TimeOfDay > new TimeSpan(11, 55, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
                         Connected_Agent = 4;
                     }
 
                     int Availability_Probability = 0; //creates an integer value of probability
 
-                    if ((Current_Time > new TimeSpan(09, 00, 0)) && (Current_Time < new TimeSpan(11, 55, 0))) //if the current time is between these hours
+                    if ((DateTime.Now.TimeOfDay > new TimeSpan(09, 00, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(11, 55, 0))) //if the current time is between these hours
                     {
                         Availability_Probability = 75; //set availability probability to this
                     }
 
-                    if ((Current_Time > new TimeSpan(13, 05, 0)) && (Current_Time < new TimeSpan(16, 00, 0))) //if the current time is between these hours
+                    if ((DateTime.Now.TimeOfDay > new TimeSpan(13, 05, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(16, 00, 0))) //if the current time is between these hours
                     {
                         Availability_Probability = 40; //set availability probability to this
                     }
 
-                    if ((Current_Time > new TimeSpan(16, 00, 01)) && (Current_Time < new TimeSpan(17, 59, 59))) //if the current time is between these hours
+                    if ((DateTime.Now.TimeOfDay > new TimeSpan(16, 00, 01)) && (DateTime.Now.TimeOfDay < new TimeSpan(17, 59, 59))) //if the current time is between these hours
                     {
                         Availability_Probability = 60; //set availability probability to this
                     }
@@ -2692,43 +2711,5 @@ namespace UoL_Virtual_Assistant
         {
             Agent_Profile_Card();
         }
-
-
-
-
-
-
-
-
-
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (Open_Conversation_Window == 0) //if the window status is set to hidden
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-                DialogResult Oi = MessageBox.Show("Only press this button once the conversation window is opened or you risk Bruce breaking free of where he's supposed to be and running rampage around the desktop! Am I an idiot?", "Oi", MessageBoxButtons.YesNo);
-                if (Oi == DialogResult.Yes)
-                {
-                    //do something
-                }
-                else if (Oi == DialogResult.No)
-                {
-                    System.Diagnostics.Process.Start("https://www.youtube.com/watch?v=sCNrK-n68CM");
-                }
-            }
-
-            else
-            {
-                Connection_Status = 1;
-                //Initiate_Connection();
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            AI_Response_Handshake = true;
-        }
-
     }
 }
