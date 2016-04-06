@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MESSAGES>
+	<FILLER>
+		<GREETINGS>
+			<BRUCE>Good day to you, how can I help?</BRUCE>
+			<JASON>Hey, my names JB and I am from the telly!! What can I do for you?</JASON>
+			<DEFAULT>Hello, how can I help?</DEFAULT>
+		</GREETINGS>
+	</FILLER>
+</MESSAGES>
