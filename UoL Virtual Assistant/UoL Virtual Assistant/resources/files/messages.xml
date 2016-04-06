@@ -38,12 +38,31 @@
 		<PROMPT>
 			<BRUCE>
 				<MESSAGE>Are you still there?</MESSAGE>
+				<MESSAGE>Please respond to me.</MESSAGE>
+				<MESSAGE>$studentFirstName?</MESSAGE>
+				<MESSAGE>I have not heard from you in a while...</MESSAGE>
 			</BRUCE>
+			<HAL>
+				<MESSAGE>Did you timeout?</MESSAGE>
+				<MESSAGE>Hello!</MESSAGE>
+				<MESSAGE>$studentFirstName...</MESSAGE>
+			</HAL>
 			<JASON>
-				<MESSAGE>Dont ignore me</MESSAGE>
+				<MESSAGE>Dont ignore me.</MESSAGE>
+				<MESSAGE>Hello?</MESSAGE>
+				<MESSAGE>Are you still connected?</MESSAGE>
+				<MESSAGE>Can I help with anythign else?</MESSAGE>
+				<MESSAGE>$studentFirstName?</MESSAGE>
 			</JASON>
+			<SUZIE>
+				<MESSAGE>Are you still with me?:3</MESSAGE>
+				<MESSAGE>Are you okay?</MESSAGE>
+				<MESSAGE>Can I help with anything else?</MESSAGE>
+			</SUZIE>
 			<DEFAULT>
 				<MESSAGE>Is there anything else I can help you with?</MESSAGE>
+				<MESSAGE>Are you still around?</MESSAGE>
+				<MESSAGE>$studentFirstName?</MESSAGE>
 			</DEFAULT>
 		</PROMPT>
 		<FAREWELLS>
