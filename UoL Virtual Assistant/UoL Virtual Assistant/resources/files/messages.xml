@@ -16,9 +16,15 @@
 			<JASON>Follow me on twitter @JasonBradbury :)</JASON>
 			<DEFAULT>Thanks for contacting us, have a great day!</DEFAULT>
 		</FAREWELLS>
+		<PLEASANTRIES>
+			<BRUCE>I am OK thanks. What do you want?</BRUCE>
+			<JASON>I am great, just got off set, how are you?</JASON>
+			<DEFAULT>I am alright, how can I help you!</DEFAULT>
+		</PLEASANTRIES>
 		<ERROR>
 			<BRUCE>I dont understand what you mean?</BRUCE>
 			<JASON>errm wut?</JASON>
+			<HAL>Could you please rephrase that, I don't understand</HAL>
 			<DEFAULT>I am sorry I dont understand what your trying to say?</DEFAULT>
 		</ERROR>
 		<GET>
