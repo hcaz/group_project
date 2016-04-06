@@ -1498,520 +1498,553 @@ namespace UoL_Virtual_Assistant
                 //    AI_Message_Shell[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
                 //}                
             }           
-        }           
-
-        private async void Scroll_Content_UpDown(int Scroll_Direction)
-        {
-            if (Scroll_Direction == 1) //if scroll direction is set to up
-            {
-                for (int Up_Timer = 0; Up_Timer < 100; Up_Timer++)
-                {
-                    if (AI_Message_Counter > 1)
-                    {
-                        AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 2].Location = new Point(User_Message[User_Message_Counter - 2].Location.X, User_Message[User_Message_Counter - 2].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 2].Location = new Point(User_Message_Shell[User_Message_Counter - 2].Location.X, User_Message_Shell[User_Message_Counter - 2].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 2)
-                    {
-                        AI_Message[AI_Message_Counter - 3].Location = new Point(AI_Message[AI_Message_Counter - 3].Location.X, AI_Message[AI_Message_Counter - 3].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 3].Location = new Point(AI_Message_Shell[AI_Message_Counter - 3].Location.X, AI_Message_Shell[AI_Message_Counter - 3].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 3].Location = new Point(User_Message[User_Message_Counter - 3].Location.X, User_Message[User_Message_Counter - 3].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 3].Location = new Point(User_Message_Shell[User_Message_Counter - 3].Location.X, User_Message_Shell[User_Message_Counter - 3].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 3)
-                    {
-                        AI_Message[AI_Message_Counter - 4].Location = new Point(AI_Message[AI_Message_Counter - 4].Location.X, AI_Message[AI_Message_Counter - 4].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 4].Location = new Point(AI_Message_Shell[AI_Message_Counter - 4].Location.X, AI_Message_Shell[AI_Message_Counter - 4].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 4].Location = new Point(User_Message[User_Message_Counter - 4].Location.X, User_Message[User_Message_Counter - 4].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 4].Location = new Point(User_Message_Shell[User_Message_Counter - 4].Location.X, User_Message_Shell[User_Message_Counter - 4].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 4)
-                    {
-                        AI_Message[AI_Message_Counter - 5].Location = new Point(AI_Message[AI_Message_Counter - 5].Location.X, AI_Message[AI_Message_Counter - 5].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 5].Location = new Point(AI_Message_Shell[AI_Message_Counter - 5].Location.X, AI_Message_Shell[AI_Message_Counter - 5].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 5].Location = new Point(User_Message[User_Message_Counter - 5].Location.X, User_Message[User_Message_Counter - 5].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 5].Location = new Point(User_Message_Shell[User_Message_Counter - 5].Location.X, User_Message_Shell[User_Message_Counter - 5].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 5)
-                    {
-                        AI_Message[AI_Message_Counter - 6].Location = new Point(AI_Message[AI_Message_Counter - 6].Location.X, AI_Message[AI_Message_Counter - 6].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 6].Location = new Point(AI_Message_Shell[AI_Message_Counter - 6].Location.X, AI_Message_Shell[AI_Message_Counter - 6].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 6].Location = new Point(User_Message[User_Message_Counter - 6].Location.X, User_Message[User_Message_Counter - 6].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 6].Location = new Point(User_Message_Shell[User_Message_Counter - 6].Location.X, User_Message_Shell[User_Message_Counter - 6].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 6)
-                    {
-                        AI_Message[AI_Message_Counter - 7].Location = new Point(AI_Message[AI_Message_Counter - 7].Location.X, AI_Message[AI_Message_Counter - 7].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 7].Location = new Point(AI_Message_Shell[AI_Message_Counter - 7].Location.X, AI_Message_Shell[AI_Message_Counter - 7].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 7].Location = new Point(User_Message[User_Message_Counter - 7].Location.X, User_Message[User_Message_Counter - 7].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 7].Location = new Point(User_Message_Shell[User_Message_Counter - 7].Location.X, User_Message_Shell[User_Message_Counter - 7].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 7)
-                    {
-                        AI_Message[AI_Message_Counter - 8].Location = new Point(AI_Message[AI_Message_Counter - 8].Location.X, AI_Message[AI_Message_Counter - 8].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 8].Location = new Point(AI_Message_Shell[AI_Message_Counter - 8].Location.X, AI_Message_Shell[AI_Message_Counter - 8].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 8].Location = new Point(User_Message[User_Message_Counter - 8].Location.X, User_Message[User_Message_Counter - 8].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 8].Location = new Point(User_Message_Shell[User_Message_Counter - 8].Location.X, User_Message_Shell[User_Message_Counter - 8].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 8)
-                    {
-                        AI_Message[AI_Message_Counter - 9].Location = new Point(AI_Message[AI_Message_Counter - 9].Location.X, AI_Message[AI_Message_Counter - 9].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 9].Location = new Point(AI_Message_Shell[AI_Message_Counter - 9].Location.X, AI_Message_Shell[AI_Message_Counter - 9].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 9].Location = new Point(User_Message[User_Message_Counter - 9].Location.X, User_Message[User_Message_Counter - 9].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 9].Location = new Point(User_Message_Shell[User_Message_Counter - 9].Location.X, User_Message_Shell[User_Message_Counter - 9].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 9)
-                    {
-                        AI_Message[AI_Message_Counter - 10].Location = new Point(AI_Message[AI_Message_Counter - 10].Location.X, AI_Message[AI_Message_Counter - 10].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 10].Location = new Point(AI_Message_Shell[AI_Message_Counter - 10].Location.X, AI_Message_Shell[AI_Message_Counter - 10].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 10].Location = new Point(User_Message[User_Message_Counter - 10].Location.X, User_Message[User_Message_Counter - 10].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 10].Location = new Point(User_Message_Shell[User_Message_Counter - 10].Location.X, User_Message_Shell[User_Message_Counter - 10].Location.Y - 1);
-
-                    }
-
-                    if (AI_Message_Counter > 10)
-                    {
-                        AI_Message[AI_Message_Counter - 11].Location = new Point(AI_Message[AI_Message_Counter - 11].Location.X, AI_Message[AI_Message_Counter - 11].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 11].Location = new Point(AI_Message_Shell[AI_Message_Counter - 11].Location.X, AI_Message_Shell[AI_Message_Counter - 11].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 11].Location = new Point(User_Message[User_Message_Counter - 11].Location.X, User_Message[User_Message_Counter - 11].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 11].Location = new Point(User_Message_Shell[User_Message_Counter - 11].Location.X, User_Message_Shell[User_Message_Counter - 11].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 11)
-                    {
-                        AI_Message[AI_Message_Counter - 12].Location = new Point(AI_Message[AI_Message_Counter - 12].Location.X, AI_Message[AI_Message_Counter - 12].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 12].Location = new Point(AI_Message_Shell[AI_Message_Counter - 12].Location.X, AI_Message_Shell[AI_Message_Counter - 12].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 12].Location = new Point(User_Message[User_Message_Counter - 12].Location.X, User_Message[User_Message_Counter - 12].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 12].Location = new Point(User_Message_Shell[User_Message_Counter - 12].Location.X, User_Message_Shell[User_Message_Counter - 12].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 12)
-                    {
-                        AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 13)
-                    {
-                        AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 14)
-                    {
-                        AI_Message[AI_Message_Counter - 13].Location = new Point(AI_Message[AI_Message_Counter - 13].Location.X, AI_Message[AI_Message_Counter - 13].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 13].Location = new Point(AI_Message_Shell[AI_Message_Counter - 13].Location.X, AI_Message_Shell[AI_Message_Counter - 13].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 13].Location = new Point(User_Message[User_Message_Counter - 13].Location.X, User_Message[User_Message_Counter - 13].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 13].Location = new Point(User_Message_Shell[User_Message_Counter - 13].Location.X, User_Message_Shell[User_Message_Counter - 13].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 15)
-                    {
-                        AI_Message[AI_Message_Counter - 14].Location = new Point(AI_Message[AI_Message_Counter - 14].Location.X, AI_Message[AI_Message_Counter - 14].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 14].Location = new Point(AI_Message_Shell[AI_Message_Counter - 14].Location.X, AI_Message_Shell[AI_Message_Counter - 14].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 14].Location = new Point(User_Message[User_Message_Counter - 14].Location.X, User_Message[User_Message_Counter - 14].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 14].Location = new Point(User_Message_Shell[User_Message_Counter - 14].Location.X, User_Message_Shell[User_Message_Counter - 14].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 16)
-                    {
-                        AI_Message[AI_Message_Counter - 15].Location = new Point(AI_Message[AI_Message_Counter - 15].Location.X, AI_Message[AI_Message_Counter - 15].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 15].Location = new Point(AI_Message_Shell[AI_Message_Counter - 15].Location.X, AI_Message_Shell[AI_Message_Counter - 15].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 15].Location = new Point(User_Message[User_Message_Counter - 15].Location.X, User_Message[User_Message_Counter - 15].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 15].Location = new Point(User_Message_Shell[User_Message_Counter - 15].Location.X, User_Message_Shell[User_Message_Counter - 15].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 17)
-                    {
-                        AI_Message[AI_Message_Counter - 16].Location = new Point(AI_Message[AI_Message_Counter - 16].Location.X, AI_Message[AI_Message_Counter - 16].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 16].Location = new Point(AI_Message_Shell[AI_Message_Counter - 16].Location.X, AI_Message_Shell[AI_Message_Counter - 16].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 16].Location = new Point(User_Message[User_Message_Counter - 16].Location.X, User_Message[User_Message_Counter - 16].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 16].Location = new Point(User_Message_Shell[User_Message_Counter - 16].Location.X, User_Message_Shell[User_Message_Counter - 16].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 18)
-                    {
-                        AI_Message[AI_Message_Counter - 17].Location = new Point(AI_Message[AI_Message_Counter - 17].Location.X, AI_Message[AI_Message_Counter - 17].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 17].Location = new Point(AI_Message_Shell[AI_Message_Counter - 17].Location.X, AI_Message_Shell[AI_Message_Counter - 17].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 17].Location = new Point(User_Message[User_Message_Counter - 17].Location.X, User_Message[User_Message_Counter - 17].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 17].Location = new Point(User_Message_Shell[User_Message_Counter - 17].Location.X, User_Message_Shell[User_Message_Counter - 17].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 19)
-                    {
-                        AI_Message[AI_Message_Counter - 18].Location = new Point(AI_Message[AI_Message_Counter - 18].Location.X, AI_Message[AI_Message_Counter - 18].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 18].Location = new Point(AI_Message_Shell[AI_Message_Counter - 18].Location.X, AI_Message_Shell[AI_Message_Counter - 18].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 18].Location = new Point(User_Message[User_Message_Counter - 18].Location.X, User_Message[User_Message_Counter - 18].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 18].Location = new Point(User_Message_Shell[User_Message_Counter - 18].Location.X, User_Message_Shell[User_Message_Counter - 18].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 20)
-                    {
-                        AI_Message[AI_Message_Counter - 19].Location = new Point(AI_Message[AI_Message_Counter - 19].Location.X, AI_Message[AI_Message_Counter - 19].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 19].Location = new Point(AI_Message_Shell[AI_Message_Counter - 19].Location.X, AI_Message_Shell[AI_Message_Counter - 19].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 19].Location = new Point(User_Message[User_Message_Counter - 19].Location.X, User_Message[User_Message_Counter - 19].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 19].Location = new Point(User_Message_Shell[User_Message_Counter - 19].Location.X, User_Message_Shell[User_Message_Counter - 19].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 21)
-                    {
-                        AI_Message[AI_Message_Counter - 20].Location = new Point(AI_Message[AI_Message_Counter - 20].Location.X, AI_Message[AI_Message_Counter - 20].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 20].Location = new Point(AI_Message_Shell[AI_Message_Counter - 20].Location.X, AI_Message_Shell[AI_Message_Counter - 20].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 20].Location = new Point(User_Message[User_Message_Counter - 20].Location.X, User_Message[User_Message_Counter - 20].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 20].Location = new Point(User_Message_Shell[User_Message_Counter - 20].Location.X, User_Message_Shell[User_Message_Counter - 20].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 22)
-                    {
-                        AI_Message[AI_Message_Counter - 21].Location = new Point(AI_Message[AI_Message_Counter - 21].Location.X, AI_Message[AI_Message_Counter - 21].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 21].Location = new Point(AI_Message_Shell[AI_Message_Counter - 21].Location.X, AI_Message_Shell[AI_Message_Counter - 21].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 21].Location = new Point(User_Message[User_Message_Counter - 21].Location.X, User_Message[User_Message_Counter - 21].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 21].Location = new Point(User_Message_Shell[User_Message_Counter - 21].Location.X, User_Message_Shell[User_Message_Counter - 21].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 23)
-                    {
-                        AI_Message[AI_Message_Counter - 22].Location = new Point(AI_Message[AI_Message_Counter - 22].Location.X, AI_Message[AI_Message_Counter - 22].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 22].Location = new Point(AI_Message_Shell[AI_Message_Counter - 22].Location.X, AI_Message_Shell[AI_Message_Counter - 22].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 22].Location = new Point(User_Message[User_Message_Counter - 22].Location.X, User_Message[User_Message_Counter - 22].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 22].Location = new Point(User_Message_Shell[User_Message_Counter - 22].Location.X, User_Message_Shell[User_Message_Counter - 22].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 24)
-                    {
-                        AI_Message[AI_Message_Counter - 23].Location = new Point(AI_Message[AI_Message_Counter - 23].Location.X, AI_Message[AI_Message_Counter - 23].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 23].Location = new Point(AI_Message_Shell[AI_Message_Counter - 23].Location.X, AI_Message_Shell[AI_Message_Counter - 23].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 23].Location = new Point(User_Message[User_Message_Counter - 23].Location.X, User_Message[User_Message_Counter - 23].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 23].Location = new Point(User_Message_Shell[User_Message_Counter - 23].Location.X, User_Message_Shell[User_Message_Counter - 23].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 25)
-                    {
-                        AI_Message[AI_Message_Counter - 24].Location = new Point(AI_Message[AI_Message_Counter - 24].Location.X, AI_Message[AI_Message_Counter - 24].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 24].Location = new Point(AI_Message_Shell[AI_Message_Counter - 24].Location.X, AI_Message_Shell[AI_Message_Counter - 24].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 24].Location = new Point(User_Message[User_Message_Counter - 24].Location.X, User_Message[User_Message_Counter - 24].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 24].Location = new Point(User_Message_Shell[User_Message_Counter - 24].Location.X, User_Message_Shell[User_Message_Counter - 24].Location.Y - 1);
-                    }
-
-                    if (AI_Message_Counter > 26)
-                    {
-                        AI_Message[AI_Message_Counter - 25].Location = new Point(AI_Message[AI_Message_Counter - 25].Location.X, AI_Message[AI_Message_Counter - 25].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 25].Location = new Point(AI_Message_Shell[AI_Message_Counter - 25].Location.X, AI_Message_Shell[AI_Message_Counter - 25].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 25].Location = new Point(User_Message[User_Message_Counter - 25].Location.X, User_Message[User_Message_Counter - 25].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 25].Location = new Point(User_Message_Shell[User_Message_Counter - 25].Location.X, User_Message_Shell[User_Message_Counter - 25].Location.Y - 1);
-                    }
-
-                    else
-                    {
-                        AI_Message[AI_Message_Counter - 1].Location = new Point(AI_Message[AI_Message_Counter - 1].Location.X, AI_Message[AI_Message_Counter - 1].Location.Y - 1);
-                        AI_Message_Shell[AI_Message_Counter - 1].Location = new Point(AI_Message_Shell[AI_Message_Counter - 1].Location.X, AI_Message_Shell[AI_Message_Counter - 1].Location.Y - 1);
-
-                        User_Message[User_Message_Counter - 1].Location = new Point(User_Message[User_Message_Counter - 1].Location.X, User_Message[User_Message_Counter - 1].Location.Y - 1);
-                        User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y - 1);
-                    }
-
-                    if (Up_Timer % 2 == 0)
-                    {
-                        await Task.Delay(1);
-                    }
-                }
-            }
-
-            else //otherwise go down
-            {
-                for (int Down_Timer = 0; Down_Timer < 100; Down_Timer++)
-                {
-                    if (AI_Message_Counter > 1)
-                    {
-                        AI_Message[AI_Message_Counter - 2].Location = new Point(AI_Message[AI_Message_Counter - 2].Location.X, AI_Message[AI_Message_Counter - 2].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 2].Location = new Point(AI_Message_Shell[AI_Message_Counter - 2].Location.X, AI_Message_Shell[AI_Message_Counter - 2].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 2].Location = new Point(User_Message[User_Message_Counter - 2].Location.X, User_Message[User_Message_Counter - 2].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 2].Location = new Point(User_Message_Shell[User_Message_Counter - 2].Location.X, User_Message_Shell[User_Message_Counter - 2].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 2)
-                    {
-                        AI_Message[AI_Message_Counter - 3].Location = new Point(AI_Message[AI_Message_Counter - 3].Location.X, AI_Message[AI_Message_Counter - 3].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 3].Location = new Point(AI_Message_Shell[AI_Message_Counter - 3].Location.X, AI_Message_Shell[AI_Message_Counter - 3].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 3].Location = new Point(User_Message[User_Message_Counter - 3].Location.X, User_Message[User_Message_Counter - 3].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 3].Location = new Point(User_Message_Shell[User_Message_Counter - 3].Location.X, User_Message_Shell[User_Message_Counter - 3].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 3)
-                    {
-                        AI_Message[AI_Message_Counter - 4].Location = new Point(AI_Message[AI_Message_Counter - 4].Location.X, AI_Message[AI_Message_Counter - 4].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 4].Location = new Point(AI_Message_Shell[AI_Message_Counter - 4].Location.X, AI_Message_Shell[AI_Message_Counter - 4].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 4].Location = new Point(User_Message[User_Message_Counter - 4].Location.X, User_Message[User_Message_Counter - 4].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 4].Location = new Point(User_Message_Shell[User_Message_Counter - 4].Location.X, User_Message_Shell[User_Message_Counter - 4].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 4)
-                    {
-                        AI_Message[AI_Message_Counter - 5].Location = new Point(AI_Message[AI_Message_Counter - 5].Location.X, AI_Message[AI_Message_Counter - 5].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 5].Location = new Point(AI_Message_Shell[AI_Message_Counter - 5].Location.X, AI_Message_Shell[AI_Message_Counter - 5].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 5].Location = new Point(User_Message[User_Message_Counter - 5].Location.X, User_Message[User_Message_Counter - 5].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 5].Location = new Point(User_Message_Shell[User_Message_Counter - 5].Location.X, User_Message_Shell[User_Message_Counter - 5].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 5)
-                    {
-                        AI_Message[AI_Message_Counter - 6].Location = new Point(AI_Message[AI_Message_Counter - 6].Location.X, AI_Message[AI_Message_Counter - 6].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 6].Location = new Point(AI_Message_Shell[AI_Message_Counter - 6].Location.X, AI_Message_Shell[AI_Message_Counter - 6].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 6].Location = new Point(User_Message[User_Message_Counter - 6].Location.X, User_Message[User_Message_Counter - 6].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 6].Location = new Point(User_Message_Shell[User_Message_Counter - 6].Location.X, User_Message_Shell[User_Message_Counter - 6].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 6)
-                    {
-                        AI_Message[AI_Message_Counter - 7].Location = new Point(AI_Message[AI_Message_Counter - 7].Location.X, AI_Message[AI_Message_Counter - 7].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 7].Location = new Point(AI_Message_Shell[AI_Message_Counter - 7].Location.X, AI_Message_Shell[AI_Message_Counter - 7].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 7].Location = new Point(User_Message[User_Message_Counter - 7].Location.X, User_Message[User_Message_Counter - 7].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 7].Location = new Point(User_Message_Shell[User_Message_Counter - 7].Location.X, User_Message_Shell[User_Message_Counter - 7].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 7)
-                    {
-                        AI_Message[AI_Message_Counter - 8].Location = new Point(AI_Message[AI_Message_Counter - 8].Location.X, AI_Message[AI_Message_Counter - 8].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 8].Location = new Point(AI_Message_Shell[AI_Message_Counter - 8].Location.X, AI_Message_Shell[AI_Message_Counter - 8].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 8].Location = new Point(User_Message[User_Message_Counter - 8].Location.X, User_Message[User_Message_Counter - 8].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 8].Location = new Point(User_Message_Shell[User_Message_Counter - 8].Location.X, User_Message_Shell[User_Message_Counter - 8].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 8)
-                    {
-                        AI_Message[AI_Message_Counter - 9].Location = new Point(AI_Message[AI_Message_Counter - 9].Location.X, AI_Message[AI_Message_Counter - 9].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 9].Location = new Point(AI_Message_Shell[AI_Message_Counter - 9].Location.X, AI_Message_Shell[AI_Message_Counter - 9].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 9].Location = new Point(User_Message[User_Message_Counter - 9].Location.X, User_Message[User_Message_Counter - 9].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 9].Location = new Point(User_Message_Shell[User_Message_Counter - 9].Location.X, User_Message_Shell[User_Message_Counter - 9].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 9)
-                    {
-                        AI_Message[AI_Message_Counter+ 10].Location = new Point(AI_Message[AI_Message_Counter+ 10].Location.X, AI_Message[AI_Message_Counter+ 10].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 10].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 10].Location.X, AI_Message_Shell[AI_Message_Counter+ 10].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 10].Location = new Point(User_Message[User_Message_Counter+ 10].Location.X, User_Message[User_Message_Counter+ 10].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 10].Location = new Point(User_Message_Shell[User_Message_Counter+ 10].Location.X, User_Message_Shell[User_Message_Counter+ 10].Location.Y+ 1);
-
-                    }
-
-                    if (AI_Message_Counter > 10)
-                    {
-                        AI_Message[AI_Message_Counter+ 11].Location = new Point(AI_Message[AI_Message_Counter+ 11].Location.X, AI_Message[AI_Message_Counter+ 11].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 11].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 11].Location.X, AI_Message_Shell[AI_Message_Counter+ 11].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 11].Location = new Point(User_Message[User_Message_Counter+ 11].Location.X, User_Message[User_Message_Counter+ 11].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 11].Location = new Point(User_Message_Shell[User_Message_Counter+ 11].Location.X, User_Message_Shell[User_Message_Counter+ 11].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 11)
-                    {
-                        AI_Message[AI_Message_Counter+ 12].Location = new Point(AI_Message[AI_Message_Counter+ 12].Location.X, AI_Message[AI_Message_Counter+ 12].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 12].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 12].Location.X, AI_Message_Shell[AI_Message_Counter+ 12].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 12].Location = new Point(User_Message[User_Message_Counter+ 12].Location.X, User_Message[User_Message_Counter+ 12].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 12].Location = new Point(User_Message_Shell[User_Message_Counter+ 12].Location.X, User_Message_Shell[User_Message_Counter+ 12].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 12)
-                    {
-                        AI_Message[AI_Message_Counter+ 13].Location = new Point(AI_Message[AI_Message_Counter+ 13].Location.X, AI_Message[AI_Message_Counter+ 13].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 13].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 13].Location.X, AI_Message_Shell[AI_Message_Counter+ 13].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 13].Location = new Point(User_Message[User_Message_Counter+ 13].Location.X, User_Message[User_Message_Counter+ 13].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 13].Location = new Point(User_Message_Shell[User_Message_Counter+ 13].Location.X, User_Message_Shell[User_Message_Counter+ 13].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 13)
-                    {
-                        AI_Message[AI_Message_Counter+ 14].Location = new Point(AI_Message[AI_Message_Counter+ 14].Location.X, AI_Message[AI_Message_Counter+ 14].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 14].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 14].Location.X, AI_Message_Shell[AI_Message_Counter+ 14].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 14].Location = new Point(User_Message[User_Message_Counter+ 14].Location.X, User_Message[User_Message_Counter+ 14].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 14].Location = new Point(User_Message_Shell[User_Message_Counter+ 14].Location.X, User_Message_Shell[User_Message_Counter+ 14].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 14)
-                    {
-                        AI_Message[AI_Message_Counter+ 13].Location = new Point(AI_Message[AI_Message_Counter+ 13].Location.X, AI_Message[AI_Message_Counter+ 13].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 13].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 13].Location.X, AI_Message_Shell[AI_Message_Counter+ 13].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 13].Location = new Point(User_Message[User_Message_Counter+ 13].Location.X, User_Message[User_Message_Counter+ 13].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 13].Location = new Point(User_Message_Shell[User_Message_Counter+ 13].Location.X, User_Message_Shell[User_Message_Counter+ 13].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 15)
-                    {
-                        AI_Message[AI_Message_Counter+ 14].Location = new Point(AI_Message[AI_Message_Counter+ 14].Location.X, AI_Message[AI_Message_Counter+ 14].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 14].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 14].Location.X, AI_Message_Shell[AI_Message_Counter+ 14].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 14].Location = new Point(User_Message[User_Message_Counter+ 14].Location.X, User_Message[User_Message_Counter+ 14].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 14].Location = new Point(User_Message_Shell[User_Message_Counter+ 14].Location.X, User_Message_Shell[User_Message_Counter+ 14].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 16)
-                    {
-                        AI_Message[AI_Message_Counter+ 15].Location = new Point(AI_Message[AI_Message_Counter+ 15].Location.X, AI_Message[AI_Message_Counter+ 15].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 15].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 15].Location.X, AI_Message_Shell[AI_Message_Counter+ 15].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 15].Location = new Point(User_Message[User_Message_Counter+ 15].Location.X, User_Message[User_Message_Counter+ 15].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 15].Location = new Point(User_Message_Shell[User_Message_Counter+ 15].Location.X, User_Message_Shell[User_Message_Counter+ 15].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 17)
-                    {
-                        AI_Message[AI_Message_Counter+ 16].Location = new Point(AI_Message[AI_Message_Counter+ 16].Location.X, AI_Message[AI_Message_Counter+ 16].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 16].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 16].Location.X, AI_Message_Shell[AI_Message_Counter+ 16].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 16].Location = new Point(User_Message[User_Message_Counter+ 16].Location.X, User_Message[User_Message_Counter+ 16].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 16].Location = new Point(User_Message_Shell[User_Message_Counter+ 16].Location.X, User_Message_Shell[User_Message_Counter+ 16].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 18)
-                    {
-                        AI_Message[AI_Message_Counter+ 17].Location = new Point(AI_Message[AI_Message_Counter+ 17].Location.X, AI_Message[AI_Message_Counter+ 17].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 17].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 17].Location.X, AI_Message_Shell[AI_Message_Counter+ 17].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 17].Location = new Point(User_Message[User_Message_Counter+ 17].Location.X, User_Message[User_Message_Counter+ 17].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 17].Location = new Point(User_Message_Shell[User_Message_Counter+ 17].Location.X, User_Message_Shell[User_Message_Counter+ 17].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 19)
-                    {
-                        AI_Message[AI_Message_Counter+ 18].Location = new Point(AI_Message[AI_Message_Counter+ 18].Location.X, AI_Message[AI_Message_Counter+ 18].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 18].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 18].Location.X, AI_Message_Shell[AI_Message_Counter+ 18].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 18].Location = new Point(User_Message[User_Message_Counter+ 18].Location.X, User_Message[User_Message_Counter+ 18].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 18].Location = new Point(User_Message_Shell[User_Message_Counter+ 18].Location.X, User_Message_Shell[User_Message_Counter+ 18].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 20)
-                    {
-                        AI_Message[AI_Message_Counter+ 19].Location = new Point(AI_Message[AI_Message_Counter+ 19].Location.X, AI_Message[AI_Message_Counter+ 19].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter+ 19].Location = new Point(AI_Message_Shell[AI_Message_Counter+ 19].Location.X, AI_Message_Shell[AI_Message_Counter+ 19].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter+ 19].Location = new Point(User_Message[User_Message_Counter+ 19].Location.X, User_Message[User_Message_Counter+ 19].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter+ 19].Location = new Point(User_Message_Shell[User_Message_Counter+ 19].Location.X, User_Message_Shell[User_Message_Counter+ 19].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 21)
-                    {
-                        AI_Message[AI_Message_Counter - 20].Location = new Point(AI_Message[AI_Message_Counter - 20].Location.X, AI_Message[AI_Message_Counter - 20].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 20].Location = new Point(AI_Message_Shell[AI_Message_Counter - 20].Location.X, AI_Message_Shell[AI_Message_Counter - 20].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 20].Location = new Point(User_Message[User_Message_Counter - 20].Location.X, User_Message[User_Message_Counter - 20].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 20].Location = new Point(User_Message_Shell[User_Message_Counter - 20].Location.X, User_Message_Shell[User_Message_Counter - 20].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 22)
-                    {
-                        AI_Message[AI_Message_Counter - 21].Location = new Point(AI_Message[AI_Message_Counter - 21].Location.X, AI_Message[AI_Message_Counter - 21].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 21].Location = new Point(AI_Message_Shell[AI_Message_Counter - 21].Location.X, AI_Message_Shell[AI_Message_Counter - 21].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 21].Location = new Point(User_Message[User_Message_Counter - 21].Location.X, User_Message[User_Message_Counter - 21].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 21].Location = new Point(User_Message_Shell[User_Message_Counter - 21].Location.X, User_Message_Shell[User_Message_Counter - 21].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 23)
-                    {
-                        AI_Message[AI_Message_Counter - 22].Location = new Point(AI_Message[AI_Message_Counter - 22].Location.X, AI_Message[AI_Message_Counter - 22].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 22].Location = new Point(AI_Message_Shell[AI_Message_Counter - 22].Location.X, AI_Message_Shell[AI_Message_Counter - 22].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 22].Location = new Point(User_Message[User_Message_Counter - 22].Location.X, User_Message[User_Message_Counter - 22].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 22].Location = new Point(User_Message_Shell[User_Message_Counter - 22].Location.X, User_Message_Shell[User_Message_Counter - 22].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 24)
-                    {
-                        AI_Message[AI_Message_Counter - 23].Location = new Point(AI_Message[AI_Message_Counter - 23].Location.X, AI_Message[AI_Message_Counter - 23].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 23].Location = new Point(AI_Message_Shell[AI_Message_Counter - 23].Location.X, AI_Message_Shell[AI_Message_Counter - 23].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 23].Location = new Point(User_Message[User_Message_Counter - 23].Location.X, User_Message[User_Message_Counter - 23].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 23].Location = new Point(User_Message_Shell[User_Message_Counter - 23].Location.X, User_Message_Shell[User_Message_Counter - 23].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 25)
-                    {
-                        AI_Message[AI_Message_Counter - 24].Location = new Point(AI_Message[AI_Message_Counter - 24].Location.X, AI_Message[AI_Message_Counter - 24].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 24].Location = new Point(AI_Message_Shell[AI_Message_Counter - 24].Location.X, AI_Message_Shell[AI_Message_Counter - 24].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 24].Location = new Point(User_Message[User_Message_Counter - 24].Location.X, User_Message[User_Message_Counter - 24].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 24].Location = new Point(User_Message_Shell[User_Message_Counter - 24].Location.X, User_Message_Shell[User_Message_Counter - 24].Location.Y+ 1);
-                    }
-
-                    if (AI_Message_Counter > 26)
-                    {
-                        AI_Message[AI_Message_Counter - 25].Location = new Point(AI_Message[AI_Message_Counter - 25].Location.X, AI_Message[AI_Message_Counter - 25].Location.Y+ 1);
-                        AI_Message_Shell[AI_Message_Counter - 25].Location = new Point(AI_Message_Shell[AI_Message_Counter - 25].Location.X, AI_Message_Shell[AI_Message_Counter - 25].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 25].Location = new Point(User_Message[User_Message_Counter - 25].Location.X, User_Message[User_Message_Counter - 25].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 25].Location = new Point(User_Message_Shell[User_Message_Counter - 25].Location.X, User_Message_Shell[User_Message_Counter - 25].Location.Y+ 1);
-                    }
-
-                    else
-                    {
-                        AI_Message[AI_Message_Counter - 1].Location = new Point(AI_Message[AI_Message_Counter - 1].Location.X, AI_Message[AI_Message_Counter - 1].Location.Y + 1);
-                        AI_Message_Shell[AI_Message_Counter - 1].Location = new Point(AI_Message_Shell[AI_Message_Counter - 1].Location.X, AI_Message_Shell[AI_Message_Counter - 1].Location.Y+ 1);
-
-                        User_Message[User_Message_Counter - 1].Location = new Point(User_Message[User_Message_Counter - 1].Location.X, User_Message[User_Message_Counter - 1].Location.Y+ 1);
-                        User_Message_Shell[User_Message_Counter - 1].Location = new Point(User_Message_Shell[User_Message_Counter - 1].Location.X, User_Message_Shell[User_Message_Counter - 1].Location.Y+ 1);
-                    }
-
-                    if (Down_Timer % 2 == 0)
-                    {
-                        await Task.Delay(1);
-                    }
-                }
-            }
         }
+
+        //private async void Scroll_Content_UpDown(int Scroll_Direction)
+        //{
+        //    if (Scroll_Direction == 1) //if scroll direction is set to up
+        //    {
+        //        for (int Up_Timer = 0; Up_Timer < 100; Up_Timer++)
+        //        {
+        //            if (AI_Message_Counter > 1)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 2;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 2)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 3;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 3)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 4;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 4)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 5;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 5)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 6;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 6)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 7;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 7)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 8;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 8)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 9;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 8)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 9;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 9)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 10;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 10)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 11;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 11)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 12;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 12)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 13;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 13)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 14;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 14)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 15;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 15)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 16;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 16)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 17;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 17)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 18;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 18)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 19;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 19)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 20;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 20)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 21;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 21)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 22;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 22)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 23;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 23)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 24;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 24)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 25;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            if (AI_Message_Counter > 24)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 25;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //            else
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 1;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y - 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y - 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y - 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y - 1);
+        //            }
+
+        //        }
+        //    }
+
+        //    else //go down
+        //    {
+        //        for (int Up_Timer = 0; Up_Timer < 100; Up_Timer++)
+        //        {
+        //            if (AI_Message_Counter > 1)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 2;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 2)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 3;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 3)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 4;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 4)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 5;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 5)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 6;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 6)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 7;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 7)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 8;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 8)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 9;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 9)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 10;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 10)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 11;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 11)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 12;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 12)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 13;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 13)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 14;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 14)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 15;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 15)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 16;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 16)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 17;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 17)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 18;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 18)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 19;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 19)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 20;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 20)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 21;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 21)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 22;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 22)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 23;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 23)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 24;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 24)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 25;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            if (AI_Message_Counter > 24)
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 25;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+
+        //            else
+        //            {
+        //                int Message_Indicator = AI_Message_Counter - 1;
+        //                AI_Message[Message_Indicator].Location = new Point(AI_Message[Message_Indicator].Location.X, AI_Message[Message_Indicator].Location.Y + 1);
+        //                AI_Message_Shell[Message_Indicator].Location = new Point(AI_Message_Shell[Message_Indicator].Location.X, AI_Message_Shell[Message_Indicator].Location.Y + 1);
+
+        //                User_Message[Message_Indicator].Location = new Point(User_Message[Message_Indicator].Location.X, User_Message[Message_Indicator].Location.Y + 1);
+        //                User_Message_Shell[Message_Indicator].Location = new Point(User_Message_Shell[Message_Indicator].Location.X, User_Message_Shell[Message_Indicator].Location.Y + 1);
+        //            }
+        //        }
+        //    }
+        //}
 
         private async void Hamburger_Menu_Click(object sender, EventArgs e)
         {
