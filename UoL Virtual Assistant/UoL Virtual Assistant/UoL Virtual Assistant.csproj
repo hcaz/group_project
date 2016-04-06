@@ -68,6 +68,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScrapeData.cs" />
+    <Compile Include="Timetable_UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Timetable_UI.Designer.cs">
+      <DependentUpon>Timetable_UI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="First_Run_UI.resx">
       <DependentUpon>First_Run_UI.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +84,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Timetable_UI.resx">
+      <DependentUpon>Timetable_UI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
