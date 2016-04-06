@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MESSAGES>
+	<FILLER>
+		<GREETINGS>
+			<BRUCE>Good day to you, how can I help?</BRUCE>
+			<JASON>Hey, my names JB and I am from the telly!! What can I do for you?</JASON>
+			<DEFAULT>Hello, how can I help?</DEFAULT>
+		</GREETINGS>
+		<PROMPT>
+			<BRUCE>Are you still there?</BRUCE>
+			<JASON>Dont ignore me</JASON>
+			<DEFAULT>Is there anything else I can help you with?</DEFAULT>
+		</PROMPT>
+		<FAREWELLS>
+			<BRUCE>Have a fantastic day, I remain, Bruce.</BRUCE>
+			<JASON>Follow me on twitter @JasonBradbury :)</JASON>
+			<DEFAULT>Thanks for contacting us, have a great day!</DEFAULT>
+		</FAREWELLS>
+		<ERROR>
+			<BRUCE>I dont understand what you mean?</BRUCE>
+			<JASON>errm wut?</JASON>
+			<DEFAULT>I am sorry I dont understand what your trying to say?</DEFAULT>
+		</ERROR>
+		<GET>
+			<BRUCE>I will send you an email to your student email ($studentID@students.lincoln.ac.uk) with that information after this chat.</BRUCE>
+			<JASON>I will email you the dets m8?</JASON>
+			<DEFAULT>I dont have that information to hand right now, but if you give me your email I can get back to you.</DEFAULT>
+		</GET>
+	</FILLER>
+	<FACILITY>
+		<CONTACT>
+			<BRUCE>Oh sure, I know $firstName, good mate of mine. His email is $email and his phone is $phone</BRUCE>
+			<JASON>I just did a lookup and found that $firstName's email is $email, and phone is $phone</JASON>
+			<DEFAULT>Yes, their phone is $phone, and there email is $email</DEFAULT>
+		</CONTACT>
+		<ERROR>
+			<BRUCE>I dont know who that is sorry.</BRUCE>
+			<JASON>I dont think they work here.</JASON>
+			<DEFAULT>Sorry, but they do not work for the university.</DEFAULT>
+		</ERROR>
+	</FACILITY>
+	<BULDINGS>
+		<LIBRARY>
+			<DEFAULT>The library is currently $libraryStatus, and desk is open $deskTimes today.</DEFAULT>
+		</LIBRARY>
+		<LIBRARY_PC>
+			<DEFAULT>The system says there are currently $freePCS free computers in the library right now.</DEFAULT>
+		</LIBRARY_PC>
+	</BULDINGS>
+</MESSAGES>
