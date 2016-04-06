@@ -155,6 +155,10 @@ namespace UoL_Virtual_Assistant
                         }
                         contexts[i] = contexts[i] + "[Question: " + questionWords[0].ChildNodes[j].Name.ToLower() + "]";
                     }
+                    else if (sentences[i].ToLower().Contains("tell me about") || sentences[i].ToLower().Contains("tell me"))
+                    {
+                        contextObject.sentenceType.Add(ContextObject.SentenceType.tell_me_about);
+                    }
                 }
                 for (int j = 0; j < greetingWords[0].ChildNodes.Count; j++)
                 {
@@ -307,7 +311,7 @@ namespace UoL_Virtual_Assistant
                             contexts[i] = contexts[i] + "[restaurants mentioned: " + restaurants[0].ChildNodes[j].Name.ToLower() + "]";
                         }
                     }
-                    else if (sentences[i].Contains("restaurant") || sentences[i].Contains("food") || sentences[i].Contains("eat out") || sentences[i].Contains("cafe"))
+                    else if (sentences[i].Contains("restaurant") || sentences[i].Contains("food") || sentences[i].Contains("eat out") || sentences[i].Contains("eat") || sentences[i].Contains("cafe"))
                     {
                         if (!contextObject.subjectList.Contains(restaurants[0]))
                         {
@@ -428,7 +432,7 @@ namespace UoL_Virtual_Assistant
         public string debugString = "";
         //
         public enum SubjectType { name_faculty, name_location, type_location };
-        public enum SentenceType { greeting, statement, insult, question_where, question_why, question_when, question_what, question_who };
+        public enum SentenceType { greeting, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
 
         public ContextObject()
         {
