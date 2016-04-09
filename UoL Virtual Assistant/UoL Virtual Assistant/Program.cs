@@ -21,14 +21,12 @@ namespace UoL_Virtual_Assistant
             //ParseInput PI = new ParseInput();
             //PI.SplitInput("Hey Amr! Do you know where I can find somewhere to eat? Also, how are you?. Also fuck you! Also, tell me about your day.?!????.....??!?!?!?!?....!?!.?!?!?");
 
-            //ScrapeData data = new ScrapeData();
-            //data.libraryOpening();
-            //if(data.libraryDeskOpenNow == true)
-            //{
-            //    MessageBox.Show(data.libraryDeskOpen);
-            //}
+            Output data = new Output();
+            data.lookupMessage("hal", "greetings");
+            data.lookupMessage("hal", "prompt");
+            data.lookupMessage("hal", "farewells");
 
-            Application.Run(new Main_UI());
+            //Application.Run(new Main_UI());
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 
 namespace UoL_Virtual_Assistant
 {
@@ -138,7 +139,7 @@ namespace UoL_Virtual_Assistant
                 }
             }
         }
-           
+
 
         public void Generate_Message()
         {
@@ -148,6 +149,23 @@ namespace UoL_Virtual_Assistant
         public void Generate_Goodbye()
         {
 
+        }
+
+        public void lookupMessage(string agent, string context)
+        {
+            agent = agent.ToUpper();
+            context = context.ToUpper();
+
+            Random rnd = new Random();
+            string url = "../../resources/files/messages.xml";
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(url);
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/"+ context + "/"+ agent + "/MESSAGE");
+
+            int random = rnd.Next(0, nodes.Count);
+            string output = nodes[random].InnerText;
+            MessageBox.Show(output.Replace("$studentFirstName", "Zachary"));
         }
     }
 }
