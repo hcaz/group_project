@@ -44,13 +44,11 @@
             this.Student_Name_Title = new System.Windows.Forms.Label();
             this.Student_ID_Title = new System.Windows.Forms.Label();
             this.Connecting_Label = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.Agent_Name_Label = new System.Windows.Forms.Label();
             this.Agent_Status_Indicator = new System.Windows.Forms.Label();
             this.Conversation_Exit = new System.Windows.Forms.Button();
             this.Scroll_Conversation_Up = new System.Windows.Forms.Button();
             this.Scroll_Conversation_Down = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.Agent_Card_Name = new System.Windows.Forms.Label();
             this.Agent_Card_Profession = new System.Windows.Forms.Label();
             this.Agent_Card_Phone_Number = new System.Windows.Forms.Label();
@@ -310,16 +308,6 @@
             this.Connecting_Label.Text = "Connecting";
             this.Connecting_Label.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 14);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Force \"Connection\"";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Agent_Name_Label
             // 
             this.Agent_Name_Label.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -388,16 +376,6 @@
             this.Scroll_Conversation_Down.Text = "˄";
             this.Scroll_Conversation_Down.UseVisualStyleBackColor = true;
             this.Scroll_Conversation_Down.Click += new System.EventHandler(this.Scroll_Conversation_Down_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(140, 14);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 23);
-            this.button2.TabIndex = 32;
-            this.button2.Text = "Force AI Handshake";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Agent_Card_Name
             // 
@@ -648,8 +626,6 @@
             this.ClientSize = new System.Drawing.Size(334, 616);
             this.Controls.Add(this.Conversation_Exit);
             this.Controls.Add(this.Overlap_Fix);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Conversation_Cloak);
             this.Controls.Add(this.Agent_Card_Like_Button);
             this.Controls.Add(this.Agent_Card_Email);
@@ -733,7 +709,6 @@
         private System.Windows.Forms.Label Student_Name_Title;
         private System.Windows.Forms.Label Student_ID_Title;
         private System.Windows.Forms.Label Connecting_Label;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox Agent_Profile_Image;
         private System.Windows.Forms.Label Agent_Name_Label;
         private System.Windows.Forms.Label Agent_Status_Indicator;
@@ -741,7 +716,6 @@
         private System.Windows.Forms.Button Conversation_Exit;
         private System.Windows.Forms.Button Scroll_Conversation_Up;
         private System.Windows.Forms.Button Scroll_Conversation_Down;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.PictureBox Agent_Card;
         private System.Windows.Forms.Label Agent_Card_Name;
         private System.Windows.Forms.Label Agent_Card_Profession;
