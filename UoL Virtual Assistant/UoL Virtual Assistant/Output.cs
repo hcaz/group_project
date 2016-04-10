@@ -11,6 +11,9 @@ namespace UoL_Virtual_Assistant
     class Output
     {
         Random Randomiser = new Random(); //creates a randomiser item
+        public string agent = "default";
+        public string studentFirstname = "student";
+        public string studentNumber = "number";
 
         public void Generate_AI_Response()
         {
@@ -151,21 +154,29 @@ namespace UoL_Virtual_Assistant
 
         }
 
-        public void lookupMessage(string agent, string context)
+        public string lookupMessage(string context, string message)
         {
-            agent = agent.ToUpper();
+            agent = this.agent.ToUpper();
             context = context.ToUpper();
+            message = message.ToUpper();
 
             Random rnd = new Random();
             string url = "../../resources/files/messages.xml";
 
             XmlDocument doc = new XmlDocument();
             doc.Load(url);
-            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/"+ context + "/"+ agent + "/MESSAGE");
-
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/"+ agent + "/MESSAGE");
+            if (nodes.Count == 0)
+            {
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/DEFAULT/MESSAGE");
+            }
             int random = rnd.Next(0, nodes.Count);
             string output = nodes[random].InnerText;
-            MessageBox.Show(output.Replace("$studentFirstName", "Zachary"));
+
+            output = output.Replace("$studentFirstName", this.studentFirstname);
+            output = output.Replace("$studentID", this.studentNumber);
+
+            return output;
         }
     }
 }

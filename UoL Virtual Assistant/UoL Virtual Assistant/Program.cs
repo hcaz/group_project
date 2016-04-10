@@ -22,9 +22,8 @@ namespace UoL_Virtual_Assistant
             //PI.SplitInput("Hey Amr! Do you know where I can find somewhere to eat? Also, how are you?. Also fuck you! Also, tell me about your day.?!????.....??!?!?!?!?....!?!.?!?!?");
 
             Output data = new Output();
-            data.lookupMessage("hal", "greetings");
-            data.lookupMessage("hal", "prompt");
-            data.lookupMessage("hal", "farewells");
+            data.agent = "bruce";
+            MessageBox.Show(data.lookupMessage("DEPARTMENT", "PASSON"));
 
             //Application.Run(new Main_UI());
         }
