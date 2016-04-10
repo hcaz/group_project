@@ -20,6 +20,13 @@ namespace UoL_Virtual_Assistant
         string Preferred_Agent; //creates a string that stores the users preferred agent
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*//
+        //If debugging========================
+        public static TimeSpan currentTime = new TimeSpan(14, 05, 0);
+        public static DayOfWeek currentDay = DayOfWeek.Wednesday;
+        //If live========================
+        //public static TimeSpan currentTime = DateTime.Now.TimeOfDay;
+        //public static DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+        //===============================
         public static string Student_ID; //creates a string that will store the Student ID
         public static string Student_First_Name = ""; //creates a string that will store the student first name
         public static string Student_Last_Name = ""; //creates a string that will store the student last name
@@ -717,10 +724,8 @@ namespace UoL_Virtual_Assistant
                     Agent_Status_Indicator.Text = "Online";
                     if (Connected_Agent == 4)
                     {
-                        TimeSpan Current_Time = DateTime.Now.TimeOfDay; //find out the current time
-                        TimeSpan Local_Time = DateTime.Now.TimeOfDay; //find out the current time
                         string OOH_Bot_Response = "it is out of work hours. If you need to contact them personally, please get in touch during 9am and 6pm, Monday to Friday. ";
-                        if ((Local_Time > new TimeSpan(11, 55, 0)) && (Local_Time < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                        if ((Main_UI.currentTime > new TimeSpan(11, 55, 0)) && (Main_UI.currentTime < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                         {
                             OOH_Bot_Response = "they are currently out for lunch. If you need to contact them personally please come back after 1pm and there will be someone on hand to answer your query. ";
                         }
@@ -2018,29 +2023,28 @@ namespace UoL_Virtual_Assistant
 
         private void Is_Agent_Available()
         {
-            if ((DateTime.Now.DayOfWeek == DayOfWeek.Sunday)) //if the current day is not a weekend
-            //if ((DateTime.Now.DayOfWeek >= DayOfWeek.Monday) && (DateTime.Now.DayOfWeek <= DayOfWeek.Friday)) //if the current day is not a weekend
+            if ((Main_UI.currentDay >= DayOfWeek.Monday) && (Main_UI.currentDay <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((DateTime.Now.TimeOfDay >= new TimeSpan(09, 0, 0)) && (DateTime.Now.TimeOfDay > new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
+                if ((Main_UI.currentTime >= new TimeSpan(09, 0, 0)) && (Main_UI.currentTime > new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
                 {
-                    if((DateTime.Now.TimeOfDay > new TimeSpan(11, 55, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                    if((Main_UI.currentTime > new TimeSpan(11, 55, 0)) && (Main_UI.currentTime < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
                         Connected_Agent = 4;
                     }
 
                     int Availability_Probability = 0; //creates an integer value of probability
 
-                    if ((DateTime.Now.TimeOfDay > new TimeSpan(09, 00, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(11, 55, 0))) //if the current time is between these hours
+                    if ((Main_UI.currentTime > new TimeSpan(09, 00, 0)) && (Main_UI.currentTime < new TimeSpan(11, 55, 0))) //if the current time is between these hours
                     {
                         Availability_Probability = 75; //set availability probability to this
                     }
 
-                    if ((DateTime.Now.TimeOfDay > new TimeSpan(13, 05, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(16, 00, 0))) //if the current time is between these hours
+                    if ((Main_UI.currentTime > new TimeSpan(13, 05, 0)) && (Main_UI.currentTime < new TimeSpan(16, 00, 0))) //if the current time is between these hours
                     {
                         Availability_Probability = 40; //set availability probability to this
                     }
 
-                    if ((DateTime.Now.TimeOfDay > new TimeSpan(16, 00, 01)) && (DateTime.Now.TimeOfDay < new TimeSpan(17, 59, 59))) //if the current time is between these hours
+                    if ((Main_UI.currentTime > new TimeSpan(16, 00, 01)) && (Main_UI.currentTime < new TimeSpan(17, 59, 59))) //if the current time is between these hours
                     {
                         Availability_Probability = 60; //set availability probability to this
                     }
