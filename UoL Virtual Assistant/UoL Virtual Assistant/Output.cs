@@ -55,7 +55,13 @@ namespace UoL_Virtual_Assistant
 
             else
             {
-                //Generate_Message();
+                ParseInput PI = new ParseInput();
+                List<sentance> sentences = PI.SplitInputReturn(Main_UI.Latest_User_Message);
+                foreach (sentance currentSentance in sentences)
+                {
+                    MessageBox.Show(currentSentance.contextString);
+                }
+                lookupMessage("filler", "error");
                 return;
             }
         }

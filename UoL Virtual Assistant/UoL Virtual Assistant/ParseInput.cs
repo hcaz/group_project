@@ -80,6 +80,51 @@ namespace UoL_Virtual_Assistant
 
         }
 
+        public List<sentance> SplitInputReturn(string input)
+        {
+            staffData.Load("../../staff.xml");
+            keywordData.Load("../../keywordData.xml");
+            locationData.Load("../../Locations.xml");
+            staffNames = staffData.SelectNodes("STAFF");
+            questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
+            greetingQuestions = keywordData.SelectNodes("KEYWORDS/GREETINGS_QUESTIONS");
+            greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
+            keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
+            banks = locationData.SelectNodes("LOCATIONS/BANKS");
+            shops = locationData.SelectNodes("LOCATIONS/SHOPS");
+            restaurants = locationData.SelectNodes("LOCATIONS/RESTAURANTS");
+            hotels = locationData.SelectNodes("LOCATIONS/HOTELS");
+            gyms = locationData.SelectNodes("LOCATIONS/GYMS");
+            fastFood = locationData.SelectNodes("LOCATIONS/FASTFOOD");
+            estateAgents = locationData.SelectNodes("LOCATIONS/ESTATEAGENTS");
+            ignoreWords = keywordData.SelectSingleNode("KEYWORDS/IGNOREWORDS");
+            insults = keywordData.SelectNodes("KEYWORDS/INSULTS");
+
+
+            input.ToLower();
+
+            string regexPattern = @"(\? )|(\! )|(\. )|(\?)|(\!)|(\.)";
+            string[] sentences = Regex.Split(input, regexPattern);
+            string[] separatedWords = input.Split(' ');
+            List<ContextObject> contextObjects = new List<ContextObject>();
+
+            sentences = SentenceCleanup(sentences);
+
+            contextObjects = AnalyseContext(sentences);
+            
+            List<sentance> returnSentences = new List<sentance>();
+            //Concatenates strings for DEBUG testing
+            for (int i = 0; i < sentences.Length; i++)
+            {
+                sentance currentSentance = new sentance();
+                currentSentance.sentanceString = sentences[i];
+                currentSentance.contextString = contextObjects[i].debugString;
+                returnSentences.Add(currentSentance);
+            }
+
+            return returnSentences;
+        }
+
         string[] SentenceCleanup(string[] sentences)
         {
             //Reincorperates punctuation into the sentences
@@ -506,5 +551,11 @@ namespace UoL_Virtual_Assistant
                 }
             }
         }
+    }
+
+    class sentance
+    {
+        public string sentanceString = "";
+        public string contextString = "";
     }
 }
