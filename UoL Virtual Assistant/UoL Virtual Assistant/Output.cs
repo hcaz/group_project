@@ -137,8 +137,7 @@ namespace UoL_Virtual_Assistant
                         break;
                 }
             }
-        }
-           
+        }        
 
         public void Generate_Message()
         {
