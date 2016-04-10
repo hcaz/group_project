@@ -425,8 +425,8 @@ namespace UoL_Virtual_Assistant
 
                     if (Connected_Agent != 4)
                     {
-                        ParseInput Parse_Input = new ParseInput();
-                        Parse_Input.SplitInput(Latest_User_Message);
+                        //ParseInput Parse_Input = new ParseInput();
+                        //Parse_Input.SplitInput(Latest_User_Message);
 
                         int AI_Handshake_Delay = Randomiser.Next(1, 10);
 
