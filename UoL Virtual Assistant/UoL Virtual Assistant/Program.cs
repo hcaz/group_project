@@ -21,11 +21,7 @@ namespace UoL_Virtual_Assistant
             //ParseInput PI = new ParseInput();
             //PI.SplitInput("Hey Amr! Do you know where I can find somewhere to eat? Also, how are you?. Also fuck you! Also, tell me about your day.?!????.....??!?!?!?!?....!?!.?!?!?");
 
-            Output data = new Output();
-            data.agent = "bruce";
-            MessageBox.Show(data.lookupMessage("DEPARTMENT", "PASSON"));
-
-            //Application.Run(new Main_UI());
+            Application.Run(new Main_UI());
         }
     }
 }

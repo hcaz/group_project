@@ -3,9 +3,9 @@
 	<FILLER>
 		<GREETINGS>
 			<BRUCE>
-				<MESSAGE>Hi, Im Bruce Hargrave and I'll be dealing with your query today. What would you like me to do for you?</MESSAGE>
+				<MESSAGE>Hi, I'm Bruce Hargrave and I'll be dealing with your query today. What would you like me to do for you?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName. What would you like me to do for you today?</MESSAGE>
-				<MESSAGE>Hi, Im Bruce. What can I do for you today?</MESSAGE>
+				<MESSAGE>Hi, I'm Bruce. What can I do for you today?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName. How can I help?</MESSAGE>
 				<MESSAGE>Hi, I'm Bruce Hargrave. How can I help you today?</MESSAGE>
 			</BRUCE>
@@ -25,7 +25,7 @@
 			</JASON>
 			<SUZIE>
 				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 How can I help you today?</MESSAGE>
-				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 What can I do for you?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi! :3 What can I do for you?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 What can I do to help you today?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName, I'm Suzi! How can I help? :)</MESSAGE>
 				<MESSAGE>Hi $studentFirstName, I'm Suzi. How can I help you out today? :3</MESSAGE>
@@ -35,6 +35,23 @@
 				<MESSAGE>Hi $studentFirstName, What can I do to help?</MESSAGE>
 			</DEFAULT>
 		</GREETINGS>
+		<GREETINGSEND>
+			<BRUCE>
+				<MESSAGE>Hi, I'm Bruce Hargrave and I'm just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day.</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Hello, $studentFirstName. Is this a quick question?</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Hi! I'm Jason Bradbury. I have time for one last quick message? :)</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 If its quick, I can help you now?</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Hi $studentFirstName. We're just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day or leave the question with the out of hours service.</MESSAGE>
+			</DEFAULT>
+		</GREETINGSEND>
 		<PROMPT>
 			<BRUCE>
 				<MESSAGE>Are you still there?</MESSAGE>
@@ -43,7 +60,7 @@
 				<MESSAGE>I have not heard from you in a while...</MESSAGE>
 			</BRUCE>
 			<HAL>
-				<MESSAGE>Did you timeout?</MESSAGE>
+				<MESSAGE>Did you tI'meout?</MESSAGE>
 				<MESSAGE>Hello!</MESSAGE>
 				<MESSAGE>$studentFirstName...</MESSAGE>
 			</HAL>
@@ -173,7 +190,7 @@
 	<BULDINGS>
 		<LIBRARY>
 			<DEFAULT>
-				<MESSAGE>The library is currently $libraryStatus, and desk is open $deskTimes today.</MESSAGE>
+				<MESSAGE>The library is currently $libraryStatus, and desk is open $deskTI'mes today.</MESSAGE>
 			</DEFAULT>
 		</LIBRARY>
 		<LIBRARY_PC>
@@ -183,7 +200,7 @@
 		</LIBRARY_PC>
 		<OTHER>
 			<DEFAULT>
-				<MESSAGE>It is located at $location, and is open $times today.</MESSAGE>
+				<MESSAGE>It is located at $location, and is open $tI'mes today.</MESSAGE>
 			</DEFAULT>
 		</OTHER>
 	</BULDINGS>
