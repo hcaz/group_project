@@ -514,7 +514,7 @@ namespace UoL_Virtual_Assistant
                         Pulse = false;
                     }
 
-                    if ((DateTime.Now.TimeOfDay > new TimeSpan(17, 55, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(18, 00, 01)))
+                    if ((Main_UI.currentTime > new TimeSpan(17, 55, 0)) && (Main_UI.currentTime < new TimeSpan(18, 00, 01)))
                     {
                         Connection_Status = 1;
                     }
