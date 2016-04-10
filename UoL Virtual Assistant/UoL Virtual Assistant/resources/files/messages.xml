@@ -150,6 +150,23 @@
 				<MESSAGE>I dont have that information to hand right now, but if you give me your email I can get back to you.</MESSAGE>
 			</DEFAULT>
 		</GET>
+		<RUDE_INSULT>
+			<BRUCE>
+				<MESSAGE>There is no need for that here.</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Please refraim from being rude.</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Please dont be rude :(</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Hey thats not nice!</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Please dont put insults in the chat.</MESSAGE>
+			</DEFAULT>
+		</RUDE_INSULT>
 	</FILLER>
 	<FACILITY>
 		<CONTACT>

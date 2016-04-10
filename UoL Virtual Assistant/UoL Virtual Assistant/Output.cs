@@ -36,7 +36,7 @@ namespace UoL_Virtual_Assistant
             this.studentNumber = Main_UI.Student_ID;
             if (Main_UI.AI_Message_Counter == 0)
             {
-                if ((DateTime.Now.TimeOfDay > new TimeSpan(17, 55, 0)))
+                if ((Main_UI.currentTime > new TimeSpan(17, 55, 0)))
                 {
                     lookupMessage("filler", "greetingsEnd");
                 }
@@ -56,12 +56,12 @@ namespace UoL_Virtual_Assistant
             else
             {
                 ParseInput PI = new ParseInput();
-                List<sentance> sentences = PI.SplitInputReturn(Main_UI.Latest_User_Message);
+                List<sentance> sentences = PI.SplitInputReturn(Main_UI.Latest_User_Message.ToLower());
                 foreach (sentance currentSentance in sentences)
                 {
                     MessageBox.Show(currentSentance.contextString);
+                    lookupMessage("filler", currentSentance.contextString);
                 }
-                lookupMessage("filler", "error");
                 return;
             }
         }
@@ -71,6 +71,9 @@ namespace UoL_Virtual_Assistant
             agent = this.agent.ToUpper();
             context = context.ToUpper();
             message = message.ToUpper();
+            message = message.Replace("[", "").Replace("]", "");
+            String[] messageData = message.Split(':');
+            message = messageData[0].Trim();
 
             Random rnd = new Random();
             string url = "../../resources/files/messages.xml";
@@ -81,6 +84,14 @@ namespace UoL_Virtual_Assistant
             if (nodes.Count == 0)
             {
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/DEFAULT/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/DEFAULT/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/DEFAULT/MESSAGE");
             }
             int random = rnd.Next(0, nodes.Count);
             string output = nodes[random].InnerText;
