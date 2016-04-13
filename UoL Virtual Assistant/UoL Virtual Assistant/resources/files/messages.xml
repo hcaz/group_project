@@ -141,7 +141,7 @@
 				<MESSAGE>No problem</MESSAGE>
 			</HAL>
 			<JASON>
-				<MESSAGE>No problemo m8</MESSAGE>
+				<MESSAGE>No problemo m9</MESSAGE>
 			</JASON>
 			<SUZIE>
 				<MESSAGE>You are welcome :3</MESSAGE>
@@ -243,7 +243,7 @@
 		</LIBRARY_PC>
 		<OTHER>
 			<DEFAULT>
-				<MESSAGE>It is located at $location, and is open $tI'mes today.</MESSAGE>
+				<MESSAGE>It is located at $location, and is open $times today.</MESSAGE>
 			</DEFAULT>
 		</OTHER>
 	</BULDINGS>
