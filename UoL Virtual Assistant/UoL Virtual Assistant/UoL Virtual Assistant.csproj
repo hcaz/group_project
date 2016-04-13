@@ -107,7 +107,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="resources\Hal.bmp" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="resources\images\settings menu\Settings Drawer.png" />
   </ItemGroup>
@@ -158,6 +160,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resources\images\agent images\SuziProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Hal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Bruce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Generic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Jason.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Suzi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\misc items\Expand_Button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
