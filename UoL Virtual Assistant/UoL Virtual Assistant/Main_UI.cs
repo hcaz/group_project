@@ -21,11 +21,12 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*//
         //If debugging========================
-        public static TimeSpan currentTime = new TimeSpan(14, 05, 0);
-        public static DayOfWeek currentDay = DayOfWeek.Wednesday;
+        //public static TimeSpan currentTime = new TimeSpan(14, 05, 0);
+        //public static DayOfWeek currentDay = DayOfWeek.Wednesday;
         //If live========================
-        //public static TimeSpan currentTime = DateTime.Now.TimeOfDay;
-        //public static DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+        //This long way gives a better timestamp without miliseconds
+        public static TimeSpan currentTime = new TimeSpan(DateTime.Now.TimeOfDay.Hours, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds);
+        public static DayOfWeek currentDay = DateTime.Now.DayOfWeek;
         //===============================
         public static string Student_ID; //creates a string that will store the Student ID
         public static string Student_First_Name = ""; //creates a string that will store the student first name
@@ -2025,7 +2026,7 @@ namespace UoL_Virtual_Assistant
         {
             if ((Main_UI.currentDay >= DayOfWeek.Monday) && (Main_UI.currentDay <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((Main_UI.currentTime >= new TimeSpan(09, 0, 0)) && (Main_UI.currentTime > new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
+                if ((Main_UI.currentTime > new TimeSpan(09, 0, 0)) && (Main_UI.currentTime < new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
                 {
                     if((Main_UI.currentTime > new TimeSpan(11, 55, 0)) && (Main_UI.currentTime < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
@@ -2077,7 +2078,7 @@ namespace UoL_Virtual_Assistant
 
                 else
                 {
-                    
+                    MessageBox.Show("Not office hours : " + Main_UI.currentTime.ToString() + " : " + new TimeSpan(09, 0, 0).ToString());
                     Connected_Agent = 4;
                 }
             }
