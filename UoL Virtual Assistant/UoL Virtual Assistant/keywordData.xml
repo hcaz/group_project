@@ -120,4 +120,35 @@
 	<IGNOREWORDS>
 		he le can yo hi i
 	</IGNOREWORDS>
+	
+	<FREE_PCS>
+		<FREE_PC>free pc</FREE_PC>
+		<PC_FREE>pc free</PC_FREE>
+		<FREE_PCS>free pcs</FREE_PCS>
+		<PCS_FREE>pcs free</PCS_FREE>
+		<AVAILABLE_PC>available pc</AVAILABLE_PC>
+		<PC_AVAILABLE>pc available<PC_AVAILABLE>
+		<AVAILABLE_PCS>available pcs</AVAILABLE_PCS>
+		<PCS_AVAILABLE>pcs available<PCS_AVAILABLE>
+		<PLACE_TO_WORK>place to work</PLACE_TO_WORK>
+		<WORK_SPACE>work space</WORK_SPACE>
+		<WORKSPACE>workspace</WORKSPACE>
+		<FREE_COMPUTER>free computer</FREE_COMPUTER>
+		<COMPUTER_FREE>computer free</COMPUTER_FREE>
+		<AVAILABLE_COMPUTER>available computer</AVAILABLE_COMPUTER>
+		<COMPUTER_AVAILABLE>computer available</COMPUTER_AVAILABLE>
+		<FREE_COMPUTERS>free computers</FREE_COMPUTERS>
+		<COMPUTERS_FREE>computers free</COMPUTERS_FREE>
+		<AVAILABLE_COMPUTERS>available computers</AVAILABLE_COMPUTERS>
+		<COMPUTERS_AVAILABLE>computers available</COMPUTERS_AVAILABLE>
+		<GET_A_PC>get a pc</GET_A_PC>
+		<FIND_A_PC>find a pc</FIND_A_PC>
+		<GET_A_COMPUTER>get a computer</GET_A_COMPUTER>
+		<FIND_A_COMPUTER>find a computer</FIND_A_COMPUTER>
+	</FREE_PCS>
+	
+	<WEATHER_QUERY>
+		<WEATHER>weather</WEATHER>
+		<FORECAST>forecast</FORECAST>
+	</WEATHER_QUERY>
 </KEYWORDS>
