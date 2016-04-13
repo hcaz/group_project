@@ -34,6 +34,10 @@ namespace UoL_Virtual_Assistant
         public static string Latest_User_Message = ""; //this is a string that contains the latest user message. it is easily accessable from other areas of the system
         public static string Latest_AI_Message = ""; // ....
         public static XmlNode currentObject;
+        public static bool waitingOnResponse = false;
+        public static string waitingOnResponsePos;
+        public static string waitingOnResponseNeg;
+
 
         int R; int G; int B; //creates R,G,B values for themes
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
