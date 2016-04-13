@@ -423,6 +423,7 @@ namespace UoL_Virtual_Assistant
 
                     Latest_User_Message = Message_Input.Text; //add the users message to the latest user message string
                     Message_Input.Text = String.Empty;
+                    Send_Message.Enabled = false;
                     Create_User_Message();
 
                     if (Connected_Agent != 4)
@@ -529,33 +530,33 @@ namespace UoL_Virtual_Assistant
                     Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window                    
                     Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
-                    int Preferred_Agent_Probability = Randomiser.Next(0, 100); //selects a random number between 0 and 4
+                    int Preferred_Agent_Probability = Randomiser.Next(0, 4); //selects a random number between 0 and 4
                     switch (Preferred_Agent) //apply the appropriate profile picture and label text
                     {
                         case "0": //if the user does not have a preferred agent
                             Connected_Agent = Randomiser.Next(1, 4); //pick a random agent
                             break;
                         case "1": //if their preferred agent is Bruce
-                            if (Preferred_Agent_Probability > 25)
+                            if (Preferred_Agent_Probability > 1)
                             {
                                 Connected_Agent = 0; //give them their preferred agent
                             }
                             break;
                         case "2": //if their preferred agent is Hal
-                            if (Preferred_Agent_Probability > 25)
+                            if (Preferred_Agent_Probability > 1)
                             {
                                 Connected_Agent = 1; //give them their preferred agent
                             }
                             break;
                         case "3": //if their preferred agent is Jason
 
-                            if (Preferred_Agent_Probability > 25)
+                            if (Preferred_Agent_Probability > 1)
                             {
                                 Connected_Agent = 2; //give them their preferred agent
                             }
                             break;
                         case "4": //if their preferred agent is Suzie
-                            if (Preferred_Agent_Probability > 25)
+                            if (Preferred_Agent_Probability > 1)
                             {
                                 Connected_Agent = 3; //give them their preferred agent
                             }
@@ -574,23 +575,23 @@ namespace UoL_Virtual_Assistant
                     switch (Connected_Agent) //apply the appropriate profile picture and label text
                     {
                         case 0: //if the agent is bruce
-                            Agent_Profile_Image.BackgroundImage = Properties.Resources.BruceProfilePic;
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.Bruce;
                             Agent_Name_Label.Text = "Bruce Hargrave";
                             break;
                         case 1: //if the agent is hal
-                            Agent_Profile_Image.BackgroundImage = Properties.Resources.HalProfilePic;
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.Hal;
                             Agent_Name_Label.Text = "Hal Chín-Nghìn";
                             break;
                         case 2: //if the agent is jason
-                            Agent_Profile_Image.BackgroundImage = Properties.Resources.JasonProfilePic;
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.Jason;
                             Agent_Name_Label.Text = "Jason Bradbury";
                             break;
                         case 3: //if the agent is suzie
-                            Agent_Profile_Image.BackgroundImage = Properties.Resources.SuziProfilePic;
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.Suzi;
                             Agent_Name_Label.Text = "Suzi Perry";
                             break;
                         case 4: //if no agent is available
-                            Agent_Profile_Image.BackgroundImage = Properties.Resources.GenericProfilePic;
+                            Agent_Profile_Image.BackgroundImage = Properties.Resources.Generic;
                             Agent_Name_Label.Text = "Out of Hours";
                             break;
                     }
@@ -1070,6 +1071,7 @@ namespace UoL_Virtual_Assistant
                     Agent_Card_Phone_Number.BringToFront();
                     Agent_Card_Room.BringToFront();
                     Agent_Card_Like_Button.BringToFront();
+                    Expand_Profile_Image.BringToFront();
 
                     Message_Input_Area.BringToFront();
                     Message_Input.BringToFront();
@@ -1894,6 +1896,7 @@ namespace UoL_Virtual_Assistant
             Agent_Status_Indicator.BringToFront();
             Agent_Profile_Image.BringToFront();
             Conversation_Exit.BringToFront();
+            Expand_Profile_Image.BringToFront();
         }
 
         private void Theme_Selection_SelectedIndexChanged(object sender, EventArgs e)
@@ -2136,6 +2139,57 @@ namespace UoL_Virtual_Assistant
             Agent_Profile_Card();
         }
 
+        private async void Expand_Profile_Image_Click(object sender, EventArgs e)
+        {
+            Agent_Profile_Image.BringToFront();
+            bool Forefront = true;
+            int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100 
+            int Expand_Timer = 0;
+            bool Wait = false;
+
+            for (Expand_Timer = 0; Expand_Timer <= 300; Expand_Timer++)
+            {
+                if (Forefront == true)
+                {
+                    Agent_Profile_Image.BringToFront();
+                }
+
+                Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 2, Agent_Profile_Image_Size + 2);
+                Agent_Profile_Image_Size = (Agent_Profile_Image_Size + 2);
+                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 1, Agent_Profile_Image.Location.Y - 1);
+                await Task.Delay(1); //delay
+
+                if (Expand_Timer == 300)
+                {
+                    Wait = true;
+                }
+            }
+
+            if (Wait == true)
+            {
+                await Task.Delay(10000); //delay
+                for (Expand_Timer = 0; Expand_Timer <= 300; Expand_Timer++)
+                {
+                    if (Forefront == true)
+                    {
+                        Agent_Profile_Image.BringToFront();
+                    }
+
+                    Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
+                    Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
+                    Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X + 1, Agent_Profile_Image.Location.Y + 1);
+                    await Task.Delay(1); //delay
+
+                    if (Expand_Timer == 300)
+                    {
+                        Wait = true;
+                    }
+                }
+            }
+        }
+
+
+
         private void Agent_Name_Label_Click(object sender, EventArgs e)
         {
             Agent_Profile_Card();
@@ -2156,6 +2210,7 @@ namespace UoL_Virtual_Assistant
                 Conversation_Area_Header.BringToFront();
                 Agent_Name_Label.BringToFront();
                 Agent_Status_Indicator.BringToFront();
+                Expand_Profile_Image.BringToFront();
                 Agent_Profile_Image.BringToFront();
                 Conversation_Exit.BringToFront();
 
@@ -2174,7 +2229,7 @@ namespace UoL_Virtual_Assistant
 
                 Message_Input_Area.BringToFront();
                 Message_Input.BringToFront();
-                Send_Message.BringToFront();
+                Send_Message.BringToFront();           
 
                 int Agent_Card_Accent_X = 0;
                 int Agent_Card_Accent_Y = 0;
@@ -2277,6 +2332,7 @@ namespace UoL_Virtual_Assistant
                 Agent_Card_Email.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
                 Agent_Card_Phone_Number.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
                 Agent_Card_Room.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Expand_Profile_Image.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
                 //Agent_Card_Like_Button.BackColor = Color.FromArgb(Agent_Card_Accent_X + 20, Agent_Card_Accent_Y + 20, Agent_Card_Accent_Z + 20);
 
                 Agent_Profile_Image.Enabled = false;
@@ -2306,8 +2362,10 @@ namespace UoL_Virtual_Assistant
 
                     if (Timer >= 20 && Timer <= 35)
                     {
+                        Expand_Profile_Image.Visible = true;
                         Agent_Card_Name.Visible = true;
                         Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y - 11);
+                        Expand_Profile_Image.Location = new Point(Expand_Profile_Image.Location.X, Expand_Profile_Image.Location.Y - 1);
                     }
 
                     if (Timer >= 25 && Timer <= 39)
@@ -2396,7 +2454,12 @@ namespace UoL_Virtual_Assistant
 
                         if (Timer >= 25 && Timer <= 35)
                         {
-                            Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y + 15);
+                            Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y + 15);                            
+                        }
+
+                        if (Timer >= 25 && Timer <= 40)
+                        {
+                            Expand_Profile_Image.Location = new Point(Expand_Profile_Image.Location.X, Expand_Profile_Image.Location.Y + 1);
                         }
 
                         if (Timer >= 20 && Timer <= 51)
@@ -2405,7 +2468,7 @@ namespace UoL_Virtual_Assistant
                             {
                                 Agent_Profile_Image.BackColor = Color.White;
                             }
-
+                            Expand_Profile_Image.Visible = false;
                             Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
                             Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
                             Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X - 2, Agent_Profile_Image.Location.Y - 2);
@@ -2431,6 +2494,7 @@ namespace UoL_Virtual_Assistant
                         await Task.Delay(1); //delay
                     }
 
+                    Expand_Profile_Image.Visible = false;
                     Agent_Card.Visible = false;
                     Agent_Profile_Image.Enabled = true;
                     Open_Profile_Card = 0;
@@ -2499,5 +2563,7 @@ namespace UoL_Virtual_Assistant
         {
             Agent_Profile_Card();
         }
+
+
     }
 }
