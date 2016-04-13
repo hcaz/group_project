@@ -630,7 +630,7 @@ namespace UoL_Virtual_Assistant
                     }
 
                     Agent_Name_Label.BringToFront();
-                    //await Task.Delay(1000); //delay hcazDebug
+                    await Task.Delay(1000);
                     for (int Profile_Picture_Timing = 0; Profile_Picture_Timing < 20; Profile_Picture_Timing++) //while the profile picture has not yet been fully resized
                     {
                         Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //adjust the height of the image by 1 on every loop
@@ -643,7 +643,7 @@ namespace UoL_Virtual_Assistant
 
                         await Task.Delay(1); //delay
                     }
-                    //await Task.Delay(2000); //delay hcazDebug
+                    await Task.Delay(2000);
 
                     //Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
                     //Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
@@ -775,7 +775,7 @@ namespace UoL_Virtual_Assistant
                 Create_Response.Generate_AI_Response();
 
                 Agent_Status_Indicator.Text = "Typing";
-                int Typing_Time = 0;// ((Latest_AI_Message.Length * 100) + 5000); //hcazDebug
+                int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
                 //int Typing_Time = 0; //SPEED THINGS UP TIMER (COMMENT ^ OUT)
                 //MessageBox.Show(Typing_Time.ToString());
                 await Task.Delay(Typing_Time / 10);
