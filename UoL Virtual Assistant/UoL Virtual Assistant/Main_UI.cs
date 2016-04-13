@@ -21,7 +21,7 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*//
         //If debugging========================
-        public static TimeSpan currentTime = new TimeSpan(14, 05, 0);
+        public static TimeSpan currentTime = new TimeSpan(15, 05, 0);
         public static DayOfWeek currentDay = DayOfWeek.Wednesday;
         //If live========================
         //public static TimeSpan currentTime = DateTime.Now.TimeOfDay;
