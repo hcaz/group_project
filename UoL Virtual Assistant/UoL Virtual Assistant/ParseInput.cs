@@ -34,7 +34,6 @@ namespace UoL_Virtual_Assistant
         XmlNodeList fastFood;
         XmlNodeList estateAgents;
         XmlNodeList insults;
-        XmlNodeList pleasantrie;
         XmlNode ignoreWords;
 
         string[] punctuation = { "?", "!", "." };
@@ -89,7 +88,7 @@ namespace UoL_Virtual_Assistant
 
         }
 
-        public List<sentance> SplitInputReturn(string input)
+        public List<ContextObject> SplitInputReturn(string input)
         {
             staffData.Load("../../staff.xml");
             keywordData.Load("../../keywordData.xml");
@@ -112,7 +111,6 @@ namespace UoL_Virtual_Assistant
             estateAgents = locationData.SelectNodes("LOCATIONS/ESTATEAGENTS");
             ignoreWords = keywordData.SelectSingleNode("KEYWORDS/IGNOREWORDS");
             insults = keywordData.SelectNodes("KEYWORDS/INSULTS");
-            pleasantrie = keywordData.SelectNodes("KEYWORDS/PLEASANTRIE");
 
             string regexPattern = @"(\? )|(\! )|(\. )|(\?)|(\!)|(\.)";
             string[] sentences = Regex.Split(input, regexPattern);
@@ -122,18 +120,8 @@ namespace UoL_Virtual_Assistant
             sentences = SentenceCleanup(sentences);
 
             contextObjects = AnalyseContext(sentences);
-            
-            List<sentance> returnSentences = new List<sentance>();
-            //Concatenates strings for DEBUG testing
-            for (int i = 0; i < sentences.Length; i++)
-            {
-                sentance currentSentance = new sentance();
-                currentSentance.sentanceString = sentences[i];
-                currentSentance.contextString = contextObjects[i].debugString;
-                returnSentences.Add(currentSentance);
-            }
 
-            return returnSentences;
+            return contextObjects;
         }
 
         string[] SentenceCleanup(string[] sentences)
@@ -621,11 +609,5 @@ namespace UoL_Virtual_Assistant
                 }
             }
         }
-    }
-
-    class sentance
-    {
-        public string sentanceString = "";
-        public string contextString = "";
     }
 }
