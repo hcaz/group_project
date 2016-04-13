@@ -76,7 +76,19 @@ namespace UoL_Virtual_Assistant
                     }
                     else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
                     {
-                        output = output + " - " + lookupMessage("filler", "name_faculty");
+                        if (currentSentance.subType.Contains(ContextObject.SubjectType.name_faculty))
+                        {
+                            output = output + " - " + lookupMessage("filler", "name_faculty");
+                        }
+                        else
+                        if (currentSentance.subType.Contains(ContextObject.SubjectType.partial_name_faculty))
+                        {
+                            output = output + " - " + lookupMessage("filler", "partial_name_faculty");
+                        }
+                        else
+                        {
+                            output = output + " - " + lookupMessage("filler", "error_name_faculty");
+                        }
                     }
                     else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
                     {
@@ -109,27 +121,22 @@ namespace UoL_Virtual_Assistant
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/DEFAULT/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Context not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/" + agent + "/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/DEFAULT/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Message not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/" + agent + "/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/DEFAULT/MESSAGE");
             }
             int random = rnd.Next(0, nodes.Count);
@@ -146,7 +153,7 @@ namespace UoL_Virtual_Assistant
             }
             if (message == "PARTIAL_NAME_FACULTY")
             {
-                output = output.Replace("$fullName", Main_UI.currentObject.InnerText);
+                output = output.Replace("$fullName", Main_UI.currentObject.ChildNodes[0].InnerText);
             }
 
             return output;
