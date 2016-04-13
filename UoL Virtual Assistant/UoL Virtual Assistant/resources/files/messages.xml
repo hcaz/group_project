@@ -133,6 +133,23 @@
 				<MESSAGE>I am sorry I dont understand what your trying to say?</MESSAGE>
 			</DEFAULT>
 		</ERROR>
+		<THANKS>
+			<BRUCE>
+				<MESSAGE>Your are welcome</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>No problem</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>No problemo m8</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>You are welcome :3</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Thats ok.</MESSAGE>
+			</DEFAULT>
+		</THANKS>
 		<GET>
 			<BRUCE>
 				<MESSAGE>I will send you an email to your student email ($studentID@students.lincoln.ac.uk) with that information after this chat.</MESSAGE>
@@ -190,26 +207,7 @@
 				<MESSAGE>Do you mean, $fullName?</MESSAGE>
 			</DEFAULT>
 		</PARTIAL_NAME_FACULTY>
-	</FILLER>
-	<FACILITY>
-		<CONTACT>
-			<BRUCE>
-				<MESSAGE>Oh sure, I know $firstName, good mate of mine. His email is $email and his phone is $phone</MESSAGE>
-			</BRUCE>
-			<HAL>
-				<MESSAGE>There email is $email, and phone is $phone</MESSAGE>
-			</HAL>
-			<JASON>
-				<MESSAGE>I just did a lookup and found that $firstName's email is $email, and phone is $phone</MESSAGE>
-			</JASON>
-			<SUZIE>
-				<MESSAGE>I know exactly who you mean, their email is $email and their phone is $phone</MESSAGE>
-			</SUZIE>
-			<DEFAULT>
-				<MESSAGE>Yes, their phone is $phone, and there email is $email</MESSAGE>
-			</DEFAULT>
-		</CONTACT>
-		<ERROR>
+		<ERROR_NAME_FACULTY>
 			<BRUCE>
 				<MESSAGE>I dont know who that is sorry.</MESSAGE>
 			</BRUCE>
@@ -225,8 +223,8 @@
 			<DEFAULT>
 				<MESSAGE>Sorry, but they do not work for the university.</MESSAGE>
 			</DEFAULT>
-		</ERROR>
-	</FACILITY>
+		</ERROR_NAME_FACULTY>
+	</FILLER>
 	<BULDINGS>
 		<LIBRARY>
 			<DEFAULT>
