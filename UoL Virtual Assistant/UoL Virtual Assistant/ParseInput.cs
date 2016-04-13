@@ -30,6 +30,7 @@ namespace UoL_Virtual_Assistant
         XmlNodeList fastFood;
         XmlNodeList estateAgents;
         XmlNodeList insults;
+        XmlNodeList pleasantrie;
         XmlNode ignoreWords;
 
         string[] punctuation = { "?", "!", "." };
@@ -99,9 +100,7 @@ namespace UoL_Virtual_Assistant
             estateAgents = locationData.SelectNodes("LOCATIONS/ESTATEAGENTS");
             ignoreWords = keywordData.SelectSingleNode("KEYWORDS/IGNOREWORDS");
             insults = keywordData.SelectNodes("KEYWORDS/INSULTS");
-
-
-            input.ToLower();
+            pleasantrie = keywordData.SelectNodes("KEYWORDS/PLEASANTRIE");
 
             string regexPattern = @"(\? )|(\! )|(\. )|(\?)|(\!)|(\.)";
             string[] sentences = Regex.Split(input, regexPattern);
@@ -233,7 +232,7 @@ namespace UoL_Virtual_Assistant
                         if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
                         {
                             contextObject.sentenceType.Add(ContextObject.SentenceType.greeting_question);
-                            contexts[i] = contexts[i] + "[Greeting_Questions: " + greetingQuestions[0].ChildNodes[j].Name.ToLower() + "]";
+                            contexts[i] = contexts[i] + "[Greeting_Question: " + greetingQuestions[0].ChildNodes[j].Name.ToLower() + "]";
                         }
                     }
                 }
@@ -271,6 +270,7 @@ namespace UoL_Virtual_Assistant
                                             contextObject.subType.Add(ContextObject.SubjectType.name_faculty);
                                             contextObject.subjectList.Add(staffNames[0].ChildNodes[k]);
                                             contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                            Main_UI.currentObject = staffNames[0].ChildNodes[k];
                                         }
                                     }
                                     else if (contexts[i] == null && !contexts[i].ToLower().Contains("name_faculty"))
@@ -278,6 +278,7 @@ namespace UoL_Virtual_Assistant
                                         contextObject.subType.Add(ContextObject.SubjectType.name_faculty);
                                         contextObject.subjectList.Add(staffNames[0].ChildNodes[k]);
                                         contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                        Main_UI.currentObject = staffNames[0].ChildNodes[k];
                                     }
 
                                     break;
@@ -311,6 +312,7 @@ namespace UoL_Virtual_Assistant
                         contextObject.subType.Add(ContextObject.SubjectType.name_faculty);
                         contextObject.subjectList.Add(partialMatchNode);
                         contexts[partialIndex] = contexts[i] + "[PARTIAL_Name_Faculty: " + partialMatchNode.InnerText + "]";
+                        Main_UI.currentObject = partialMatchNode;
                     }
                 }
 
