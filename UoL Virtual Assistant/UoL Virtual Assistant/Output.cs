@@ -12,8 +12,6 @@ namespace UoL_Virtual_Assistant
     {
         Random Randomiser = new Random(); //creates a randomiser item
         public string agent = "default";
-        public string studentFirstname = "student";
-        public string studentNumber = "number";
 
         public void Generate_AI_Response()
         {
@@ -32,93 +30,142 @@ namespace UoL_Virtual_Assistant
                     this.agent = "suzie";
                     break;
             }
-            this.studentFirstname = Main_UI.Student_First_Name;
-            this.studentNumber = Main_UI.Student_ID;
             if (Main_UI.AI_Message_Counter == 0)
             {
                 if ((Main_UI.currentTime > new TimeSpan(17, 55, 0)))
                 {
-                    lookupMessage("filler", "greetingEnd");
+                    Main_UI.Latest_AI_Message = lookupMessage("filler", "greetingEnd");
                 }
                 else
                 {
-                    lookupMessage("filler", "greeting");
+                    Main_UI.Latest_AI_Message = @"Welcome to UOL Live chat!
+==================
+" + lookupMessage("filler", "greeting");
                 }
                 return;
             }
 
             if (Main_UI.AI_Message_Counter == 24)
             {
-                lookupMessage("filler", "farewell");
+                Main_UI.Latest_AI_Message = lookupMessage("filler", "farewell");
                 return;
             }
 
             else
             {
                 ParseInput PI = new ParseInput();
-                List<sentance> sentences = PI.SplitInputReturn(Main_UI.Latest_User_Message.ToLower());
-                foreach (sentance currentSentance in sentences)
+                List<ContextObject> sentences = PI.SplitInputReturn(Main_UI.Latest_User_Message.ToLower());
+                string output = "";
+                foreach (ContextObject currentSentance in sentences)
                 {
-                    lookupMessage("filler", currentSentance.contextString);
+                    if (Main_UI.waitingOnResponse == true)
+                    {
+                        Main_UI.waitingOnResponse = false;
+                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.affirmative))
+                        {
+                            output = output + " - " + lookupMessage("filler", Main_UI.waitingOnResponsePos);
+                        }
+                        else if(currentSentance.sentenceType.Contains(ContextObject.SentenceType.negative))
+                        {
+                            output = output + " - " + lookupMessage("filler", Main_UI.waitingOnResponseNeg);
+                        }else
+                        {
+                            output = output + " - " + lookupMessage("filler", "error");
+                        }
+                    }
+                    else
+                    {
+                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                        {
+                            output = output + " - " + lookupMessage("filler", "farewell");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting))
+                        {
+                            output = output + " - " + lookupMessage("filler", "greeting");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
+                        {
+                            output = output + " - " + lookupMessage("filler", "greeting_question");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
+                        {
+                            output = output + " - " + lookupMessage("filler", "rude_insult");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
+                        {
+                            if (currentSentance.subType.Contains(ContextObject.SubjectType.name_faculty))
+                            {
+                                output = output + " - " + lookupMessage("filler", "name_faculty");
+                            }
+                            else
+                            if (currentSentance.subType.Contains(ContextObject.SubjectType.partial_name_faculty))
+                            {
+                                output = output + " - " + lookupMessage("filler", "partial_name_faculty");
+                            }
+                            else
+                            {
+                                output = output + " - " + lookupMessage("filler", "error_name_faculty");
+                            }
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.workstation))
+                        {
+                            output = output + " - " + lookupMessage("filler", "workstation");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.thank_you))
+                        {
+                            output = output + " - " + lookupMessage("filler", "thanks");
+                        }
+                        else
+                        {
+                            output = output + " - " + lookupMessage("filler", "error");
+                        }
+                    }
                 }
+                Main_UI.Latest_AI_Message = output.Trim().TrimStart('-');
                 return;
             }
         }
 
-        public void lookupMessage(string context, string message)
+        public string lookupMessage(string context, string message)
         {
             agent = this.agent.ToUpper();
             context = context.ToUpper();
             message = message.ToUpper();
-            message = message.Replace("[", "").Replace("]", "");
-            String[] messageData = message.Split(':');
-            message = messageData[0].Trim();
-
-            messageData = message.Split(' ');
-            message = messageData[0].Trim();
-
-            if (message=="QUESTION_WHO")
-            {
-                message = messageData[2].Trim();
-            }
 
             Random rnd = new Random();
             string url = "../../resources/files/messages.xml";
 
             XmlDocument doc = new XmlDocument();
             doc.Load(url);
-            MessageBox.Show("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");//hcazDebug
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/DEFAULT/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Context not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/" + agent + "/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/DEFAULT/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Message not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/" + agent + "/MESSAGE");
             }
             if (nodes.Count == 0)
             {
-                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/DEFAULT/MESSAGE");
             }
             int random = rnd.Next(0, nodes.Count);
             string output = nodes[random].InnerText;
 
-            output = output.Replace("$studentFirstName", this.studentFirstname);
-            output = output.Replace("$studentID", this.studentNumber);
+            output = output.Replace("$studentFirstName", Main_UI.Student_First_Name);
+            output = output.Replace("$studentID", Main_UI.Student_ID);
 
             if (message == "NAME_FACULTY")
             {
@@ -128,10 +175,22 @@ namespace UoL_Virtual_Assistant
             }
             if (message == "PARTIAL_NAME_FACULTY")
             {
-                output = output.Replace("$fullName", Main_UI.currentObject.InnerText);
+                output = output.Replace("$fullName", Main_UI.currentObject.ChildNodes[0].InnerText);
+                Main_UI.waitingOnResponse = true;
+                Main_UI.waitingOnResponsePos = "name_faculty";
+                Main_UI.waitingOnResponseNeg = "error_name_faculty";
+            }
+            if (message == "WORKSTATION")
+            {
+                ScrapeData data = new ScrapeData();
+                data.freePCData();
+                data.libraryOpening();
+                output = output.Replace("$freePCS", data.freePcs.ToString());
+                output = output.Replace("$times", data.libraryOpen.ToString());
+                output = output.Replace("$deskTimes", data.libraryDeskOpen.ToString());
             }
 
-            Main_UI.Latest_AI_Message = output;
+            return output;
         }
     }
 }
