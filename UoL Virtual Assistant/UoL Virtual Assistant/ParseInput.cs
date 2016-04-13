@@ -25,6 +25,8 @@ namespace UoL_Virtual_Assistant
         XmlNodeList affirmatives;
         XmlNodeList negatives;
         XmlNodeList thanks;
+        XmlNodeList workstations;
+        XmlNodeList weather;
         XmlNodeList keyWords;
         XmlNodeList banks;
         XmlNodeList shops;
@@ -51,6 +53,8 @@ namespace UoL_Virtual_Assistant
             affirmatives = keywordData.SelectNodes("KEYWORDS/CONFIRMATIONS");
             negatives = keywordData.SelectNodes("KEYWORDS/NEGATIVE_RESPONSES");
             thanks = keywordData.SelectNodes("KEYWORDS/THANK_YOUS");
+            workstations = keywordData.SelectNodes("KEYWORDS/FREE_PCS");
+            weather = keywordData.SelectNodes("KEYWORDS/WEATHER_QUERY");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
             banks = locationData.SelectNodes("LOCATIONS/BANKS");
             shops = locationData.SelectNodes("LOCATIONS/SHOPS");
@@ -101,6 +105,8 @@ namespace UoL_Virtual_Assistant
             affirmatives = keywordData.SelectNodes("KEYWORDS/CONFIRMATIONS");
             thanks = keywordData.SelectNodes("KEYWORDS/THANK_YOUS");
             negatives = keywordData.SelectNodes("KEYWORDS/NEGATIVE_RESPONSES");
+            workstations = keywordData.SelectNodes("KEYWORDS/FREE_PCS");
+            weather = keywordData.SelectNodes("KEYWORDS/WEATHER_QUERY");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
             banks = locationData.SelectNodes("LOCATIONS/BANKS");
             shops = locationData.SelectNodes("LOCATIONS/SHOPS");
@@ -289,6 +295,34 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.sentenceType.Add(ContextObject.SentenceType.thank_you);
                             contexts[i] = contexts[i] + "[Thank_you: " + thanks[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //free_pcs
+                for (int j = 0; j < workstations[0].ChildNodes.Count; j++)
+                {
+                    //check against free_pcs words in array
+                    if (sentences[i].ToLower().Contains(workstations[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.workstation))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.workstation);
+                            contexts[i] = contexts[i] + "[Workstation: " + workstations[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //weather
+                for (int j = 0; j < weather[0].ChildNodes.Count; j++)
+                {
+                    //check against weather words in array
+                    if (sentences[i].ToLower().Contains(weather[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.weather))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.weather);
+                            contexts[i] = contexts[i] + "[Weather: " + weather[0].ChildNodes[j].Name.ToLower() + "]";
                         }
                     }
                 }
@@ -572,7 +606,7 @@ namespace UoL_Virtual_Assistant
         public string debugString = "";
         //
         public enum SubjectType { partial_name_faculty, name_faculty, name_location, type_location, rude_insult };
-        public enum SentenceType { greeting, farewell, affirmative, negative, thank_you, greeting_question, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
+        public enum SentenceType { greeting, farewell, affirmative, negative, workstation, weather, thank_you, greeting_question, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
 
         public ContextObject()
         {
