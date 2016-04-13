@@ -58,52 +58,70 @@ namespace UoL_Virtual_Assistant
                 string output = "";
                 foreach (ContextObject currentSentance in sentences)
                 {
-                    if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                    if (Main_UI.waitingOnResponse == true)
                     {
-                        output = output + " - " + lookupMessage("filler", "farewell");
-                    }
-                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting))
-                    {
-                        output = output + " - " + lookupMessage("filler", "greeting");
-                    }
-                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
-                    {
-                        output = output + " - " + lookupMessage("filler", "greeting_question");
-                    }
-                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
-                    {
-                        output = output + " - " + lookupMessage("filler", "rude_insult");
-                    }
-                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
-                    {
-                        if (currentSentance.subType.Contains(ContextObject.SubjectType.name_faculty))
+                        Main_UI.waitingOnResponse = false;
+                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.affirmative))
                         {
-                            output = output + " - " + lookupMessage("filler", "name_faculty");
+                            output = output + " - " + lookupMessage("filler", Main_UI.waitingOnResponsePos);
                         }
-                        else
-                        if (currentSentance.subType.Contains(ContextObject.SubjectType.partial_name_faculty))
+                        else if(currentSentance.sentenceType.Contains(ContextObject.SentenceType.negative))
                         {
-                            output = output + " - " + lookupMessage("filler", "partial_name_faculty");
-                        }
-                        else
+                            output = output + " - " + lookupMessage("filler", Main_UI.waitingOnResponseNeg);
+                        }else
                         {
-                            output = output + " - " + lookupMessage("filler", "error_name_faculty");
+                            output = output + " - " + lookupMessage("filler", "error");
                         }
-                    }
-                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
-                    {
-                    }
-                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.workstation))
-                    {
-                        output = output + " - " + lookupMessage("filler", "workstation");
-                    }
-                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.thank_you))
-                    {
-                        output = output + " - " + lookupMessage("filler", "thanks");
                     }
                     else
                     {
-                        output = output + " - " + lookupMessage("filler", "error");
+                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                        {
+                            output = output + " - " + lookupMessage("filler", "farewell");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting))
+                        {
+                            output = output + " - " + lookupMessage("filler", "greeting");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
+                        {
+                            output = output + " - " + lookupMessage("filler", "greeting_question");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
+                        {
+                            output = output + " - " + lookupMessage("filler", "rude_insult");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
+                        {
+                            if (currentSentance.subType.Contains(ContextObject.SubjectType.name_faculty))
+                            {
+                                output = output + " - " + lookupMessage("filler", "name_faculty");
+                            }
+                            else
+                            if (currentSentance.subType.Contains(ContextObject.SubjectType.partial_name_faculty))
+                            {
+                                output = output + " - " + lookupMessage("filler", "partial_name_faculty");
+                            }
+                            else
+                            {
+                                output = output + " - " + lookupMessage("filler", "error_name_faculty");
+                            }
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.workstation))
+                        {
+                            output = output + " - " + lookupMessage("filler", "workstation");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.thank_you))
+                        {
+                            output = output + " - " + lookupMessage("filler", "thanks");
+                        }
+                        else
+                        {
+                            output = output + " - " + lookupMessage("filler", "error");
+                        }
                     }
                 }
                 Main_UI.Latest_AI_Message = output.Trim().TrimStart('-');
@@ -158,6 +176,9 @@ namespace UoL_Virtual_Assistant
             if (message == "PARTIAL_NAME_FACULTY")
             {
                 output = output.Replace("$fullName", Main_UI.currentObject.ChildNodes[0].InnerText);
+                Main_UI.waitingOnResponse = true;
+                Main_UI.waitingOnResponsePos = "name_faculty";
+                Main_UI.waitingOnResponseNeg = "error_name_faculty";
             }
             if (message == "WORKSTATION")
             {
