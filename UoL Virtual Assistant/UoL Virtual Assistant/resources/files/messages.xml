@@ -190,7 +190,7 @@
 				<MESSAGE>Oh sure, I know $firstName, good mate of mine. His email is $email and his phone is $phone</MESSAGE>
 			</BRUCE>
 			<HAL>
-				<MESSAGE>There email is $email, and phone is $phone</MESSAGE>
+				<MESSAGE>Their email is $email, and phone is $phone</MESSAGE>
 			</HAL>
 			<JASON>
 				<MESSAGE>I just did a lookup and found that $firstName's email is $email, and phone is $phone</MESSAGE>
@@ -212,7 +212,7 @@
 				<MESSAGE>I dont know who that is sorry.</MESSAGE>
 			</BRUCE>
 			<HAL>
-				<MESSAGE>I cant find them in the database.</MESSAGE>
+				<MESSAGE>I do not know who you speak of.</MESSAGE>
 			</HAL>
 			<JASON>
 				<MESSAGE>I dont think they work here.</MESSAGE>
