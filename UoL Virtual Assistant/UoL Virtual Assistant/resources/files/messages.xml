@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MESSAGES>
 	<FILLER>
-		<GREETINGS>
+		<GREETING>
 			<BRUCE>
 				<MESSAGE>Hi, I'm Bruce Hargrave and I'll be dealing with your query today. What would you like me to do for you?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName. What would you like me to do for you today?</MESSAGE>
@@ -34,8 +34,8 @@
 				<MESSAGE>Hello, how can I help you?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName, What can I do to help?</MESSAGE>
 			</DEFAULT>
-		</GREETINGS>
-		<GREETINGSEND>
+		</GREETING>
+		<GREETINGEND>
 			<BRUCE>
 				<MESSAGE>Hi, I'm Bruce Hargrave and I'm just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day.</MESSAGE>
 			</BRUCE>
@@ -51,7 +51,7 @@
 			<DEFAULT>
 				<MESSAGE>Hi $studentFirstName. We're just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day or leave the question with the out of hours service.</MESSAGE>
 			</DEFAULT>
-		</GREETINGSEND>
+		</GREETINGEND>
 		<PROMPT>
 			<BRUCE>
 				<MESSAGE>Are you still there?</MESSAGE>
@@ -82,7 +82,7 @@
 				<MESSAGE>$studentFirstName?</MESSAGE>
 			</DEFAULT>
 		</PROMPT>
-		<FAREWELLS>
+		<FAREWELL>
 			<BRUCE>
 				<MESSAGE>Have a fantastic day, I remain, Bruce.</MESSAGE>
 			</BRUCE>
@@ -98,8 +98,8 @@
 			<DEFAULT>
 				<MESSAGE>Thanks for contacting us, have a great day!</MESSAGE>
 			</DEFAULT>
-		</FAREWELLS>
-		<PLEASANTRIES>
+		</FAREWELL>
+		<GREETING_QUESTION>
 			<BRUCE>
 				<MESSAGE>I am OK thanks. What do you want?</MESSAGE>
 			</BRUCE>
@@ -115,7 +115,7 @@
 			<DEFAULT>
 				<MESSAGE>I am alright, how can I help you!</MESSAGE>
 			</DEFAULT>
-		</PLEASANTRIES>
+		</GREETING_QUESTION>
 		<ERROR>
 			<BRUCE>
 				<MESSAGE>I dont understand what you mean?</MESSAGE>
@@ -153,6 +153,7 @@
 		<RUDE_INSULT>
 			<BRUCE>
 				<MESSAGE>There is no need for that here.</MESSAGE>
+				<MESSAGE>Hey, $studentFirstName. Thats not cool.</MESSAGE>
 			</BRUCE>
 			<HAL>
 				<MESSAGE>Please refraim from being rude.</MESSAGE>
@@ -167,6 +168,28 @@
 				<MESSAGE>Please dont put insults in the chat.</MESSAGE>
 			</DEFAULT>
 		</RUDE_INSULT>
+		<NAME_FACULTY>
+			<BRUCE>
+				<MESSAGE>Oh sure, I know $firstName, good mate of mine. His email is $email and his phone is $phone</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>There email is $email, and phone is $phone</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>I just did a lookup and found that $firstName's email is $email, and phone is $phone</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>I know exactly who you mean, their email is $email and their phone is $phone</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Yes, their phone is $phone, and there email is $email</MESSAGE>
+			</DEFAULT>
+		</NAME_FACULTY>
+		<PARTIAL_NAME_FACULTY>
+			<DEFAULT>
+				<MESSAGE>Do you mean, $fullName?</MESSAGE>
+			</DEFAULT>
+		</PARTIAL_NAME_FACULTY>
 	</FILLER>
 	<FACILITY>
 		<CONTACT>

@@ -38,18 +38,18 @@ namespace UoL_Virtual_Assistant
             {
                 if ((Main_UI.currentTime > new TimeSpan(17, 55, 0)))
                 {
-                    lookupMessage("filler", "greetingsEnd");
+                    lookupMessage("filler", "greetingEnd");
                 }
                 else
                 {
-                    lookupMessage("filler", "greetings");
+                    lookupMessage("filler", "greeting");
                 }
                 return;
             }
 
             if (Main_UI.AI_Message_Counter == 24)
             {
-                lookupMessage("filler", "farewells");
+                lookupMessage("filler", "farewell");
                 return;
             }
 
@@ -59,7 +59,6 @@ namespace UoL_Virtual_Assistant
                 List<sentance> sentences = PI.SplitInputReturn(Main_UI.Latest_User_Message.ToLower());
                 foreach (sentance currentSentance in sentences)
                 {
-                    MessageBox.Show(currentSentance.contextString);
                     lookupMessage("filler", currentSentance.contextString);
                 }
                 return;
@@ -75,22 +74,44 @@ namespace UoL_Virtual_Assistant
             String[] messageData = message.Split(':');
             message = messageData[0].Trim();
 
+            messageData = message.Split(' ');
+            message = messageData[0].Trim();
+
+            if (message=="QUESTION_WHO")
+            {
+                message = messageData[2].Trim();
+            }
+
             Random rnd = new Random();
             string url = "../../resources/files/messages.xml";
 
             XmlDocument doc = new XmlDocument();
             doc.Load(url);
-            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/"+ agent + "/MESSAGE");
+            MessageBox.Show("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");//hcazDebug
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");
             if (nodes.Count == 0)
             {
+                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/DEFAULT/MESSAGE");
             }
             if (nodes.Count == 0)
             {
+                MessageBox.Show("Context not found?");
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/" + agent + "/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/DEFAULT/MESSAGE");
             }
             if (nodes.Count == 0)
             {
+                MessageBox.Show("Message not found?");
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/" + agent + "/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("Agent not found?");
                 nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/DEFAULT/MESSAGE");
             }
             int random = rnd.Next(0, nodes.Count);
@@ -98,6 +119,17 @@ namespace UoL_Virtual_Assistant
 
             output = output.Replace("$studentFirstName", this.studentFirstname);
             output = output.Replace("$studentID", this.studentNumber);
+
+            if (message == "NAME_FACULTY")
+            {
+                output = output.Replace("$firstName", Main_UI.currentObject.ChildNodes[0].InnerText);
+                output = output.Replace("$email", Main_UI.currentObject.ChildNodes[4].InnerText);
+                output = output.Replace("$phone", Main_UI.currentObject.ChildNodes[5].InnerText);
+            }
+            if (message == "PARTIAL_NAME_FACULTY")
+            {
+                output = output.Replace("$fullName", Main_UI.currentObject.InnerText);
+            }
 
             Main_UI.Latest_AI_Message = output;
         }
