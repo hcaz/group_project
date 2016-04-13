@@ -133,6 +133,23 @@
 				<MESSAGE>I am sorry I dont understand what your trying to say?</MESSAGE>
 			</DEFAULT>
 		</ERROR>
+		<THANKS>
+			<BRUCE>
+				<MESSAGE>Your are welcome</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>No problem</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>No problemo m8</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>You are welcome :3</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Thats ok.</MESSAGE>
+			</DEFAULT>
+		</THANKS>
 		<GET>
 			<BRUCE>
 				<MESSAGE>I will send you an email to your student email ($studentID@students.lincoln.ac.uk) with that information after this chat.</MESSAGE>

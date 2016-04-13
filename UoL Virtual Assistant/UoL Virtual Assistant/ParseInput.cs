@@ -548,8 +548,7 @@ namespace UoL_Virtual_Assistant
                     {
                         if (!contextObject.subjectList.Contains(insults[0].ChildNodes[j]))
                         {
-                            contextObject.subType.Add(ContextObject.SubjectType.rude_insult);
-                            contextObject.subjectList.Add(insults[0].ChildNodes[j]);
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.insult);
                             contexts[i] = contexts[i] + "[INSULT: " + insults[0].ChildNodes[j].Name.ToLower() + "]";
                         }
                     }
@@ -571,7 +570,7 @@ namespace UoL_Virtual_Assistant
         public List<XmlNode> subjectList = new List<XmlNode>();
         public string debugString = "";
         //
-        public enum SubjectType { partial_name_faculty, name_faculty, name_location, type_location, rude_insult };
+        public enum SubjectType { partial_name_faculty, name_faculty, name_location, type_location };
         public enum SentenceType { greeting, farewell, affirmative, negative, thank_you, greeting_question, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
 
         public ContextObject()
@@ -598,7 +597,7 @@ namespace UoL_Virtual_Assistant
                     {
                         debugString = debugString + " [" + subType[i] + ": " + subjectList[i].Name + "] ";
                     }
-                    else if (subType[i] == SubjectType.rude_insult)
+                    else if (sentenceType[i] == SentenceType.insult)
                     {
                         debugString = debugString + " [" + subType[i] + ": " + subjectList[i].Name.ToLower() + "] ";
                     }

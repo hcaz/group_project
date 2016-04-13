@@ -58,22 +58,36 @@ namespace UoL_Virtual_Assistant
                 string output = "";
                 foreach (ContextObject currentSentance in sentences)
                 {
-                    if(currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting))
+                    if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                    {
+                        output = output + " - " + lookupMessage("filler", "farewell");
+                    }
+                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting))
                     {
                         output = output + " - " + lookupMessage("filler", "greeting");
-                    }else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
+                    }
+                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
                     {
                         output = output + " - " + lookupMessage("filler", "greeting_question");
-                    }else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
+                    }
+                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
                     {
                         output = output + " - " + lookupMessage("filler", "rude_insult");
-                    }else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
+                    }
+                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
                     {
-                        output = output + " - " + lookupMessage("filler", "NAME_FACULTY");
+                        output = output + " - " + lookupMessage("filler", "name_faculty");
+                    }
+                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
+                    {
+                    }
+                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.thank_you))
+                    {
+                        output = output + " - " + lookupMessage("filler", "thanks");
                     }
                     else
                     {
-                        output = output + " - " + lookupMessage("filler", "ERROR");
+                        output = output + " - " + lookupMessage("filler", "error");
                     }
                 }
                 Main_UI.Latest_AI_Message = output.Trim().TrimStart('-');
