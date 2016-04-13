@@ -21,6 +21,10 @@ namespace UoL_Virtual_Assistant
         XmlNodeList greetingQuestions;
         XmlNodeList questionWords;
         XmlNodeList greetingWords;
+        XmlNodeList farewells;
+        XmlNodeList affirmatives;
+        XmlNodeList negatives;
+        XmlNodeList thanks;
         XmlNodeList keyWords;
         XmlNodeList banks;
         XmlNodeList shops;
@@ -30,7 +34,6 @@ namespace UoL_Virtual_Assistant
         XmlNodeList fastFood;
         XmlNodeList estateAgents;
         XmlNodeList insults;
-        XmlNodeList pleasantrie;
         XmlNode ignoreWords;
 
         string[] punctuation = { "?", "!", "." };
@@ -44,6 +47,10 @@ namespace UoL_Virtual_Assistant
             questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
             greetingQuestions = keywordData.SelectNodes("KEYWORDS/GREETINGS_QUESTIONS");
             greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
+            farewells = keywordData.SelectNodes("KEYWORDS/FAREWELLS");
+            affirmatives = keywordData.SelectNodes("KEYWORDS/CONFIRMATIONS");
+            negatives = keywordData.SelectNodes("KEYWORDS/NEGATIVE_RESPONSES");
+            thanks = keywordData.SelectNodes("KEYWORDS/THANK_YOUS");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
             banks = locationData.SelectNodes("LOCATIONS/BANKS");
             shops = locationData.SelectNodes("LOCATIONS/SHOPS");
@@ -81,7 +88,7 @@ namespace UoL_Virtual_Assistant
 
         }
 
-        public List<sentance> SplitInputReturn(string input)
+        public List<ContextObject> SplitInputReturn(string input)
         {
             staffData.Load("../../staff.xml");
             keywordData.Load("../../keywordData.xml");
@@ -90,6 +97,10 @@ namespace UoL_Virtual_Assistant
             questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
             greetingQuestions = keywordData.SelectNodes("KEYWORDS/GREETINGS_QUESTIONS");
             greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
+            farewells = keywordData.SelectNodes("KEYWORDS/FAREWELLS");
+            affirmatives = keywordData.SelectNodes("KEYWORDS/CONFIRMATIONS");
+            thanks = keywordData.SelectNodes("KEYWORDS/THANK_YOUS");
+            negatives = keywordData.SelectNodes("KEYWORDS/NEGATIVE_RESPONSES");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
             banks = locationData.SelectNodes("LOCATIONS/BANKS");
             shops = locationData.SelectNodes("LOCATIONS/SHOPS");
@@ -100,7 +111,6 @@ namespace UoL_Virtual_Assistant
             estateAgents = locationData.SelectNodes("LOCATIONS/ESTATEAGENTS");
             ignoreWords = keywordData.SelectSingleNode("KEYWORDS/IGNOREWORDS");
             insults = keywordData.SelectNodes("KEYWORDS/INSULTS");
-            pleasantrie = keywordData.SelectNodes("KEYWORDS/PLEASANTRIE");
 
             string regexPattern = @"(\? )|(\! )|(\. )|(\?)|(\!)|(\.)";
             string[] sentences = Regex.Split(input, regexPattern);
@@ -110,18 +120,8 @@ namespace UoL_Virtual_Assistant
             sentences = SentenceCleanup(sentences);
 
             contextObjects = AnalyseContext(sentences);
-            
-            List<sentance> returnSentences = new List<sentance>();
-            //Concatenates strings for DEBUG testing
-            for (int i = 0; i < sentences.Length; i++)
-            {
-                sentance currentSentance = new sentance();
-                currentSentance.sentanceString = sentences[i];
-                currentSentance.contextString = contextObjects[i].debugString;
-                returnSentences.Add(currentSentance);
-            }
 
-            return returnSentences;
+            return contextObjects;
         }
 
         string[] SentenceCleanup(string[] sentences)
@@ -237,6 +237,62 @@ namespace UoL_Virtual_Assistant
                     }
                 }
 
+                //farewells
+                for (int j = 0; j < farewells[0].ChildNodes.Count; j++)
+                {
+                    //check against farewell words in array
+                    if (sentences[i].ToLower().Contains(farewells[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.farewell);
+                            contexts[i] = contexts[i] + "[Farewell: " + farewells[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //affirmatives
+                for (int j = 0; j < affirmatives[0].ChildNodes.Count; j++)
+                {
+                    //check against affirmative words in array
+                    if (sentences[i].ToLower().Contains(affirmatives[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.affirmative))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.affirmative);
+                            contexts[i] = contexts[i] + "[Affirmative: " + affirmatives[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //negatives
+                for (int j = 0; j < negatives[0].ChildNodes.Count; j++)
+                {
+                    //check against negative words in array
+                    if (sentences[i].ToLower().Contains(negatives[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.negative))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.negative);
+                            contexts[i] = contexts[i] + "[Negative: " + negatives[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //thanks
+                for (int j = 0; j < thanks[0].ChildNodes.Count; j++)
+                {
+                    //check against thanks words in array
+                    if (sentences[i].ToLower().Contains(thanks[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.thank_you))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.thank_you);
+                            contexts[i] = contexts[i] + "[Thank_you: " + thanks[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
                 for (int k = 0; k < staffNames[0].ChildNodes.Count; k++)
                 {
                     if (!facultyFullNameFound)
@@ -309,7 +365,7 @@ namespace UoL_Virtual_Assistant
                     {
                         //MessageBox.Show(facultyFullNameFound + " " + partialMatchNode.InnerText);
                         //MessageBox.Show(facultyFullNameFound + " " + partialIndex);
-                        contextObject.subType.Add(ContextObject.SubjectType.name_faculty);
+                        contextObject.subType.Add(ContextObject.SubjectType.partial_name_faculty);
                         contextObject.subjectList.Add(partialMatchNode);
                         contexts[partialIndex] = contexts[i] + "[PARTIAL_Name_Faculty: " + partialMatchNode.InnerText + "]";
                         Main_UI.currentObject = partialMatchNode;
@@ -515,8 +571,8 @@ namespace UoL_Virtual_Assistant
         public List<XmlNode> subjectList = new List<XmlNode>();
         public string debugString = "";
         //
-        public enum SubjectType { name_faculty, name_location, type_location, rude_insult };
-        public enum SentenceType { greeting, greeting_question, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
+        public enum SubjectType { partial_name_faculty, name_faculty, name_location, type_location, rude_insult };
+        public enum SentenceType { greeting, farewell, affirmative, negative, thank_you, greeting_question, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
 
         public ContextObject()
         {
@@ -553,11 +609,5 @@ namespace UoL_Virtual_Assistant
                 }
             }
         }
-    }
-
-    class sentance
-    {
-        public string sentanceString = "";
-        public string contextString = "";
     }
 }
