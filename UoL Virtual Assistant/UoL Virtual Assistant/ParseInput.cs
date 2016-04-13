@@ -100,6 +100,7 @@ namespace UoL_Virtual_Assistant
             greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
             farewells = keywordData.SelectNodes("KEYWORDS/FAREWELLS");
             affirmatives = keywordData.SelectNodes("KEYWORDS/CONFIRMATIONS");
+            thanks = keywordData.SelectNodes("KEYWORDS/THANK_YOUS");
             negatives = keywordData.SelectNodes("KEYWORDS/NEGATIVE_RESPONSES");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
             banks = locationData.SelectNodes("LOCATIONS/BANKS");
