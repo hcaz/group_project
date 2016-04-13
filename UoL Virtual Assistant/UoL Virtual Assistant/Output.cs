@@ -59,7 +59,6 @@ namespace UoL_Virtual_Assistant
                 List<sentance> sentences = PI.SplitInputReturn(Main_UI.Latest_User_Message.ToLower());
                 foreach (sentance currentSentance in sentences)
                 {
-                    MessageBox.Show(currentSentance.contextString);
                     lookupMessage("filler", currentSentance.contextString);
                 }
                 return;
@@ -75,57 +74,64 @@ namespace UoL_Virtual_Assistant
             String[] messageData = message.Split(':');
             message = messageData[0].Trim();
 
-            MessageBox.Show(message);
+            messageData = message.Split(' ');
+            message = messageData[0].Trim();
 
-            //Random rnd = new Random();
-            //string url = "../../resources/files/messages.xml";
+            if (message=="QUESTION_WHO")
+            {
+                message = messageData[2].Trim();
+            }
 
-            //MessageBox.Show("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");
+            Random rnd = new Random();
+            string url = "../../resources/files/messages.xml";
 
-            //XmlDocument doc = new XmlDocument();
-            //doc.Load(url);
-            //XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");
-            //if (nodes.Count == 0)
-            //{
-            //    MessageBox.Show("Agent not found?");
-            //    nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/DEFAULT/MESSAGE");
-            //}
-            //if (nodes.Count == 0)
-            //{
-            //    MessageBox.Show("Context not found?");
-            //    nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/" + agent + "/MESSAGE");
-            //}
-            //if (nodes.Count == 0)
-            //{
-            //    MessageBox.Show("Agent not found?");
-            //    nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/DEFAULT/MESSAGE");
-            //}
-            //if (nodes.Count == 0)
-            //{
-            //    MessageBox.Show("Message not found?");
-            //    nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/" + agent + "/MESSAGE");
-            //}
-            //if (nodes.Count == 0)
-            //{
-            //    MessageBox.Show("Agent not found?");
-            //    nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/DEFAULT/MESSAGE");
-            //}
-            //int random = rnd.Next(0, nodes.Count);
-            //string output = nodes[random].InnerText;
+            XmlDocument doc = new XmlDocument();
+            doc.Load(url);
+            MessageBox.Show("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");//hcazDebug
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("Agent not found?");
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/DEFAULT/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("Context not found?");
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/" + agent + "/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("Agent not found?");
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/" + message + "/DEFAULT/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("Message not found?");
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/" + agent + "/MESSAGE");
+            }
+            if (nodes.Count == 0)
+            {
+                MessageBox.Show("Agent not found?");
+                nodes = doc.DocumentElement.SelectNodes("/MESSAGES/FILLER/ERROR/DEFAULT/MESSAGE");
+            }
+            int random = rnd.Next(0, nodes.Count);
+            string output = nodes[random].InnerText;
 
-            //output = output.Replace("$studentFirstName", this.studentFirstname);
-            //output = output.Replace("$studentID", this.studentNumber);
+            output = output.Replace("$studentFirstName", this.studentFirstname);
+            output = output.Replace("$studentID", this.studentNumber);
 
-            //if (message == "NAME_FACULTY")
-            //{
-            //    MessageBox.Show(Main_UI.currentObject.ChildNodes[0].InnerText);
-            //}
-            //if (message == "PARTIAL_NAME_FACULTY")
-            //{
-            //    MessageBox.Show(Main_UI.currentObject.InnerText);
-            //}
+            if (message == "NAME_FACULTY")
+            {
+                output = output.Replace("$firstName", Main_UI.currentObject.ChildNodes[0].InnerText);
+                output = output.Replace("$email", Main_UI.currentObject.ChildNodes[4].InnerText);
+                output = output.Replace("$phone", Main_UI.currentObject.ChildNodes[5].InnerText);
+            }
+            if (message == "PARTIAL_NAME_FACULTY")
+            {
+                output = output.Replace("$fullName", Main_UI.currentObject.InnerText);
+            }
 
-            //Main_UI.Latest_AI_Message = output;
+            Main_UI.Latest_AI_Message = output;
         }
     }
 }
