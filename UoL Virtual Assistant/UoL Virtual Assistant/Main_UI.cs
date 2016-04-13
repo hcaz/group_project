@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,17 +21,19 @@ namespace UoL_Virtual_Assistant
         string UoL_Logo_Link; //creates a string that stores the users preferred website to launch when clicking on UoL branding
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*//
         //If debugging========================
-        public static TimeSpan currentTime = new TimeSpan(15, 05, 0);
-        public static DayOfWeek currentDay = DayOfWeek.Wednesday;
+        //public static TimeSpan currentTime = new TimeSpan(14, 05, 0);
+        //public static DayOfWeek currentDay = DayOfWeek.Wednesday;
         //If live========================
-        //public static TimeSpan currentTime = DateTime.Now.TimeOfDay;
-        //public static DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+        //This long way gives a better timestamp without miliseconds
+        public static TimeSpan currentTime = new TimeSpan(DateTime.Now.TimeOfDay.Hours, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds);
+        public static DayOfWeek currentDay = DateTime.Now.DayOfWeek;
         //===============================
         public static string Student_ID; //creates a string that will store the Student ID
         public static string Student_First_Name = ""; //creates a string that will store the student first name
         public static string Student_Last_Name = ""; //creates a string that will store the student last name
         public static string Latest_User_Message = ""; //this is a string that contains the latest user message. it is easily accessable from other areas of the system
         public static string Latest_AI_Message = ""; // ....
+        public static XmlNode currentObject;
 
         int R; int G; int B; //creates R,G,B values for themes
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
@@ -514,7 +516,7 @@ namespace UoL_Virtual_Assistant
                         Pulse = false;
                     }
 
-                    if ((Main_UI.currentTime > new TimeSpan(17, 55, 0)) && (Main_UI.currentTime < new TimeSpan(18, 00, 01)))
+                    if ((DateTime.Now.TimeOfDay > new TimeSpan(17, 55, 0)) && (DateTime.Now.TimeOfDay < new TimeSpan(18, 00, 01)))
                     {
                         Connection_Status = 1;
                     }
@@ -628,7 +630,7 @@ namespace UoL_Virtual_Assistant
                     }
 
                     Agent_Name_Label.BringToFront();
-                    await Task.Delay(1000); //delay
+                    await Task.Delay(1000);
                     for (int Profile_Picture_Timing = 0; Profile_Picture_Timing < 20; Profile_Picture_Timing++) //while the profile picture has not yet been fully resized
                     {
                         Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y - 1); //adjust the height of the image by 1 on every loop
@@ -641,7 +643,7 @@ namespace UoL_Virtual_Assistant
 
                         await Task.Delay(1); //delay
                     }
-                    await Task.Delay(2000); //delay
+                    await Task.Delay(2000);
 
                     //Agent_Name_Label.TextAlign = ContentAlignment.MiddleLeft; //set the allignment to the left
                     //Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X + 69, Agent_Name_Label.Location.Y); //componsate for the resizing and allignment change
@@ -2025,7 +2027,7 @@ namespace UoL_Virtual_Assistant
         {
             if ((Main_UI.currentDay >= DayOfWeek.Monday) && (Main_UI.currentDay <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((Main_UI.currentTime >= new TimeSpan(09, 0, 0)) && (Main_UI.currentTime > new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
+                if ((Main_UI.currentTime > new TimeSpan(09, 0, 0)) && (Main_UI.currentTime < new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
                 {
                     if((Main_UI.currentTime > new TimeSpan(11, 55, 0)) && (Main_UI.currentTime < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
@@ -2077,7 +2079,7 @@ namespace UoL_Virtual_Assistant
 
                 else
                 {
-                    
+                    MessageBox.Show("Not office hours : " + Main_UI.currentTime.ToString() + " : " + new TimeSpan(09, 0, 0).ToString());
                     Connected_Agent = 4;
                 }
             }
