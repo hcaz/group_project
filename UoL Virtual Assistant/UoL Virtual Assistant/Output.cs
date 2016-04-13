@@ -93,6 +93,10 @@ namespace UoL_Virtual_Assistant
                     else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
                     {
                     }
+                    else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.workstation))
+                    {
+                        output = output + " - " + lookupMessage("filler", "workstation");
+                    }
                     else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.thank_you))
                     {
                         output = output + " - " + lookupMessage("filler", "thanks");
@@ -154,6 +158,15 @@ namespace UoL_Virtual_Assistant
             if (message == "PARTIAL_NAME_FACULTY")
             {
                 output = output.Replace("$fullName", Main_UI.currentObject.ChildNodes[0].InnerText);
+            }
+            if (message == "WORKSTATION")
+            {
+                ScrapeData data = new ScrapeData();
+                data.freePCData();
+                data.libraryOpening();
+                output = output.Replace("$freePCS", data.freePcs.ToString());
+                output = output.Replace("$times", data.libraryOpen.ToString());
+                output = output.Replace("$deskTimes", data.libraryDeskOpen.ToString());
             }
 
             return output;
