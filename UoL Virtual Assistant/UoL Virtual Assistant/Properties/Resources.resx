@@ -154,19 +154,22 @@
   <data name="User Message" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\images\messaging\User Message.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="BruceProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\images\agent images\BruceProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bruce" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\images\agent images\Bruce.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GenericProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\images\agent images\GenericProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Expand_Button" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\images\misc items\Expand_Button.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="HalProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\images\agent images\HalProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Generic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\images\agent images\Generic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="JasonProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\images\agent images\JasonProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Hal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\images\agent images\Hal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SuziProfilePic" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\images\agent images\SuziProfilePic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Jason" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\images\agent images\Jason.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Suzi" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\images\agent images\Suzi.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

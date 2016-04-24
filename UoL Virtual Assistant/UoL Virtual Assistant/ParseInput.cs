@@ -21,6 +21,12 @@ namespace UoL_Virtual_Assistant
         XmlNodeList greetingQuestions;
         XmlNodeList questionWords;
         XmlNodeList greetingWords;
+        XmlNodeList farewells;
+        XmlNodeList affirmatives;
+        XmlNodeList negatives;
+        XmlNodeList thanks;
+        XmlNodeList workstations;
+        XmlNodeList weather;
         XmlNodeList keyWords;
         XmlNodeList banks;
         XmlNodeList shops;
@@ -43,6 +49,12 @@ namespace UoL_Virtual_Assistant
             questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
             greetingQuestions = keywordData.SelectNodes("KEYWORDS/GREETINGS_QUESTIONS");
             greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
+            farewells = keywordData.SelectNodes("KEYWORDS/FAREWELLS");
+            affirmatives = keywordData.SelectNodes("KEYWORDS/CONFIRMATIONS");
+            negatives = keywordData.SelectNodes("KEYWORDS/NEGATIVE_RESPONSES");
+            thanks = keywordData.SelectNodes("KEYWORDS/THANK_YOUS");
+            workstations = keywordData.SelectNodes("KEYWORDS/FREE_PCS");
+            weather = keywordData.SelectNodes("KEYWORDS/WEATHER_QUERY");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
             banks = locationData.SelectNodes("LOCATIONS/BANKS");
             shops = locationData.SelectNodes("LOCATIONS/SHOPS");
@@ -66,7 +78,7 @@ namespace UoL_Virtual_Assistant
 
 
             contextObjects = AnalyseContext(sentences);
-            
+
 
             string temp = " ";
             //Concatenates strings for DEBUG testing
@@ -80,7 +92,7 @@ namespace UoL_Virtual_Assistant
 
         }
 
-        public List<sentance> SplitInputReturn(string input)
+        public List<ContextObject> SplitInputReturn(string input)
         {
             staffData.Load("../../staff.xml");
             keywordData.Load("../../keywordData.xml");
@@ -89,6 +101,12 @@ namespace UoL_Virtual_Assistant
             questionWords = keywordData.SelectNodes("KEYWORDS/QUESTIONS");
             greetingQuestions = keywordData.SelectNodes("KEYWORDS/GREETINGS_QUESTIONS");
             greetingWords = keywordData.SelectNodes("KEYWORDS/GREETINGS");
+            farewells = keywordData.SelectNodes("KEYWORDS/FAREWELLS");
+            affirmatives = keywordData.SelectNodes("KEYWORDS/CONFIRMATIONS");
+            thanks = keywordData.SelectNodes("KEYWORDS/THANK_YOUS");
+            negatives = keywordData.SelectNodes("KEYWORDS/NEGATIVE_RESPONSES");
+            workstations = keywordData.SelectNodes("KEYWORDS/FREE_PCS");
+            weather = keywordData.SelectNodes("KEYWORDS/WEATHER_QUERY");
             keyWords = keywordData.SelectNodes("KEYWORDS/MISC");
             banks = locationData.SelectNodes("LOCATIONS/BANKS");
             shops = locationData.SelectNodes("LOCATIONS/SHOPS");
@@ -100,9 +118,6 @@ namespace UoL_Virtual_Assistant
             ignoreWords = keywordData.SelectSingleNode("KEYWORDS/IGNOREWORDS");
             insults = keywordData.SelectNodes("KEYWORDS/INSULTS");
 
-
-            input.ToLower();
-
             string regexPattern = @"(\? )|(\! )|(\. )|(\?)|(\!)|(\.)";
             string[] sentences = Regex.Split(input, regexPattern);
             string[] separatedWords = input.Split(' ');
@@ -111,18 +126,8 @@ namespace UoL_Virtual_Assistant
             sentences = SentenceCleanup(sentences);
 
             contextObjects = AnalyseContext(sentences);
-            
-            List<sentance> returnSentences = new List<sentance>();
-            //Concatenates strings for DEBUG testing
-            for (int i = 0; i < sentences.Length; i++)
-            {
-                sentance currentSentance = new sentance();
-                currentSentance.sentanceString = sentences[i];
-                currentSentance.contextString = contextObjects[i].debugString;
-                returnSentences.Add(currentSentance);
-            }
 
-            return returnSentences;
+            return contextObjects;
         }
 
         string[] SentenceCleanup(string[] sentences)
@@ -233,7 +238,91 @@ namespace UoL_Virtual_Assistant
                         if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
                         {
                             contextObject.sentenceType.Add(ContextObject.SentenceType.greeting_question);
-                            contexts[i] = contexts[i] + "[Greeting_Questions: " + greetingQuestions[0].ChildNodes[j].Name.ToLower() + "]";
+                            contexts[i] = contexts[i] + "[Greeting_Question: " + greetingQuestions[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //farewells
+                for (int j = 0; j < farewells[0].ChildNodes.Count; j++)
+                {
+                    //check against farewell words in array
+                    if (sentences[i].ToLower().Contains(farewells[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.farewell);
+                            contexts[i] = contexts[i] + "[Farewell: " + farewells[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //affirmatives
+                for (int j = 0; j < affirmatives[0].ChildNodes.Count; j++)
+                {
+                    //check against affirmative words in array
+                    if (sentences[i].ToLower().Contains(affirmatives[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.affirmative))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.affirmative);
+                            contexts[i] = contexts[i] + "[Affirmative: " + affirmatives[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //negatives
+                for (int j = 0; j < negatives[0].ChildNodes.Count; j++)
+                {
+                    //check against negative words in array
+                    if (sentences[i].ToLower().Contains(negatives[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.negative))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.negative);
+                            contexts[i] = contexts[i] + "[Negative: " + negatives[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //thanks
+                for (int j = 0; j < thanks[0].ChildNodes.Count; j++)
+                {
+                    //check against thanks words in array
+                    if (sentences[i].ToLower().Contains(thanks[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.thank_you))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.thank_you);
+                            contexts[i] = contexts[i] + "[Thank_you: " + thanks[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //free_pcs
+                for (int j = 0; j < workstations[0].ChildNodes.Count; j++)
+                {
+                    //check against free_pcs words in array
+                    if (sentences[i].ToLower().Contains(workstations[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.workstation))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.workstation);
+                            contexts[i] = contexts[i] + "[Workstation: " + workstations[0].ChildNodes[j].Name.ToLower() + "]";
+                        }
+                    }
+                }
+
+                //weather
+                for (int j = 0; j < weather[0].ChildNodes.Count; j++)
+                {
+                    //check against weather words in array
+                    if (sentences[i].ToLower().Contains(weather[0].ChildNodes[j].InnerText.ToLower()))
+                    {
+                        if (!contextObject.sentenceType.Contains(ContextObject.SentenceType.weather))
+                        {
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.weather);
+                            contexts[i] = contexts[i] + "[Weather: " + weather[0].ChildNodes[j].Name.ToLower() + "]";
                         }
                     }
                 }
@@ -271,6 +360,7 @@ namespace UoL_Virtual_Assistant
                                             contextObject.subType.Add(ContextObject.SubjectType.name_faculty);
                                             contextObject.subjectList.Add(staffNames[0].ChildNodes[k]);
                                             contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                            Main_UI.currentObject = staffNames[0].ChildNodes[k];
                                         }
                                     }
                                     else if (contexts[i] == null && !contexts[i].ToLower().Contains("name_faculty"))
@@ -278,6 +368,7 @@ namespace UoL_Virtual_Assistant
                                         contextObject.subType.Add(ContextObject.SubjectType.name_faculty);
                                         contextObject.subjectList.Add(staffNames[0].ChildNodes[k]);
                                         contexts[i] = contexts[i] + "[Name_Faculty: " + staffNames[0].ChildNodes[k].ChildNodes[0].InnerText + "]";
+                                        Main_UI.currentObject = staffNames[0].ChildNodes[k];
                                     }
 
                                     break;
@@ -308,9 +399,10 @@ namespace UoL_Virtual_Assistant
                     {
                         //MessageBox.Show(facultyFullNameFound + " " + partialMatchNode.InnerText);
                         //MessageBox.Show(facultyFullNameFound + " " + partialIndex);
-                        contextObject.subType.Add(ContextObject.SubjectType.name_faculty);
+                        contextObject.subType.Add(ContextObject.SubjectType.partial_name_faculty);
                         contextObject.subjectList.Add(partialMatchNode);
                         contexts[partialIndex] = contexts[i] + "[PARTIAL_Name_Faculty: " + partialMatchNode.InnerText + "]";
+                        Main_UI.currentObject = partialMatchNode;
                     }
                 }
 
@@ -490,8 +582,7 @@ namespace UoL_Virtual_Assistant
                     {
                         if (!contextObject.subjectList.Contains(insults[0].ChildNodes[j]))
                         {
-                            contextObject.subType.Add(ContextObject.SubjectType.rude_insult);
-                            contextObject.subjectList.Add(insults[0].ChildNodes[j]);
+                            contextObject.sentenceType.Add(ContextObject.SentenceType.insult);
                             contexts[i] = contexts[i] + "[INSULT: " + insults[0].ChildNodes[j].Name.ToLower() + "]";
                         }
                     }
@@ -513,8 +604,8 @@ namespace UoL_Virtual_Assistant
         public List<XmlNode> subjectList = new List<XmlNode>();
         public string debugString = "";
         //
-        public enum SubjectType { name_faculty, name_location, type_location, rude_insult };
-        public enum SentenceType { greeting, greeting_question, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
+        public enum SubjectType { partial_name_faculty, name_faculty, name_location, type_location };
+        public enum SentenceType { greeting, farewell, affirmative, negative, thank_you, workstation, weather, greeting_question, statement, insult, question_where, question_why, question_when, question_what, question_who, tell_me_about};
 
         public ContextObject()
         {
@@ -540,7 +631,7 @@ namespace UoL_Virtual_Assistant
                     {
                         debugString = debugString + " [" + subType[i] + ": " + subjectList[i].Name + "] ";
                     }
-                    else if (subType[i] == SubjectType.rude_insult)
+                    else if (sentenceType[i] == SentenceType.insult)
                     {
                         debugString = debugString + " [" + subType[i] + ": " + subjectList[i].Name.ToLower() + "] ";
                     }
@@ -551,11 +642,5 @@ namespace UoL_Virtual_Assistant
                 }
             }
         }
-    }
-
-    class sentance
-    {
-        public string sentanceString = "";
-        public string contextString = "";
     }
 }

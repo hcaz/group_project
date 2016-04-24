@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MESSAGES>
 	<FILLER>
-		<GREETINGS>
+		<GREETING>
 			<BRUCE>
 				<MESSAGE>Hi, I'm Bruce Hargrave and I'll be dealing with your query today. What would you like me to do for you?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName. What would you like me to do for you today?</MESSAGE>
@@ -34,8 +34,8 @@
 				<MESSAGE>Hello, how can I help you?</MESSAGE>
 				<MESSAGE>Hi $studentFirstName, What can I do to help?</MESSAGE>
 			</DEFAULT>
-		</GREETINGS>
-		<GREETINGSEND>
+		</GREETING>
+		<GREETINGEND>
 			<BRUCE>
 				<MESSAGE>Hi, I'm Bruce Hargrave and I'm just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day.</MESSAGE>
 			</BRUCE>
@@ -51,7 +51,7 @@
 			<DEFAULT>
 				<MESSAGE>Hi $studentFirstName. We're just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day or leave the question with the out of hours service.</MESSAGE>
 			</DEFAULT>
-		</GREETINGSEND>
+		</GREETINGEND>
 		<PROMPT>
 			<BRUCE>
 				<MESSAGE>Are you still there?</MESSAGE>
@@ -82,7 +82,7 @@
 				<MESSAGE>$studentFirstName?</MESSAGE>
 			</DEFAULT>
 		</PROMPT>
-		<FAREWELLS>
+		<FAREWELL>
 			<BRUCE>
 				<MESSAGE>Have a fantastic day, I remain, Bruce.</MESSAGE>
 			</BRUCE>
@@ -98,8 +98,8 @@
 			<DEFAULT>
 				<MESSAGE>Thanks for contacting us, have a great day!</MESSAGE>
 			</DEFAULT>
-		</FAREWELLS>
-		<PLEASANTRIES>
+		</FAREWELL>
+		<GREETING_QUESTION>
 			<BRUCE>
 				<MESSAGE>I am OK thanks. What do you want?</MESSAGE>
 			</BRUCE>
@@ -115,7 +115,7 @@
 			<DEFAULT>
 				<MESSAGE>I am alright, how can I help you!</MESSAGE>
 			</DEFAULT>
-		</PLEASANTRIES>
+		</GREETING_QUESTION>
 		<ERROR>
 			<BRUCE>
 				<MESSAGE>I dont understand what you mean?</MESSAGE>
@@ -133,6 +133,23 @@
 				<MESSAGE>I am sorry I dont understand what your trying to say?</MESSAGE>
 			</DEFAULT>
 		</ERROR>
+		<THANKS>
+			<BRUCE>
+				<MESSAGE>Your are welcome</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>No problem</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>No problemo m9</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>You are welcome :3</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Thats ok.</MESSAGE>
+			</DEFAULT>
+		</THANKS>
 		<GET>
 			<BRUCE>
 				<MESSAGE>I will send you an email to your student email ($studentID@students.lincoln.ac.uk) with that information after this chat.</MESSAGE>
@@ -153,6 +170,7 @@
 		<RUDE_INSULT>
 			<BRUCE>
 				<MESSAGE>There is no need for that here.</MESSAGE>
+				<MESSAGE>Hey, $studentFirstName. Thats not cool.</MESSAGE>
 			</BRUCE>
 			<HAL>
 				<MESSAGE>Please refraim from being rude.</MESSAGE>
@@ -167,14 +185,12 @@
 				<MESSAGE>Please dont put insults in the chat.</MESSAGE>
 			</DEFAULT>
 		</RUDE_INSULT>
-	</FILLER>
-	<FACILITY>
-		<CONTACT>
+		<NAME_FACULTY>
 			<BRUCE>
 				<MESSAGE>Oh sure, I know $firstName, good mate of mine. His email is $email and his phone is $phone</MESSAGE>
 			</BRUCE>
 			<HAL>
-				<MESSAGE>There email is $email, and phone is $phone</MESSAGE>
+				<MESSAGE>Their email is $email, and phone is $phone</MESSAGE>
 			</HAL>
 			<JASON>
 				<MESSAGE>I just did a lookup and found that $firstName's email is $email, and phone is $phone</MESSAGE>
@@ -185,13 +201,18 @@
 			<DEFAULT>
 				<MESSAGE>Yes, their phone is $phone, and there email is $email</MESSAGE>
 			</DEFAULT>
-		</CONTACT>
-		<ERROR>
+		</NAME_FACULTY>
+		<PARTIAL_NAME_FACULTY>
+			<DEFAULT>
+				<MESSAGE>Do you mean, $fullName?</MESSAGE>
+			</DEFAULT>
+		</PARTIAL_NAME_FACULTY>
+		<ERROR_NAME_FACULTY>
 			<BRUCE>
 				<MESSAGE>I dont know who that is sorry.</MESSAGE>
 			</BRUCE>
 			<HAL>
-				<MESSAGE>I cant find them in the database.</MESSAGE>
+				<MESSAGE>I do not know who you speak of.</MESSAGE>
 			</HAL>
 			<JASON>
 				<MESSAGE>I dont think they work here.</MESSAGE>
@@ -202,8 +223,13 @@
 			<DEFAULT>
 				<MESSAGE>Sorry, but they do not work for the university.</MESSAGE>
 			</DEFAULT>
-		</ERROR>
-	</FACILITY>
+		</ERROR_NAME_FACULTY>
+		<WORKSTATION>
+			<DEFAULT>
+				<MESSAGE>The system says there are currently $freePCS free computers in the library right now. The library is open $times today, with the desk being open $deskTimes today.</MESSAGE>
+			</DEFAULT>
+		</WORKSTATION>
+	</FILLER>
 	<BULDINGS>
 		<LIBRARY>
 			<DEFAULT>
@@ -217,7 +243,7 @@
 		</LIBRARY_PC>
 		<OTHER>
 			<DEFAULT>
-				<MESSAGE>It is located at $location, and is open $tI'mes today.</MESSAGE>
+				<MESSAGE>It is located at $location, and is open $times today.</MESSAGE>
 			</DEFAULT>
 		</OTHER>
 	</BULDINGS>
