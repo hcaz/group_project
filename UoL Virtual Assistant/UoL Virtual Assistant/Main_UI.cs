@@ -1651,8 +1651,11 @@ namespace UoL_Virtual_Assistant
                 {
                     if (User_Message_Shell[User_Message_Counter - 1].Location.Y == User_Message_Pos)
                     {
-                        Up_Timer = 1;
-                        break;
+                        if (AI_Message_Counter < User_Message_Counter)
+                        {
+                            Up_Timer = 1;
+                            break;
+                        }
                     }
 
                     for (Message_No = 0; Message_No <= 25; Message_No++)
@@ -2023,9 +2026,10 @@ namespace UoL_Virtual_Assistant
 
         private void Is_Agent_Available()
         {
-            if ((Main_UI.currentDay >= DayOfWeek.Monday) && (Main_UI.currentDay <= DayOfWeek.Friday)) //if the current day is not a weekend
+            if (Main_UI.currentDay == DayOfWeek.Wednesday)
+            //if ((Main_UI.currentDay >= DayOfWeek.Monday) && (Main_UI.currentDay <= DayOfWeek.Friday)) //if the current day is not a weekend
             {
-                if ((Main_UI.currentTime >= new TimeSpan(09, 0, 0)) && (Main_UI.currentTime > new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
+                if ((Main_UI.currentTime >= new TimeSpan(09, 0, 0))/* && (Main_UI.currentTime > new TimeSpan(18, 0, 0))*/) //if the current time falls between the opening hours of 9am and 6pm
                 {
                     if((Main_UI.currentTime > new TimeSpan(11, 55, 0)) && (Main_UI.currentTime < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
