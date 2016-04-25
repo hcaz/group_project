@@ -517,6 +517,8 @@
             this.Hamburger_Menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Hamburger_Menu.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Hamburger_Menu.FlatAppearance.BorderSize = 0;
+            this.Hamburger_Menu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Hamburger_Menu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Hamburger_Menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Hamburger_Menu.Location = new System.Drawing.Point(312, 37);
             this.Hamburger_Menu.Name = "Hamburger_Menu";

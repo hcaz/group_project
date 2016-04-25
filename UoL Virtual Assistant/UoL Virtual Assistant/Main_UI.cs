@@ -566,6 +566,7 @@ namespace UoL_Virtual_Assistant
                 Overlap_Fix.BringToFront();
                 Connecting_Label.Visible = true; //makes the connecting label visible
                 Conversation_Exit.Visible = true; //make the exit button visible
+                Conversation_Exit.BringToFront();
 
                 int Connection_Timer = Randomiser.Next(1, 5);
                 bool Exit_Visible = false;
@@ -576,11 +577,6 @@ namespace UoL_Virtual_Assistant
                     {
                         await Task.Delay(1); //delay
                         Connecting_Label.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
-
-                        if (Exit_Visible == false)
-                        {
-                            Conversation_Exit.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50); //reduce the colour value of the label by 50 on each loop
-                        }
                     }
 
                     if (Pulse == true)
@@ -994,7 +990,10 @@ namespace UoL_Virtual_Assistant
                         break;
                 }
 
-                Create_AI_Message(); //display the final message
+                if (Connection_Status == 1)
+                {
+                    Create_AI_Message(); //display the final message
+                }               
             }
         }
 
@@ -1129,138 +1128,141 @@ namespace UoL_Virtual_Assistant
             AI_Message_Shell[AI_Message_Counter].BorderStyle = BorderStyle.None;
             AI_Message_Shell[AI_Message_Counter].Size = new Size(150, (Line_Counter + 10));
 
-            this.Controls.Add(AI_Message[AI_Message_Counter]);
-            this.Controls.Add(AI_Message_Shell[AI_Message_Counter]);
-            AI_Message_Shell[AI_Message_Counter].BringToFront();
-            AI_Message[AI_Message_Counter].BringToFront();
 
-            Reiterate_Layers();
-
-            int Scroll_Steps = Line_Counter + 20;
-
-
-
-            for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
+            if (Connection_Status == 1)
             {
-                Scroll_AI_Message_Up(Message_Animation_Timer);
-                Scroll_User_Message_Up(Message_Animation_Timer);
+                this.Controls.Add(AI_Message[AI_Message_Counter]);
+                this.Controls.Add(AI_Message_Shell[AI_Message_Counter]);
+                AI_Message_Shell[AI_Message_Counter].BringToFront();
+                AI_Message[AI_Message_Counter].BringToFront();
 
-                AI_Message[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
-                AI_Message_Shell[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+                Reiterate_Layers();
 
-                if (Open_Profile_Card == 2)
+                int Scroll_Steps = Line_Counter + 20;
+
+
+
+                for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
                 {
-                    Agent_Card.BringToFront();
-                    Conversation_Area_Header.BringToFront();
-                    Agent_Name_Label.BringToFront();
-                    Agent_Status_Indicator.BringToFront();
-                    Agent_Profile_Image.BringToFront();
-                    Conversation_Exit.BringToFront();
+                    Scroll_AI_Message_Up(Message_Animation_Timer);
+                    Scroll_User_Message_Up(Message_Animation_Timer);
 
-                    Agent_Card_Name.BringToFront();
-                    Agent_Card_Profession.BringToFront();
-                    Agent_Card_Email.BringToFront();
-                    Agent_Card_Phone_Number.BringToFront();
-                    Agent_Card_Room.BringToFront();
-                    Agent_Card_Like_Button.BringToFront();
-                    Expand_Profile_Image.BringToFront();
+                    AI_Message[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                    AI_Message_Shell[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
 
-                    Message_Input_Area.BringToFront();
-                    Message_Input.BringToFront();
-                    Send_Message.BringToFront();
+                    if (Open_Profile_Card == 2)
+                    {
+                        Agent_Card.BringToFront();
+                        Conversation_Area_Header.BringToFront();
+                        Agent_Name_Label.BringToFront();
+                        Agent_Status_Indicator.BringToFront();
+                        Agent_Profile_Image.BringToFront();
+                        Conversation_Exit.BringToFront();
+
+                        Agent_Card_Name.BringToFront();
+                        Agent_Card_Profession.BringToFront();
+                        Agent_Card_Email.BringToFront();
+                        Agent_Card_Phone_Number.BringToFront();
+                        Agent_Card_Room.BringToFront();
+                        Agent_Card_Like_Button.BringToFront();
+                        Expand_Profile_Image.BringToFront();
+
+                        Message_Input_Area.BringToFront();
+                        Message_Input.BringToFront();
+                        Send_Message.BringToFront();
+                    }
+
+                    Message_Animation_Timer++;
+                    await Task.Delay(1); //delay for 1/100 of a second
                 }
 
-                Message_Animation_Timer++;
-                await Task.Delay(1); //delay for 1/100 of a second
+                switch (AI_Message_Counter)
+                {
+                    case 0:
+                        AI_0_Pos = AI_Message_Shell[0].Location.Y;
+                        break;
+                    case 1:
+                        AI_1_Pos = AI_Message_Shell[1].Location.Y;
+                        break;
+                    case 2:
+                        AI_2_Pos = AI_Message_Shell[2].Location.Y;
+                        break;
+                    case 3:
+                        AI_3_Pos = AI_Message_Shell[3].Location.Y;
+                        break;
+                    case 4:
+                        AI_4_Pos = AI_Message_Shell[4].Location.Y;
+                        break;
+                    case 5:
+                        AI_5_Pos = AI_Message_Shell[5].Location.Y;
+                        break;
+                    case 6:
+                        AI_6_Pos = AI_Message_Shell[6].Location.Y;
+                        break;
+                    case 7:
+                        AI_7_Pos = AI_Message_Shell[7].Location.Y;
+                        break;
+                    case 8:
+                        AI_8_Pos = AI_Message_Shell[8].Location.Y;
+                        break;
+                    case 9:
+                        AI_9_Pos = AI_Message_Shell[9].Location.Y;
+                        break;
+                    case 10:
+                        AI_10_Pos = AI_Message_Shell[10].Location.Y;
+                        break;
+                    case 11:
+                        AI_11_Pos = AI_Message_Shell[11].Location.Y;
+                        break;
+                    case 12:
+                        AI_12_Pos = AI_Message_Shell[12].Location.Y;
+                        break;
+                    case 13:
+                        AI_13_Pos = AI_Message_Shell[13].Location.Y;
+                        break;
+                    case 14:
+                        AI_14_Pos = AI_Message_Shell[14].Location.Y;
+                        break;
+                    case 15:
+                        AI_15_Pos = AI_Message_Shell[15].Location.Y;
+                        break;
+                    case 16:
+                        AI_16_Pos = AI_Message_Shell[16].Location.Y;
+                        break;
+                    case 17:
+                        AI_17_Pos = AI_Message_Shell[17].Location.Y;
+                        break;
+                    case 18:
+                        AI_18_Pos = AI_Message_Shell[18].Location.Y;
+                        break;
+                    case 19:
+                        AI_19_Pos = AI_Message_Shell[19].Location.Y;
+                        break;
+                    case 20:
+                        AI_20_Pos = AI_Message_Shell[20].Location.Y;
+                        break;
+                    case 21:
+                        AI_21_Pos = AI_Message_Shell[21].Location.Y;
+                        break;
+                    case 22:
+                        AI_22_Pos = AI_Message_Shell[22].Location.Y;
+                        break;
+                    case 23:
+                        AI_23_Pos = AI_Message_Shell[23].Location.Y;
+                        break;
+                    case 24:
+                        AI_24_Pos = AI_Message_Shell[24].Location.Y;
+                        break;
+                    case 25:
+                        AI_25_Pos = AI_Message_Shell[25].Location.Y;
+                        break;
+                }
+
+                Message_Input.Enabled = true;
+                Send_Message.Enabled = true;
+                AI_Response_Handshake = false;
+                AI_Message_Counter++;
             }
-
-            switch (AI_Message_Counter)
-            {
-                case 0:
-                    AI_0_Pos = AI_Message_Shell[0].Location.Y;
-                    break;
-                case 1:
-                    AI_1_Pos = AI_Message_Shell[1].Location.Y;
-                    break;
-                case 2:
-                    AI_2_Pos = AI_Message_Shell[2].Location.Y;
-                    break;
-                case 3:
-                    AI_3_Pos = AI_Message_Shell[3].Location.Y;
-                    break;
-                case 4:
-                    AI_4_Pos = AI_Message_Shell[4].Location.Y;
-                    break;
-                case 5:
-                    AI_5_Pos = AI_Message_Shell[5].Location.Y;
-                    break;
-                case 6:
-                    AI_6_Pos = AI_Message_Shell[6].Location.Y;
-                    break;
-                case 7:
-                    AI_7_Pos = AI_Message_Shell[7].Location.Y;
-                    break;
-                case 8:
-                    AI_8_Pos = AI_Message_Shell[8].Location.Y;
-                    break;
-                case 9:
-                    AI_9_Pos = AI_Message_Shell[9].Location.Y;
-                    break;
-                case 10:
-                    AI_10_Pos = AI_Message_Shell[10].Location.Y;
-                    break;
-                case 11:
-                    AI_11_Pos = AI_Message_Shell[11].Location.Y;
-                    break;
-                case 12:
-                    AI_12_Pos = AI_Message_Shell[12].Location.Y;
-                    break;
-                case 13:
-                    AI_13_Pos = AI_Message_Shell[13].Location.Y;
-                    break;
-                case 14:
-                    AI_14_Pos = AI_Message_Shell[14].Location.Y;
-                    break;
-                case 15:
-                    AI_15_Pos = AI_Message_Shell[15].Location.Y;
-                    break;
-                case 16:
-                    AI_16_Pos = AI_Message_Shell[16].Location.Y;
-                    break;
-                case 17:
-                    AI_17_Pos = AI_Message_Shell[17].Location.Y;
-                    break;
-                case 18:
-                    AI_18_Pos = AI_Message_Shell[18].Location.Y;
-                    break;
-                case 19:
-                    AI_19_Pos = AI_Message_Shell[19].Location.Y;
-                    break;
-                case 20:
-                    AI_20_Pos = AI_Message_Shell[20].Location.Y;
-                    break;
-                case 21:
-                    AI_21_Pos = AI_Message_Shell[21].Location.Y;
-                    break;
-                case 22:
-                    AI_22_Pos = AI_Message_Shell[22].Location.Y;
-                    break;
-                case 23:
-                    AI_23_Pos = AI_Message_Shell[23].Location.Y;
-                    break;
-                case 24:
-                    AI_24_Pos = AI_Message_Shell[24].Location.Y;
-                    break;
-                case 25:
-                    AI_25_Pos = AI_Message_Shell[25].Location.Y;
-                    break;
-            }
-
-            Message_Input.Enabled = true;
-            Send_Message.Enabled = true;
-            AI_Response_Handshake = false;
-            AI_Message_Counter++;
-
         }
 
         private async void Create_User_Message()
@@ -1931,6 +1933,8 @@ namespace UoL_Virtual_Assistant
                     if (Drawer_Steps == 3) //if the drawer steps are equal to 3
                     {
                         Hamburger_Menu.BackColor = Color.FromArgb(1, 38, 83); //change the background colour to blue
+                        Hamburger_Menu.FlatAppearance.MouseDownBackColor = Color.FromArgb(1, 38, 83);
+                        Hamburger_Menu.FlatAppearance.MouseOverBackColor = Color.FromArgb(1, 38, 83);
                     }
                 }
 
@@ -1963,6 +1967,8 @@ namespace UoL_Virtual_Assistant
                     if (Drawer_Steps == 12) //if the drawer steps are equal to 12
                     {
                         Hamburger_Menu.BackColor = Color.Transparent; //change the background colour to transparent again
+                        Hamburger_Menu.FlatAppearance.MouseDownBackColor = Color.Transparent;
+                        Hamburger_Menu.FlatAppearance.MouseOverBackColor = Color.Transparent;
                     }
                 }
 
@@ -2217,7 +2223,7 @@ namespace UoL_Virtual_Assistant
                 DialogResult Exit_Confirmation = MessageBox.Show("You are about to close the current conversation. Are you sure that you want to do this?", "Exit Conversation", MessageBoxButtons.YesNo);
                 if (Exit_Confirmation == DialogResult.Yes)
                 {
-                    Application.Restart();
+                    Close_Conversation_Window();                 
                 }
                 else if (Exit_Confirmation == DialogResult.No)
                 {
@@ -2229,6 +2235,101 @@ namespace UoL_Virtual_Assistant
             {
                 Application.Restart();
             }
+        }
+
+        private async void Close_Conversation_Window()
+        {
+            Message_Input_Area.BringToFront();
+            Message_Input.BringToFront();
+            Send_Message.BringToFront();
+
+            Open_Conversation_Window = 0;
+            Scroll_Clicks = 0;
+            Connection_Status = 0;
+            Connected_Agent = 0;
+
+            try
+            {
+                for (int Delete_Messages = 0; Delete_Messages <= 25; Delete_Messages++)
+                {
+                    this.Controls.Remove(AI_Message[Delete_Messages]);
+                    this.Controls.Remove(AI_Message_Shell[Delete_Messages]);
+                }
+            }
+
+            catch
+            {
+
+            }
+
+            try
+            {
+                for (int Delete_Messages = 0; Delete_Messages <= 25; Delete_Messages++)
+                {
+                    this.Controls.Remove(User_Message[Delete_Messages]);
+                    this.Controls.Remove(User_Message_Shell[Delete_Messages]);
+                }
+            }
+
+            catch
+            {
+
+            }
+
+            int Conversation_Window_Location = Conversation_Window.Location.Y;
+            int Conversation_Area_Header_Location = Conversation_Area_Header.Location.Y;
+            int Overlap_Fix_Location = Overlap_Fix.Location.Y;
+            int Profile_Image_Location = Agent_Profile_Image.Location.Y;
+            int Agent_Name_Label_Location = Agent_Name_Label.Location.Y;
+            int Agent_Status_Indicator_Location = Agent_Status_Indicator.Location.Y;
+            int Conversation_Exit_Location = Conversation_Exit.Location.Y;   
+
+            for (int Conversation_Window_Close = 0; Conversation_Window_Close <= 73; Conversation_Window_Close++)
+            {
+                Conversation_Window.Location = new Point(Conversation_Window.Location.X, Conversation_Window_Location + 5);
+                Conversation_Area_Header.Location = new Point(Conversation_Area_Header.Location.X, Conversation_Area_Header_Location + 5);
+                Overlap_Fix.Location = new Point(Overlap_Fix.Location.X, Overlap_Fix_Location + 5);
+                Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Profile_Image_Location + 5);
+                Agent_Name_Label.Location = new Point(Agent_Name_Label.Location.X, Agent_Name_Label_Location + 5);
+                Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator.Location.X, Agent_Status_Indicator_Location + 5);
+                Conversation_Exit.Location = new Point(Conversation_Exit.Location.X, Conversation_Exit_Location + 5);
+
+                Conversation_Window_Location = Conversation_Window_Location + 5;
+                Conversation_Area_Header_Location = Conversation_Area_Header_Location + 5;
+                Overlap_Fix_Location = Overlap_Fix_Location + 5;
+                Profile_Image_Location = Profile_Image_Location + 5;
+                Agent_Name_Label_Location = Agent_Name_Label_Location + 5;
+                Agent_Status_Indicator_Location = Agent_Status_Indicator_Location + 5;
+                Conversation_Exit_Location = Conversation_Exit_Location + 5;
+                await Task.Delay(1); //delay
+            }
+
+
+            Send_Message.BackgroundImage = Properties.Resources.Power_Button;
+            Send_Message.Enabled = true;
+
+            Conversation_Area_Header.Visible = false;
+            Overlap_Fix.Visible = false;
+            Overlap_Fix.Location = new Point(50, 104);
+            Agent_Profile_Image.Visible = false;
+
+            Conversation_Exit.Location = new Point(277, 108);
+            Connecting_Label.Location = new Point(123, 289);
+            Connecting_Label.Text = "Connecting";  
+            Connecting_Label.Visible = false;
+
+            Agent_Name_Label.Location = new Point(55, 322);
+            Agent_Name_Label.Visible = false;
+            Agent_Name_Label.Size = new Size(244, 31); //resize the name label
+            Agent_Name_Label.TextAlign = ContentAlignment.MiddleCenter;
+
+            Conversation_Area_Header.Location = new Point(50, 120);
+            Agent_Status_Indicator.Location = new Point(101, 133);
+            Agent_Status_Indicator.Visible = false;
+            Hide_Items();
+
+            AI_Message_Counter = 0;
+            User_Message_Counter = 0;
         }
 
         private void Agent_Profile_Image_Click(object sender, EventArgs e)
@@ -2301,8 +2402,6 @@ namespace UoL_Virtual_Assistant
             {
                 Open_Profile_Card = 1; //currently in the process of opening
                                        //GROW IMAGE CARD
-
-
 
                 Agent_Card.BringToFront();
                 Conversation_Area_Header.BringToFront();
