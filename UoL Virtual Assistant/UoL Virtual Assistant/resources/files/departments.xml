@@ -1,0 +1,114 @@
+<general>
+	<department>General Enquiries</general>
+	<email>enquiries@lincoln.ac.uk</email>
+	<tel>01522 882000</tel>
+</general>
+
+<socshead>
+	<department>David Cobham, Head School of Computer Science</department>
+	<email>dcobham@lincoln.ac.uk</email>
+	<tel>01522 886120</tel>
+</socshead>
+
+<schooladministrator>
+	<department>Jane Chapman SOCS Administrator</department>
+	<email>jchapman@lincoln.ac.uk</email>
+	<tel>01522 886466</tel>
+</schooladministrator>
+
+<socsadminoffice>
+	<department>SOCS Admin Office</department>
+	<email>socsadmin@lincoln.ac.uk</email>
+</socsadminoffice>
+
+<socsextensions>
+	<department>SOCS Extensions</department>
+	<email>socsextensions@lincoln.ac.uk</email>
+</socsextensions>
+
+<socssubmissions>
+	<department>SOCS Submissions</department>
+	<email>socssubmissions@lincoln.ac.uk</email>
+</socssubmissions>
+
+<itservices>
+	<department>IT Services & Support</department>
+	<openinghours>24 Hours</openinghours>
+	<email>helpdesk@lincoln.ac.uk</email>
+	<tel>01522 886500</tel>
+</itservices>
+
+<library>
+	<department>Brayford Pool Library</department>
+	<address>Brayford Wharf E, Lincoln LN6 7TS</address>
+	<openinghours>24 Hours (Term-Time)</openinghours>
+	<email>library@lincoln.ac.uk</email>
+	<tel>01522 886222</tel>
+</library>
+	
+<studentsupport>
+	<department>Student Support</department>
+	<openinghours>Monday, Tuesday & Thursday: 8:30-5. Wednesday: 9:30-5, Friday: 8:30-4:30.</openinghours>
+	<email>studentsupport@lincoln.ac.uk</email>
+	<tel>01522 837080</tel>
+</studentsupport>
+	
+<careers>
+	<department>UOL Careers</department>
+	<website>www.uolcareers.co.uk</website>
+	<email>careers@lincoln.ac.uk</email>
+</careers>
+
+<health>
+	<department>Health Centre</department>
+	<openinghours>Monday to Friday, 8am to 6.30pm</openinghours>
+	<tel>01522 870010</tel>
+</health>
+
+<residential>
+	<department>Residential Services</department>
+	<email>accomodation@lincoln.ac.uk</email>
+	<tel>01522 886231</tel>
+</residential>
+	
+<studentsunion>
+	<department>Student Union</department>
+	<email>reception@lincolnsu.com</email>
+	<tel>01522 886006</tel>
+</studentsunion>
+
+<disability>
+	<department>University Disability Services</department>
+	<email>studentwellbeing@lincoln.ac.uk</email>
+	<tel>01522 886400</tel>
+</disability>
+
+<equality>
+	<department>Equality and Diversity</department>
+	<email>cbell@lincoln.ac.uk or shanley@lincoln.ac.uk</email>
+	<tel>01522 886775 or 886463</tel>
+</equality>
+
+<finance>
+	<department>Finance</department>
+	<email>finance@lincoln.ac.uk</email>
+	<tel>01522 886705</tel>
+</finance>
+
+<graduate>
+	<department>Graduate School</department>
+	<email>graduateschool@lincoln.ac.uk</email>
+	<tel>01522 837725</tel>
+</graduate>
+
+<safety>
+	<department>Health & Safety</department>
+	<email>safety@lincoln.ac.uk</email>
+	<tel>01522 886956</tel>
+</safety>
+
+<hr>
+	<department>Human Resources</department>
+	<email>hr@lincoln.ac.uk</email>
+	<tel>01522 886775</tel>
+</hr>
