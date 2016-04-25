@@ -53,6 +53,7 @@ namespace UoL_Virtual_Assistant
         public static int User_Message_Counter = 0; //this will keep track of how many messages the user has sent
         public static int Connection_Status = 0; //indicates the current connection status, 0 means no conversation is connected, 1 means an agent has been chosen
         public static int Connected_Agent; //indicates the agent what will connect with the user
+        public static int About_Pop_Up = 0;
 
         public static int AI_0_Pos = 0;
         public static int AI_1_Pos = 0;
@@ -215,6 +216,7 @@ namespace UoL_Virtual_Assistant
 
             //this.FormBorderStyle = FormBorderStyle.None;
             Title_Bar.MouseDown += new MouseEventHandler(Title_Bar_MouseDown);
+            Title_Bar_Title.MouseDown += new MouseEventHandler(Title_Bar_Title_MouseDown);
 
 
             this.Width = 350; this.Height = 500; //resizes the UI to be it's default starting value
@@ -235,6 +237,23 @@ namespace UoL_Virtual_Assistant
         {
             ReleaseCapture();
             SendMessage(this.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
+        }
+
+        private void Title_Bar_Title_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
+        }
+
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                const int CS_DROPSHADOW = 0x20000;
+                CreateParams cp = base.CreateParams;
+                cp.ClassStyle |= CS_DROPSHADOW;
+                return cp;
+            }
         }
 
         public void Hide_Items()
@@ -345,6 +364,7 @@ namespace UoL_Virtual_Assistant
                 case "6": //if theme value is set to 6
                     this.BackgroundImage = Properties.Resources.JB; //set the background image to the following resource
                     Title_Bar.BackColor = Color.Transparent;
+                    Title_Bar_Title.BackColor = Color.Transparent;
                     Conversation_Cloak.BackColor = Color.Transparent;
                     Minimise_Button.BackColor = Color.Transparent;
                     Maximise_Button.BackColor = Color.Transparent;
@@ -383,6 +403,7 @@ namespace UoL_Virtual_Assistant
                 this.BackgroundImage = null; //remove the background image
                 this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background  
                 Title_Bar.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //sets the colour of the titlebar
+                Title_Bar_Title.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B);
                 Minimise_Button.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //set the backcolour of the minimise button
                 Maximise_Button.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //set the backcolour of the maximise button
                 Exit_Button.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //set the backcolour of the close button
@@ -400,18 +421,38 @@ namespace UoL_Virtual_Assistant
             switch (UoL_Logo_Link)
             {
                 case "0":
-                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to Blackboard."); //assigns a tooltip description
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to Blackboard"); //assigns a tooltip description
                     break;
                 case "1":
-                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln website."); //assigns a tooltip description
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln website"); //assigns a tooltip description
                     break;
                 case "2":
-                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln Library website."); //assigns a tooltip description
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to the University of Lincoln Library website"); //assigns a tooltip description
                     break;
                 case "3":
-                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to your personal Timetable."); //assigns a tooltip description
+                    Tooltips.SetToolTip(UoL_Branding, "Clicking on this will take you to your personal Timetable"); //assigns a tooltip description
                     break;
             }
+
+            switch (Open_Conversation_Window)
+            {
+                case 0:
+                    Tooltips.SetToolTip(Send_Message, "Initate a conversation with a University helper"); //assigns a tooltip description
+                    break;
+                case 1:
+                    Tooltips.SetToolTip(Send_Message, "Send message"); //assigns a tooltip description
+                    break;
+            }
+
+                    Tooltips.SetToolTip(Exit_Button, "Close");
+            Tooltips.SetToolTip(Maximise_Button, "Maximise");
+            Tooltips.SetToolTip(Minimise_Button, "Minimise");
+            Tooltips.SetToolTip(Hamburger_Menu, "Settings");
+            Tooltips.SetToolTip(Theme_Title, "Change how the applications looks");
+            Tooltips.SetToolTip(Preferred_Agent_Title, "Select who you would prefer to have a conversation with");
+            Tooltips.SetToolTip(UoL_Logo_Link_Title, "Select what service you would like to be sent to when clicking on the UoL logo");
+            Tooltips.SetToolTip(Reset_Title, "Reset the application to default settings");
+
         }
 
         private void Message_Input_TextChanged(object sender, EventArgs e)
@@ -508,6 +549,7 @@ namespace UoL_Virtual_Assistant
 
         private async void Initiate_Connection()
         {
+            Tooltips_Generation();
             if (Open_Conversation_Window == 0) //if the window status is set to hidden
             {
                 Send_Message.Enabled = false;
@@ -1067,8 +1109,6 @@ namespace UoL_Virtual_Assistant
 
             AI_Message[AI_Message_Counter] = new TextBox();
             AI_Message_Shell[AI_Message_Counter] = new TextBox();
-            this.Controls.Add(AI_Message[AI_Message_Counter]);
-            this.Controls.Add(AI_Message_Shell[AI_Message_Counter]);
 
             AI_Message[AI_Message_Counter].WordWrap = true;
             AI_Message[AI_Message_Counter].Multiline = true;
@@ -1089,6 +1129,8 @@ namespace UoL_Virtual_Assistant
             AI_Message_Shell[AI_Message_Counter].BorderStyle = BorderStyle.None;
             AI_Message_Shell[AI_Message_Counter].Size = new Size(150, (Line_Counter + 10));
 
+            this.Controls.Add(AI_Message[AI_Message_Counter]);
+            this.Controls.Add(AI_Message_Shell[AI_Message_Counter]);
             AI_Message_Shell[AI_Message_Counter].BringToFront();
             AI_Message[AI_Message_Counter].BringToFront();
 
@@ -2636,6 +2678,16 @@ namespace UoL_Virtual_Assistant
         private void Minimise_Button_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void About_Content_Click(object sender, EventArgs e)
+        {
+            About_Pop_Up++;
+            if (About_Pop_Up == 5)
+            {
+                MessageBox.Show("Hey guys. \nCongratulations for being nosey and exploring our work, I like that! \n\nI'd just like to say it's been great working with you all on this project, It's not often a module comes around where I'm so excited to meet up and see what new ideas we can come up with this week. I loved the freedom we all had in this unit, being free to create whatever we wanted in whatever way we wanted to do it. I was so happy to be able to express my creative side and pour everything into this little application so that it became something I (and I hope you all) will be proud of. It's by no means perfect, but I can look back on this and know that we all tried our best and I think it definitely shows. There's still a bit of work left to do, but I'm sure that our work and time will be rewarded in the end. Despite a few hiccups, I don't think I could have asked for a better group. We all got on so well and the comfortable atmosphere of our meetings and development days was something very few other groups seem to have. So, Lukas, Zach, Joe and Danny. Thanks for being so great throughout this semster, I'll see you guys around and I hope we get a chance to work together again in the future! :) \n\nJack. \n25.04.16\n\nI hope somebody actually finds this and I haven't buried it too deep!");
+                About_Pop_Up = 0;
+            }
         }
     }
 }
