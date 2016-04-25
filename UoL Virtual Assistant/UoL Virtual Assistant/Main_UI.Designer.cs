@@ -72,6 +72,7 @@
             this.Exit_Button = new System.Windows.Forms.PictureBox();
             this.Maximise_Button = new System.Windows.Forms.PictureBox();
             this.Minimise_Button = new System.Windows.Forms.PictureBox();
+            this.Title_Bar_Title = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Overlap_Fix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversation_Cloak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Agent_Card)).BeginInit();
@@ -190,14 +191,17 @@
             this.About_Content.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.About_Content.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(38)))), ((int)(((byte)(83)))));
             this.About_Content.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.About_Content.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.About_Content.ForeColor = System.Drawing.SystemColors.Control;
             this.About_Content.Location = new System.Drawing.Point(204, 416);
             this.About_Content.Multiline = true;
             this.About_Content.Name = "About_Content";
+            this.About_Content.ReadOnly = true;
             this.About_Content.Size = new System.Drawing.Size(134, 102);
             this.About_Content.TabIndex = 15;
             this.About_Content.Text = "Developed by Lukas Annear, Zachary Claret-Scott, Jack Duffy, Jason Gill, Joseph P" +
     "otter, Paulo Salles and Daniel Wilson at the University of Lincoln in 2016.";
+            this.About_Content.Click += new System.EventHandler(this.About_Content_Click);
             // 
             // Preferred_Agent_Title
             // 
@@ -680,6 +684,19 @@
             this.Minimise_Button.TabStop = false;
             this.Minimise_Button.Click += new System.EventHandler(this.Minimise_Button_Click);
             // 
+            // Title_Bar_Title
+            // 
+            this.Title_Bar_Title.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.Title_Bar_Title.AutoSize = true;
+            this.Title_Bar_Title.BackColor = System.Drawing.Color.Bisque;
+            this.Title_Bar_Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Title_Bar_Title.ForeColor = System.Drawing.Color.Black;
+            this.Title_Bar_Title.Location = new System.Drawing.Point(4, 5);
+            this.Title_Bar_Title.Name = "Title_Bar_Title";
+            this.Title_Bar_Title.Size = new System.Drawing.Size(130, 16);
+            this.Title_Bar_Title.TabIndex = 47;
+            this.Title_Bar_Title.Text = "UoL Virtual Assistant";
+            // 
             // Main_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -687,6 +704,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(350, 520);
+            this.Controls.Add(this.Title_Bar_Title);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Maximise_Button);
             this.Controls.Add(this.Minimise_Button);
@@ -803,6 +821,7 @@
         private System.Windows.Forms.PictureBox Exit_Button;
         private System.Windows.Forms.PictureBox Maximise_Button;
         private System.Windows.Forms.PictureBox Minimise_Button;
+        private System.Windows.Forms.Label Title_Bar_Title;
     }
 }
 
