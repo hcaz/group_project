@@ -6,14 +6,17 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using System.Runtime.InteropServices;
+using System.Collections;
 
 namespace UoL_Virtual_Assistant
 {
     public partial class Main_UI : Form
-    {
+    {    
         //globally accessed values
         string Student_Course; //creates a string that will store the course that the student is on
         string Universal_Theme_Value; //creates a string that will store the current theme value
@@ -25,8 +28,8 @@ namespace UoL_Virtual_Assistant
         //public static DayOfWeek currentDay = DayOfWeek.Wednesday;
         //If live========================
         //This long way gives a better timestamp without miliseconds
-        public static TimeSpan currentTime = new TimeSpan(DateTime.Now.TimeOfDay.Hours, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds);
-        public static DayOfWeek currentDay = DateTime.Now.DayOfWeek;
+        public static TimeSpan currentTime = new TimeSpan(/*DateTime.Now.TimeOfDay.Hours*/ 15, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds);
+        public static DayOfWeek currentDay = /*System.DateTime.Now.DayOfWeek;*/ DayOfWeek.Monday;
         //===============================
         public static string Student_ID; //creates a string that will store the Student ID
         public static string Student_First_Name = ""; //creates a string that will store the student first name
@@ -39,7 +42,7 @@ namespace UoL_Virtual_Assistant
         public static string waitingOnResponseNeg;
 
 
-        int R; int G; int B; //creates R,G,B values for themes
+        //int R; int G; int B; //creates R,G,B values for themes
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
         int Scroll_Clicks = 0;
@@ -80,6 +83,7 @@ namespace UoL_Virtual_Assistant
         public static int User_Message_Pos = 0;
 
         public static bool AI_Response_Handshake = false;
+        public static bool Expanded_Icon = false;
 
         TextBox[] AI_Message = new TextBox[25];
         TextBox[] AI_Message_Shell = new TextBox[25];
@@ -91,6 +95,7 @@ namespace UoL_Virtual_Assistant
 
         public Main_UI()
         {
+
             Read_User_Data(); //read in the user data from the settings file
             if (Student_ID == null) //if no student ID is found
             {
@@ -206,14 +211,30 @@ namespace UoL_Virtual_Assistant
             }
 
             InitializeComponent(); //initialize the component
+
+
+            //this.FormBorderStyle = FormBorderStyle.None;
+            Title_Bar.MouseDown += new MouseEventHandler(Title_Bar_MouseDown);
+
+
             this.Width = 350; this.Height = 500; //resizes the UI to be it's default starting value
             UI_Theming(); //apply the theme to the UI
             Hide_Items(); //make sure certain items are hidden when the UI loads
         }
 
-        public void Position_Values()
-        {
+        //stuff to allow dragging of the custom title bar
+        [DllImport("user32.dll")]
+        public static extern bool ReleaseCapture();
+        [DllImport("user32.dll")]
+        public static extern bool SendMessage(IntPtr hwnd, int wMsg, int wParam, int lParam);
+        public const int WM_SYSCOMMAND = 0x0112;
+        public const int SC_MOVE = 0xF010;
+        public const int HTCAPTION = 0x0002;
 
+        private void Title_Bar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, WM_SYSCOMMAND, SC_MOVE + HTCAPTION, 0);
         }
 
         public void Hide_Items()
@@ -223,14 +244,14 @@ namespace UoL_Virtual_Assistant
             UoL_Logo_Link_Selection.SelectedIndex = Convert.ToInt32(UoL_Logo_Link); //applys the current selected link to the combo box
 
             //hide items related to the settings drawer
-            Settings_Drawer.Location = new Point(320, 0); //move the drawer so that it is off screen
-            Settings_Title.Location = new Point(360, 12); //move the settings title so that it is off screen
-            Course_Building.Location = new Point(352, 50); //move the course building image so that it is off screen
+            Settings_Drawer.Location = new Point(332, 26); //move the drawer so that it is off screen
+            Settings_Title.Location = new Point(370, 37); //move the settings title so that it is off screen
+            Course_Building.Location = new Point(365, 70); //move the course building image so that it is off screen
 
             //assigning and relocating Name and ID labels and assigning transparency values - this is witchcraft
-            Student_ID_Title.Location = new Point(535, 101);
+            Student_ID_Title.Location = new Point(547, 120);
             Student_ID_Title.Text = Student_ID;
-            Student_Name_Title.Location = new Point(535, 117);
+            Student_Name_Title.Location = new Point(545, 135);
             Student_Name_Title.Text = Student_First_Name + " " + Student_Last_Name;
             var NamePosition = this.PointToScreen(Student_Name_Title.Location);
             var IDPosition = this.PointToScreen(Student_ID_Title.Location);
@@ -243,20 +264,20 @@ namespace UoL_Virtual_Assistant
             Student_Name_Title.BackColor = Color.Transparent;
             Student_ID_Title.BackColor = Color.Transparent;
 
-            Theme_Title.Location = new Point(360, 157); //move the theme title so that it is off screen
-            Theme_Selection.Location = new Point(395, 157); //move the theme selection box so that it is off screen
-            Preferred_Agent_Title.Location = new Point(360, 186); //move the preferred agent title so that it is off screen
-            Preferred_Agent_Selection.Location = new Point(395, 205); //move the preferred agent box so that it is off screen
-            UoL_Logo_Link_Title.Location = new Point(360, 237); //move the UoL logo link title so that it is off screen
-            UoL_Logo_Link_Selection.Location = new Point(395, 256); //move the UoL logo link selection so that it is off screen
-            Reset_Title.Location = new Point(360, 285); //move the reset title so that it is off screen
-            Reset_Button.Location = new Point(395, 285); //move the reset button so that it is off screen
-            About_Title.Location = new Point(360, 314); //move the about title so that it is off screen
-            About_Content.Location = new Point(365, 342); //move the about content so that it is off screen
+            Theme_Title.Location = new Point(370, 172); //move the theme title so that it is off screen
+            Theme_Selection.Location = new Point(410, 172); //move the theme selection box so that it is off screen
+            Preferred_Agent_Title.Location = new Point(370, 200); //move the preferred agent title so that it is off screen
+            Preferred_Agent_Selection.Location = new Point(410, 220); //move the preferred agent box so that it is off screen
+            UoL_Logo_Link_Title.Location = new Point(370, 250); //move the UoL logo link title so that it is off screen
+            UoL_Logo_Link_Selection.Location = new Point(410, 271); //move the UoL logo link selection so that it is off screen
+            Reset_Title.Location = new Point(370, 300); //move the reset title so that it is off screen
+            Reset_Button.Location = new Point(410, 300); //move the reset button so that it is off screen
+            About_Title.Location = new Point(370,390); //move the about title so that it is off screen
+            About_Content.Location = new Point(375, 420); //move the about content so that it is off screen
 
             //hide items related to the conversation window
-            Conversation_Window.Location = new Point(37, 410); //move the window so that it is off screen
-            Agent_Profile_Image.Location = new Point(163, 236); //move the profile image to the proper location
+            Conversation_Window.Location = new Point(44, 465); //move the window so that it is off screen
+            Agent_Profile_Image.Location = new Point(170, 285); //move the profile image to the proper location
             Agent_Profile_Image.Size = new Size(10, 10); //resize it
             Conversation_Exit.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
             Scroll_Conversation_Up.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
@@ -291,55 +312,80 @@ namespace UoL_Virtual_Assistant
         public void UI_Theming()
         {
             Tooltips_Generation();
+
+            int R = 0; int G = 0; int B = 0;
+            int Alt_R = 0; int Alt_G = 0; int Alt_B = 0;
+
             switch (Universal_Theme_Value) //retrieve the Universal Theme Value
             {
                 case "0": //if theme value is set to 0
                     R = 33; G = 150; B = 243; //set the R,G,B values to these
+                    Alt_R = 21; Alt_G = 101; Alt_B = 192;
                     break;
                 case "1": //if theme value is set to 1
                     R = 121; G = 85; B = 72; //set the R,G,B values to these
+                    Alt_R = 78; Alt_G = 52; Alt_B = 46;
                     break;
                 case "2": //if theme value is set to 2
                     R = 0; G = 188; B = 212; //set the R,G,B values to these
+                    Alt_R = 0; Alt_G = 131; Alt_B = 143;
                     break;
                 case "3": //if theme value is set to 3
                     R = 139; G = 195; B = 74; //set the R,G,B values to these
+                    Alt_R = 46; Alt_G = 125; Alt_B = 50;
                     break;
                 case "4": //if theme value is set to 4
                     R = 96; G = 125; B = 139; //set the R,G,B values to these
+                    Alt_R = 55; Alt_G = 71; Alt_B = 79;
                     break;
                 case "5": //if theme value is set to 5
                     R = 63; G = 81; B = 181; //set the R,G,B values to these
+                    Alt_R = 40; Alt_G = 53; Alt_B = 147;
                     break;
                 case "6": //if theme value is set to 6
                     this.BackgroundImage = Properties.Resources.JB; //set the background image to the following resource
+                    Title_Bar.BackColor = Color.Transparent;
                     Conversation_Cloak.BackColor = Color.Transparent;
+                    Minimise_Button.BackColor = Color.Transparent;
+                    Maximise_Button.BackColor = Color.Transparent;
+                    Exit_Button.BackColor = Color.Transparent;
                     R = 255; G = 255; B = 255; //set the R,G,B values to these
+                    //Alt_R = 224; Alt_G = 224; Alt_B = 224;
                     break;
                 case "7": //if theme value is set to 7
                     R = 255; G = 87; B = 34; //set the R,G,B values to these
+                    Alt_R = 239; Alt_G = 108; Alt_B = 0;
                     break;
                 case "8": //if theme value is set to 8
                     R = 233; G = 30; B = 99; //set the R,G,B values to these
+                    Alt_R = 173; Alt_G = 20; Alt_B = 87;
                     break;
                 case "9": //if theme value is set to 9
                     R = 103; G = 58; B = 183; //set the R,G,B values to these
+                    Alt_R = 69; Alt_G = 39; Alt_B = 160;
                     break;
                 case "10": //if theme value is set to 10
                     R = 244; G = 67; B = 54; //set the R,G,B values to these
+                    Alt_R = 198; Alt_G = 40; Alt_B = 40;
                     break;
                 case "11": //if theme value is set to 11
                     R = 0; G = 150; B = 136; //set the R,G,B values to these
+                    Alt_R = 0; Alt_G = 105; Alt_B = 92;
                     break;
                 case "12": //if theme value is set to 12
                     R = 255; G = 255; B = 255; //set the R,G,B values to these
+                    Alt_R = 224; Alt_G = 224; Alt_B = 224;
                     break;
             }
 
             if (Universal_Theme_Value != "6") //if the theme value is not set to a theme with a dedicated background image
             {
                 this.BackgroundImage = null; //remove the background image
-                this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background    
+                this.BackColor = Color.FromArgb(R, G, B); //set the colour of the background  
+                Title_Bar.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //sets the colour of the titlebar
+                Minimise_Button.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //set the backcolour of the minimise button
+                Maximise_Button.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //set the backcolour of the maximise button
+                Exit_Button.BackColor = Color.FromArgb(Alt_R, Alt_G, Alt_B); //set the backcolour of the close button
                 Conversation_Cloak.BackColor = Color.FromArgb(R, G, B);
             }
 
@@ -1819,8 +1865,6 @@ namespace UoL_Virtual_Assistant
                 About_Title.BringToFront();
                 About_Content.BringToFront();
 
-
-
                 Settings_Drawer.Visible = true; //make the drawer visible
                 Hamburger_Menu.Enabled = false; //disable the button so it can't be clicked
                 for (int Drawer_Steps = 0; Drawer_Steps <= 15; Drawer_Steps++) //establishes the number of individual steps the drawer needs to take
@@ -1889,6 +1933,8 @@ namespace UoL_Virtual_Assistant
 
         private void Reiterate_Layers()
         {
+
+
             Conversation_Cloak.BringToFront();
             Message_Input_Area.BringToFront();
             Message_Input.BringToFront();
@@ -1901,6 +1947,11 @@ namespace UoL_Virtual_Assistant
             Agent_Profile_Image.BringToFront();
             Conversation_Exit.BringToFront();
             Expand_Profile_Image.BringToFront();
+
+            Title_Bar.BringToFront();
+            Minimise_Button.BringToFront();
+            Maximise_Button.BringToFront();
+            Exit_Button.BringToFront();
         }
 
         private void Theme_Selection_SelectedIndexChanged(object sender, EventArgs e)
@@ -2140,23 +2191,24 @@ namespace UoL_Virtual_Assistant
 
         private void Agent_Profile_Image_Click(object sender, EventArgs e)
         {
-            Agent_Profile_Card();
+            if (Expanded_Icon == false)
+            {
+                Agent_Profile_Card();
+            }        
         }
 
         private async void Expand_Profile_Image_Click(object sender, EventArgs e)
         {
+            Expanded_Icon = true;
             Agent_Profile_Image.BringToFront();
-            bool Forefront = true;
             int Agent_Profile_Image_Size = Agent_Profile_Image.Height; //set the profile image size at 100 
             int Expand_Timer = 0;
             bool Wait = false;
 
             for (Expand_Timer = 0; Expand_Timer <= 300; Expand_Timer++)
             {
-                if (Forefront == true)
-                {
-                    Agent_Profile_Image.BringToFront();
-                }
+                Agent_Profile_Image.BringToFront();
+
 
                 Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 2, Agent_Profile_Image_Size + 2);
                 Agent_Profile_Image_Size = (Agent_Profile_Image_Size + 2);
@@ -2171,13 +2223,11 @@ namespace UoL_Virtual_Assistant
 
             if (Wait == true)
             {
-                await Task.Delay(10000); //delay
+                await Task.Delay(2000); //delay
                 for (Expand_Timer = 0; Expand_Timer <= 300; Expand_Timer++)
                 {
-                    if (Forefront == true)
-                    {
-                        Agent_Profile_Image.BringToFront();
-                    }
+
+                    Agent_Profile_Image.BringToFront();
 
                     Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size - 2, Agent_Profile_Image_Size - 2);
                     Agent_Profile_Image_Size = (Agent_Profile_Image_Size - 2);
@@ -2190,9 +2240,8 @@ namespace UoL_Virtual_Assistant
                     }
                 }
             }
+            Expanded_Icon = false;
         }
-
-
 
         private void Agent_Name_Label_Click(object sender, EventArgs e)
         {
@@ -2209,7 +2258,10 @@ namespace UoL_Virtual_Assistant
             if (Open_Profile_Card == 0) //if the card is not currently open
             {
                 Open_Profile_Card = 1; //currently in the process of opening
-                //GROW IMAGE CARD
+                                       //GROW IMAGE CARD
+
+
+
                 Agent_Card.BringToFront();
                 Conversation_Area_Header.BringToFront();
                 Agent_Name_Label.BringToFront();
@@ -2219,32 +2271,32 @@ namespace UoL_Virtual_Assistant
                 Conversation_Exit.BringToFront();
 
                 Agent_Card_Name.BringToFront();
-                Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Message_Input_Area.Location.Y + 10);
                 Agent_Card_Profession.BringToFront();
-                Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Profession.Location = new Point(Agent_Card_Profession.Location.X, Message_Input_Area.Location.Y + 10);
                 Agent_Card_Email.BringToFront();
-                Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Email.Location = new Point(Agent_Card_Email.Location.X, Message_Input_Area.Location.Y + 10);
                 Agent_Card_Phone_Number.BringToFront();
-                Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Phone_Number.Location = new Point(Agent_Card_Phone_Number.Location.X, Message_Input_Area.Location.Y + 10);
                 Agent_Card_Room.BringToFront();
-                Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Room.Location = new Point(Agent_Card_Room.Location.X, Message_Input_Area.Location.Y + 10);
                 Agent_Card_Like_Button.BringToFront();
-                Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Message_Input_Area.Location.Y);
+                Agent_Card_Like_Button.Location = new Point(Agent_Card_Like_Button.Location.X, Message_Input_Area.Location.Y + 10);
 
                 Message_Input_Area.BringToFront();
                 Message_Input.BringToFront();
-                Send_Message.BringToFront();           
+                Send_Message.BringToFront();
 
-                int Agent_Card_Accent_X = 0;
-                int Agent_Card_Accent_Y = 0;
-                int Agent_Card_Accent_Z = 0;
+                int Agent_Card_Accent_R = 0;
+                int Agent_Card_Accent_G = 0;
+                int Agent_Card_Accent_B = 0;
 
                 switch (Connected_Agent) //apply the appropriate profile picture and label text
                 {
                     case 0: //if the agent is bruce
-                        Agent_Card_Accent_X = 16;
-                        Agent_Card_Accent_Y = 16;
-                        Agent_Card_Accent_Z = 16;
+                        Agent_Card_Accent_R = 76;
+                        Agent_Card_Accent_G = 47;
+                        Agent_Card_Accent_B = 43;
 
                         Agent_Card_Name.ForeColor = Color.White;
                         Agent_Card_Profession.ForeColor = Color.White;
@@ -2259,9 +2311,9 @@ namespace UoL_Virtual_Assistant
                         Agent_Card_Room.Text = "MC 3112";
                         break;
                     case 1: //if the agent is hal
-                        Agent_Card_Accent_X = 232;
-                        Agent_Card_Accent_Y = 231;
-                        Agent_Card_Accent_Z = 237;
+                        Agent_Card_Accent_R = 72;
+                        Agent_Card_Accent_G = 46;
+                        Agent_Card_Accent_B = 34;
 
                         Agent_Card_Name.ForeColor = Color.Black;
                         Agent_Card_Profession.ForeColor = Color.Black;
@@ -2276,9 +2328,9 @@ namespace UoL_Virtual_Assistant
                         Agent_Card_Room.Text = "SoCs Office";
                         break;
                     case 2: //if the agent is jason
-                        Agent_Card_Accent_X = 135;
-                        Agent_Card_Accent_Y = 125;
-                        Agent_Card_Accent_Z = 127;
+                        Agent_Card_Accent_R = 116;
+                        Agent_Card_Accent_G = 116;
+                        Agent_Card_Accent_B = 115;
 
                         Agent_Card_Name.ForeColor = Color.White;
                         Agent_Card_Profession.ForeColor = Color.White;
@@ -2293,9 +2345,9 @@ namespace UoL_Virtual_Assistant
                         Agent_Card_Room.Text = "SoCs Office";
                         break;
                     case 3: //if the agent is suzi
-                        Agent_Card_Accent_X = 109;
-                        Agent_Card_Accent_Y = 143;
-                        Agent_Card_Accent_Z = 209;
+                        Agent_Card_Accent_R = 180;
+                        Agent_Card_Accent_G = 136;
+                        Agent_Card_Accent_B = 101;
 
                         Agent_Card_Name.ForeColor = Color.White;
                         Agent_Card_Profession.ForeColor = Color.White;
@@ -2310,9 +2362,9 @@ namespace UoL_Virtual_Assistant
                         Agent_Card_Room.Text = "SoCs Office";
                         break;
                     case 4: //if no agent is available
-                        Agent_Card_Accent_X = 233;
-                        Agent_Card_Accent_Y = 233;
-                        Agent_Card_Accent_Z = 233;
+                        Agent_Card_Accent_R = 226;
+                        Agent_Card_Accent_G = 236;
+                        Agent_Card_Accent_B = 246;
 
                         Agent_Card_Name.ForeColor = Color.Black;
                         Agent_Card_Profession.ForeColor = Color.Black;
@@ -2328,15 +2380,14 @@ namespace UoL_Virtual_Assistant
                         break;
                 }
 
-                Conversation_Area_Header.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
-                
-                Agent_Card.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
-                Agent_Card_Name.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
-                Agent_Card_Profession.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
-                Agent_Card_Email.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
-                Agent_Card_Phone_Number.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
-                Agent_Card_Room.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
-                Expand_Profile_Image.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                Conversation_Area_Header.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);              
+                Agent_Card.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
+                Agent_Card_Name.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
+                Agent_Card_Profession.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
+                Agent_Card_Email.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
+                Agent_Card_Phone_Number.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
+                Agent_Card_Room.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
+                Expand_Profile_Image.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
                 //Agent_Card_Like_Button.BackColor = Color.FromArgb(Agent_Card_Accent_X + 20, Agent_Card_Accent_Y + 20, Agent_Card_Accent_Z + 20);
 
                 Agent_Profile_Image.Enabled = false;
@@ -2356,7 +2407,7 @@ namespace UoL_Virtual_Assistant
 
                         if (Timer == 7)
                         {
-                            Agent_Profile_Image.BackColor = Color.FromArgb(Agent_Card_Accent_X, Agent_Card_Accent_Y, Agent_Card_Accent_Z);
+                            Agent_Profile_Image.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
                         }
 
                         Agent_Profile_Image.Size = new Size(Agent_Profile_Image_Size + 2, Agent_Profile_Image_Size + 2);
@@ -2515,27 +2566,36 @@ namespace UoL_Virtual_Assistant
 
         private void Agent_Card_Like_Button_Click(object sender, EventArgs e)
         {
-            switch (Connected_Agent) //retrieve the preferred agent value
+            if (Convert.ToInt32(Preferred_Agent) == Connected_Agent)
             {
-                case 0: //if the preferred agent is set to bruce
-                    Preferred_Agent = "1";  //set the preferred agent to 1
-                    Preferred_Agent_Selection.SelectedIndex = 1;
-                    break;
-                case 1: //if the preferred agent is set to hal
-                    Preferred_Agent = "2";  //set the preferred agent to 2
-                    Preferred_Agent_Selection.SelectedIndex = 2;
-                    break;
-                case 2: //if the preferred agent is set to jason
-                    Preferred_Agent = "3";  //set the preferred agent to 3
-                    Preferred_Agent_Selection.SelectedIndex = 3;
-                    break;
-                case 3: //if the preferred agent is set to suzie
-                    Preferred_Agent = "4";  //set the preferred agent to 4
-                    Preferred_Agent_Selection.SelectedIndex = 4;
-                    break;
+                Agent_Card_Like_Button.BackColor = Color.FromArgb(0, 80, 20);
             }
 
-            Save_Changes(); //save the changes
+            else
+            {
+                switch (Connected_Agent) //retrieve the preferred agent value
+                {
+                    case 0: //if the preferred agent is set to bruce
+                        Preferred_Agent = "1";  //set the preferred agent to 1
+                        Preferred_Agent_Selection.SelectedIndex = 1;
+                        break;
+                    case 1: //if the preferred agent is set to hal
+                        Preferred_Agent = "2";  //set the preferred agent to 2
+                        Preferred_Agent_Selection.SelectedIndex = 2;
+                        break;
+                    case 2: //if the preferred agent is set to jason
+                        Preferred_Agent = "3";  //set the preferred agent to 3
+                        Preferred_Agent_Selection.SelectedIndex = 3;
+                        break;
+                    case 3: //if the preferred agent is set to suzie
+                        Preferred_Agent = "4";  //set the preferred agent to 4
+                        Preferred_Agent_Selection.SelectedIndex = 4;
+                        break;
+                }
+
+                Agent_Card_Like_Button.BackColor = Color.FromArgb(0, 80, 20);
+                Save_Changes(); //save the changes
+            }            
         }
 
         private void Agent_Card_Email_Click(object sender, EventArgs e)
@@ -2568,6 +2628,14 @@ namespace UoL_Virtual_Assistant
             Agent_Profile_Card();
         }
 
+        private void Exit_Button_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
+        private void Minimise_Button_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
 }
