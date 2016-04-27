@@ -17,10 +17,6 @@ namespace UoL_Virtual_Assistant
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            //ParseInput testing, comment out when not testing
-            //ParseInput PI = new ParseInput();
-            //PI.SplitInput("Hey Amr! Do you know where I can find somewhere to eat? Also, how are you?. Also fuck you! Also, tell me about your day.?!????.....??!?!?!?!?....!?!.?!?!?");
-
             Application.Run(new Main_UI());
         }
     }
