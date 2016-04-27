@@ -22,6 +22,7 @@ namespace UoL_Virtual_Assistant
         public bool libraryDeskOpenNow = false;
         public string libraryOpen = "";
         public string libraryDeskOpen = "";
+        public string weather = "";
 
         public bool freePCData()
         {
@@ -102,6 +103,21 @@ namespace UoL_Virtual_Assistant
             return true;
         }
 
+        public bool weatherData()
+        {
+            string weatherAPI = "http://datapoint.metoffice.gov.uk/public/data/val/wxfcs/all/xml/3469?res=daily&key=8ec9c40f-71f5-4bb5-ba02-60e0c1d3d777";
+            XmlDocument doc = new XmlDocument();
+            doc.Load(weatherAPI);
+            XmlNodeList nodes = doc.DocumentElement.SelectNodes("/SiteRep/DV/Location/Period");
+
+            foreach (XmlNode node in nodes)
+            {
+                XmlNode day = node.SelectSingleNode("Rep");
+                MessageBox.Show(day.Attributes["Dm"].Value);
+            }
+
+            return true;
+        }
     }
 
     class Computer

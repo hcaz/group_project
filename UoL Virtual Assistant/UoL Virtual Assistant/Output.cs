@@ -107,12 +107,31 @@ namespace UoL_Virtual_Assistant
                                 output = output + " - " + lookupMessage("filler", "error_name_faculty");
                             }
                         }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_what))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_when))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_where))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_why))
+                        {
+                        }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.tell_me_about))
                         {
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.workstation))
                         {
                             output = output + " - " + lookupMessage("filler", "workstation");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.weather))
+                        {
+                            output = output + " - " + lookupMessage("filler", "weather");
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.thank_you))
                         {
@@ -181,6 +200,15 @@ namespace UoL_Virtual_Assistant
                 Main_UI.waitingOnResponseNeg = "error_name_faculty";
             }
             if (message == "WORKSTATION")
+            {
+                ScrapeData data = new ScrapeData();
+                data.freePCData();
+                data.libraryOpening();
+                output = output.Replace("$freePCS", data.freePcs.ToString());
+                output = output.Replace("$times", data.libraryOpen.ToString());
+                output = output.Replace("$deskTimes", data.libraryDeskOpen.ToString());
+            }
+            if (message == "WEATHER")
             {
                 ScrapeData data = new ScrapeData();
                 data.freePCData();
