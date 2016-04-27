@@ -17,9 +17,6 @@ namespace UoL_Virtual_Assistant
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ScrapeData data = new ScrapeData();
-            data.weatherData();
-
             Application.Run(new Main_UI());
         }
     }

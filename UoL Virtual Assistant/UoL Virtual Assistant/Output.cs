@@ -75,7 +75,14 @@ namespace UoL_Virtual_Assistant
                     }
                     else
                     {
-                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
+                        if (Main_UI.Latest_User_Message.ToLower() == "konami") {
+                            output = "Jack <3";
+                        }
+                        else if (Main_UI.Latest_User_Message.ToLower().Contains("1 + 1"))
+                        {
+                            output = "Hold on a moment, let me invite JB";
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
                         {
                             output = output + " - " + lookupMessage("filler", "rude_insult");
                         }
@@ -157,6 +164,8 @@ namespace UoL_Virtual_Assistant
             Random rnd = new Random();
             string url = "../../resources/files/messages.xml";
 
+            ScrapeData data = new ScrapeData();
+
             XmlDocument doc = new XmlDocument();
             doc.Load(url);
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/MESSAGES/" + context + "/" + message + "/" + agent + "/MESSAGE");
@@ -201,7 +210,6 @@ namespace UoL_Virtual_Assistant
             }
             if (message == "WORKSTATION")
             {
-                ScrapeData data = new ScrapeData();
                 data.freePCData();
                 data.libraryOpening();
                 output = output.Replace("$freePCS", data.freePcs.ToString());
@@ -210,12 +218,25 @@ namespace UoL_Virtual_Assistant
             }
             if (message == "WEATHER")
             {
-                ScrapeData data = new ScrapeData();
-                data.freePCData();
-                data.libraryOpening();
-                output = output.Replace("$freePCS", data.freePcs.ToString());
-                output = output.Replace("$times", data.libraryOpen.ToString());
-                output = output.Replace("$deskTimes", data.libraryDeskOpen.ToString());
+                data.weatherData();
+                output = output.Replace("$fdm", data.days[0].FDm);
+                output = output.Replace("$fnm", data.days[0].FNm);
+                output = output.Replace("$dm", data.days[0].Dm);
+                output = output.Replace("$nm", data.days[0].Nm);
+                if (data.days[0].V == "VG")
+                {
+                    output = output.Replace("$v", "is good.");
+                }
+                else if(data.days[0].V == "EX")
+                {
+                    output = output.Replace("$v", "is very good.");
+                }
+                else
+                {
+                    output = output.Replace("$v", "is bad.");
+                }
+                output = output.Replace("$d", data.days[0].D);
+                output = output.Replace("$s", data.days[0].S);
             }
 
             return output;

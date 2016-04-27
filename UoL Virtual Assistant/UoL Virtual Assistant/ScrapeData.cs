@@ -22,7 +22,7 @@ namespace UoL_Virtual_Assistant
         public bool libraryDeskOpenNow = false;
         public string libraryOpen = "";
         public string libraryDeskOpen = "";
-        public string weather = "";
+        public List<Day> days = new List<Day>();
 
         public bool freePCData()
         {
@@ -112,8 +112,17 @@ namespace UoL_Virtual_Assistant
 
             foreach (XmlNode node in nodes)
             {
-                XmlNode day = node.SelectSingleNode("Rep");
-                MessageBox.Show(day.Attributes["Dm"].Value);
+                Day day = new Day();
+                XmlNode daytime = node.SelectNodes("Rep")[0];
+                XmlNode nighttime = node.SelectNodes("Rep")[1];
+                day.FDm = daytime.Attributes["Dm"].Value;
+                day.FNm = nighttime.Attributes["Nm"].Value;
+                day.Dm = daytime.Attributes["Dm"].Value;
+                day.Nm = nighttime.Attributes["Nm"].Value;
+                day.V = daytime.Attributes["V"].Value;
+                day.D = nighttime.Attributes["D"].Value;
+                day.S = daytime.Attributes["S"].Value;
+                days.Add(day);
             }
 
             return true;
@@ -130,5 +139,16 @@ namespace UoL_Virtual_Assistant
         public string floor;
         public string room;
         public string block;
+    }
+
+    class Day
+    {
+        public string FDm;//" units="C">Feels Like Day Maximum Temperature</Param>
+        public string FNm;//" units="C">Feels Like Night Minimum Temperature</Param>
+        public string Dm;//" units="C">Day Maximum Temperature</Param>
+        public string Nm;//" units="C">Night Minimum Temperature</Param>
+        public string V;//" units= "" > Visibility </ Param >
+        public string D;//" units= "compass" > Wind Direction</Param>
+        public string S;//" units= "mph" > Wind Speed</Param>
     }
 }
