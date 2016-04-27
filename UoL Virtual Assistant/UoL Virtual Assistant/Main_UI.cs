@@ -35,7 +35,7 @@ namespace UoL_Virtual_Assistant
         public static string Student_First_Name = ""; //creates a string that will store the student first name
         public static string Student_Last_Name = ""; //creates a string that will store the student last name
         public static string Latest_User_Message = ""; //this is a string that contains the latest user message. it is easily accessable from other areas of the system
-        public static string Latest_AI_Message = ""; // ....
+        public static string Latest_AI_Message = ""; //....
         public static XmlNode currentObject;
         public static bool waitingOnResponse = false;
         public static string waitingOnResponsePos;
@@ -45,12 +45,11 @@ namespace UoL_Virtual_Assistant
         //int R; int G; int B; //creates R,G,B values for themes
         int Open_Settings_Drawer = 0; //a value of 0 indicates that the drawer is shut
         int Open_Conversation_Window = 0; //a value of 0 indicates that the conversation window is hidden
-        int Scroll_Clicks = 0;
-        bool Content_Scrolling = false;
         int Open_Profile_Card = 1; //sets this as the middle value (0, 1, 2) so that it cannot be opened until the items are in the right place!
         //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*//
         public static int AI_Message_Counter = 0; //keeps track of how many messages the AI has sent
         public static int User_Message_Counter = 0; //this will keep track of how many messages the user has sent
+        public static int Notification_Counter = 0; //keeps track on how many notifications have been sent to the chat
         public static int Connection_Status = 0; //indicates the current connection status, 0 means no conversation is connected, 1 means an agent has been chosen
         public static int Connected_Agent; //indicates the agent what will connect with the user
         public static int About_Pop_Up = 0;
@@ -95,6 +94,9 @@ namespace UoL_Virtual_Assistant
 
         TextBox[] User_Message = new TextBox[25];
         TextBox[] User_Message_Shell = new TextBox[25];
+
+        TextBox[] Chat_Notification = new TextBox[10];
+        TextBox[] Chat_Notification_Shell = new TextBox[10];
 
         Random Randomiser = new Random(); //creates a randomiser item
 
@@ -302,11 +304,7 @@ namespace UoL_Virtual_Assistant
             Agent_Profile_Image.Location = new Point(170, 285); //move the profile image to the proper location
             Agent_Profile_Image.Size = new Size(10, 10); //resize it
             Conversation_Exit.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
-            Scroll_Conversation_Up.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
-            Scroll_Conversation_Down.ForeColor = Color.FromArgb(255, 255, 255); //set the exit button colour to white
             Conversation_Exit.Visible = false; //make the exit button invisible
-            Scroll_Conversation_Up.Visible = false;
-            Scroll_Conversation_Down.Visible = false;
         }
 
         public void Read_User_Data()
@@ -858,7 +856,7 @@ namespace UoL_Virtual_Assistant
         {
             if (Connected_Agent == 4)
             {
-                Create_AI_Message();
+                Create_AI_Message(0);
             }
 
             else
@@ -995,7 +993,7 @@ namespace UoL_Virtual_Assistant
 
                 if (Connection_Status == 1)
                 {
-                    Create_AI_Message(); //display the final message
+                    Create_AI_Message(0); //display the final message
                 }               
             }
         }
@@ -1095,27 +1093,29 @@ namespace UoL_Virtual_Assistant
             }
         }
 
-        private async void Create_AI_Message()
+        private async void Create_AI_Message(int Message_Type)
         {
-            for (int Number_of_Clicks = 0; Number_of_Clicks < Scroll_Clicks; Number_of_Clicks++)
-            {
-                Scroll_Content_UpDown(1);
-
-                while (Content_Scrolling == true)
-                {
-                    await Task.Delay(100); //delay for 1/100 of a second
-                }
-            }
-
-            
-
             AI_Message[AI_Message_Counter] = new TextBox();
             AI_Message_Shell[AI_Message_Counter] = new TextBox();
 
             AI_Message[AI_Message_Counter].WordWrap = true;
             AI_Message[AI_Message_Counter].Multiline = true;
-            AI_Message[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
-            AI_Message[AI_Message_Counter].ForeColor = Color.FromArgb(255, 255, 255);
+
+            if (Message_Type == 0) //generic message colour
+            {
+                AI_Message[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);                
+                AI_Message[AI_Message_Counter].ForeColor = Color.FromArgb(255, 255, 255);
+                AI_Message_Shell[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
+            }
+
+            if (Message_Type == 1)
+            {
+                AI_Message[AI_Message_Counter].BackColor = Color.FromArgb(198, 40, 40);
+                AI_Message[AI_Message_Counter].ForeColor = Color.FromArgb(255, 255, 255);
+                AI_Message_Shell[AI_Message_Counter].BackColor = Color.FromArgb(198, 40, 40);
+            }
+
+
             AI_Message[AI_Message_Counter].Font = new Font("Microsoft Sans Serif", 10);
             AI_Message[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
             AI_Message[AI_Message_Counter].BorderStyle = BorderStyle.None;
@@ -1126,7 +1126,6 @@ namespace UoL_Virtual_Assistant
 
             AI_Message_Shell[AI_Message_Counter].WordWrap = true;
             AI_Message_Shell[AI_Message_Counter].Multiline = true;
-            AI_Message_Shell[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
             AI_Message_Shell[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
             AI_Message_Shell[AI_Message_Counter].BorderStyle = BorderStyle.None;
             AI_Message_Shell[AI_Message_Counter].Size = new Size(150, (Line_Counter + 10));
@@ -1149,6 +1148,7 @@ namespace UoL_Virtual_Assistant
                 {
                     Scroll_AI_Message_Up(Message_Animation_Timer);
                     Scroll_User_Message_Up(Message_Animation_Timer);
+                    Scroll_Notification_Up(Message_Animation_Timer);
 
                     AI_Message[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 18, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
                     AI_Message_Shell[AI_Message_Counter].Location = new Point(Message_Input.Location.X + 13, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
@@ -1266,12 +1266,60 @@ namespace UoL_Virtual_Assistant
                 AI_Response_Handshake = false;
                 AI_Message_Counter++;
 
-                if (Latest_AI_Message == "Hold on a moment, let me invite JB")
+                if (Latest_AI_Message.Contains("invite JB"))
                 {
-                    Add_Agent_To_Conversation(2);
+                    await Task.Delay(3000);
+                    //get the answer to the users maths question
+                    int Jasons_Answer = 2;
 
-                    Latest_AI_Message = "Fuck off";
-                    Create_AI_Message();
+                    Add_Agent_To_Conversation(2);
+                    Create_Chat_Notification("Jason Bradbury has been added");
+                    await Task.Delay(3000);
+                    Agent_Status_Indicator.Text = "Jason is typing...";
+                    await Task.Delay(5000);
+                    Agent_Status_Indicator.Text = "Online";
+                    string Agent_One = " ";
+                    switch (Connected_Agent) //apply the appropriate profile picture and label text
+                    {
+                        case 0: //if the agent is bruce
+                            Agent_One = "Bruce";
+                            break;
+                        case 1: //if the agent is hal
+                            Agent_One = "Hal";
+                            break;
+                        case 2: //if the agent is jason
+                            Agent_One = "Jason";
+                            break;
+                        case 3: //if the agent is suzie
+                            Agent_One = "Suzi";
+                            break;
+                        case 4: //if no agent is available
+                            Agent_One = "Out of Hours bot";
+                            break;
+                    }
+
+                    Latest_AI_Message = "For gods sake " + Agent_One + ". I've told you to stop adding me to chats when you want to show off.";
+                    Create_AI_Message(1);
+
+                    await Task.Delay(3000);
+                    Agent_Status_Indicator.Text = "Jason is typing...";
+                    await Task.Delay(10000);
+                    Agent_Status_Indicator.Text = "Online";
+
+                    Latest_AI_Message = "I'm sorry you had to see this " + Student_First_Name + ". The answer to your question is " + Jasons_Answer + " by the way. Cya later m8";
+                    Create_AI_Message(1);
+
+                    await Task.Delay(3500);
+                    //leave the conversation
+                    Remove_Agent_From_Conversation();
+                    Create_Chat_Notification("Jason Bradbury has left");
+                    await Task.Delay(3500);
+                    Agent_Status_Indicator.Text = "Typing";
+                    await Task.Delay(8000);
+                    Latest_AI_Message = "Well then... Is there anything else I can do for you?";
+                    Create_AI_Message(0);
+                    Agent_Status_Indicator.Text = "Online";
+
                 }
             }
         }
@@ -1313,6 +1361,7 @@ namespace UoL_Virtual_Assistant
             for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
             {
                 Scroll_AI_Message_Up(Message_Animation_Timer);
+                Scroll_Notification_Up(Message_Animation_Timer);
 
                 User_Message[User_Message_Counter].Location = new Point(Message_Input.Location.X + 108, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
                 User_Message_Shell[User_Message_Counter].Location = new Point(Message_Input.Location.X + 103, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
@@ -1333,22 +1382,69 @@ namespace UoL_Virtual_Assistant
             {
                 await Task.Delay(2000); //2 second delay
                 Latest_AI_Message = "Thanks for your query. This has been saved and will be seen by a member of the response team first thing the next working day. The chat will now automatically close in a few seconds. Have a nice day.";
-                Create_AI_Message();
+                Create_AI_Message(0);
                 await Task.Delay(5000); //5 second delay
                 Conversation_Exit.PerformClick();
             }
+        }
 
-            if (User_Message_Counter > 1) //fade in the scrollable buttons
+        private async void Create_Chat_Notification(string Notification)
+        {
+            Message_Input.Enabled = false;
+            Chat_Notification[Notification_Counter] = new TextBox();
+            Chat_Notification_Shell[Notification_Counter] = new TextBox();
+            this.Controls.Add(Chat_Notification[Notification_Counter]);
+            this.Controls.Add(Chat_Notification_Shell[Notification_Counter]);
+
+            Chat_Notification[Notification_Counter].WordWrap = true;
+            Chat_Notification[Notification_Counter].Multiline = true;
+            Chat_Notification[Notification_Counter].BackColor = Color.FromArgb(244, 244, 244);
+            Chat_Notification[Notification_Counter].ForeColor = Color.FromArgb(0, 0, 0);
+            Chat_Notification[Notification_Counter].Font = new Font("Microsoft Sans Serif", 8);
+            Chat_Notification[Notification_Counter].Anchor = (AnchorStyles.Bottom);
+            Chat_Notification[Notification_Counter].BorderStyle = BorderStyle.None;
+            Chat_Notification[Notification_Counter].TextAlign = HorizontalAlignment.Center;
+            Chat_Notification[Notification_Counter].Text = Notification;
+            int Line_Counter = ((Chat_Notification[Notification_Counter].GetLineFromCharIndex(int.MaxValue) + 1) * 10);
+            Chat_Notification[Notification_Counter].Size = new Size(185, Line_Counter);
+
+            Chat_Notification_Shell[Notification_Counter].WordWrap = true;
+            Chat_Notification_Shell[Notification_Counter].Multiline = true;
+            Chat_Notification_Shell[Notification_Counter].BackColor = Color.FromArgb(244, 244, 244);
+            Chat_Notification_Shell[Notification_Counter].Anchor = (AnchorStyles.Bottom);
+            Chat_Notification_Shell[Notification_Counter].BorderStyle = BorderStyle.None;
+            Chat_Notification_Shell[Notification_Counter].Size = new Size(200, (Line_Counter + 10));
+
+            Chat_Notification_Shell[Notification_Counter].BringToFront();
+            Chat_Notification[Notification_Counter].BringToFront();
+            Reiterate_Layers();
+
+            int Scroll_Steps = Line_Counter + 20;
+            //MessageBox.Show(Scroll_Steps.ToString());
+
+            for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
             {
-                Scroll_Conversation_Up.Visible = true;
-                Scroll_Conversation_Down.Visible = true;
-                for (int Colour = 305; Colour >= 55; Colour--)
+                Scroll_AI_Message_Up(Message_Animation_Timer);
+                Scroll_User_Message_Up(Message_Animation_Timer);
+
+                if (Notification_Counter > 0)
                 {
-                    await Task.Delay(1); //delay
-                    Scroll_Conversation_Up.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50);
-                    Scroll_Conversation_Down.ForeColor = Color.FromArgb(Colour - 50, Colour - 50, Colour - 50);
+                    Scroll_Notification_Up(Message_Animation_Timer);
                 }
+
+                Chat_Notification[Notification_Counter].Location = new Point(Message_Input.Location.X + 35, (Message_Input.Location.Y + 10) - Message_Animation_Timer);
+                Chat_Notification_Shell[Notification_Counter].Location = new Point(Message_Input.Location.X + 30, (Message_Input.Location.Y + 5) - Message_Animation_Timer);
+
+                if (Notification_Counter > 0)
+                {
+                    Scroll_User_Message_Up(Message_Animation_Timer);
+                }
+
+                Message_Animation_Timer++;
+                await Task.Delay(1); //delay for 1/100 of a second
             }
+
+            Notification_Counter++;
         }
 
         private void Scroll_AI_Message_Up(int Message_Animation_Timer)
@@ -1711,6 +1807,79 @@ namespace UoL_Virtual_Assistant
             }
         }
 
+        private void Scroll_Notification_Up(int Message_Animation_Timer)
+        {
+            if (Notification_Counter == 0)
+            {
+                //do nothing
+            }
+
+            else
+            {
+                if (Notification_Counter > 1)
+                {
+                    Chat_Notification[Notification_Counter - 2].Location = new Point(Chat_Notification[Notification_Counter - 2].Location.X, Chat_Notification[Notification_Counter - 2].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 2].Location = new Point(Chat_Notification_Shell[Notification_Counter - 2].Location.X, Chat_Notification_Shell[Notification_Counter - 2].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 2)
+                {
+                    Chat_Notification[Notification_Counter - 3].Location = new Point(Chat_Notification[Notification_Counter - 3].Location.X, Chat_Notification[AI_Message_Counter - 3].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 3].Location = new Point(Chat_Notification_Shell[Notification_Counter - 3].Location.X, Chat_Notification_Shell[Notification_Counter - 3].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 3)
+                {
+                    Chat_Notification[Notification_Counter - 4].Location = new Point(Chat_Notification[Notification_Counter - 4].Location.X, Chat_Notification[Notification_Counter - 4].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 4].Location = new Point(Chat_Notification_Shell[Notification_Counter - 4].Location.X, Chat_Notification_Shell[Notification_Counter - 4].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 4)
+                {
+                    Chat_Notification[Notification_Counter - 5].Location = new Point(Chat_Notification[Notification_Counter - 5].Location.X, Chat_Notification[Notification_Counter - 5].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 5].Location = new Point(Chat_Notification_Shell[Notification_Counter - 5].Location.X, Chat_Notification_Shell[Notification_Counter - 5].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 5)
+                {
+                    Chat_Notification[Notification_Counter - 6].Location = new Point(Chat_Notification[Notification_Counter - 6].Location.X, Chat_Notification[Notification_Counter - 6].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 6].Location = new Point(Chat_Notification_Shell[Notification_Counter - 6].Location.X, Chat_Notification_Shell[Notification_Counter - 6].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 6)
+                {
+                    Chat_Notification[Notification_Counter - 7].Location = new Point(Chat_Notification[Notification_Counter - 7].Location.X, Chat_Notification[Notification_Counter - 7].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 7].Location = new Point(Chat_Notification_Shell[Notification_Counter - 7].Location.X, Chat_Notification_Shell[Notification_Counter - 7].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 7)
+                {
+                    Chat_Notification[Notification_Counter - 8].Location = new Point(Chat_Notification[Notification_Counter - 8].Location.X, Chat_Notification[Notification_Counter - 8].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 8].Location = new Point(Chat_Notification_Shell[Notification_Counter - 8].Location.X, Chat_Notification_Shell[Notification_Counter - 8].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 8)
+                {
+                    Chat_Notification[Notification_Counter - 9].Location = new Point(Chat_Notification[Notification_Counter - 9].Location.X, Chat_Notification[Notification_Counter - 9].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 9].Location = new Point(Chat_Notification_Shell[Notification_Counter - 9].Location.X, Chat_Notification_Shell[Notification_Counter - 9].Location.Y - 2);
+                }
+
+                if (Notification_Counter > 9)
+                {
+                    Chat_Notification[Notification_Counter - 10].Location = new Point(Chat_Notification[Notification_Counter - 10].Location.X, Chat_Notification[Notification_Counter - 10].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 10].Location = new Point(Chat_Notification_Shell[Notification_Counter - 10].Location.X, Chat_Notification_Shell[Notification_Counter - 10].Location.Y - 2);
+                }                
+
+                else
+                {
+                    Chat_Notification[Notification_Counter - 1].Location = new Point(Chat_Notification[Notification_Counter - 1].Location.X, Chat_Notification[Notification_Counter - 1].Location.Y - 2);
+                    Chat_Notification_Shell[Notification_Counter - 1].Location = new Point(Chat_Notification_Shell[Notification_Counter - 1].Location.X, Chat_Notification_Shell[Notification_Counter - 1].Location.Y - 2);
+                }
+
+                //Reiterate_Layers();
+            }
+        }
+
         private void Fade_In_Out_Message(int Message_Number, int In_Or_Out)
         {
             if (In_Or_Out == 0) //if it wants to fade in
@@ -1744,116 +1913,6 @@ namespace UoL_Virtual_Assistant
                 //    AI_Message_Shell[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
                 //}                
             }           
-        }
-
-        private async void Scroll_Content_UpDown(int Scroll_Direction)
-        {
-            Content_Scrolling = true;
-
-            Scroll_Conversation_Up.Enabled = false;
-            Scroll_Conversation_Down.Enabled = false;
-            int Message_No;
-            bool Is_AI_Message_Ready = false;
-            if (Scroll_Direction == 1) //if scroll direction is set to up
-            {
-                for (int Up_Timer = 0; Up_Timer < 1;)
-                {
-                    if (User_Message_Shell[User_Message_Counter - 1].Location.Y == User_Message_Pos)
-                    {
-                        Up_Timer = 1;
-                        break;
-                    }
-
-                    for (Message_No = 0; Message_No <= 25; Message_No++)
-                    {
-                        try
-                        {
-                            AI_Message[Message_No].Location = new Point(AI_Message[Message_No].Location.X, AI_Message[Message_No].Location.Y - 2);
-                            AI_Message_Shell[Message_No].Location = new Point(AI_Message_Shell[Message_No].Location.X, AI_Message_Shell[Message_No].Location.Y - 2);
-                            User_Message[Message_No].Location = new Point(User_Message[Message_No].Location.X, User_Message[Message_No].Location.Y - 2);
-                            User_Message_Shell[Message_No].Location = new Point(User_Message_Shell[Message_No].Location.X, User_Message_Shell[Message_No].Location.Y - 2);
-                        }
-
-                        catch
-                        {
-                            break;
-                        }
-                    }
-
-                    Is_AI_Message_Ready = Check_AI_Location();
-                    if (Is_AI_Message_Ready == true)
-                    {
-                        Up_Timer++;
-                        break;
-                    }
-
-                    await Task.Delay(1);
-                }
-            }
-        
-
-
-            else //go down
-            {
-                if (AI_Message_Shell[0].Location.Y == AI_0_Pos)
-                {
-                    int Response = Randomiser.Next(0, 4);
-                    switch (Response)
-                    {
-                        case 0:
-                            MessageBox.Show("'Please disperse. Nothing to see here.' - The Naked Gun \n\nBasically, theres no more messages to see up there!");
-                            break;
-                        case 1:
-                            MessageBox.Show("'These are not the droids you're looking for.' - Star Wars \n\nBasically, theres no more messages to see up there!");
-                            break;
-                        case 2:
-                            MessageBox.Show("'No! You'll flood the whole compartment!' - Star Trek II \n\nBasically, theres no more messages to see up there!");
-                            break;
-                        case 3:
-                            MessageBox.Show("'I've got a feeling we're not in Kansas anymore.' - The Wizard of Oz \n\nBasically, theres no more messages to see up there!");
-                            break;
-                        case 4:
-                            MessageBox.Show("'Danger Will Robinson!' - Lost in Space \n\nBasically, theres no more messages to see up there!");
-                            break;
-                    }                  
-                }
-
-                else
-                {
-                    for (int Up_Timer = 0; Up_Timer < 1;)
-                    {
-                        for (Message_No = 0; Message_No <= 25; Message_No++)
-                        {
-                            try
-                            {
-                                AI_Message[Message_No].Location = new Point(AI_Message[Message_No].Location.X, AI_Message[Message_No].Location.Y + 2);
-                                AI_Message_Shell[Message_No].Location = new Point(AI_Message_Shell[Message_No].Location.X, AI_Message_Shell[Message_No].Location.Y + 2);
-                                User_Message[Message_No].Location = new Point(User_Message[Message_No].Location.X, User_Message[Message_No].Location.Y + 2);
-                                User_Message_Shell[Message_No].Location = new Point(User_Message_Shell[Message_No].Location.X, User_Message_Shell[Message_No].Location.Y + 2);
-                            }
-
-                            catch
-                            {
-                                break;
-                            }
-                        }
-
-                        Is_AI_Message_Ready = Check_AI_Location();
-                        if (Is_AI_Message_Ready == true)
-                        {
-                            Up_Timer++;
-                            break;
-                        }
-
-                        await Task.Delay(1);
-                    }
-                }
-            }
-
-            Scroll_Conversation_Up.Enabled = true;
-            Scroll_Conversation_Down.Enabled = true;
-            Content_Scrolling = false;
-
         }
 
         private bool Check_AI_Location()
@@ -2001,7 +2060,12 @@ namespace UoL_Virtual_Assistant
             Overlap_Fix.BringToFront();
             Agent_Name_Label.BringToFront();
             Agent_Status_Indicator.BringToFront();
-            Second_Agent_Profile_Image.BringToFront();
+
+            if (Group_Chat_Status == true)
+            {
+                Second_Agent_Profile_Image.BringToFront();
+            }
+
             Agent_Profile_Image.BringToFront();
             Conversation_Exit.BringToFront();
             Expand_Profile_Image.BringToFront();
@@ -2206,26 +2270,6 @@ namespace UoL_Virtual_Assistant
             }
         }
 
-        private void Scroll_Conversation_Up_Click(object sender, EventArgs e)
-        {
-            Scroll_Content_UpDown(0);
-            Scroll_Clicks++;
-        }
-
-        private void Scroll_Conversation_Down_Click(object sender, EventArgs e)
-        {
-            if (Scroll_Clicks > 0)
-            {
-                Scroll_Content_UpDown(1);
-                Scroll_Clicks--;
-            }
-
-            else
-            {
-                //do nothing
-            }
-        }
-
         private void Conversation_Exit_Click(object sender, EventArgs e)
         {
             if (Connection_Status == 1)
@@ -2254,7 +2298,6 @@ namespace UoL_Virtual_Assistant
             Send_Message.BringToFront();
 
             Open_Conversation_Window = 0;
-            Scroll_Clicks = 0;
             Connection_Status = 0;
             Connected_Agent = 0;
 
@@ -2408,7 +2451,7 @@ namespace UoL_Virtual_Assistant
 
         private async void Agent_Profile_Card()
         {
-            if (Open_Profile_Card == 0) //if the card is not currently open
+            if (Open_Profile_Card == 0 && Group_Chat_Status == false) //if the card is not currently open
             {
                 Open_Profile_Card = 1; //currently in the process of opening
                                        //GROW IMAGE CARD
@@ -2806,27 +2849,25 @@ namespace UoL_Virtual_Assistant
             Second_Agent_Profile_Image.BringToFront();
             Agent_Profile_Image.BringToFront();
 
+            Group_Chat_Status = true;
+            Group_Chat_Second_Agent = Agent_To_Add;
+
             string Current_Agent = " ";
             switch (Connected_Agent) //apply the appropriate profile picture and label text
             {
                 case 0: //if the agent is bruce
-                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Bruce;
                     Current_Agent = "Bruce";
                     break;
                 case 1: //if the agent is hal
-                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Hal;
                     Current_Agent = "Hal";
                     break;
                 case 2: //if the agent is jason
-                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Jason;
                     Current_Agent = "Jason";
                     break;
                 case 3: //if the agent is suzie
-                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Suzi;
                     Current_Agent = "Suzi";
                     break;
                 case 4: //if no agent is available
-                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Generic;
                     Current_Agent = "Bot";
                     break;
             }
@@ -2863,6 +2904,9 @@ namespace UoL_Virtual_Assistant
             Agent_Name_Label.Size = new Size(100, 31);
             for (int Add_Agent_Timer = 0; Add_Agent_Timer <= 40; Add_Agent_Timer++)
             {
+                Second_Agent_Profile_Image.BringToFront();
+                Agent_Profile_Image.BringToFront();
+
                 Second_Agent_Profile_Image.Location = new Point(Second_Agent_Profile_Image_Location + 1, Second_Agent_Profile_Image.Location.Y);
                 Agent_Name_Label.Location = new Point(Agent_Name_Label_Location + 1, Agent_Name_Label.Location.Y);
                 Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator_Location + 1, Agent_Status_Indicator.Location.Y);
@@ -2874,9 +2918,51 @@ namespace UoL_Virtual_Assistant
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public async void Remove_Agent_From_Conversation()
         {
-            Add_Agent_To_Conversation(2);
+            int Second_Agent_Profile_Image_Location = Second_Agent_Profile_Image.Location.X;
+            int Agent_Name_Label_Location = Agent_Name_Label.Location.X;
+            int Agent_Status_Indicator_Location = Agent_Status_Indicator.Location.X;
+
+
+            
+            for (int Add_Agent_Timer = 0; Add_Agent_Timer <= 40; Add_Agent_Timer++)
+            {
+                Second_Agent_Profile_Image.Location = new Point(Second_Agent_Profile_Image_Location - 1, Second_Agent_Profile_Image.Location.Y);
+                Agent_Name_Label.Location = new Point(Agent_Name_Label_Location - 1, Agent_Name_Label.Location.Y);
+                Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator_Location - 1, Agent_Status_Indicator.Location.Y);
+
+                Second_Agent_Profile_Image_Location = Second_Agent_Profile_Image_Location - 1;
+                Agent_Name_Label_Location = Agent_Name_Label_Location - 1;
+                Agent_Status_Indicator_Location = Agent_Status_Indicator_Location - 1;
+                await Task.Delay(1);
+            }
+
+            Agent_Name_Label.Size = new Size(175, 31); //resize the name label
+
+            switch (Connected_Agent) //apply the appropriate profile picture and label text
+            {
+                case 0: //if the agent is bruce
+                    Agent_Name_Label.Text = "Bruce Hargrave";
+                    break;
+                case 1: //if the agent is hal
+                    Agent_Name_Label.Text = "Hal Chín-Nghìn";
+                    break;
+                case 2: //if the agent is jason
+                    Agent_Name_Label.Text = "Jason Bradbury";
+                    break;
+                case 3: //if the agent is suzie
+                    Agent_Name_Label.Text = "Suzi Perry";
+                    break;
+                case 4: //if no agent is available
+                    Agent_Name_Label.Text = "Out of Hours";
+                    break;
+            }
+            Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Generic;
+            Second_Agent_Profile_Image.Visible = false;
+
+            Group_Chat_Status = false;
+            Group_Chat_Second_Agent = 0;
         }
     }
 }
