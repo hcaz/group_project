@@ -1992,6 +1992,7 @@ namespace UoL_Virtual_Assistant
             Overlap_Fix.BringToFront();
             Agent_Name_Label.BringToFront();
             Agent_Status_Indicator.BringToFront();
+            Second_Agent_Profile_Image.BringToFront();
             Agent_Profile_Image.BringToFront();
             Conversation_Exit.BringToFront();
             Expand_Profile_Image.BringToFront();
@@ -2787,6 +2788,86 @@ namespace UoL_Virtual_Assistant
                 MessageBox.Show("Hey guys. \nCongratulations for being nosey and exploring our work, I like that! \n\nI'd just like to say it's been great working with you all on this project, It's not often a module comes around where I'm so excited to meet up and see what new ideas we can come up with this week. I loved the freedom we all had in this unit, being free to create whatever we wanted in whatever way we wanted to do it. I was so happy to be able to express my creative side and pour everything into this little application so that it became something I (and I hope you all) will be proud of. It's by no means perfect, but I can look back on this and know that we all tried our best and I think it definitely shows. There's still a bit of work left to do, but I'm sure that our work and time will be rewarded in the end. Despite a few hiccups, I don't think I could have asked for a better group. We all got on so well and the comfortable atmosphere of our meetings and development days was something very few other groups seem to have. So, Lukas, Zach, Joe and Danny. Thanks for being so great throughout this semster, I'll see you guys around and I hope we get a chance to work together again in the future! :) \n\nJack. \n25.04.16\n\nI hope somebody actually finds this and I haven't buried it too deep!");
                 About_Pop_Up = 0;
             }
+        }
+
+        private async void Add_Agent_To_Conversation(int Agent_To_Add)
+        {
+            Second_Agent_Profile_Image.Visible = true;
+            Second_Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y);
+            Second_Agent_Profile_Image.BringToFront();
+            Agent_Profile_Image.BringToFront();
+
+            string Current_Agent = " ";
+            switch (Connected_Agent) //apply the appropriate profile picture and label text
+            {
+                case 0: //if the agent is bruce
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Bruce;
+                    Current_Agent = "Bruce";
+                    break;
+                case 1: //if the agent is hal
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Hal;
+                    Current_Agent = "Hal";
+                    break;
+                case 2: //if the agent is jason
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Jason;
+                    Current_Agent = "Jason";
+                    break;
+                case 3: //if the agent is suzie
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Suzi;
+                    Current_Agent = "Suzi";
+                    break;
+                case 4: //if no agent is available
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Generic;
+                    Current_Agent = "Bot";
+                    break;
+            }
+
+            string New_Agent = " ";
+            switch (Agent_To_Add) //apply the appropriate profile picture and label text
+            {
+                case 0: //if the agent is bruce
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Bruce;
+                    Current_Agent = "Bruce";
+                    break;
+                case 1: //if the agent is hal
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Hal;
+                    Current_Agent = "Hal";
+                    break;
+                case 2: //if the agent is jason
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Jason;
+                    Current_Agent = "Jason";
+                    break;
+                case 3: //if the agent is suzie
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Suzi;
+                    Current_Agent = "Suzi";
+                    break;
+                case 4: //if no agent is available
+                    Second_Agent_Profile_Image.BackgroundImage = Properties.Resources.Generic;
+                    Current_Agent = "Bot";
+                    break;
+            }
+
+            int Second_Agent_Profile_Image_Location = Second_Agent_Profile_Image.Location.X;
+            int Agent_Name_Label_Location = Agent_Name_Label.Location.X;
+            int Agent_Status_Indicator_Location = Agent_Status_Indicator.Location.X;
+            Agent_Name_Label.Text = "Group Chat";
+            Agent_Name_Label.Size = new Size(100, 31);
+            for (int Add_Agent_Timer = 0; Add_Agent_Timer <= 40; Add_Agent_Timer++)
+            {
+                Second_Agent_Profile_Image.Location = new Point(Second_Agent_Profile_Image_Location + 1, Second_Agent_Profile_Image.Location.Y);
+                Agent_Name_Label.Location = new Point(Agent_Name_Label_Location + 1, Agent_Name_Label.Location.Y);
+                Agent_Status_Indicator.Location = new Point(Agent_Status_Indicator_Location + 1, Agent_Status_Indicator.Location.Y);
+
+                Second_Agent_Profile_Image_Location = Second_Agent_Profile_Image_Location + 1;
+                Agent_Name_Label_Location = Agent_Name_Label_Location + 1;
+                Agent_Status_Indicator_Location = Agent_Status_Indicator_Location + 1;
+                await Task.Delay(1);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Add_Agent_To_Conversation(2);
         }
     }
 }
