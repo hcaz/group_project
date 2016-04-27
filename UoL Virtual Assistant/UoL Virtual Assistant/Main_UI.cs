@@ -55,6 +55,10 @@ namespace UoL_Virtual_Assistant
         public static int Connected_Agent; //indicates the agent what will connect with the user
         public static int About_Pop_Up = 0;
 
+
+        public static bool Group_Chat_Status = false;
+        public static int Group_Chat_Second_Agent;
+
         public static int AI_0_Pos = 0;
         public static int AI_1_Pos = 0;
         public static int AI_2_Pos = 0;
@@ -96,7 +100,6 @@ namespace UoL_Virtual_Assistant
 
         public Main_UI()
         {
-
             Read_User_Data(); //read in the user data from the settings file
             if (Student_ID == null) //if no student ID is found
             {
@@ -1262,6 +1265,14 @@ namespace UoL_Virtual_Assistant
                 Send_Message.Enabled = true;
                 AI_Response_Handshake = false;
                 AI_Message_Counter++;
+
+                if (Latest_AI_Message == "Hold on a moment, let me invite JB")
+                {
+                    Add_Agent_To_Conversation(2);
+
+                    Latest_AI_Message = "Fuck off";
+                    Create_AI_Message();
+                }
             }
         }
 
@@ -1981,8 +1992,6 @@ namespace UoL_Virtual_Assistant
 
         private void Reiterate_Layers()
         {
-
-
             Conversation_Cloak.BringToFront();
             Message_Input_Area.BringToFront();
             Message_Input.BringToFront();
@@ -2790,7 +2799,7 @@ namespace UoL_Virtual_Assistant
             }
         }
 
-        private async void Add_Agent_To_Conversation(int Agent_To_Add)
+        public async void Add_Agent_To_Conversation(int Agent_To_Add)
         {
             Second_Agent_Profile_Image.Visible = true;
             Second_Agent_Profile_Image.Location = new Point(Agent_Profile_Image.Location.X, Agent_Profile_Image.Location.Y);

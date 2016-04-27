@@ -81,7 +81,6 @@ namespace UoL_Virtual_Assistant
                         else if (Main_UI.Latest_User_Message.ToLower().Contains("1 + 1"))
                         {
                             output = "Hold on a moment, let me invite JB";
-                            Add_Agent_To_Conversation(2);
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
                         {
