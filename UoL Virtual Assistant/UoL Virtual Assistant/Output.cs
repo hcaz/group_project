@@ -75,7 +75,11 @@ namespace UoL_Virtual_Assistant
                     }
                     else
                     {
-                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
+                        {
+                            output = output + " - " + lookupMessage("filler", "rude_insult");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
                         {
                             output = output + " - " + lookupMessage("filler", "farewell");
                         }
@@ -86,10 +90,6 @@ namespace UoL_Virtual_Assistant
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
                         {
                             output = output + " - " + lookupMessage("filler", "greeting_question");
-                        }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
-                        {
-                            output = output + " - " + lookupMessage("filler", "rude_insult");
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
                         {
