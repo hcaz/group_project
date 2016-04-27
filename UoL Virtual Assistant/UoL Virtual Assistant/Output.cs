@@ -75,7 +75,19 @@ namespace UoL_Virtual_Assistant
                     }
                     else
                     {
-                        if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
+                        if (Main_UI.Latest_User_Message.ToLower() == "konami") {
+                            output = "Jack <3";
+                        }
+                        else if (Main_UI.Latest_User_Message.ToLower().Contains("1 + 1"))
+                        {
+                            output = "Hold on a moment, let me invite JB";
+                            Add_Agent_To_Conversation(2);
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
+                        {
+                            output = output + " - " + lookupMessage("filler", "rude_insult");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.farewell))
                         {
                             output = output + " - " + lookupMessage("filler", "farewell");
                         }
@@ -86,10 +98,6 @@ namespace UoL_Virtual_Assistant
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.greeting_question))
                         {
                             output = output + " - " + lookupMessage("filler", "greeting_question");
-                        }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.insult))
-                        {
-                            output = output + " - " + lookupMessage("filler", "rude_insult");
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_who))
                         {
@@ -107,12 +115,31 @@ namespace UoL_Virtual_Assistant
                                 output = output + " - " + lookupMessage("filler", "error_name_faculty");
                             }
                         }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_what))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_when))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_where))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_why))
+                        {
+                        }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
+                        {
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.tell_me_about))
                         {
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.workstation))
                         {
                             output = output + " - " + lookupMessage("filler", "workstation");
+                        }
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.weather))
+                        {
+                            output = output + " - " + lookupMessage("filler", "weather");
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.thank_you))
                         {
@@ -137,6 +164,8 @@ namespace UoL_Virtual_Assistant
 
             Random rnd = new Random();
             string url = "../../resources/files/messages.xml";
+
+            ScrapeData data = new ScrapeData();
 
             XmlDocument doc = new XmlDocument();
             doc.Load(url);
@@ -182,12 +211,33 @@ namespace UoL_Virtual_Assistant
             }
             if (message == "WORKSTATION")
             {
-                ScrapeData data = new ScrapeData();
                 data.freePCData();
                 data.libraryOpening();
                 output = output.Replace("$freePCS", data.freePcs.ToString());
                 output = output.Replace("$times", data.libraryOpen.ToString());
                 output = output.Replace("$deskTimes", data.libraryDeskOpen.ToString());
+            }
+            if (message == "WEATHER")
+            {
+                data.weatherData();
+                output = output.Replace("$fdm", data.days[0].FDm);
+                output = output.Replace("$fnm", data.days[0].FNm);
+                output = output.Replace("$dm", data.days[0].Dm);
+                output = output.Replace("$nm", data.days[0].Nm);
+                if (data.days[0].V == "VG")
+                {
+                    output = output.Replace("$v", "is good.");
+                }
+                else if(data.days[0].V == "EX")
+                {
+                    output = output.Replace("$v", "is very good.");
+                }
+                else
+                {
+                    output = output.Replace("$v", "is bad.");
+                }
+                output = output.Replace("$d", data.days[0].D);
+                output = output.Replace("$s", data.days[0].S);
             }
 
             return output;

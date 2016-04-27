@@ -229,6 +229,17 @@
 				<MESSAGE>The system says there are currently $freePCS free computers in the library right now. The library is open $times today, with the desk being open $deskTimes today.</MESSAGE>
 			</DEFAULT>
 		</WORKSTATION>
+		<WEATHER>
+			<BRUCE>
+				<MESSAGE>Just checked the BBC, it feels like $fdm degress out there and visibility $v</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>There is too much glare in my screen, so I assume it is nice outside.</MESSAGE>
+			</HAL>
+			<DEFAULT>
+				<MESSAGE>Just checked the BBC, it feels like $fdm degress out there.</MESSAGE>
+			</DEFAULT>
+		</WEATHER>
 	</FILLER>
 	<BULDINGS>
 		<LIBRARY>
