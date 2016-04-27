@@ -47,8 +47,6 @@
             this.Agent_Name_Label = new System.Windows.Forms.Label();
             this.Agent_Status_Indicator = new System.Windows.Forms.Label();
             this.Conversation_Exit = new System.Windows.Forms.Button();
-            this.Scroll_Conversation_Up = new System.Windows.Forms.Button();
-            this.Scroll_Conversation_Down = new System.Windows.Forms.Button();
             this.Agent_Card_Name = new System.Windows.Forms.Label();
             this.Agent_Card_Profession = new System.Windows.Forms.Label();
             this.Agent_Card_Phone_Number = new System.Windows.Forms.Label();
@@ -74,7 +72,6 @@
             this.Minimise_Button = new System.Windows.Forms.PictureBox();
             this.Title_Bar_Title = new System.Windows.Forms.Label();
             this.Second_Agent_Profile_Image = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Overlap_Fix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversation_Cloak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Agent_Card)).BeginInit();
@@ -367,32 +364,6 @@
             this.Conversation_Exit.UseVisualStyleBackColor = false;
             this.Conversation_Exit.Visible = false;
             this.Conversation_Exit.Click += new System.EventHandler(this.Conversation_Exit_Click);
-            // 
-            // Scroll_Conversation_Up
-            // 
-            this.Scroll_Conversation_Up.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Scroll_Conversation_Up.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Scroll_Conversation_Up.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Scroll_Conversation_Up.Location = new System.Drawing.Point(303, 129);
-            this.Scroll_Conversation_Up.Name = "Scroll_Conversation_Up";
-            this.Scroll_Conversation_Up.Size = new System.Drawing.Size(15, 15);
-            this.Scroll_Conversation_Up.TabIndex = 30;
-            this.Scroll_Conversation_Up.Text = "˄";
-            this.Scroll_Conversation_Up.UseVisualStyleBackColor = true;
-            this.Scroll_Conversation_Up.Click += new System.EventHandler(this.Scroll_Conversation_Up_Click);
-            // 
-            // Scroll_Conversation_Down
-            // 
-            this.Scroll_Conversation_Down.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Scroll_Conversation_Down.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Scroll_Conversation_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Scroll_Conversation_Down.Location = new System.Drawing.Point(303, 143);
-            this.Scroll_Conversation_Down.Name = "Scroll_Conversation_Down";
-            this.Scroll_Conversation_Down.Size = new System.Drawing.Size(15, 15);
-            this.Scroll_Conversation_Down.TabIndex = 31;
-            this.Scroll_Conversation_Down.Text = "˄";
-            this.Scroll_Conversation_Down.UseVisualStyleBackColor = true;
-            this.Scroll_Conversation_Down.Click += new System.EventHandler(this.Scroll_Conversation_Down_Click);
             // 
             // Agent_Card_Name
             // 
@@ -714,16 +685,6 @@
             this.Second_Agent_Profile_Image.TabIndex = 48;
             this.Second_Agent_Profile_Image.TabStop = false;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(7, 40);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 49;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // Main_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -731,7 +692,6 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(350, 520);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.Title_Bar_Title);
             this.Controls.Add(this.Exit_Button);
             this.Controls.Add(this.Maximise_Button);
@@ -748,8 +708,6 @@
             this.Controls.Add(this.Agent_Card_Profession);
             this.Controls.Add(this.Agent_Card_Name);
             this.Controls.Add(this.Agent_Card);
-            this.Controls.Add(this.Scroll_Conversation_Down);
-            this.Controls.Add(this.Scroll_Conversation_Up);
             this.Controls.Add(this.Agent_Status_Indicator);
             this.Controls.Add(this.Student_ID_Title);
             this.Controls.Add(this.Student_Name_Title);
@@ -835,8 +793,6 @@
         private System.Windows.Forms.Label Agent_Status_Indicator;
         private System.Windows.Forms.PictureBox Conversation_Area_Header;
         private System.Windows.Forms.Button Conversation_Exit;
-        private System.Windows.Forms.Button Scroll_Conversation_Up;
-        private System.Windows.Forms.Button Scroll_Conversation_Down;
         private System.Windows.Forms.PictureBox Agent_Card;
         private System.Windows.Forms.Label Agent_Card_Name;
         private System.Windows.Forms.Label Agent_Card_Profession;
@@ -853,7 +809,6 @@
         private System.Windows.Forms.PictureBox Minimise_Button;
         private System.Windows.Forms.Label Title_Bar_Title;
         private System.Windows.Forms.PictureBox Second_Agent_Profile_Image;
-        private System.Windows.Forms.Button button1;
     }
 }
 
