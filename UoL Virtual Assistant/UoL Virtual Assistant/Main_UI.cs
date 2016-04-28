@@ -814,6 +814,13 @@ namespace UoL_Virtual_Assistant
                     }
 
                     Agent_Status_Indicator.Text = "Online";
+
+                    if (AI_Message_Counter == 0)
+                    {
+                        Create_Chat_Notification("Welcome to UoL Live Chat");
+                        await Task.Delay(1000);
+                    }
+
                     if (Connected_Agent == 4)
                     {
                         string OOH_Bot_Response = "it is out of work hours. If you need to contact them personally, please get in touch during 9am and 6pm, Monday to Friday. ";
@@ -1095,6 +1102,12 @@ namespace UoL_Virtual_Assistant
 
         private async void Create_AI_Message(int Message_Type)
         {
+            if (Latest_User_Message == "Hey Jason. Are you going to the Computer Science Showcase on the 5th of May?")
+            {
+                Latest_AI_Message = "Hell yeah gurl :P";
+            }
+
+
             AI_Message[AI_Message_Counter] = new TextBox();
             AI_Message_Shell[AI_Message_Counter] = new TextBox();
 
@@ -1141,8 +1154,6 @@ namespace UoL_Virtual_Assistant
                 Reiterate_Layers();
 
                 int Scroll_Steps = Line_Counter + 20;
-
-
 
                 for (int Message_Animation_Timer = 0; Message_Animation_Timer <= Scroll_Steps; Message_Animation_Timer++)
                 {
@@ -2071,6 +2082,7 @@ namespace UoL_Virtual_Assistant
             Expand_Profile_Image.BringToFront();
 
             Title_Bar.BringToFront();
+            Title_Bar_Title.BringToFront();
             Minimise_Button.BringToFront();
             Maximise_Button.BringToFront();
             Exit_Button.BringToFront();
@@ -2321,6 +2333,20 @@ namespace UoL_Virtual_Assistant
                 {
                     this.Controls.Remove(User_Message[Delete_Messages]);
                     this.Controls.Remove(User_Message_Shell[Delete_Messages]);
+                }
+            }
+
+            catch
+            {
+
+            }
+
+            try
+            {
+                for (int Delete_Messages = 0; Delete_Messages <= 25; Delete_Messages++)
+                {
+                    this.Controls.Remove(Chat_Notification[Delete_Messages]);
+                    this.Controls.Remove(Chat_Notification_Shell[Delete_Messages]);
                 }
             }
 

@@ -38,9 +38,7 @@ namespace UoL_Virtual_Assistant
                 }
                 else
                 {
-                    Main_UI.Latest_AI_Message = @"Welcome to UOL Live chat!
-==================
-" + lookupMessage("filler", "greeting");
+                    Main_UI.Latest_AI_Message = lookupMessage("filler", "greeting");
                 }
                 return;
             }
