@@ -47,8 +47,6 @@
             this.Agent_Name_Label = new System.Windows.Forms.Label();
             this.Agent_Status_Indicator = new System.Windows.Forms.Label();
             this.Conversation_Exit = new System.Windows.Forms.Button();
-            this.Scroll_Conversation_Up = new System.Windows.Forms.Button();
-            this.Scroll_Conversation_Down = new System.Windows.Forms.Button();
             this.Agent_Card_Name = new System.Windows.Forms.Label();
             this.Agent_Card_Profession = new System.Windows.Forms.Label();
             this.Agent_Card_Phone_Number = new System.Windows.Forms.Label();
@@ -73,6 +71,7 @@
             this.Maximise_Button = new System.Windows.Forms.PictureBox();
             this.Minimise_Button = new System.Windows.Forms.PictureBox();
             this.Title_Bar_Title = new System.Windows.Forms.Label();
+            this.Second_Agent_Profile_Image = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Overlap_Fix)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Conversation_Cloak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Agent_Card)).BeginInit();
@@ -88,6 +87,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Exit_Button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Maximise_Button)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimise_Button)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Second_Agent_Profile_Image)).BeginInit();
             this.SuspendLayout();
             // 
             // Message_Input
@@ -365,32 +365,6 @@
             this.Conversation_Exit.Visible = false;
             this.Conversation_Exit.Click += new System.EventHandler(this.Conversation_Exit_Click);
             // 
-            // Scroll_Conversation_Up
-            // 
-            this.Scroll_Conversation_Up.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Scroll_Conversation_Up.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Scroll_Conversation_Up.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Scroll_Conversation_Up.Location = new System.Drawing.Point(303, 129);
-            this.Scroll_Conversation_Up.Name = "Scroll_Conversation_Up";
-            this.Scroll_Conversation_Up.Size = new System.Drawing.Size(15, 15);
-            this.Scroll_Conversation_Up.TabIndex = 30;
-            this.Scroll_Conversation_Up.Text = "˄";
-            this.Scroll_Conversation_Up.UseVisualStyleBackColor = true;
-            this.Scroll_Conversation_Up.Click += new System.EventHandler(this.Scroll_Conversation_Up_Click);
-            // 
-            // Scroll_Conversation_Down
-            // 
-            this.Scroll_Conversation_Down.AccessibleRole = System.Windows.Forms.AccessibleRole.None;
-            this.Scroll_Conversation_Down.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.Scroll_Conversation_Down.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Scroll_Conversation_Down.Location = new System.Drawing.Point(303, 143);
-            this.Scroll_Conversation_Down.Name = "Scroll_Conversation_Down";
-            this.Scroll_Conversation_Down.Size = new System.Drawing.Size(15, 15);
-            this.Scroll_Conversation_Down.TabIndex = 31;
-            this.Scroll_Conversation_Down.Text = "˄";
-            this.Scroll_Conversation_Down.UseVisualStyleBackColor = true;
-            this.Scroll_Conversation_Down.Click += new System.EventHandler(this.Scroll_Conversation_Down_Click);
-            // 
             // Agent_Card_Name
             // 
             this.Agent_Card_Name.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -517,6 +491,8 @@
             this.Hamburger_Menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Hamburger_Menu.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.Hamburger_Menu.FlatAppearance.BorderSize = 0;
+            this.Hamburger_Menu.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.Hamburger_Menu.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.Hamburger_Menu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Hamburger_Menu.Location = new System.Drawing.Point(312, 37);
             this.Hamburger_Menu.Name = "Hamburger_Menu";
@@ -555,7 +531,7 @@
             this.Agent_Profile_Image.BackColor = System.Drawing.Color.White;
             this.Agent_Profile_Image.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Generic;
             this.Agent_Profile_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.Agent_Profile_Image.Location = new System.Drawing.Point(57, 112);
+            this.Agent_Profile_Image.Location = new System.Drawing.Point(57, 108);
             this.Agent_Profile_Image.Name = "Agent_Profile_Image";
             this.Agent_Profile_Image.Size = new System.Drawing.Size(40, 40);
             this.Agent_Profile_Image.TabIndex = 25;
@@ -697,6 +673,18 @@
             this.Title_Bar_Title.TabIndex = 47;
             this.Title_Bar_Title.Text = "UoL Virtual Assistant";
             // 
+            // Second_Agent_Profile_Image
+            // 
+            this.Second_Agent_Profile_Image.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.Second_Agent_Profile_Image.BackColor = System.Drawing.Color.White;
+            this.Second_Agent_Profile_Image.BackgroundImage = global::UoL_Virtual_Assistant.Properties.Resources.Generic;
+            this.Second_Agent_Profile_Image.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Second_Agent_Profile_Image.Location = new System.Drawing.Point(57, 112);
+            this.Second_Agent_Profile_Image.Name = "Second_Agent_Profile_Image";
+            this.Second_Agent_Profile_Image.Size = new System.Drawing.Size(40, 40);
+            this.Second_Agent_Profile_Image.TabIndex = 48;
+            this.Second_Agent_Profile_Image.TabStop = false;
+            // 
             // Main_UI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -720,8 +708,6 @@
             this.Controls.Add(this.Agent_Card_Profession);
             this.Controls.Add(this.Agent_Card_Name);
             this.Controls.Add(this.Agent_Card);
-            this.Controls.Add(this.Scroll_Conversation_Down);
-            this.Controls.Add(this.Scroll_Conversation_Up);
             this.Controls.Add(this.Agent_Status_Indicator);
             this.Controls.Add(this.Student_ID_Title);
             this.Controls.Add(this.Student_Name_Title);
@@ -748,6 +734,7 @@
             this.Controls.Add(this.Conversation_Area_Header);
             this.Controls.Add(this.Conversation_Window);
             this.Controls.Add(this.UoL_Branding);
+            this.Controls.Add(this.Second_Agent_Profile_Image);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -771,6 +758,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Exit_Button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Maximise_Button)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Minimise_Button)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Second_Agent_Profile_Image)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -805,8 +793,6 @@
         private System.Windows.Forms.Label Agent_Status_Indicator;
         private System.Windows.Forms.PictureBox Conversation_Area_Header;
         private System.Windows.Forms.Button Conversation_Exit;
-        private System.Windows.Forms.Button Scroll_Conversation_Up;
-        private System.Windows.Forms.Button Scroll_Conversation_Down;
         private System.Windows.Forms.PictureBox Agent_Card;
         private System.Windows.Forms.Label Agent_Card_Name;
         private System.Windows.Forms.Label Agent_Card_Profession;
@@ -822,6 +808,7 @@
         private System.Windows.Forms.PictureBox Maximise_Button;
         private System.Windows.Forms.PictureBox Minimise_Button;
         private System.Windows.Forms.Label Title_Bar_Title;
+        private System.Windows.Forms.PictureBox Second_Agent_Profile_Image;
     }
 }
 
