@@ -112,23 +112,24 @@ namespace UoL_Virtual_Assistant
                                 output = output + " - " + lookupMessage("filler", "error_name_faculty");
                             }
                         }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_what))
+                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_what) || currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_when) || currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_where) || currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_why) || currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement) || currentSentance.sentenceType.Contains(ContextObject.SentenceType.tell_me_about))
                         {
-                        }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_when))
-                        {
-                        }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_where))
-                        {
-                        }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.question_why))
-                        {
-                        }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.statement))
-                        {
-                        }
-                        else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.tell_me_about))
-                        {
+                            if (currentSentance.subType.Contains(ContextObject.SubjectType.type_location))
+                            {
+                                if(Main_UI.location == "")
+                                {
+                                    output = output + " - " + lookupMessage("filler", "error");
+                                }
+                                else
+                                {
+                                    output = output + " - " + lookupMessage("filler", Main_UI.location);
+                                    Main_UI.location = "";
+                                }
+                            }
+                            else
+                            {
+                                output = output + " - " + lookupMessage("filler", "error");
+                            }
                         }
                         else if (currentSentance.sentenceType.Contains(ContextObject.SentenceType.workstation))
                         {

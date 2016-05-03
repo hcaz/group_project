@@ -65,8 +65,7 @@ namespace UoL_Virtual_Assistant
             estateAgents = locationData.SelectNodes("LOCATIONS/ESTATEAGENTS");
             ignoreWords = keywordData.SelectSingleNode("KEYWORDS/IGNOREWORDS");
             insults = keywordData.SelectNodes("KEYWORDS/INSULTS");
-
-
+            
             input.ToLower();
 
             string regexPattern = @"(\? )|(\! )|(\. )|(\?)|(\!)|(\.)";
@@ -75,11 +74,9 @@ namespace UoL_Virtual_Assistant
             List<ContextObject> contextObjects = new List<ContextObject>();
 
             sentences = SentenceCleanup(sentences);
-
-
+            
             contextObjects = AnalyseContext(sentences);
-
-
+            
             string temp = " ";
             //Concatenates strings for DEBUG testing
             for (int i = 0; i < sentences.Length; i++)
@@ -423,6 +420,8 @@ namespace UoL_Virtual_Assistant
                             contextObject.subType.Add(ContextObject.SubjectType.name_location);
                             contextObject.subjectList.Add(banks[0].ChildNodes[j].ChildNodes[0]);
                             contexts[i] = contexts[i] + "[Bank mentioned: " + banks[0].ChildNodes[j].Name.ToLower() + "]";
+                            Main_UI.currentObject = banks[0].ChildNodes[j];
+                            Main_UI.location = "namedbank";
                         }
                     }
                     else if (sentences[i].Contains("bank") || sentences[i].Contains("finance"))
@@ -431,6 +430,7 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.subType.Add(ContextObject.SubjectType.type_location);
                             contextObject.subjectList.Add(banks[0]);
+                            Main_UI.location = "bank";
                         }
                     }
                 }
@@ -446,6 +446,8 @@ namespace UoL_Virtual_Assistant
                             contextObject.subType.Add(ContextObject.SubjectType.name_location);
                             contextObject.subjectList.Add(shops[0].ChildNodes[j].ChildNodes[0]);
                             contexts[i] = contexts[i] + "[Shop mentioned: " + shops[0].ChildNodes[j].Name.ToLower() + "]";
+                            Main_UI.currentObject = shops[0].ChildNodes[j];
+                            Main_UI.location = "namedshop";
                         }
                     }
                     else if (sentences[i].Contains("shops") || sentences[i].Contains("shopping") || sentences[i].Contains("clothes") || sentences[i].Contains("shoes"))
@@ -454,6 +456,7 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.subType.Add(ContextObject.SubjectType.type_location);
                             contextObject.subjectList.Add(shops[0]);
+                            Main_UI.location = "shop";
                         }
                     }
                 }
@@ -469,6 +472,8 @@ namespace UoL_Virtual_Assistant
                             contextObject.subType.Add(ContextObject.SubjectType.name_location);
                             contextObject.subjectList.Add(restaurants[0].ChildNodes[j].ChildNodes[0]);
                             contexts[i] = contexts[i] + "[restaurants mentioned: " + restaurants[0].ChildNodes[j].Name.ToLower() + "]";
+                            Main_UI.currentObject = restaurants[0].ChildNodes[j];
+                            Main_UI.location = "namedresturant";
                         }
                     }
                     else if (sentences[i].Contains("restaurant") || sentences[i].Contains("food") || sentences[i].Contains("eat out") || sentences[i].Contains("eat") || sentences[i].Contains("cafe"))
@@ -477,6 +482,7 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.subType.Add(ContextObject.SubjectType.type_location);
                             contextObject.subjectList.Add(restaurants[0]);
+                            Main_UI.location = "resturant";
                         }
                     }
                 }
@@ -493,6 +499,8 @@ namespace UoL_Virtual_Assistant
                             contextObject.subjectList.Add(hotels[0].ChildNodes[j].ChildNodes[0]);
                             //MessageBox.Show(hotels[0].ChildNodes[j].ChildNodes[0].InnerText);
                             contexts[i] = contexts[i] + "[hotel mentioned: " + hotels[0].ChildNodes[j].Name.ToLower() + "]";
+                            Main_UI.currentObject = hotels[0].ChildNodes[j];
+                            Main_UI.location = "namedhotel";
                         }
                     }
                     else if (sentences[i].Contains("hotel") || sentences[i].Contains("visit"))
@@ -501,6 +509,7 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.subType.Add(ContextObject.SubjectType.type_location);
                             contextObject.subjectList.Add(hotels[0]);
+                            Main_UI.location = "hotel";
                         }
                     }
                 }
@@ -516,6 +525,8 @@ namespace UoL_Virtual_Assistant
                             contextObject.subType.Add(ContextObject.SubjectType.name_location);
                             contextObject.subjectList.Add(gyms[0].ChildNodes[j].ChildNodes[0]);
                             contexts[i] = contexts[i] + "[gyms mentioned: " + gyms[0].ChildNodes[j].Name.ToLower() + "]";
+                            Main_UI.currentObject = gyms[0].ChildNodes[j];
+                            Main_UI.location = "namedgym";
                         }
                     }
                     else if (sentences[i].Contains("gym") || sentences[i].Contains("exercise") || sentences[i].Contains("running") || sentences[i].Contains("cycling") || sentences[i].Contains("in shape"))
@@ -524,6 +535,7 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.subType.Add(ContextObject.SubjectType.type_location);
                             contextObject.subjectList.Add(gyms[0]);
+                            Main_UI.location = "gym";
                         }
                     }
                 }
@@ -539,6 +551,8 @@ namespace UoL_Virtual_Assistant
                             contextObject.subType.Add(ContextObject.SubjectType.name_location);
                             contextObject.subjectList.Add(fastFood[0].ChildNodes[j].ChildNodes[0]);
                             contexts[i] = contexts[i] + "[fastFood mentioned: " + fastFood[0].ChildNodes[j].Name.ToLower() + "]";
+                            Main_UI.currentObject = fastFood[0].ChildNodes[j];
+                            Main_UI.location = "namedfastfood";
                         }
                     }
                     else if (sentences[i].Contains("fast food") || sentences[i].Contains("maccies") || sentences[i].Contains("cheap food"))
@@ -547,6 +561,7 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.subType.Add(ContextObject.SubjectType.type_location);
                             contextObject.subjectList.Add(fastFood[0]);
+                            Main_UI.location = "fastfood";
                         }
                     }
                 }
@@ -562,6 +577,8 @@ namespace UoL_Virtual_Assistant
                             contextObject.subType.Add(ContextObject.SubjectType.name_location);
                             contextObject.subjectList.Add(estateAgents[0].ChildNodes[j]);
                             contexts[i] = contexts[i] + "[estateAgents mentioned: " + estateAgents[0].ChildNodes[j].Name.ToLower() + "]";
+                            Main_UI.currentObject = estateAgents[0].ChildNodes[j];
+                            Main_UI.location = "namedestate";
                         }
                     }
                     else if (sentences[i].Contains("estate") || sentences[i].Contains("agent") || sentences[i].Contains("accomodation") || sentences[i].Contains("housing") || sentences[i].Contains("hous"))
@@ -570,6 +587,7 @@ namespace UoL_Virtual_Assistant
                         {
                             contextObject.subType.Add(ContextObject.SubjectType.type_location);
                             contextObject.subjectList.Add(estateAgents[0]);
+                            Main_UI.location = "estate";
                         }
                     }
                 }
