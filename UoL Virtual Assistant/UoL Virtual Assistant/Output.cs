@@ -113,9 +113,8 @@ namespace UoL_Virtual_Assistant
                                 output = output + " - " + lookupMessage("filler", "error_name_faculty");
                             }
                         }
-                        else if (currentSentance.subType.Contains(ContextObject.SubjectType.type_location))
+                        else if (currentSentance.subType.Contains(ContextObject.SubjectType.type_location) || currentSentance.subType.Contains(ContextObject.SubjectType.name_location))
                         {
-                            MessageBox.Show(Main_UI.location);
                             if (Main_UI.location == "")
                             {
                                 output = output + " - " + lookupMessage("filler", "error");
@@ -232,7 +231,20 @@ namespace UoL_Virtual_Assistant
                 output = output.Replace("$d", data.days[0].D);
                 output = output.Replace("$s", data.days[0].S);
             }
-
+            if(message == "NAMEDBANK" || message == "NAMEDSHOP" || message == "NAMEDGYM" || message == "NAMEDFASTFOOD" || message == "NAMEDRESTAURANT" || message == "NAMEDHOTEL")
+            {
+                output = output.Replace("$name", Main_UI.currentObject.ChildNodes[0].InnerText);
+                output = output.Replace("$address", Main_UI.currentObject.ChildNodes[1].InnerText);
+                output = output.Replace("$phone", Main_UI.currentObject.ChildNodes[2].InnerText);
+                if (Main_UI.currentObject.ChildNodes[3].InnerText == "Open 24/7")
+                {
+                    output = output.Replace("$opening", "all day");
+                }
+                else
+                {
+                    output = output.Replace("$opening", Main_UI.currentObject.ChildNodes[3].ChildNodes[0].InnerText);
+                }
+            }
             return output;
         }
     }
