@@ -231,62 +231,62 @@
 		</WORKSTATION>
 		<NAMEDBANK>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>Google tells me there opening hours today are $opening, and there phone number is $phone</MESSAGE>
 			</DEFAULT>
 		</NAMEDBANK>
 		<BANK>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>There are plenty on the highstreet including HSBC, RBS, and NatWest.</MESSAGE>
 			</DEFAULT>
 		</BANK>
 		<NAMEDSHOP>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>Google tells me there opening hours today are $opening, and there phone number is $phone</MESSAGE>
 			</DEFAULT>
 		</NAMEDSHOP>
 		<SHOP>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>There is a Morrisons not far from here.</MESSAGE>
 			</DEFAULT>
 		</SHOP>
 		<NAMEDRESTAURANT>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>Google tells me there opening hours today are $opening, and there phone number is $phone</MESSAGE>
 			</DEFAULT>
 		</NAMEDRESTAURANT>
 		<RESTAURANT>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>There are plenty of places to choose from, the closest is Wagamamas.</MESSAGE>
 			</DEFAULT>
 		</RESTAURANT>
 		<NAMEDHOTEL>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>Google tells me there opening hours today are $opening, and there phone number is $phone</MESSAGE>
 			</DEFAULT>
 		</NAMEDHOTEL>
 		<HOTEL>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>There is the Holiday and DoubleTree on the brayford.</MESSAGE>
 			</DEFAULT>
 		</HOTEL>
 		<NAMEGYM>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>Google tells me there opening hours today are $opening, and there phone number is $phone</MESSAGE>
 			</DEFAULT>
 		</NAMEGYM>
 		<GYM>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>The university has its own gyp, plus there are a few on the highstreet.</MESSAGE>
 			</DEFAULT>
 		</GYM>
 		<NAMEDFASTFOOD>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>Google tells me there opening hours today are $opening, and there phone number is $phone</MESSAGE>
 			</DEFAULT>
 		</NAMEDFASTFOOD>
 		<FASTFOOD>
 			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+				<MESSAGE>I know a few places around here, there is a KFC and a McDonald's on the highstreet.</MESSAGE>
 			</DEFAULT>
 		</FASTFOOD>
 		<WEATHER>
@@ -297,32 +297,19 @@
 				<MESSAGE>There is too much glare in my screen, so I assume it is nice outside.</MESSAGE>
 			</HAL>
 			<DEFAULT>
-				<MESSAGE>Just checked the BBC, it feels like $fdm degress out there.</MESSAGE>
+				<MESSAGE>Just checked online, it feels like $fdm degress out there.</MESSAGE>
 			</DEFAULT>
 		</WEATHER>
+		<WEATHERTOMORROW>
+			<BRUCE>
+				<MESSAGE>Just checked the BBC, it predicts it will feels like $fdm degress out there and visibility $v</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>I cant predict the futre, sorry.</MESSAGE>
+			</HAL>
+			<DEFAULT>
+				<MESSAGE>Just checked online, it should feels like $fdm degress out there.</MESSAGE>
+			</DEFAULT>
+		</WEATHERTOMORROW>
 	</FILLER>
-	<BULDINGS>
-		<LIBRARY>
-			<DEFAULT>
-				<MESSAGE>The library is currently $libraryStatus, and desk is open $deskTI'mes today.</MESSAGE>
-			</DEFAULT>
-		</LIBRARY>
-		<LIBRARY_PC>
-			<DEFAULT>
-				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
-			</DEFAULT>
-		</LIBRARY_PC>
-		<OTHER>
-			<DEFAULT>
-				<MESSAGE>It is located at $location, and is open $times today.</MESSAGE>
-			</DEFAULT>
-		</OTHER>
-	</BULDINGS>
-	<DEPARTMENT>
-		<PASSON>
-			<DEFAULT>
-				<MESSAGE>I am sorry, I cant help you with that, however if you email the department at $email they can help.</MESSAGE>
-			</DEFAULT>
-		</PASSON>
-	</DEPARTMENT>
 </MESSAGES>
