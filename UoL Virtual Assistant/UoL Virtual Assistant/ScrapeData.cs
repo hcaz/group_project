@@ -32,12 +32,12 @@ namespace UoL_Virtual_Assistant
             XmlDocument doc = new XmlDocument();
             doc.Load(win7DataUrl);
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/workstations/win7Clients/win7Client");
-            
+
             foreach (XmlNode node in nodes)
             {
                 Computer pc = new Computer();
                 pc.type = "Win7";
-                pc.name = node.SelectSingleNode("machineName").InnerText;
+                pc.name = "lol";
                 pc.status = node.SelectSingleNode("status").InnerText;
                 pc.useage = node.SelectSingleNode("useage").InnerText;
                 pc.building = node.SelectSingleNode("location").SelectSingleNode("building").InnerText;
@@ -59,7 +59,7 @@ namespace UoL_Virtual_Assistant
             {
                 Computer pc = new Computer();
                 pc.type = "Thin";
-                pc.name = node.SelectSingleNode("machineName").InnerText;
+                pc.name = "lol";
                 pc.status = node.SelectSingleNode("status").InnerText;
                 pc.useage = node.SelectSingleNode("useage").InnerText;
                 pc.building = node.SelectSingleNode("location").SelectSingleNode("building").InnerText;
@@ -81,7 +81,7 @@ namespace UoL_Virtual_Assistant
         public bool libraryOpening()
         {
             string url = "https://api3.libcal.com/api_hours_today.php?iid=1718&lid=604&format=xml&context=object";
-            
+
             XmlDocument doc = new XmlDocument();
             doc.Load(url);
             XmlNodeList nodes = doc.DocumentElement.SelectNodes("/libcal/locations/location");
