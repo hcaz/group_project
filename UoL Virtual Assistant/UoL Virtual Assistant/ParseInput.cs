@@ -649,10 +649,6 @@ namespace UoL_Virtual_Assistant
                     {
                         debugString = debugString + " [" + subType[i] + ": " + subjectList[i].Name + "] ";
                     }
-                    else if (sentenceType[i] == SentenceType.insult)
-                    {
-                        debugString = debugString + " [" + subType[i] + ": " + subjectList[i].Name.ToLower() + "] ";
-                    }
                     else
                     {
                         debugString = debugString + " [" + subType[i] + ": " + subjectList[i].ChildNodes[0].InnerText + "] ";
