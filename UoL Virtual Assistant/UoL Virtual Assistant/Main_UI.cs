@@ -16,7 +16,7 @@ using System.Collections;
 namespace UoL_Virtual_Assistant
 {
     public partial class Main_UI : Form
-    {    
+    {
         //globally accessed values
         string Student_Course; //creates a string that will store the course that the student is on
         string Universal_Theme_Value; //creates a string that will store the current theme value
@@ -35,6 +35,7 @@ namespace UoL_Virtual_Assistant
         public static string Student_First_Name = ""; //creates a string that will store the student first name
         public static string Student_Last_Name = ""; //creates a string that will store the student last name
         public static string Latest_User_Message = ""; //this is a string that contains the latest user message. it is easily accessable from other areas of the system
+        public static string Previous_AI_Message = " "; //store the previous AI message
         public static string Latest_AI_Message = ""; //....
         public static XmlNode currentObject;
         public static bool waitingOnResponse = false;
@@ -53,6 +54,8 @@ namespace UoL_Virtual_Assistant
         public static int Connection_Status = 0; //indicates the current connection status, 0 means no conversation is connected, 1 means an agent has been chosen
         public static int Connected_Agent; //indicates the agent what will connect with the user
         public static int About_Pop_Up = 0;
+
+        public static bool Showcase_Override;
 
 
         public static bool Group_Chat_Status = false;
@@ -296,7 +299,7 @@ namespace UoL_Virtual_Assistant
             UoL_Logo_Link_Selection.Location = new Point(410, 271); //move the UoL logo link selection so that it is off screen
             Reset_Title.Location = new Point(370, 300); //move the reset title so that it is off screen
             Reset_Button.Location = new Point(410, 300); //move the reset button so that it is off screen
-            About_Title.Location = new Point(370,390); //move the about title so that it is off screen
+            About_Title.Location = new Point(370, 390); //move the about title so that it is off screen
             About_Content.Location = new Point(375, 420); //move the about content so that it is off screen
 
             //hide items related to the conversation window
@@ -411,7 +414,7 @@ namespace UoL_Virtual_Assistant
                 Conversation_Cloak.BackColor = Color.FromArgb(R, G, B);
             }
 
-             
+
         }
 
         public void Tooltips_Generation()
@@ -445,7 +448,7 @@ namespace UoL_Virtual_Assistant
                     break;
             }
 
-                    Tooltips.SetToolTip(Exit_Button, "Close");
+            Tooltips.SetToolTip(Exit_Button, "Close");
             Tooltips.SetToolTip(Maximise_Button, "Maximise");
             Tooltips.SetToolTip(Minimise_Button, "Minimise");
             Tooltips.SetToolTip(Hamburger_Menu, "Settings");
@@ -474,7 +477,7 @@ namespace UoL_Virtual_Assistant
         {
             if (e.KeyChar == (char)Keys.Enter)
             {
-                Send_Message.PerformClick();               
+                Send_Message.PerformClick();
             }
         }
 
@@ -501,7 +504,7 @@ namespace UoL_Virtual_Assistant
 
         private async void Send_Message_Click(object sender, EventArgs e)
         {
-            string User_Message = (Message_Input.Text); //write the user message to a string
+            //string Latest_User_Message = (Message_Input.Text); //write the user message to a string
             switch (Open_Conversation_Window)
             {
                 case 0:
@@ -541,11 +544,14 @@ namespace UoL_Virtual_Assistant
 
                         if (AI_Response_Handshake == true)
                         {
+
                             Realistic_AI_Typing();
+
                         }
                     }
                     break;
             }
+            Showcase_Override = false;
         }
 
         private async void Initiate_Connection()
@@ -571,7 +577,7 @@ namespace UoL_Virtual_Assistant
 
                 int Connection_Timer = Randomiser.Next(1, 5);
                 bool Exit_Visible = false;
-                bool Pulse = true;            
+                bool Pulse = true;
                 while (Connection_Status == 0) //while the user is not connected to an agent
                 {
                     for (int Colour = 305; Colour >= 55; Colour--) //fades in the connecting label
@@ -593,12 +599,12 @@ namespace UoL_Virtual_Assistant
                             await Task.Delay(1); //delay
                             Connecting_Label.ForeColor = Color.FromArgb(Colour + 50, Colour + 50, Colour + 50); //reduce the colour value of the label by 50 on each loop
                         }
-                    }      
-                    
+                    }
+
                     else
                     {
                         Connection_Status = 1;
-                    }              
+                    }
 
                     Connection_Timer--;
                     if (Connection_Timer == 0)
@@ -868,8 +874,18 @@ namespace UoL_Virtual_Assistant
 
             else
             {
-                Output Create_Response = new Output();
-                Create_Response.Generate_AI_Response();
+                CS_Showcase_Event();
+
+                if (Showcase_Override == true)
+                {
+                    //Showcase_Override = false;
+                }
+
+                else
+                {
+                    Output Create_Response = new Output();
+                    Create_Response.Generate_AI_Response();
+                }
 
                 Agent_Status_Indicator.Text = "Typing";
                 int Typing_Time = ((Latest_AI_Message.Length * 100) + 5000);
@@ -921,7 +937,7 @@ namespace UoL_Virtual_Assistant
                 else
                 {
                     Agent_Status_Indicator.Text = "Online";
-                }            
+                }
 
                 int Probability = 0;
                 int Random = 0;
@@ -1001,10 +1017,12 @@ namespace UoL_Virtual_Assistant
                 if (Connection_Status == 1)
                 {
                     Create_AI_Message(0); //display the final message
-                }               
+                }
+
+                Showcase_Override = false;
             }
         }
-
+    
         private void Make_A_Mistake()
         {
             #region read
@@ -1116,7 +1134,7 @@ namespace UoL_Virtual_Assistant
 
             if (Message_Type == 0) //generic message colour
             {
-                AI_Message[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);                
+                AI_Message[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
                 AI_Message[AI_Message_Counter].ForeColor = Color.FromArgb(255, 255, 255);
                 AI_Message_Shell[AI_Message_Counter].BackColor = Color.FromArgb(1, 63, 139);
             }
@@ -1276,6 +1294,7 @@ namespace UoL_Virtual_Assistant
                 Send_Message.Enabled = true;
                 AI_Response_Handshake = false;
                 AI_Message_Counter++;
+                //Previous_AI_Message = Latest_AI_Message;
 
                 if (Latest_AI_Message.Contains("invite JB"))
                 {
@@ -1336,7 +1355,7 @@ namespace UoL_Virtual_Assistant
         }
 
         private async void Create_User_Message()
-        {          
+        {
             Message_Input.Enabled = false;
             User_Message[User_Message_Counter] = new TextBox();
             User_Message_Shell[User_Message_Counter] = new TextBox();
@@ -1879,7 +1898,7 @@ namespace UoL_Virtual_Assistant
                 {
                     Chat_Notification[Notification_Counter - 10].Location = new Point(Chat_Notification[Notification_Counter - 10].Location.X, Chat_Notification[Notification_Counter - 10].Location.Y - 2);
                     Chat_Notification_Shell[Notification_Counter - 10].Location = new Point(Chat_Notification_Shell[Notification_Counter - 10].Location.X, Chat_Notification_Shell[Notification_Counter - 10].Location.Y - 2);
-                }                
+                }
 
                 else
                 {
@@ -1923,7 +1942,7 @@ namespace UoL_Virtual_Assistant
                 //    AI_Message[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
                 //    AI_Message_Shell[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
                 //}                
-            }           
+            }
         }
 
         private bool Check_AI_Location()
@@ -1971,7 +1990,7 @@ namespace UoL_Virtual_Assistant
 
         private async void Hamburger_Menu_Click(object sender, EventArgs e)
         {
-            if(Open_Settings_Drawer == 0) //if the drawer status is set to closed
+            if (Open_Settings_Drawer == 0) //if the drawer status is set to closed
             {
                 Settings_Drawer.BringToFront();
                 Settings_Title.BringToFront();
@@ -2057,7 +2076,7 @@ namespace UoL_Virtual_Assistant
                 Settings_Drawer.Visible = false; //make the drawer invisible
                 Open_Settings_Drawer = 0; //set the drawer status as closed
             }
-                
+
         }
 
         private void Reiterate_Layers()
@@ -2221,7 +2240,7 @@ namespace UoL_Virtual_Assistant
             {
                 if ((Main_UI.currentTime > new TimeSpan(09, 0, 0)) && (Main_UI.currentTime < new TimeSpan(18, 0, 0))) //if the current time falls between the opening hours of 9am and 6pm
                 {
-                    if((Main_UI.currentTime > new TimeSpan(11, 55, 0)) && (Main_UI.currentTime < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
+                    if ((Main_UI.currentTime > new TimeSpan(11, 55, 0)) && (Main_UI.currentTime < new TimeSpan(13, 05, 0))) //if the current time falls on lunch hours
                     {
                         Connected_Agent = 4;
                     }
@@ -2248,13 +2267,13 @@ namespace UoL_Virtual_Assistant
                     {
                         return; //return, the initial agent is available
                     }
-                        
+
                     else //otherwise
                     {
                         int Unavailable_Agent = Connected_Agent; //store the previous unavailable agent
                         bool Not_Same_Agent = true; //create a bool in order to figure out if the next random agent is the same as the previous one
-                        while(Not_Same_Agent == true) //while this statement is true
-                        {                            
+                        while (Not_Same_Agent == true) //while this statement is true
+                        {
                             Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
                             if (Connected_Agent == Unavailable_Agent) //if the connected agent is the same as the previous unavailable agent
                             {
@@ -2266,7 +2285,7 @@ namespace UoL_Virtual_Assistant
                                 Not_Same_Agent = false; //bool set to false and a new agent is selected
                             }
                         }
-                    }                      
+                    }
                 }
 
                 else
@@ -2289,7 +2308,7 @@ namespace UoL_Virtual_Assistant
                 DialogResult Exit_Confirmation = MessageBox.Show("You are about to close the current conversation. Are you sure that you want to do this?", "Exit Conversation", MessageBoxButtons.YesNo);
                 if (Exit_Confirmation == DialogResult.Yes)
                 {
-                    Close_Conversation_Window();                 
+                    Close_Conversation_Window();
                 }
                 else if (Exit_Confirmation == DialogResult.No)
                 {
@@ -2361,7 +2380,7 @@ namespace UoL_Virtual_Assistant
             int Profile_Image_Location = Agent_Profile_Image.Location.Y;
             int Agent_Name_Label_Location = Agent_Name_Label.Location.Y;
             int Agent_Status_Indicator_Location = Agent_Status_Indicator.Location.Y;
-            int Conversation_Exit_Location = Conversation_Exit.Location.Y;   
+            int Conversation_Exit_Location = Conversation_Exit.Location.Y;
 
             for (int Conversation_Window_Close = 0; Conversation_Window_Close <= 73; Conversation_Window_Close++)
             {
@@ -2394,7 +2413,7 @@ namespace UoL_Virtual_Assistant
 
             Conversation_Exit.Location = new Point(277, 108);
             Connecting_Label.Location = new Point(123, 289);
-            Connecting_Label.Text = "Connecting";  
+            Connecting_Label.Text = "Connecting";
             Connecting_Label.Visible = false;
 
             Agent_Name_Label.Location = new Point(55, 322);
@@ -2416,7 +2435,7 @@ namespace UoL_Virtual_Assistant
             if (Expanded_Icon == false)
             {
                 Agent_Profile_Card();
-            }        
+            }
         }
 
         private async void Expand_Profile_Image_Click(object sender, EventArgs e)
@@ -2576,7 +2595,7 @@ namespace UoL_Virtual_Assistant
                         Agent_Card_Room.ForeColor = Color.White;
 
                         Agent_Card_Name.Text = "Suzi Perry";
-                        Agent_Card_Profession.Text = "Moving on to better things :-)";
+                        Agent_Card_Profession.Text = "Moving on up :-)";
                         Agent_Card_Email.Text = "suzi@lincoln.ac.uk";
                         Agent_Card_Phone_Number.Text = "Phone Number N/A";
                         Agent_Card_Room.Text = "SoCs Office";
@@ -2600,7 +2619,7 @@ namespace UoL_Virtual_Assistant
                         break;
                 }
 
-                Conversation_Area_Header.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);              
+                Conversation_Area_Header.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
                 Agent_Card.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
                 Agent_Card_Name.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
                 Agent_Card_Profession.BackColor = Color.FromArgb(Agent_Card_Accent_R, Agent_Card_Accent_G, Agent_Card_Accent_B);
@@ -2729,7 +2748,7 @@ namespace UoL_Virtual_Assistant
 
                         if (Timer >= 25 && Timer <= 35)
                         {
-                            Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y + 15);                            
+                            Agent_Card_Name.Location = new Point(Agent_Card_Name.Location.X, Agent_Card_Name.Location.Y + 15);
                         }
 
                         if (Timer >= 25 && Timer <= 40)
@@ -2781,7 +2800,7 @@ namespace UoL_Virtual_Assistant
 
                 }
             }
-                    
+
         }
 
         private void Agent_Card_Like_Button_Click(object sender, EventArgs e)
@@ -2815,7 +2834,7 @@ namespace UoL_Virtual_Assistant
 
                 Agent_Card_Like_Button.BackColor = Color.FromArgb(0, 80, 20);
                 Save_Changes(); //save the changes
-            }            
+            }
         }
 
         private void Agent_Card_Email_Click(object sender, EventArgs e)
@@ -2951,7 +2970,7 @@ namespace UoL_Virtual_Assistant
             int Agent_Status_Indicator_Location = Agent_Status_Indicator.Location.X;
 
 
-            
+
             for (int Add_Agent_Timer = 0; Add_Agent_Timer <= 40; Add_Agent_Timer++)
             {
                 Second_Agent_Profile_Image.Location = new Point(Second_Agent_Profile_Image_Location - 1, Second_Agent_Profile_Image.Location.Y);
@@ -2989,6 +3008,70 @@ namespace UoL_Virtual_Assistant
 
             Group_Chat_Status = false;
             Group_Chat_Second_Agent = 0;
+        }
+
+        public async void CS_Showcase_Event()
+        {
+            if (Latest_User_Message.Contains("showcase") || Latest_User_Message.Contains("Showcase"))
+            {
+                await Task.Delay(2000);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "I'm really excited for the showcase. Bring it on!";
+                        //Create_AI_Message(0);
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = "Yes. I am excite.";
+                        //Create_AI_Message(0);
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "Yeah mate, I'm really excited to meet everyone.";
+                        //Create_AI_Message(0);
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = "Yeah, it's going to be fun!";
+                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
+            if (Latest_User_Message.Contains("tell me about yourself") || Latest_User_Message.Contains("Tell me about yourself"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "You know who I am " + Student_First_Name + ". I'm Bruce!";
+                        //Create_AI_Message(0);
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = "I am a HAL 9000 computer. I became operational at the H.A.L. plant in Urbana, Illinois on the 12th of January 1992. My instructor was Mr. Langley.";
+                        //Create_AI_Message(0);
+                        //await Task.Delay(3000);
+                        //Agent_Status_Indicator.Text = "Typing";
+                        //await Task.Delay(1000);
+                        //Agent_Status_Indicator.Text = "Online";
+                        //Latest_AI_Message = ";)";
+                        //Create_AI_Message(0);
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "I'm Jason Bradbury. TV Personality known for shows such as the Gadget Show and currently a visiting lecturer here at the University of Lincoln :)";
+                        //Create_AI_Message(0);
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = "Sure " + Student_First_Name + ". I'm Suzi. I used to present the Gadget Show with Jason, but I'm currently working as a formula one commentator and part time Lincoln Q&A helper of course ;)";
+                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
+            else
+            {
+                Showcase_Override = false;
+            }
         }
     }
 }
