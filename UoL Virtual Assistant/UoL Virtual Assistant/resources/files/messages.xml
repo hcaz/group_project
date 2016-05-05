@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MESSAGES>
+	<FILLER>
+		<GREETING>
+			<BRUCE>
+				<MESSAGE>Hi, I'm Bruce Hargrave and I'll be dealing with your query today. What would you like me to do for you?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName. What would you like me to do for you today?</MESSAGE>
+				<MESSAGE>Hi, I'm Bruce. What can I do for you today?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName. How can I help?</MESSAGE>
+				<MESSAGE>Hi, I'm Bruce Hargrave. How can I help you today?</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Hello, $studentFirstName. What is your query?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. What is your query today?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. How can I assist you?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. How can I help you today?</MESSAGE>
+				<MESSAGE>Hello, $studentFirstName. What task can I perform for you today?</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Hi! I'm Jason Bradbury. What can I do for you? :)</MESSAGE>
+				<MESSAGE>Hi! What can I do for you today? :)</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Jason! What can I do for you today? ;)</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Jason Bradbury! What will I be doing for you today? :)</MESSAGE>
+				<MESSAGE>Hi I'm Jason! What would you like me do for you today?? :)</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 How can I help you today?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi! :3 What can I do for you?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 What can I do to help you today?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi! How can I help? :)</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi. How can I help you out today? :3</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Hello, how can I help you?</MESSAGE>
+				<MESSAGE>Hi $studentFirstName, What can I do to help?</MESSAGE>
+			</DEFAULT>
+		</GREETING>
+		<GREETINGEND>
+			<BRUCE>
+				<MESSAGE>Hi, I'm Bruce Hargrave and I'm just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day.</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Hello, $studentFirstName. Is this a quick question?</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Hi! I'm Jason Bradbury. I have time for one last quick message? :)</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Hi $studentFirstName, I'm Suzi :3 If its quick, I can help you now?</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Hi $studentFirstName. We're just about to leave for the day. If it's a quick question I can answer it now, otherwise you can contact us again the next working day or leave the question with the out of hours service.</MESSAGE>
+			</DEFAULT>
+		</GREETINGEND>
+		<PROMPT>
+			<BRUCE>
+				<MESSAGE>Are you still there?</MESSAGE>
+				<MESSAGE>Please respond to me.</MESSAGE>
+				<MESSAGE>$studentFirstName?</MESSAGE>
+				<MESSAGE>I have not heard from you in a while...</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Did you tI'meout?</MESSAGE>
+				<MESSAGE>Hello!</MESSAGE>
+				<MESSAGE>$studentFirstName...</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Dont ignore me.</MESSAGE>
+				<MESSAGE>Hello?</MESSAGE>
+				<MESSAGE>Are you still connected?</MESSAGE>
+				<MESSAGE>Can I help with anythign else?</MESSAGE>
+				<MESSAGE>$studentFirstName?</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Are you still with me?:3</MESSAGE>
+				<MESSAGE>Are you okay?</MESSAGE>
+				<MESSAGE>Can I help with anything else?</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Is there anything else I can help you with?</MESSAGE>
+				<MESSAGE>Are you still around?</MESSAGE>
+				<MESSAGE>$studentFirstName?</MESSAGE>
+			</DEFAULT>
+		</PROMPT>
+		<FAREWELL>
+			<BRUCE>
+				<MESSAGE>Have a fantastic day, I remain, Bruce.</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Have a great day.</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Follow me on twitter @JasonBradbury :)</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Enjoy the rest of your day!</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Thanks for contacting us, have a great day!</MESSAGE>
+			</DEFAULT>
+		</FAREWELL>
+		<GREETING_QUESTION>
+			<BRUCE>
+				<MESSAGE>I am OK thanks. What do you want?</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>I am good.</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>I am great, just got off set, how are you?</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>I am great thank you, how about yourself?</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>I am alright, how can I help you!</MESSAGE>
+			</DEFAULT>
+		</GREETING_QUESTION>
+		<ERROR>
+			<BRUCE>
+				<MESSAGE>I dont understand what you mean?</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Could you please rephrase that, I don't understand</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>errm wut?</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>I am really sorry, but I dont understand what you mean?</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>I am sorry I dont understand what your trying to say?</MESSAGE>
+			</DEFAULT>
+		</ERROR>
+		<THANKS>
+			<BRUCE>
+				<MESSAGE>Your are welcome</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>No problem</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>No problemo m9</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>You are welcome :3</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Thats ok.</MESSAGE>
+			</DEFAULT>
+		</THANKS>
+		<GET>
+			<BRUCE>
+				<MESSAGE>I will send you an email to your student email ($studentID@students.lincoln.ac.uk) with that information after this chat.</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>I will send you the relevent information after the chat has ended.</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>I will email you the dets m8?</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>If I can grab your email I will find out for you and let you know!</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>I dont have that information to hand right now, but if you give me your email I can get back to you.</MESSAGE>
+			</DEFAULT>
+		</GET>
+		<RUDE_INSULT>
+			<BRUCE>
+				<MESSAGE>There is no need for that here.</MESSAGE>
+				<MESSAGE>Hey, $studentFirstName. Thats not cool.</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Please refraim from being rude.</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>Please dont be rude :(</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>Hey thats not nice!</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Please dont put insults in the chat.</MESSAGE>
+			</DEFAULT>
+		</RUDE_INSULT>
+		<NAME_FACULTY>
+			<BRUCE>
+				<MESSAGE>Oh sure, I know $firstName, good mate of mine. His email is $email and his phone is $phone</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>Their email is $email, and phone is $phone</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>I just did a lookup and found that $firstName's email is $email, and phone is $phone</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>I know exactly who you mean, their email is $email and their phone is $phone</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Yes, their phone is $phone, and there email is $email</MESSAGE>
+			</DEFAULT>
+		</NAME_FACULTY>
+		<PARTIAL_NAME_FACULTY>
+			<DEFAULT>
+				<MESSAGE>Do you mean, $fullName?</MESSAGE>
+			</DEFAULT>
+		</PARTIAL_NAME_FACULTY>
+		<ERROR_NAME_FACULTY>
+			<BRUCE>
+				<MESSAGE>I dont know who that is sorry.</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>I do not know who you speak of.</MESSAGE>
+			</HAL>
+			<JASON>
+				<MESSAGE>I dont think they work here.</MESSAGE>
+			</JASON>
+			<SUZIE>
+				<MESSAGE>I am sorry, I dont know who you are talking about.</MESSAGE>
+			</SUZIE>
+			<DEFAULT>
+				<MESSAGE>Sorry, but they do not work for the university.</MESSAGE>
+			</DEFAULT>
+		</ERROR_NAME_FACULTY>
+		<WORKSTATION>
+			<DEFAULT>
+				<MESSAGE>The system says there are currently $freePCS free computers in the library right now. The library is open $times today, with the desk being open $deskTimes today.</MESSAGE>
+			</DEFAULT>
+		</WORKSTATION>
+		<WEATHER>
+			<BRUCE>
+				<MESSAGE>Just checked the BBC, it feels like $fdm degress out there and visibility $v</MESSAGE>
+			</BRUCE>
+			<HAL>
+				<MESSAGE>There is too much glare in my screen, so I assume it is nice outside.</MESSAGE>
+			</HAL>
+			<DEFAULT>
+				<MESSAGE>Just checked the BBC, it feels like $fdm degress out there.</MESSAGE>
+			</DEFAULT>
+		</WEATHER>
+	</FILLER>
+	<BULDINGS>
+		<LIBRARY>
+			<DEFAULT>
+				<MESSAGE>The library is currently $libraryStatus, and desk is open $deskTI'mes today.</MESSAGE>
+			</DEFAULT>
+		</LIBRARY>
+		<LIBRARY_PC>
+			<DEFAULT>
+				<MESSAGE>The system says there are currently $freePCS free computers in the library right now.</MESSAGE>
+			</DEFAULT>
+		</LIBRARY_PC>
+		<OTHER>
+			<DEFAULT>
+				<MESSAGE>It is located at $location, and is open $times today.</MESSAGE>
+			</DEFAULT>
+		</OTHER>
+	</BULDINGS>
+	<DEPARTMENT>
+		<PASSON>
+			<DEFAULT>
+				<MESSAGE>I am sorry, I cant help you with that, however if you email the department at $email they can help.</MESSAGE>
+			</DEFAULT>
+		</PASSON>
+	</DEPARTMENT>
+</MESSAGES>

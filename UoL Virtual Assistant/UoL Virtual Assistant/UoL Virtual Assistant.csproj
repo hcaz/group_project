@@ -56,7 +56,6 @@
     <Compile Include="First_Run_UI.Designer.cs">
       <DependentUpon>First_Run_UI.cs</DependentUpon>
     </Compile>
-    <Compile Include="KnowledgeBase.cs" />
     <Compile Include="Main_UI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +67,12 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScrapeData.cs" />
+    <Compile Include="Timetable_UI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Timetable_UI.Designer.cs">
+      <DependentUpon>Timetable_UI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="First_Run_UI.resx">
       <DependentUpon>First_Run_UI.cs</DependentUpon>
     </EmbeddedResource>
@@ -78,6 +83,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Timetable_UI.resx">
+      <DependentUpon>Timetable_UI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -99,55 +107,76 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\UoL Branding %28for light themes%29.png" />
+    <None Include="resources\Hal.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Send Icon %28for light themes%29.png" />
+    <None Include="resources\images\settings menu\Settings Drawer.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Hamburger %28for light themes%29.png" />
+    <None Include="resources\images\settings menu\Hamburger.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\AI Message %28for light themes%29.png" />
+    <None Include="resources\images\settings menu\course localisation\MHT Building.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\User Message %28for light themes%29.png" />
+    <None Include="resources\images\themes\JB.PNG" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Settings Drawer.png" />
+    <None Include="resources\images\misc items\UoL Branding.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Message Input Area %28for light themes%29.png" />
+    <None Include="resources\images\messaging\AI Message.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Conversation Area %28for light themes%29.png" />
+    <None Include="resources\images\messaging\Conversation Area.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\MHT Building %28blurred%29.jpg" />
+    <None Include="resources\images\messaging\Conversation Header.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Settings Shade Alpha.png" />
+    <None Include="resources\images\messaging\Message Input Area.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\JB.PNG" />
+    <None Include="resources\images\messaging\Power Button.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\BruceProfilePic.png" />
+    <None Include="resources\images\messaging\Send Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\GenericProfilePic.png" />
+    <None Include="resources\images\messaging\User Message.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\JasonProfilePic.png" />
+    <None Include="resources\images\agent images\BruceProfilePic.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\SuziProfilePic.png" />
+    <None Include="resources\images\agent images\GenericProfilePic.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\HalProfilePic.png" />
+    <None Include="resources\images\agent images\HalProfilePic.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="resources\Conversation Area Header %28for light themes%29.png" />
+    <None Include="resources\images\agent images\JasonProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\SuziProfilePic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Hal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Bruce.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Generic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Jason.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\agent images\Suzi.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\images\misc items\Expand_Button.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

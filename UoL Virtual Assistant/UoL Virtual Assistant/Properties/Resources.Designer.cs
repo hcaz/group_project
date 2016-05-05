@@ -63,9 +63,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap AI_Message__for_light_themes_ {
+        internal static System.Drawing.Bitmap AI_Message {
             get {
-                object obj = ResourceManager.GetObject("AI Message (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("AI Message", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BruceProfilePic {
+        internal static System.Drawing.Bitmap Bruce {
             get {
-                object obj = ResourceManager.GetObject("BruceProfilePic", resourceCulture);
+                object obj = ResourceManager.GetObject("Bruce", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Conversation_Area__for_light_themes_ {
+        internal static System.Drawing.Bitmap Conversation_Area {
             get {
-                object obj = ResourceManager.GetObject("Conversation Area (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("Conversation Area", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Conversation_Area_Header__for_light_themes_ {
+        internal static System.Drawing.Bitmap Conversation_Header {
             get {
-                object obj = ResourceManager.GetObject("Conversation Area Header (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("Conversation Header", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +103,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap GenericProfilePic {
+        internal static System.Drawing.Bitmap Expand_Button {
             get {
-                object obj = ResourceManager.GetObject("GenericProfilePic", resourceCulture);
+                object obj = ResourceManager.GetObject("Expand_Button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -113,9 +113,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HalProfilePic {
+        internal static System.Drawing.Bitmap Generic {
             get {
-                object obj = ResourceManager.GetObject("HalProfilePic", resourceCulture);
+                object obj = ResourceManager.GetObject("Generic", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Hamburger__for_light_themes_ {
+        internal static System.Drawing.Bitmap Hal {
             get {
-                object obj = ResourceManager.GetObject("Hamburger (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("Hal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -133,9 +133,19 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap JasonProfilePic {
+        internal static System.Drawing.Bitmap Hamburger {
             get {
-                object obj = ResourceManager.GetObject("JasonProfilePic", resourceCulture);
+                object obj = ResourceManager.GetObject("Hamburger", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Jason {
+            get {
+                object obj = ResourceManager.GetObject("Jason", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -153,9 +163,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Message_Input_Area__for_light_themes_ {
+        internal static System.Drawing.Bitmap Message_Input_Area {
             get {
-                object obj = ResourceManager.GetObject("Message Input Area (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("Message Input Area", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -163,9 +173,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap MHT_Building__blurred_ {
+        internal static System.Drawing.Bitmap MHT_Building {
             get {
-                object obj = ResourceManager.GetObject("MHT Building (blurred)", resourceCulture);
+                object obj = ResourceManager.GetObject("MHT Building", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +183,19 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Send_Icon__for_light_themes_ {
+        internal static System.Drawing.Bitmap Power_Button {
             get {
-                object obj = ResourceManager.GetObject("Send Icon (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("Power Button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Send_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Send Icon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,9 +213,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap SuziProfilePic {
+        internal static System.Drawing.Bitmap Suzi {
             get {
-                object obj = ResourceManager.GetObject("SuziProfilePic", resourceCulture);
+                object obj = ResourceManager.GetObject("Suzi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +223,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap UoL_Branding__for_light_themes_ {
+        internal static System.Drawing.Bitmap UoL_Branding {
             get {
-                object obj = ResourceManager.GetObject("UoL Branding (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("UoL Branding", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,9 +233,9 @@ namespace UoL_Virtual_Assistant.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap User_Message__for_light_themes_ {
+        internal static System.Drawing.Bitmap User_Message {
             get {
-                object obj = ResourceManager.GetObject("User Message (for light themes)", resourceCulture);
+                object obj = ResourceManager.GetObject("User Message", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

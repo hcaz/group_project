@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<KEYWORDS>
+	<GREETINGS>
+		<HELLO></HELLO>
+		<HI></HI>
+		<HOWDY></HOWDY>
+		<HEY></HEY>
+		<HEYA></HEYA>
+		<AHOY></AHOY>
+		<WASSUP></WASSUP>
+		<HEYY></HEYY>
+		<HIYA></HIYA>
+	</GREETINGS>
+
+	<GREETINGS_QUESTIONS>
+		<HOW_ARE_YOU>how are you</HOW_ARE_YOU>
+		<HOWRE_YOU>how're you</HOWRE_YOU>
+		<HOWS_IT_GOING>hows it going</HOWS_IT_GOING>
+		<HOWS_IT_GOING_AP>how's it going</HOWS_IT_GOING_AP>
+		<WHATS_UP>whats up</WHATS_UP>
+		<WHATS_UP_AP>what's up</WHATS_UP_AP>
+	</GREETINGS_QUESTIONS>
+	
+	<FAREWELLS>
+		<BYE>bye</BYE>
+		<LATERS>laters</LATERS>
+		<GOODBYE>goodbye</GOODBYE>
+		<CATCH_YOU_LATER>catch you later</CATCH_YOU_LATER>
+		<CIAO>ciao</CIAO>
+		<IM_OFF>im off</IM_OFF>
+		<IM_OFF_AP>i'm off</IM_OFF_AP>
+		<SEE_YA>see ya</SEE_YA>
+		<CYA>cya</CYA>
+		<SEE_YOU>see you</SEE_YOU>
+	</FAREWELLS>
+	
+	<CONFIRMATIONS>
+		<YES>yes</YES>
+		<YEAH>yeah</YEAH>
+		<YA>ya</YA>
+		<YE>ye</YE>
+		<YIS>yis</YIS>
+		<INDEED>indeed</INDEED>
+		<AFFIRMATIVE>affirmative</AFFIRMATIVE>
+		<OF_COURSE>of course</OF_COURSE>
+		<COURSE>course</COURSE>
+		<YAH>yah</YAH>
+		<YUH>yuh</YUH>
+	</CONFIRMATIONS>
+	
+	<NEGATIVE_RESPONSES>
+		<NO>no</NO>
+		<NAH>nah</NAH>
+		<NOPE>nope</NOPE>
+		<NEGATIVE>negative</NEGATIVE>
+		<FRAID_NOT>fraid not</FRAID_NOT>
+		<IM_AFRAID_NOT>im afraid not</IM_AFRAID_NOT>
+		<NEIN>nein</NEIN>
+		<NICHT>nicht</NICHT>
+	</NEGATIVE_RESPONSES>
+	
+	<THANK_YOUS>
+		<THANK>thank</THANK>
+		<THANK_YOU>thank you</THANK_YOU>
+		<CHEERS>cheers</CHEERS>
+		<FANKS>fanks</FANKS>
+		<TA>ta</TA>
+		<APPRECIATE>appreciate</APPRECIATE>
+		<HONOURED>honoured</HONOURED>
+		<HONORED_AMERICAN_WRONG>honored</HONORED_AMERICAN_WRONG>
+		<GRATEFUL>grateful</GRATEFUL>
+		<BLESS>bless</BLESS>
+	</THANK_YOUS>
+	
+	<QUESTIONS>
+		<WHERE></WHERE>
+		<WHO></WHO>
+		<WHEN></WHEN>
+		<HOW></HOW>
+		<WHY></WHY>
+		<WHAT></WHAT>
+	</QUESTIONS>
+	
+	<MISC>
+		<ACCOMODATION></ACCOMODATION>
+		<BAR></BAR>
+		<DRINKS></DRINKS>
+		<ENTERTAINMENT></ENTERTAINMENT>
+		<GYM></GYM>
+	</MISC>	
+	
+	<INSULTS>
+		<FUCK></FUCK>
+		<SHIT></SHIT>
+		<CUNT></CUNT>
+		<WANK></WANK>
+		<KNOB-JOCKEY></KNOB-JOCKEY>
+		<KNOBJOCKEY></KNOBJOCKEY>
+		<FUCKER></FUCKER>
+		<WANKER></WANKER>
+		<NOB-JOCKEY></NOB-JOCKEY>
+		<NOBJOCKEY></NOBJOCKEY>
+		<BITCH></BITCH>
+		<TWAT></TWAT>
+		<SPAZ></SPAZ>
+		<RETARD></RETARD>
+		<ARSE></ARSE>
+		<FAGGOT></FAGGOT>
+		<ANUS></ANUS>
+		<VAGINA></VAGINA>
+		<DICK></DICK>
+		<COCK></COCK>
+		<PENIS></PENIS>
+		<FANNY></FANNY>
+		<FORNICATE></FORNICATE>
+		<SKANK></SKANK>
+		<FLANGE></FLANGE>
+		<SLUT></SLUT>
+	</INSULTS>
+	
+	<IGNOREWORDS>
+		he le can yo hi i
+	</IGNOREWORDS>
+	
+	<FREE_PCS>
+		<FREE_PC>free pc</FREE_PC>
+		<PC_FREE>pc free</PC_FREE>
+		<FREE_PCS>free pcs</FREE_PCS>
+		<PCS_FREE>pcs free</PCS_FREE>
+		<AVAILABLE_PC>available pc</AVAILABLE_PC>
+		<PC_AVAILABLE>pc available</PC_AVAILABLE>
+		<AVAILABLE_PCS>available pcs</AVAILABLE_PCS>
+		<PCS_AVAILABLE>pcs available</PCS_AVAILABLE>
+		<PLACE_TO_WORK>place to work</PLACE_TO_WORK>
+		<WORK_SPACE>work space</WORK_SPACE>
+		<WORKSPACE>workspace</WORKSPACE>
+		<FREE_COMPUTER>free computer</FREE_COMPUTER>
+		<COMPUTER_FREE>computer free</COMPUTER_FREE>
+		<AVAILABLE_COMPUTER>available computer</AVAILABLE_COMPUTER>
+		<COMPUTER_AVAILABLE>computer available</COMPUTER_AVAILABLE>
+		<FREE_COMPUTERS>free computers</FREE_COMPUTERS>
+		<COMPUTERS_FREE>computers free</COMPUTERS_FREE>
+		<AVAILABLE_COMPUTERS>available computers</AVAILABLE_COMPUTERS>
+		<COMPUTERS_AVAILABLE>computers available</COMPUTERS_AVAILABLE>
+		<GET_A_PC>get a pc</GET_A_PC>
+		<FIND_A_PC>find a pc</FIND_A_PC>
+		<GET_A_COMPUTER>get a computer</GET_A_COMPUTER>
+		<FIND_A_COMPUTER>find a computer</FIND_A_COMPUTER>
+	</FREE_PCS>
+	
+	<WEATHER_QUERY>
+		<WEATHER>weather</WEATHER>
+		<FORECAST>forecast</FORECAST>
+		<FORECAST>visibility</FORECAST>
+		<FORECAST>warm</FORECAST>
+		<FORECAST>cold</FORECAST>
+		<FORECAST>umbrella</FORECAST>
+	</WEATHER_QUERY>
+</KEYWORDS>
