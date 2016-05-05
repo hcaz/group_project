@@ -57,34 +57,6 @@ namespace UoL_Virtual_Assistant
         public static bool Group_Chat_Status = false;
         public static int Group_Chat_Second_Agent;
 
-        public static int AI_0_Pos = 0;
-        public static int AI_1_Pos = 0;
-        public static int AI_2_Pos = 0;
-        public static int AI_3_Pos = 0;
-        public static int AI_4_Pos = 0;
-        public static int AI_5_Pos = 0;
-        public static int AI_6_Pos = 0;
-        public static int AI_7_Pos = 0;
-        public static int AI_8_Pos = 0;
-        public static int AI_9_Pos = 0;
-        public static int AI_10_Pos = 0;
-        public static int AI_11_Pos = 0;
-        public static int AI_12_Pos = 0;
-        public static int AI_13_Pos = 0;
-        public static int AI_14_Pos = 0;
-        public static int AI_15_Pos = 0;
-        public static int AI_16_Pos = 0;
-        public static int AI_17_Pos = 0;
-        public static int AI_18_Pos = 0;
-        public static int AI_19_Pos = 0;
-        public static int AI_20_Pos = 0;
-        public static int AI_21_Pos = 0;
-        public static int AI_22_Pos = 0;
-        public static int AI_23_Pos = 0;
-        public static int AI_24_Pos = 0;
-        public static int AI_25_Pos = 0;
-        public static int User_Message_Pos = 0;
-
         public static bool AI_Response_Handshake = false;
         public static bool Expanded_Icon = false;
 
@@ -101,6 +73,7 @@ namespace UoL_Virtual_Assistant
 
         public Main_UI()
         {
+            
             Read_User_Data(); //read in the user data from the settings file
             if (Student_ID == null) //if no student ID is found
             {
@@ -1142,17 +1115,16 @@ namespace UoL_Virtual_Assistant
                 AI_Message_Shell[AI_Message_Counter].BackColor = Color.FromArgb(198, 40, 40);
             }
 
-
             AI_Message[AI_Message_Counter].Font = new Font("Microsoft Sans Serif", 10);
             AI_Message[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
             AI_Message[AI_Message_Counter].BorderStyle = BorderStyle.None;
+            AI_Message[AI_Message_Counter].ReadOnly = true;
             AI_Message[AI_Message_Counter].Text = Latest_AI_Message;
             int Line_Counter = ((AI_Message[AI_Message_Counter].GetLineFromCharIndex(int.MaxValue) + 1) * 10) + 30;
             AI_Message[AI_Message_Counter].Size = new Size(140, Line_Counter);
-
-
             AI_Message_Shell[AI_Message_Counter].WordWrap = true;
             AI_Message_Shell[AI_Message_Counter].Multiline = true;
+            AI_Message_Shell[AI_Message_Counter].ReadOnly = true;
             AI_Message_Shell[AI_Message_Counter].Anchor = (AnchorStyles.Bottom);
             AI_Message_Shell[AI_Message_Counter].BorderStyle = BorderStyle.None;
             AI_Message_Shell[AI_Message_Counter].Size = new Size(150, (Line_Counter + 10));
@@ -1202,88 +1174,6 @@ namespace UoL_Virtual_Assistant
 
                     Message_Animation_Timer++;
                     await Task.Delay(1); //delay for 1/100 of a second
-                }
-
-                switch (AI_Message_Counter)
-                {
-                    case 0:
-                        AI_0_Pos = AI_Message_Shell[0].Location.Y;
-                        break;
-                    case 1:
-                        AI_1_Pos = AI_Message_Shell[1].Location.Y;
-                        break;
-                    case 2:
-                        AI_2_Pos = AI_Message_Shell[2].Location.Y;
-                        break;
-                    case 3:
-                        AI_3_Pos = AI_Message_Shell[3].Location.Y;
-                        break;
-                    case 4:
-                        AI_4_Pos = AI_Message_Shell[4].Location.Y;
-                        break;
-                    case 5:
-                        AI_5_Pos = AI_Message_Shell[5].Location.Y;
-                        break;
-                    case 6:
-                        AI_6_Pos = AI_Message_Shell[6].Location.Y;
-                        break;
-                    case 7:
-                        AI_7_Pos = AI_Message_Shell[7].Location.Y;
-                        break;
-                    case 8:
-                        AI_8_Pos = AI_Message_Shell[8].Location.Y;
-                        break;
-                    case 9:
-                        AI_9_Pos = AI_Message_Shell[9].Location.Y;
-                        break;
-                    case 10:
-                        AI_10_Pos = AI_Message_Shell[10].Location.Y;
-                        break;
-                    case 11:
-                        AI_11_Pos = AI_Message_Shell[11].Location.Y;
-                        break;
-                    case 12:
-                        AI_12_Pos = AI_Message_Shell[12].Location.Y;
-                        break;
-                    case 13:
-                        AI_13_Pos = AI_Message_Shell[13].Location.Y;
-                        break;
-                    case 14:
-                        AI_14_Pos = AI_Message_Shell[14].Location.Y;
-                        break;
-                    case 15:
-                        AI_15_Pos = AI_Message_Shell[15].Location.Y;
-                        break;
-                    case 16:
-                        AI_16_Pos = AI_Message_Shell[16].Location.Y;
-                        break;
-                    case 17:
-                        AI_17_Pos = AI_Message_Shell[17].Location.Y;
-                        break;
-                    case 18:
-                        AI_18_Pos = AI_Message_Shell[18].Location.Y;
-                        break;
-                    case 19:
-                        AI_19_Pos = AI_Message_Shell[19].Location.Y;
-                        break;
-                    case 20:
-                        AI_20_Pos = AI_Message_Shell[20].Location.Y;
-                        break;
-                    case 21:
-                        AI_21_Pos = AI_Message_Shell[21].Location.Y;
-                        break;
-                    case 22:
-                        AI_22_Pos = AI_Message_Shell[22].Location.Y;
-                        break;
-                    case 23:
-                        AI_23_Pos = AI_Message_Shell[23].Location.Y;
-                        break;
-                    case 24:
-                        AI_24_Pos = AI_Message_Shell[24].Location.Y;
-                        break;
-                    case 25:
-                        AI_25_Pos = AI_Message_Shell[25].Location.Y;
-                        break;
                 }
 
                 Message_Input.Enabled = true;
@@ -1363,6 +1253,7 @@ namespace UoL_Virtual_Assistant
             User_Message[User_Message_Counter].BackColor = Color.FromArgb(244, 244, 244);
             User_Message[User_Message_Counter].ForeColor = Color.FromArgb(0, 0, 0);
             User_Message[User_Message_Counter].Font = new Font("Microsoft Sans Serif", 10);
+            User_Message[User_Message_Counter].ReadOnly = true;
             User_Message[User_Message_Counter].Anchor = (AnchorStyles.Bottom);
             User_Message[User_Message_Counter].BorderStyle = BorderStyle.None;
             User_Message[User_Message_Counter].TextAlign = HorizontalAlignment.Right;
@@ -1373,6 +1264,7 @@ namespace UoL_Virtual_Assistant
             User_Message_Shell[User_Message_Counter].WordWrap = true;
             User_Message_Shell[User_Message_Counter].Multiline = true;
             User_Message_Shell[User_Message_Counter].BackColor = Color.FromArgb(244, 244, 244);
+            User_Message_Shell[User_Message_Counter].ReadOnly = true;
             User_Message_Shell[User_Message_Counter].Anchor = (AnchorStyles.Bottom);
             User_Message_Shell[User_Message_Counter].BorderStyle = BorderStyle.None;
             User_Message_Shell[User_Message_Counter].Size = new Size(150, (Line_Counter + 10));
@@ -1401,7 +1293,6 @@ namespace UoL_Virtual_Assistant
                 await Task.Delay(1); //delay for 1/100 of a second
             }
 
-            User_Message_Pos = User_Message_Shell[User_Message_Counter].Location.Y;
             User_Message_Counter++;
 
             if (Connected_Agent == 4 && User_Message_Counter == 1)
@@ -1428,6 +1319,7 @@ namespace UoL_Virtual_Assistant
             Chat_Notification[Notification_Counter].ForeColor = Color.FromArgb(0, 0, 0);
             Chat_Notification[Notification_Counter].Font = new Font("Microsoft Sans Serif", 8);
             Chat_Notification[Notification_Counter].Anchor = (AnchorStyles.Bottom);
+            Chat_Notification[Notification_Counter].ReadOnly = true;
             Chat_Notification[Notification_Counter].BorderStyle = BorderStyle.None;
             Chat_Notification[Notification_Counter].TextAlign = HorizontalAlignment.Center;
             Chat_Notification[Notification_Counter].Text = Notification;
@@ -1438,6 +1330,7 @@ namespace UoL_Virtual_Assistant
             Chat_Notification_Shell[Notification_Counter].Multiline = true;
             Chat_Notification_Shell[Notification_Counter].BackColor = Color.FromArgb(244, 244, 244);
             Chat_Notification_Shell[Notification_Counter].Anchor = (AnchorStyles.Bottom);
+            Chat_Notification_Shell[Notification_Counter].ReadOnly = true;
             Chat_Notification_Shell[Notification_Counter].BorderStyle = BorderStyle.None;
             Chat_Notification_Shell[Notification_Counter].Size = new Size(200, (Line_Counter + 10));
 
@@ -1938,49 +1831,6 @@ namespace UoL_Virtual_Assistant
                 //    AI_Message[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
                 //    AI_Message_Shell[Message_Number].BackColor = Color.FromArgb(R_Colour, G_Colour, B_Colour);
                 //}                
-            }
-        }
-
-        private bool Check_AI_Location()
-        {
-            try
-            {
-                if (AI_Message_Shell[0].Location.Y == AI_0_Pos) { return true; }
-                if (AI_Message_Shell[1].Location.Y == AI_1_Pos) { return true; }
-                if (AI_Message_Shell[2].Location.Y == AI_2_Pos) { return true; }
-                if (AI_Message_Shell[3].Location.Y == AI_3_Pos) { return true; }
-                if (AI_Message_Shell[4].Location.Y == AI_4_Pos) { return true; }
-                if (AI_Message_Shell[5].Location.Y == AI_5_Pos) { return true; }
-                if (AI_Message_Shell[6].Location.Y == AI_6_Pos) { return true; }
-                if (AI_Message_Shell[7].Location.Y == AI_7_Pos) { return true; }
-                if (AI_Message_Shell[8].Location.Y == AI_8_Pos) { return true; }
-                if (AI_Message_Shell[9].Location.Y == AI_9_Pos) { return true; }
-                if (AI_Message_Shell[10].Location.Y == AI_10_Pos) { return true; }
-                if (AI_Message_Shell[11].Location.Y == AI_11_Pos) { return true; }
-                if (AI_Message_Shell[12].Location.Y == AI_12_Pos) { return true; }
-                if (AI_Message_Shell[13].Location.Y == AI_13_Pos) { return true; }
-                if (AI_Message_Shell[14].Location.Y == AI_14_Pos) { return true; }
-                if (AI_Message_Shell[15].Location.Y == AI_15_Pos) { return true; }
-                if (AI_Message_Shell[16].Location.Y == AI_16_Pos) { return true; }
-                if (AI_Message_Shell[17].Location.Y == AI_17_Pos) { return true; }
-                if (AI_Message_Shell[18].Location.Y == AI_18_Pos) { return true; }
-                if (AI_Message_Shell[19].Location.Y == AI_19_Pos) { return true; }
-                if (AI_Message_Shell[20].Location.Y == AI_20_Pos) { return true; }
-                if (AI_Message_Shell[21].Location.Y == AI_21_Pos) { return true; }
-                if (AI_Message_Shell[22].Location.Y == AI_22_Pos) { return true; }
-                if (AI_Message_Shell[23].Location.Y == AI_23_Pos) { return true; }
-                if (AI_Message_Shell[24].Location.Y == AI_24_Pos) { return true; }
-                if (AI_Message_Shell[25].Location.Y == AI_25_Pos) { return true; }
-
-                else
-                {
-                    return false;
-                }
-            }
-
-            catch
-            {
-                return false;
             }
         }
 
