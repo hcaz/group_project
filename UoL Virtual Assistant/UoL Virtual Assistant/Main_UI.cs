@@ -1,17 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using System.Runtime.InteropServices;
-using System.Collections;
 
 namespace UoL_Virtual_Assistant
 {
@@ -28,8 +21,11 @@ namespace UoL_Virtual_Assistant
         //public static DayOfWeek currentDay = DayOfWeek.Wednesday;
         //If live========================
         //This long way gives a better timestamp without miliseconds
-        public static TimeSpan currentTime = new TimeSpan(/*DateTime.Now.TimeOfDay.Hours*/ 15, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds);
-        public static DayOfWeek currentDay = /*System.DateTime.Now.DayOfWeek;*/ DayOfWeek.Monday;
+        public static TimeSpan currentTime = new TimeSpan(DateTime.Now.TimeOfDay.Hours, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds);
+        public static DayOfWeek currentDay = System.DateTime.Now.DayOfWeek;
+
+        //public static TimeSpan currentTime = new TimeSpan(/*DateTime.Now.TimeOfDay.Hours*/ 15, DateTime.Now.TimeOfDay.Minutes, DateTime.Now.TimeOfDay.Seconds); //debug version
+        //public static DayOfWeek currentDay = /*System.DateTime.Now.DayOfWeek;*/ DayOfWeek.Monday; //debug version
         //===============================
         public static string Student_ID; //creates a string that will store the Student ID
         public static string Student_First_Name = ""; //creates a string that will store the student first name
@@ -575,7 +571,7 @@ namespace UoL_Virtual_Assistant
                 Conversation_Exit.Visible = true; //make the exit button visible
                 Conversation_Exit.BringToFront();
 
-                int Connection_Timer = Randomiser.Next(1, 5);
+                int Connection_Timer = Randomiser.Next(1, 3);
                 bool Exit_Visible = false;
                 bool Pulse = true;
                 while (Connection_Status == 0) //while the user is not connected to an agent
@@ -625,33 +621,33 @@ namespace UoL_Virtual_Assistant
                     Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window                    
                     Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
-                    int Preferred_Agent_Probability = Randomiser.Next(0, 4); //selects a random number between 0 and 4
+                    int Preferred_Agent_Probability = Randomiser.Next(0, 1); //selects a random number between 0 and 4
                     switch (Preferred_Agent) //apply the appropriate profile picture and label text
                     {
                         case "0": //if the user does not have a preferred agent
                             Connected_Agent = Randomiser.Next(1, 4); //pick a random agent
                             break;
                         case "1": //if their preferred agent is Bruce
-                            if (Preferred_Agent_Probability > 1)
+                            if (Preferred_Agent_Probability == 1)
                             {
                                 Connected_Agent = 0; //give them their preferred agent
                             }
                             break;
                         case "2": //if their preferred agent is Hal
-                            if (Preferred_Agent_Probability > 1)
+                            if (Preferred_Agent_Probability == 1)
                             {
                                 Connected_Agent = 1; //give them their preferred agent
                             }
                             break;
                         case "3": //if their preferred agent is Jason
 
-                            if (Preferred_Agent_Probability > 1)
+                            if (Preferred_Agent_Probability == 1)
                             {
                                 Connected_Agent = 2; //give them their preferred agent
                             }
                             break;
                         case "4": //if their preferred agent is Suzie
-                            if (Preferred_Agent_Probability > 1)
+                            if (Preferred_Agent_Probability == 1)
                             {
                                 Connected_Agent = 3; //give them their preferred agent
                             }
@@ -3081,7 +3077,7 @@ namespace UoL_Virtual_Assistant
                         Latest_AI_Message = "I am 24 years old. I think.";
                         break;
                     case 2: //if the agent is jason
-                        Latest_AI_Message = "I'm 47 years old " + Student_First_Name + ":)";
+                        Latest_AI_Message = "I'm 47 years old " + Student_First_Name + " :)";
                         //Create_AI_Message(0);
                         break;
                     case 3: //if the agent is suzie
@@ -3098,23 +3094,23 @@ namespace UoL_Virtual_Assistant
                 switch (Connected_Agent) //apply the appropriate profile picture and label text
                 {
                     case 0: //if the agent is bruce
-                        Latest_AI_Message = "It's Thursday the last time I checked.";
+                        Latest_AI_Message = "It's " + currentDay + " the last time I checked.";
                         break;
                     case 1: //if the agent is hal
-                        Latest_AI_Message = "Thursday. But of course you know that don't you.";
+                        Latest_AI_Message = currentDay + " But of course you know that don't you.";
                         break;
                     case 2: //if the agent is jason
-                        Latest_AI_Message = "It's Thursday... I think.";
+                        Latest_AI_Message = "It's "  + currentDay + "... I think.";
                         //Create_AI_Message(0);
                         break;
                     case 3: //if the agent is suzie
-                        Latest_AI_Message = Student_First_Name + "It's Thursday the 5th. :)";
+                        Latest_AI_Message = Student_First_Name + "It's " + currentDay + " the 5th. :)";
                         //Create_AI_Message(0);
                         break;
                 }
             }
 
-            if (Latest_User_Message.Contains("you feeling") || Latest_User_Message.Contains("You feeling") || Latest_User_Message.Contains("You Feeling"))
+            if (Latest_User_Message.Contains("you feeling") || Latest_User_Message.Contains("You feeling") || Latest_User_Message.Contains("You Feeling") || Latest_User_Message.Contains("You Feel") ||Latest_User_Message.Contains("You feel") || Latest_User_Message.Contains("you feel"))
             {
                 await Task.Delay(3500);
                 Showcase_Override = true;
@@ -3131,7 +3127,53 @@ namespace UoL_Virtual_Assistant
                         //Create_AI_Message(0);
                         break;
                     case 3: //if the agent is suzie
-                        Latest_AI_Message = "I feel really good " + Student_First_Name + ".";
+                        Latest_AI_Message = "I feel really good " + Student_First_Name + ". :)";
+                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
+            if (Latest_User_Message.Contains("what time") || Latest_User_Message.Contains("What time") || Latest_User_Message.Contains("is the time") || Latest_User_Message.Contains("the time"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "It's " + DateTime.Now.TimeOfDay.Hours + ":" + DateTime.Now.TimeOfDay.Minutes + " " + Student_First_Name;
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = currentTime.ToString();
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "Yeah mate, It's " + DateTime.Now.TimeOfDay.Hours + ":" + DateTime.Now.TimeOfDay.Minutes + " :)";
+                        //Create_AI_Message(0);
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = "It's currently " + DateTime.Now.TimeOfDay.Hours + ":" + DateTime.Now.TimeOfDay.Minutes + " :)";
+                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
+            if (Latest_User_Message.Contains("Where are you") || Latest_User_Message.Contains("where are you") || Latest_User_Message.Contains("Where r u") || Latest_User_Message.Contains("where r u"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "I'm at the showcase sending messages when I can. Shh, don't tell anyone!";
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = "In the School of Computer Science office. Where else would I be?";
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "I'm around.";
+                        //Create_AI_Message(0);
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = "I'm at the SoCs office!";
                         //Create_AI_Message(0);
                         break;
                 }
