@@ -73,7 +73,7 @@ namespace UoL_Virtual_Assistant
 
         public Main_UI()
         {
-            
+
             Read_User_Data(); //read in the user data from the settings file
             if (Student_ID == null) //if no student ID is found
             {
@@ -594,7 +594,7 @@ namespace UoL_Virtual_Assistant
                     Connecting_Label.Location = new Point(Connecting_Label.Location.X - 50, Connecting_Label.Location.Y); //move the text so it is still contained within the window                    
                     Connected_Agent = Randomiser.Next(0, 4); //selects a random number between 0 and 4
 
-                    int Preferred_Agent_Probability = Randomiser.Next(0, 1); //selects a random number between 0 and 4
+                    int Preferred_Agent_Probability = Randomiser.Next(0, 1); //selects either 1 or 2
                     switch (Preferred_Agent) //apply the appropriate profile picture and label text
                     {
                         case "0": //if the user does not have a preferred agent
@@ -991,7 +991,7 @@ namespace UoL_Virtual_Assistant
                 Showcase_Override = false;
             }
         }
-    
+
         private void Make_A_Mistake()
         {
             #region read
@@ -2891,25 +2891,15 @@ namespace UoL_Virtual_Assistant
                 {
                     case 0: //if the agent is bruce
                         Latest_AI_Message = "You know who I am " + Student_First_Name + ". I'm Bruce!";
-                        //Create_AI_Message(0);
                         break;
                     case 1: //if the agent is hal
                         Latest_AI_Message = "I am a HAL 9000 computer. I became operational at the H.A.L. plant in Urbana, Illinois on the 12th of January 1992. My instructor was Mr. Langley.";
-                        //Create_AI_Message(0);
-                        //await Task.Delay(3000);
-                        //Agent_Status_Indicator.Text = "Typing";
-                        //await Task.Delay(1000);
-                        //Agent_Status_Indicator.Text = "Online";
-                        //Latest_AI_Message = ";)";
-                        //Create_AI_Message(0);
                         break;
                     case 2: //if the agent is jason
                         Latest_AI_Message = "I'm Jason Bradbury. TV Personality known for shows such as the Gadget Show and currently a visiting lecturer here at the University of Lincoln :)";
-                        //Create_AI_Message(0);
                         break;
                     case 3: //if the agent is suzie
                         Latest_AI_Message = "Sure " + Student_First_Name + ". I'm Suzi. I used to present the Gadget Show with Jason, but I'm currently working as a formula one commentator and part time Lincoln Q&A helper of course ;)";
-                        //Create_AI_Message(0);
                         break;
                 }
             }
@@ -2928,11 +2918,9 @@ namespace UoL_Virtual_Assistant
                         break;
                     case 2: //if the agent is jason
                         Latest_AI_Message = "I'm 47 years old " + Student_First_Name + " :)";
-                        //Create_AI_Message(0);
                         break;
                     case 3: //if the agent is suzie
-                        Latest_AI_Message = Student_First_Name + "! You know you can't ask about a girls age!";
-                        //Create_AI_Message(0);
+                        Latest_AI_Message = Student_First_Name + "! You know you should never ask a girl her age";
                         break;
                 }
             }
@@ -2950,17 +2938,15 @@ namespace UoL_Virtual_Assistant
                         Latest_AI_Message = currentDay + " But of course you know that don't you.";
                         break;
                     case 2: //if the agent is jason
-                        Latest_AI_Message = "It's "  + currentDay + "... I think.";
-                        //Create_AI_Message(0);
+                        Latest_AI_Message = "It's " + currentDay + "... I think.";
                         break;
                     case 3: //if the agent is suzie
                         Latest_AI_Message = Student_First_Name + "It's " + currentDay + " the 5th. :)";
-                        //Create_AI_Message(0);
                         break;
                 }
             }
 
-            if (Latest_User_Message.Contains("you feeling") || Latest_User_Message.Contains("You feeling") || Latest_User_Message.Contains("You Feeling") || Latest_User_Message.Contains("You Feel") ||Latest_User_Message.Contains("You feel") || Latest_User_Message.Contains("you feel"))
+            if (Latest_User_Message.Contains("you feeling") || Latest_User_Message.Contains("You feeling") || Latest_User_Message.Contains("You Feeling") || Latest_User_Message.Contains("You Feel") || Latest_User_Message.Contains("You feel") || Latest_User_Message.Contains("you feel") || Latest_User_Message.Contains("How are you?") || Latest_User_Message.Contains("how are you"))
             {
                 await Task.Delay(3500);
                 Showcase_Override = true;
@@ -2973,12 +2959,10 @@ namespace UoL_Virtual_Assistant
                         Latest_AI_Message = "I feel fine.";
                         break;
                     case 2: //if the agent is jason
-                        Latest_AI_Message = "I feel great. I might tweet about this, brb.";
-                        //Create_AI_Message(0);
+                        Latest_AI_Message = "I feel great! I'll be back in a sec, just sending a few tweets :)";
                         break;
                     case 3: //if the agent is suzie
                         Latest_AI_Message = "I feel really good " + Student_First_Name + ". :)";
-                        //Create_AI_Message(0);
                         break;
                 }
             }
@@ -2997,11 +2981,9 @@ namespace UoL_Virtual_Assistant
                         break;
                     case 2: //if the agent is jason
                         Latest_AI_Message = "Yeah mate, It's " + DateTime.Now.TimeOfDay.Hours + ":" + DateTime.Now.TimeOfDay.Minutes + " :)";
-                        //Create_AI_Message(0);
                         break;
                     case 3: //if the agent is suzie
                         Latest_AI_Message = "It's currently " + DateTime.Now.TimeOfDay.Hours + ":" + DateTime.Now.TimeOfDay.Minutes + " :)";
-                        //Create_AI_Message(0);
                         break;
                 }
             }
@@ -3020,11 +3002,51 @@ namespace UoL_Virtual_Assistant
                         break;
                     case 2: //if the agent is jason
                         Latest_AI_Message = "I'm around.";
-                        //Create_AI_Message(0);
                         break;
                     case 3: //if the agent is suzie
                         Latest_AI_Message = "I'm at the SoCs office!";
-                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
+            if (Latest_User_Message.Contains("Who am I?") || Latest_User_Message.Contains("who am I"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "You're " + Student_First_Name + " " + Student_Last_Name + ". Or at least that's who you say you are!";
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = Student_First_Name + " " + Student_Last_Name;
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "That's a weird question. You're " + Student_First_Name + "!";
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = "You're " + Student_First_Name + "... " + Student_First_Name + "... :3";
+                        break;
+                }
+            }
+
+            if (Latest_User_Message.Contains("favorite colour") || Latest_User_Message.Contains("Favorite colour") || Latest_User_Message.Contains("favorite Colour") || Latest_User_Message.Contains("favorite color") || Latest_User_Message.Contains("Favorite color") || Latest_User_Message.Contains("favorite Color"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "TEA-l - Do you get it? TEA... Teal?... Hm.";
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = "Glossy Red";
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "Black and/or White";
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = "Blue! :)";
                         break;
                 }
             }
