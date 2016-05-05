@@ -3068,6 +3068,75 @@ namespace UoL_Virtual_Assistant
                 }
             }
 
+            if (Latest_User_Message.Contains("How old are you?") || Latest_User_Message.Contains("how old are you?"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "Old enough to make a good cup of tea " + Student_First_Name + ".";
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = "I am 24 years old. I think.";
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "I'm 47 years old " + Student_First_Name + ":)";
+                        //Create_AI_Message(0);
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = Student_First_Name + "! You know you can't ask about a girls age!";
+                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
+            if (Latest_User_Message.Contains("what day") || Latest_User_Message.Contains("What Day") || Latest_User_Message.Contains("What day"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "It's Thursday the last time I checked.";
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = "Thursday. But of course you know that don't you.";
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "It's Thursday... I think.";
+                        //Create_AI_Message(0);
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = Student_First_Name + "It's Thursday the 5th. :)";
+                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
+            if (Latest_User_Message.Contains("you feeling") || Latest_User_Message.Contains("You feeling") || Latest_User_Message.Contains("You Feeling"))
+            {
+                await Task.Delay(3500);
+                Showcase_Override = true;
+                switch (Connected_Agent) //apply the appropriate profile picture and label text
+                {
+                    case 0: //if the agent is bruce
+                        Latest_AI_Message = "I feel great " + Student_First_Name + ".";
+                        break;
+                    case 1: //if the agent is hal
+                        Latest_AI_Message = "I feel fine.";
+                        break;
+                    case 2: //if the agent is jason
+                        Latest_AI_Message = "I feel great. I might tweet about this, brb.";
+                        //Create_AI_Message(0);
+                        break;
+                    case 3: //if the agent is suzie
+                        Latest_AI_Message = "I feel really good " + Student_First_Name + ".";
+                        //Create_AI_Message(0);
+                        break;
+                }
+            }
+
             else
             {
                 Showcase_Override = false;
