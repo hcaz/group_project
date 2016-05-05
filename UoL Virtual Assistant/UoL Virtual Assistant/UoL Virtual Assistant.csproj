@@ -56,7 +56,6 @@
     <Compile Include="First_Run_UI.Designer.cs">
       <DependentUpon>First_Run_UI.cs</DependentUpon>
     </Compile>
-    <Compile Include="KnowledgeBase.cs" />
     <Compile Include="Main_UI.cs">
       <SubType>Form</SubType>
     </Compile>
